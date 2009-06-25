@@ -1,0 +1,147 @@
+<!--
+
+FlexGen : Flexible Map Generator Library
+
+Copyright (C) 2009  Jeffrey J. Weston <jjweston@gmail.com>
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of the FlexGen project nor the names of its contributors
+  may be used to endorse or promote products derived from this software
+  without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+            Welcome to FlexGen.org!
+        </title>
+
+        <style type="text/css">
+
+h1
+{
+    text-align: center;
+}
+
+div.left
+{
+    float: left;
+    width: 30%;
+}
+
+div.content
+{
+    float: left;
+    width: 40%;
+}
+
+div.footer
+{
+    clear: both;
+    text-align: center;
+    padding: 1em;
+}
+
+        </style>
+
+    </head>
+
+    <body>
+        <h1>
+            Welcome to FlexGen.org!
+        </h1>
+
+        <div>
+            <div class="left">
+                <p>
+                    <a href="http://sourceforge.net/projects/flexgen/">
+                        FlexGen Project on SourceForge
+                    </a>
+                </p>
+                <p>
+                    <a href="http://sourceforge.net/support/getsupport.php?group_id=266830">
+                        Get Support for FlexGen
+                    </a>
+                </p>
+                <p>
+                    <a href="http://sourceforge.net/projects/flexgen">
+<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=266830&amp;type=11"
+     width="120" height="30"
+     alt="Get FlexGen at SourceForge.net. Fast, secure and Free Open Source software downloads" />
+                    </a>
+                </p>
+            </div>
+
+            <div class="content">
+                <p>
+                    FlexGen is a flexible random map generator. It is a Java library that can be
+                    used to randomly generate maps for games and simulations. FlexGen is designed to
+                    be flexible so that you can generate any type of map that may be required for
+                    your situation.
+                </p>
+                <p>
+                    In FlexGen, maps are composed of tiles and units. A map unit is the smallest
+                    element in a map. Map units represent the raw components present in your map. If
+                    you are generating a forest map, you will likely have map units for grass,
+                    forest, and water. If you are generating a map for a dungeon, you will likely
+                    have units for rooms, hallways, and doorways.
+                </p>
+                <p>
+                    Map tiles are a small grid of map units. They represent a slightly larger
+                    element than map units in maps. Again with the forest example, you may have a
+                    map tile that contains half grass and half forest, and a map tile that contains
+                    grass that is split down the middle with water. You will ultimately want to
+                    create map tiles with different combinations of map units that represent the
+                    various ways the map units can be combined to form interesting features in your
+                    map.
+                </p>
+                <p>
+                    Every type of map tile specifies what type of map tiles can be placed along each
+                    of its edges. FlexGen generates maps by randomly placing map tiles on a map such
+                    that the edges of all adjacent map tiles match this specification. By specifying
+                    the ways that map tiles can be placed adjacent to each other, you instruct
+                    FlexGen how to generate the map. Going back to the forest example, you can
+                    ensure that rivers don't just start and stop in the middle of nowhere by
+                    specying that map tiles with a river edge can only be placed adjacent to another
+                    map tile with a river edge.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>
+                Copyright &copy; 2009 - Jeffrey J. Weston
+                <a href="mailto:jjweston@gmail.com">&lt;jjweston@gmail.com&gt;</a>
+            </p>
+            <p>
+                All rights reserved.
+            </p>
+        </div>
+    </body>
+
+</html>
