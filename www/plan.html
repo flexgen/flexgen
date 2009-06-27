@@ -84,6 +84,28 @@ td.status
     padding-right: 1em;
 }
 
+td.level0
+{
+    padding-left: 0;
+}
+
+td.level1
+{
+    padding-left: 1em;
+}
+
+td.level2
+{
+    padding-left: 2em;
+}
+
+div.marker
+{
+    float: left;
+    display: inline-table;
+    padding-right: .25em;
+}
+
         </style>
 
     </head>
@@ -128,36 +150,106 @@ td.status
                         </th>
                     </tr>
                     <tr>
-                        <td>
-                            * Foo
+                        <td class="level0">
+                            <div class="marker">*</div>
+                            FlexGen Project
                         </td>
                         <td class="status">
-                            Not Started
+                            Started
                         </td>
                         <td>
-                            6/27/2009
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            &nbsp;&nbsp;
-                            * Bar
+                        <td class="level1">
+                            <div class="marker">*</div>
+                            Infrastructure
                         </td>
                         <td class="status">
-                            Not Started
+                            Started
                         </td>
                         <td>
-                            6/27/2009
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            &nbsp;&nbsp;
-                            &nbsp;&nbsp;
-                            * Baz
+                        <td class="level2">
+                            <div class="marker">*</div>
+                            Select project.
                         </td>
                         <td class="status">
-                            Not Started
+                            Done
+                        </td>
+                        <td>
+                            6/22/2009
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="level2">
+                            <div class="marker">*</div>
+                            Name project.
+                        </td>
+                        <td class="status">
+                            Done
+                        </td>
+                        <td>
+                            6/23/2009
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="level2">
+                            <div class="marker">*</div>
+                            Register project on SourceForge.
+                        </td>
+                        <td class="status">
+                            Done
+                        </td>
+                        <td>
+                            6/23/2009
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="level2">
+                            <div class="marker">*</div>
+                            Create project mailing lists.
+                        </td>
+                        <td class="status">
+                            Done
+                        </td>
+                        <td>
+                            6/24/2009
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="level2">
+                            <div class="marker">*</div>
+                            Configure Git to send update notifications to checkins mailing list.
+                        </td>
+                        <td class="status">
+                            Done
+                        </td>
+                        <td>
+                            6/24/2009
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="level2">
+                            <div class="marker">*</div>
+                            Create project web page.
+                        </td>
+                        <td class="status">
+                            Done
+                        </td>
+                        <td>
+                            6/24/2009
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="level2">
+                            <div class="marker">*</div>
+                            Create project plan.
+                        </td>
+                        <td class="status">
+                            Started
                         </td>
                         <td>
                             6/27/2009
