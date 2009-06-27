@@ -67,6 +67,23 @@ div.footer
     padding: 1em;
 }
 
+table.centered
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th
+{
+    padding-bottom: 1em;
+}
+
+td.status
+{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
         </style>
 
     </head>
@@ -98,9 +115,55 @@ div.footer
             </div>
 
             <div class="content">
-                <p>
-                    Project plan goes here.
-                </p>
+                <table class="centered">
+                    <tr>
+                        <th>
+                            Task
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            * Foo
+                        </td>
+                        <td class="status">
+                            Not Started
+                        </td>
+                        <td>
+                            6/27/2009
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;
+                            * Bar
+                        </td>
+                        <td class="status">
+                            Not Started
+                        </td>
+                        <td>
+                            6/27/2009
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;
+                            &nbsp;&nbsp;
+                            * Baz
+                        </td>
+                        <td class="status">
+                            Not Started
+                        </td>
+                        <td>
+                            6/27/2009
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
 
