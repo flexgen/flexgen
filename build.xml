@@ -53,6 +53,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <pathelement path="${env.JUNIT_4_6}" />
     </path>
 
+    <path id="test.run.classpath">
+        <path refid="test.compile.classpath" />
+        <pathelement path="${test.jar.file}" />
+    </path>
+
     <target name="clean">
         <delete dir="${work.dir}" />
     </target>
@@ -84,6 +89,22 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <jar jarfile="${test.jar.file}" basedir="${test.classes.dir}" />
     </target>
 
+    <target name="test.run" depends="test.jar">
+        <junit fork="true" haltonfailure="false" failureProperty="test.failed">
+            <batchtest>
+                <fileset dir="${test.src.dir}">
+                    <include name="**/*Test.java" />
+                </fileset>
+            </batchtest>
+            <formatter type="brief" usefile="false" />
+            <classpath refid="test.run.classpath" />
+        </junit>
+    </target>
+
+	<target name="test" depends="test.run" if="test.failed">
+        <fail message="The tests failed." />
+    </target>
+
     <target name="usage">
         <echo message="FlexGen Build Options"                                          />
         <echo message=""                                                               />
@@ -104,6 +125,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                               />
         <echo message="test.jar"                                                       />
         <echo message="    Create a Jar of the FlexGen test classes."                  />
+        <echo message=""                                                               />
+        <echo message="test"                                                           />
+        <echo message="    Run the tests."                                             />
         <echo message=""                                                               />
         <echo message="usage"                                                          />
         <echo message="    Display the FlexGen build options."                         />
