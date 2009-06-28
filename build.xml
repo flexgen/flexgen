@@ -32,10 +32,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <project name="FlexGen" default="usage">
 
-    <property name="base.dir"    value="."                   />
-    <property name="src.dir"     value="${base.dir}/src"     />
-    <property name="work.dir"    value="${base.dir}/work"    />
-    <property name="classes.dir" value="${work.dir}/classes" />
+    <property name="base.dir"    value="."                       />
+    <property name="src.dir"     value="${base.dir}/src"         />
+    <property name="work.dir"    value="${base.dir}/work"        />
+    <property name="classes.dir" value="${work.dir}/classes"     />
+    <property name="jars.dir"    value="${work.dir}/jars"        />
+    <property name="jar.file"    value="${jars.dir}/FlexGen.jar" />
 
     <target name="clean">
         <delete dir="${work.dir}" />
@@ -44,11 +46,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <target name="init">
         <mkdir dir="${work.dir}"    />
         <mkdir dir="${classes.dir}" />
+        <mkdir dir="${jars.dir}"    />
     </target>
 
     <target name="compile" depends="init">
         <depend srcDir="${src.dir}" destDir="${classes.dir}" closure="true" />
         <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" />
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar jarfile="${jar.file}" basedir="${classes.dir}" />
     </target>
 
     <target name="usage">
@@ -62,6 +69,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                               />
         <echo message="compile"                                                        />
         <echo message="    Compile the FlexGen source code."                           />
+        <echo message=""                                                               />
+        <echo message="jar"                                                            />
+        <echo message="    Create a Jar of the FlexGen classes."                       />
         <echo message=""                                                               />
         <echo message="usage"                                                          />
         <echo message="    Display the FlexGen build options."                         />
