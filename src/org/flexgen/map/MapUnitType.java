@@ -64,7 +64,9 @@ public class MapUnitType
     public boolean equals( Object obj )
     {
         if ( ! ( obj instanceof MapUnitType ))
+        {
             return false;
+        }
 
         MapUnitType mapUnitType = (MapUnitType) obj;
         return this.name.equals( mapUnitType.name );
