@@ -32,11 +32,28 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <project name="FlexGen" default="usage">
 
+    <property name="base.dir" value="."                />
+    <property name="work.dir" value="${base.dir}/work" />
+
+    <target name="clean">
+        <delete dir="${work.dir}" />
+    </target>
+
+    <target name="init">
+        <mkdir dir="${work.dir}" />
+    </target>
+
     <target name="usage">
-        <echo message="FlexGen Build Options"                  />
-        <echo message=""                                       />
-        <echo message="usage"                                  />
-        <echo message="    Display the FlexGen build options." />
+        <echo message="FlexGen Build Options"                                          />
+        <echo message=""                                                               />
+        <echo message="clean"                                                          />
+        <echo message="    Remove all generated files."                                />
+        <echo message=""                                                               />
+        <echo message="init"                                                           />
+        <echo message="    Create all of the directories needed by the build process." />
+        <echo message=""                                                               />
+        <echo message="usage"                                                          />
+        <echo message="    Display the FlexGen build options."                         />
     </target>
 
 </project>
