@@ -32,15 +32,23 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <project name="FlexGen" default="usage">
 
-    <property name="base.dir" value="."                />
-    <property name="work.dir" value="${base.dir}/work" />
+    <property name="base.dir"    value="."                   />
+    <property name="src.dir"     value="${base.dir}/src"     />
+    <property name="work.dir"    value="${base.dir}/work"    />
+    <property name="classes.dir" value="${work.dir}/classes" />
 
     <target name="clean">
         <delete dir="${work.dir}" />
     </target>
 
     <target name="init">
-        <mkdir dir="${work.dir}" />
+        <mkdir dir="${work.dir}"    />
+        <mkdir dir="${classes.dir}" />
+    </target>
+
+    <target name="compile" depends="init">
+        <depend srcDir="${src.dir}" destDir="${classes.dir}" closure="true" />
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" />
     </target>
 
     <target name="usage">
@@ -51,6 +59,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                               />
         <echo message="init"                                                           />
         <echo message="    Create all of the directories needed by the build process." />
+        <echo message=""                                                               />
+        <echo message="compile"                                                        />
+        <echo message="    Compile the FlexGen source code."                           />
         <echo message=""                                                               />
         <echo message="usage"                                                          />
         <echo message="    Display the FlexGen build options."                         />
