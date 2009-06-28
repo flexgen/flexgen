@@ -37,6 +37,9 @@ package org.flexgen.map;
  */
 public class MapUnitType
 {
+    /**
+     * Name of the map unit type.
+     */
     private final String name;
 
     /**
