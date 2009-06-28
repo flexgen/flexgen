@@ -43,7 +43,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
         <style type="text/css">
 
-h1
+div.centered
 {
     text-align: center;
 }
@@ -52,6 +52,16 @@ div.left
 {
     float: left;
     width: 30%;
+}
+
+div.navigation
+{
+    display: table;
+}
+
+ul.navigation
+{
+    line-height: 150%;
 }
 
 div.content
@@ -72,29 +82,41 @@ div.footer
     </head>
 
     <body>
-        <h1>
-            Welcome to FlexGen.org!
-        </h1>
+        <div class="centered">
+            <h1>
+                Welcome to FlexGen.org!
+            </h1>
+        </div>
 
         <div>
             <div class="left">
-                <p>
-                    <a href="http://sourceforge.net/projects/flexgen/">
-                        FlexGen Project on SourceForge
-                    </a>
-                </p>
-                <p>
-                    <a href="http://sourceforge.net/support/getsupport.php?group_id=266830">
-                        Get Support for FlexGen
-                    </a>
-                </p>
-                <p>
-                    <a href="http://sourceforge.net/projects/flexgen">
+                <div class="navigation">
+                    <div class="centered">
+                        <h2>
+                            Navigation
+                        </h2>
+                    </div>
+                    <ul class="navigation">
+                        <li>
+                            <a href="http://sourceforge.net/projects/flexgen/">
+                                FlexGen Project on SourceForge
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://sourceforge.net/support/getsupport.php?group_id=266830">
+                                Get Support for FlexGen
+                            </a>
+                        </li>
+                    </ul>
+                    <hr />
+                    <div class="centered">
+                        <a href="http://sourceforge.net/projects/flexgen">
 <img src="http://sflogo.sourceforge.net/sflogo.php?group_id=266830&amp;type=11"
      width="120" height="30"
      alt="Get FlexGen at SourceForge.net. Fast, secure and Free Open Source software downloads" />
-                    </a>
-                </p>
+                        </a>
+                    </div>
+                </div>
             </div>
 
             <div class="content">
