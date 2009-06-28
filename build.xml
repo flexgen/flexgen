@@ -43,6 +43,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="jars.dir"         value="${work.dir}/jars"            />
     <property name="jar.file"         value="${jars.dir}/FlexGen.jar"     />
     <property name="test.jar.file"    value="${jars.dir}/FlexGenTest.jar" />
+    <property name="javadoc.dir"      value="${work.dir}/javadoc"         />
 
     <path id="test.depend.classpath">
         <pathelement path="${jar.file}" />
@@ -58,6 +59,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <pathelement path="${test.jar.file}" />
     </path>
 
+    <path id="javadoc.classpath">
+        <pathelement path="${env.JUNIT_4_6}" />
+    </path>
+
+    <path id="javadoc.sourcepath">
+        <pathelement path="${src.dir}"      />
+        <pathelement path="${test.src.dir}" />
+    </path>
+
     <target name="clean">
         <delete dir="${work.dir}" />
     </target>
@@ -67,6 +77,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <mkdir dir="${classes.dir}"      />
         <mkdir dir="${test.classes.dir}" />
         <mkdir dir="${jars.dir}"         />
+        <mkdir dir="${javadoc.dir}"      />
     </target>
 
     <target name="compile" depends="init">
@@ -105,6 +116,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <fail message="The tests failed." />
     </target>
 
+    <target name="javadoc" depends="init">
+        <javadoc destdir="${javadoc.dir}" access="private" classpathref="javadoc.classpath"
+                 sourcepathref="javadoc.sourcepath" windowtitle="FlexGen JavaDoc Documentation" />
+    </target>
+
     <target name="usage">
         <echo message="FlexGen Build Options"                                          />
         <echo message=""                                                               />
@@ -128,6 +144,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                               />
         <echo message="test"                                                           />
         <echo message="    Run the tests."                                             />
+        <echo message=""                                                               />
+        <echo message="javadoc"                                                        />
+        <echo message="    Generate the FlexGen JavaDoc documentation."                />
         <echo message=""                                                               />
         <echo message="usage"                                                          />
         <echo message="    Display the FlexGen build options."                         />
