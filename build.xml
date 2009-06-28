@@ -121,6 +121,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                  sourcepathref="javadoc.sourcepath" windowtitle="FlexGen JavaDoc Documentation" />
     </target>
 
+    <target name="checkstyle">
+        <taskdef resource="checkstyletask.properties" classpath="${env.CHECKSTYLE_5_0}" />
+
+        <checkstyle config="checkstyle.xml">
+            <fileset dir="${src.dir}"      />
+            <fileset dir="${test.src.dir}" />
+        </checkstyle>
+    </target>
+
     <target name="usage">
         <echo message="FlexGen Build Options"                                          />
         <echo message=""                                                               />
@@ -147,6 +156,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                               />
         <echo message="javadoc"                                                        />
         <echo message="    Generate the FlexGen JavaDoc documentation."                />
+        <echo message=""                                                               />
+        <echo message="checkstyle"                                                     />
+        <echo message="    Run Checkstyle on the source code."                         />
         <echo message=""                                                               />
         <echo message="usage"                                                          />
         <echo message="    Display the FlexGen build options."                         />
