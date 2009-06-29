@@ -73,7 +73,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <!-- Checks for Headers                              -->
     <!-- See http://checkstyle.sf.net/config_header.html -->
     <module name="Header">
-        <property name="headerFile" value="java.header" />
+        <property name="headerFile" value="${basedir}/java.header" />
     </module>
 
     <module name="TreeWalker">
