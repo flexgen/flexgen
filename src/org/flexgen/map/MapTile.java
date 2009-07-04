@@ -66,5 +66,13 @@ public class MapTile
                                                     "number of elements in each row." );
             }
         }
+
+        int rowCount = mapUnits.length;
+
+        if ( columnCount != rowCount )
+        {
+            throw new IllegalArgumentException( "Parameter 'mapUnits' must contain the same " +
+                                                "number of columns as it does rows." );
+        }
     }
 }

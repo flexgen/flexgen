@@ -116,4 +116,35 @@ public class MapTileTest
                 e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the constructor throws the correct exception when the map units parameter doesn't
+     * contain the same number of columns as it does rows.
+     */
+    @Test
+    public void constructor_columnCountNotEqualRowCount()
+    {
+        MapUnit[][] mapUnits = new MapUnit[][]
+        {
+            {
+                MapUnitHelper.build()
+            },
+            {
+                MapUnitHelper.build()
+            },
+        };
+
+        try
+        {
+            new MapTile( mapUnits );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                "Unexpected message.",
+                "Parameter 'mapUnits' must contain the same number of columns as it does rows.",
+                e.getMessage() );
+        }
+    }
 }
