@@ -32,27 +32,27 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.test.helper;
 
-import org.flexgen.map.MapUnitType;
+import org.flexgen.map.MapUnit;
 
 /**
- * Test helper class for the MapUnitType class.
+ * Test helper class for the MapUnit class.
  */
-public class MapUnitTypeHelper
+public class MapUnitHelper
 {
     /**
      * Private constructor to keep this class from being instantiated since all methods are static.
      */
-    private MapUnitTypeHelper()
+    private MapUnitHelper()
     {
     }
 
     /**
-     * Build a map unit type with default values.
+     * Build a map unit with default values.
      *
-     * @return The generated map unit type.
+     * @return The generated map unit.
      */
-    public static MapUnitType build()
+    public static MapUnit build()
     {
-        return new MapUnitType( GeneralHelper.getUniqueString() );
+        return new MapUnit( GeneralHelper.getUniqueString() );
     }
 }

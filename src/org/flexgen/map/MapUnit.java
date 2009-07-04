@@ -33,43 +33,43 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.flexgen.map;
 
 /**
- * Class representing a map unit type that can be used in map tiles.
+ * Class representing a map unit that can be used in map tiles.
  */
-public class MapUnitType
+public class MapUnit
 {
     /**
-     * Name of the map unit type.
+     * Name of the map unit.
      */
     private final String name;
 
     /**
-     * Construct a map unit type.
+     * Construct a map unit.
      *
      * @param name
-     *            Name of the map unit type.
+     *            Name of the map unit.
      */
-    public MapUnitType( String name )
+    public MapUnit( String name )
     {
         this.name = name;
     }
 
     /**
-     * Determines whether or not this map unit type is equal to another map unit type.
+     * Determines whether or not this map unit is equal to another map unit.
      *
      * @param obj
-     *            The map unit type against which to compare this map unit type.
+     *            The map unit against which to compare this map unit.
      *
-     * @return True if the two map unit types are equal, false otherwise.
+     * @return True if the two map units are equal, false otherwise.
      */
     public boolean equals( Object obj )
     {
-        if ( ! ( obj instanceof MapUnitType ))
+        if ( ! ( obj instanceof MapUnit ))
         {
             return false;
         }
 
-        MapUnitType mapUnitType = (MapUnitType) obj;
-        return this.name.equals( mapUnitType.name );
+        MapUnit mapUnit = (MapUnit) obj;
+        return this.name.equals( mapUnit.name );
     }
 
     /**

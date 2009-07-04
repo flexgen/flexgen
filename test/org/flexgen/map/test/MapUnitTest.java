@@ -35,14 +35,14 @@ package org.flexgen.map.test;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.flexgen.map.MapUnitType;
+import org.flexgen.map.MapUnit;
 import org.flexgen.test.helper.GeneralHelper;
-import org.flexgen.test.helper.MapUnitTypeHelper;
+import org.flexgen.test.helper.MapUnitHelper;
 
 /**
- * Test class for the MapUnitType class.
+ * Test class for the MapUnit class.
  */
-public class MapUnitTypeTest
+public class MapUnitTest
 {
     /**
      * Verify the the equals() method returns the correct result when called with a null reference.
@@ -50,10 +50,10 @@ public class MapUnitTypeTest
     @Test
     public void equals_null()
     {
-        MapUnitType mapUnitType1 = MapUnitTypeHelper.build();
-        MapUnitType mapUnitType2 = null;
+        MapUnit mapUnit1 = MapUnitHelper.build();
+        MapUnit mapUnit2 = null;
 
-        boolean result = mapUnitType1.equals( mapUnitType2 );
+        boolean result = mapUnit1.equals( mapUnit2 );
         Assert.assertEquals( "Unexpected result.", false, result );
     }
 
@@ -64,40 +64,40 @@ public class MapUnitTypeTest
     @Test
     public void equals_wrongType()
     {
-        MapUnitType mapUnitType1 = MapUnitTypeHelper.build();
-        Object      mapUnitType2 = new Object();
+        MapUnit mapUnit1 = MapUnitHelper.build();
+        Object  mapUnit2 = new Object();
 
-        boolean result = mapUnitType1.equals( mapUnitType2 );
+        boolean result = mapUnit1.equals( mapUnit2 );
         Assert.assertEquals( "Unexpected result.", false, result );
     }
 
     /**
-     * Verify the the equals() method returns the correct result when called with a map unit type
-     * with a different name.
+     * Verify the the equals() method returns the correct result when called with a map unit with a
+     * different name.
      */
     @Test
     public void equals_differentName()
     {
-        MapUnitType mapUnitType1 = MapUnitTypeHelper.build();
-        MapUnitType mapUnitType2 = MapUnitTypeHelper.build();
+        MapUnit mapUnit1 = MapUnitHelper.build();
+        MapUnit mapUnit2 = MapUnitHelper.build();
 
-        boolean result = mapUnitType1.equals( mapUnitType2 );
+        boolean result = mapUnit1.equals( mapUnit2 );
         Assert.assertEquals( "Unexpected result.", false, result );
     }
 
     /**
-     * Verify the the equals() method returns the correct result when called with a map unit type
-     * with an identical name.
+     * Verify the the equals() method returns the correct result when called with a map unit with an
+     * identical name.
      */
     @Test
     public void equals_identicalName()
     {
         String mapUnitName = GeneralHelper.getUniqueString();
 
-        MapUnitType mapUnitType1 = new MapUnitType( mapUnitName );
-        MapUnitType mapUnitType2 = new MapUnitType( mapUnitName );
+        MapUnit mapUnit1 = new MapUnit( mapUnitName );
+        MapUnit mapUnit2 = new MapUnit( mapUnitName );
 
-        boolean result = mapUnitType1.equals( mapUnitType2 );
+        boolean result = mapUnit1.equals( mapUnit2 );
         Assert.assertEquals( "Unexpected result.", true, result );
     }
 }
