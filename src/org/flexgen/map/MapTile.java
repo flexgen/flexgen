@@ -49,5 +49,11 @@ public class MapTile
         {
             throw new IllegalArgumentException( "Parameter 'mapUnits' cannot be null." );
         }
+
+        if ( mapUnits.length == 0 )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'mapUnits' must contain at least one element." );
+        }
     }
 }
