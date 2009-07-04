@@ -45,7 +45,7 @@ import org.flexgen.test.helper.MapUnitHelper;
 public class MapUnitTest
 {
     /**
-     * Verify the the equals() method returns the correct result when called with a null reference.
+     * Verify that the equals() method returns the correct result when called with a null reference.
      */
     @Test
     public void equals_null()
@@ -58,7 +58,7 @@ public class MapUnitTest
     }
 
     /**
-     * Verify the the equals() method returns the correct result when called with the wrong type of
+     * Verify that the equals() method returns the correct result when called with the wrong type of
      * object.
      */
     @Test
@@ -72,7 +72,7 @@ public class MapUnitTest
     }
 
     /**
-     * Verify the the equals() method returns the correct result when called with a map unit with a
+     * Verify that the equals() method returns the correct result when called with a map unit with a
      * different name.
      */
     @Test
@@ -86,8 +86,8 @@ public class MapUnitTest
     }
 
     /**
-     * Verify the the equals() method returns the correct result when called with a map unit with an
-     * identical name.
+     * Verify that the equals() method returns the correct result when called with a map unit with
+     * an identical name.
      */
     @Test
     public void equals_identicalName()
