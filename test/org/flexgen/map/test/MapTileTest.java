@@ -37,6 +37,7 @@ import org.junit.Test;
 
 import org.flexgen.map.MapTile;
 import org.flexgen.map.MapUnit;
+import org.flexgen.test.helper.MapUnitHelper;
 
 /**
  * Test class for the MapTile class.
@@ -81,6 +82,38 @@ public class MapTileTest
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'mapUnits' must contain at least one element.",
                                  e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the map units parameter doesn't
+     * contain the same number of elements in all of the rows.
+     */
+    @Test
+    public void constructor_inconsistentRowCount()
+    {
+        MapUnit[][] mapUnits = new MapUnit[][]
+        {
+            {
+                MapUnitHelper.build()
+            },
+            {
+                MapUnitHelper.build(),
+                MapUnitHelper.build()
+            },
+        };
+
+        try
+        {
+            new MapTile( mapUnits );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                "Unexpected message.",
+                "Parameter 'mapUnits' must contain the same number of elements in each row.",
+                e.getMessage() );
         }
     }
 }

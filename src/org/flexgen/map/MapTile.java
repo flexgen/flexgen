@@ -55,5 +55,16 @@ public class MapTile
             throw new IllegalArgumentException(
                     "Parameter 'mapUnits' must contain at least one element." );
         }
+
+        int columnCount = mapUnits[ 0 ].length;
+
+        for ( MapUnit[] row : mapUnits )
+        {
+            if ( row.length != columnCount )
+            {
+                throw new IllegalArgumentException( "Parameter 'mapUnits' must contain the same " +
+                                                    "number of elements in each row." );
+            }
+        }
     }
 }
