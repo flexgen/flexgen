@@ -1,0 +1,10 @@
+- Milestone 1:
+  - Determine what to do with MapUnit:
+    - Do we really need to store a name? Doesn't seem that useful.
+      - However, having a name is useful for tests.
+    - What about storing a color (for when we render the map to an image).
+    - Do we need equals() and hashCode() methods?
+- Milestone 2:
+  - Map examples:
+    - Rivers that start in mountains, end in ocean, and don't loop.
+    - Towns that are fully connected by roads.
