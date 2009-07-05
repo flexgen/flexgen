@@ -116,6 +116,12 @@ public class MapTile
                     "Parameter 'y' must be greater than or equal to 0." );
         }
 
+        if ( y >= mapUnits.length )
+        {
+            throw new IllegalArgumentException( "Parameter 'y' must be less than " +
+                                                mapUnits.length + "." );
+        }
+
         return null;
     }
 }

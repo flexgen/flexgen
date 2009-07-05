@@ -214,4 +214,26 @@ public class MapTileTest
                                  e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the getMapUnit() method throws the correct exception when the y paramater is too
+     * large.
+     */
+    @Test
+    public void getMapUnit_yTooLarge()
+    {
+        int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
+        MapTile mapTile = new MapTile( MapUnitHelper.buildArray( size ));
+
+        try
+        {
+            mapTile.getMapUnit( 0, size );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'y' must be less than " + size + ".", e.getMessage() );
+        }
+    }
 }
