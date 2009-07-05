@@ -37,6 +37,7 @@ import org.junit.Test;
 
 import org.flexgen.map.MapTile;
 import org.flexgen.map.MapUnit;
+import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapUnitHelper;
 
 /**
@@ -167,6 +168,28 @@ public class MapTileTest
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'x' must be greater than or equal to 0.",
                                  e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the getMapUnit() method throws the correct exception when the x paramater is too
+     * large.
+     */
+    @Test
+    public void getMapUnit_xTooLarge()
+    {
+        int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
+        MapTile mapTile = new MapTile( MapUnitHelper.buildArray( size ));
+
+        try
+        {
+            mapTile.getMapUnit( size, 0 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'x' must be less than " + size + ".", e.getMessage() );
         }
     }
 }

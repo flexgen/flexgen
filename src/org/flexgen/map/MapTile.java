@@ -39,6 +39,11 @@ package org.flexgen.map;
 public class MapTile
 {
     /**
+     * Two-dimensional array of map units that define the map tile.
+     */
+    private final MapUnit[][] mapUnits;
+
+    /**
      * Construct a map tile.
      *
      * @param mapUnits
@@ -77,6 +82,8 @@ public class MapTile
             throw new IllegalArgumentException( "Parameter 'mapUnits' must contain the same " +
                                                 "number of columns as it does rows." );
         }
+
+        this.mapUnits = mapUnits;
     }
 
     /**
@@ -95,6 +102,12 @@ public class MapTile
         {
             throw new IllegalArgumentException(
                     "Parameter 'x' must be greater than or equal to 0." );
+        }
+
+        if ( x >= mapUnits.length )
+        {
+            throw new IllegalArgumentException( "Parameter 'x' must be less than " +
+                                                mapUnits.length + "." );
         }
 
         return null;

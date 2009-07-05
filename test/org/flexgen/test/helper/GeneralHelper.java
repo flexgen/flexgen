@@ -32,6 +32,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.test.helper;
 
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -40,10 +41,25 @@ import java.util.UUID;
 public class GeneralHelper
 {
     /**
+     * Random number generator.
+     */
+    private static Random random = new Random();
+
+    /**
      * Private constructor to keep this class from being instantiated since all methods are static.
      */
     private GeneralHelper()
     {
+    }
+
+    /**
+     * Get a random number generator.
+     *
+     * @return A random number generator.
+     */
+    public static Random getRandom()
+    {
+        return random;
     }
 
     /**
