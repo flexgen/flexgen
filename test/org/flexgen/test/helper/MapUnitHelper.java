@@ -55,4 +55,27 @@ public class MapUnitHelper
     {
         return new MapUnit( GeneralHelper.getUniqueString() );
     }
+
+    /**
+     * Build a two-dimensional array of map units with default values.
+     *
+     * @param size
+     *            The size of the array to build.
+     *
+     * @return The generated map unit array.
+     */
+    public static MapUnit[][] buildArray( int size )
+    {
+        MapUnit[][] mapUnits = new MapUnit[ size ][ size ];
+
+        for ( int i = 0; i < size; i++ )
+        {
+            for ( int j = 0; j < size; j++ )
+            {
+                mapUnits[ i ][ j ] = MapUnitHelper.build();
+            }
+        }
+
+        return mapUnits;
+    }
 }

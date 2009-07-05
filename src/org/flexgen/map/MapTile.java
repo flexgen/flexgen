@@ -78,4 +78,25 @@ public class MapTile
                                                 "number of columns as it does rows." );
         }
     }
+
+    /**
+     * Get the map unit at the specified coordinates in this map tile.
+     *
+     * @param x
+     *            X coordinate of the map unit to get.
+     * @param y
+     *            Y coordinate of the map unit to get.
+     *
+     * @return The map unit at the specified coordinates in this map tile.
+     */
+    public MapUnit getMapUnit( int x, int y )
+    {
+        if ( x < 0 )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'x' must be greater than or equal to 0." );
+        }
+
+        return null;
+    }
 }
