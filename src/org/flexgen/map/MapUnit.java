@@ -54,6 +54,16 @@ public class MapUnit
     }
 
     /**
+     * Get the string representation of this object.
+     *
+     * @return The string representation of this object.
+     */
+    public String toString()
+    {
+        return name;
+    }
+
+    /**
      * Determines whether or not this map unit is equal to another map unit.
      *
      * @param obj

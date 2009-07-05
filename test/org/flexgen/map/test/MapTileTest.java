@@ -236,4 +236,25 @@ public class MapTileTest
                                  "Parameter 'y' must be less than " + size + ".", e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the getMapUnit() method returns the correct values for all coordinates in a small
+     * array of map units.
+     */
+    @Test
+    public void getMapUnit()
+    {
+        int size = 2;
+        MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
+        MapTile mapTile = new MapTile( mapUnits );
+
+        for ( int i = 0; i < size; i++ )
+        {
+            for ( int j = 0; j < size; j++ )
+            {
+                Assert.assertEquals( "Unexpected return value for (" + i + ", " + j + ").",
+                                     mapUnits[ i ][ j ], mapTile.getMapUnit( i, j ));
+            }
+        }
+    }
 }

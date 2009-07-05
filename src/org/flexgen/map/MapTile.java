@@ -122,6 +122,6 @@ public class MapTile
                                                 mapUnits.length + "." );
         }
 
-        return null;
+        return mapUnits[ x ][ y ];
     }
 }
