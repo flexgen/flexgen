@@ -33,7 +33,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.flexgen.map;
 
 /**
- * Class representing a map tile that can be used in maps.
+ * Class representing a map tile that can be used in maps. Contains a two-dimensional array of map
+ * units that define the map tile.
  */
 public class MapTile
 {
@@ -41,7 +42,9 @@ public class MapTile
      * Construct a map tile.
      *
      * @param mapUnits
-     *            Map units that compose this map tile.
+     *            Two-dimensional array of map units that define the map tile. Cannot be null. Must
+     *            contain at least one row. Each row must contain the same number of elements. Must
+     *            contain the same number of columns as it does rows.
      */
     public MapTile( MapUnit[][] mapUnits )
     {
