@@ -115,6 +115,11 @@ public class MapTile
         {
             return mapTileType.getMapUnit(( mapTileType.getSize() - 1 ) - y, x );
         }
+        else if ( mapTileOrientation.equals( MapTileOrientation.FLIPPED ))
+        {
+            return mapTileType.getMapUnit(( mapTileType.getSize() - 1 ) - x,
+                                          ( mapTileType.getSize() - 1 ) - y );
+        }
         else
         {
             throw new IllegalStateException( "Unsupported orientation." );
