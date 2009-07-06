@@ -43,6 +43,11 @@ public class MapTile
     private final MapTileType mapTileType;
 
     /**
+     * Orientation of the map tile.
+     */
+    private final MapTileOrientation mapTileOrientation;
+
+    /**
      * Construct a map tile.
      *
      * @param mapTileType
@@ -63,6 +68,7 @@ public class MapTile
         }
 
         this.mapTileType = mapTileType;
+        this.mapTileOrientation = mapTileOrientation;
     }
 
     /**
@@ -101,6 +107,17 @@ public class MapTile
                                                 mapTileType.getSize() + "." );
         }
 
-        return mapTileType.getMapUnit( x, y );
+        if ( mapTileOrientation.equals( MapTileOrientation.UPRIGHT ))
+        {
+            return mapTileType.getMapUnit( x, y );
+        }
+        else if ( mapTileOrientation.equals( MapTileOrientation.CLOCKWISE ))
+        {
+            return mapTileType.getMapUnit(( mapTileType.getSize() - 1 ) - y, x );
+        }
+        else
+        {
+            throw new IllegalStateException( "Unsupported orientation." );
+        }
     }
 }
