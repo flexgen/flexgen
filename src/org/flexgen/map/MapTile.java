@@ -38,12 +38,17 @@ package org.flexgen.map;
 public class MapTile
 {
     /**
+     * Type of the map tile.
+     */
+    private final MapTileType mapTileType;
+
+    /**
      * Construct a map tile.
      *
      * @param mapTileType
-     *            Type of the map tile to construct. Cannot be null.
+     *            Type of the map tile. Cannot be null.
      * @param mapTileOrientation
-     *            Orientation of the map tile to construct. Cannot be null.
+     *            Orientation of the map tile. Cannot be null.
      */
     public MapTile( MapTileType mapTileType, MapTileOrientation mapTileOrientation )
     {
@@ -56,6 +61,8 @@ public class MapTile
         {
             throw new IllegalArgumentException( "Parameter 'mapTileOrientation' cannot be null." );
         }
+
+        this.mapTileType = mapTileType;
     }
 
     /**
@@ -74,6 +81,12 @@ public class MapTile
         {
             throw new IllegalArgumentException(
                     "Parameter 'x' must be greater than or equal to 0." );
+        }
+
+        if ( x >= mapTileType.getSize() )
+        {
+            throw new IllegalArgumentException( "Parameter 'x' must be less than " +
+                                                mapTileType.getSize() + "." );
         }
 
         return null;
