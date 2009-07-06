@@ -120,6 +120,10 @@ public class MapTile
             return mapTileType.getMapUnit(( mapTileType.getSize() - 1 ) - x,
                                           ( mapTileType.getSize() - 1 ) - y );
         }
+        else if ( mapTileOrientation.equals( MapTileOrientation.COUNTER_CLOCKWISE ))
+        {
+            return mapTileType.getMapUnit( y, ( mapTileType.getSize() - 1 ) - x );
+        }
         else
         {
             throw new IllegalStateException( "Unsupported orientation." );
