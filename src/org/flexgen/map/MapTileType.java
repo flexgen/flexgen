@@ -87,6 +87,16 @@ public class MapTileType
     }
 
     /**
+     * Get the size of the map unit array that defines this map tile type.
+     *
+     * @return The size of the map unit array that defines this map tile type.
+     */
+    public int getSize()
+    {
+        return mapUnits.length;
+    }
+
+    /**
      * Get the map unit at the specified coordinates in this map tile type.
      *
      * @param x

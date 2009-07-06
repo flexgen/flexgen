@@ -150,6 +150,17 @@ public class MapTileTypeTest
     }
 
     /**
+     * Verify that the getSize() method returns the correct value for a small array of map units.
+     */
+    @Test
+    public void getSize()
+    {
+        int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
+        MapTileType mapTileType = new MapTileType( MapUnitHelper.buildArray( size ));
+        Assert.assertEquals( "Unexpected return value.", size, mapTileType.getSize() );
+    }
+
+    /**
      * Verify that the getMapUnit() method throws the correct exception when the x paramater is too
      * small.
      */
