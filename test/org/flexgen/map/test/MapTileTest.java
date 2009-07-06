@@ -130,4 +130,27 @@ public class MapTileTest
                                  "Parameter 'x' must be less than " + size + ".", e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the getMapUnit() method throws the correct exception when the y paramater is too
+     * small.
+     */
+    @Test
+    public void getMapUnit_yTooSmall()
+    {
+        MapTile mapTile = new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 )),
+                                       MapTileOrientation.UPRIGHT );
+
+        try
+        {
+            mapTile.getMapUnit( 0, -1 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'y' must be greater than or equal to 0.",
+                                 e.getMessage() );
+        }
+    }
 }

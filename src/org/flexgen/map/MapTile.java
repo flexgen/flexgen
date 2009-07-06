@@ -89,6 +89,12 @@ public class MapTile
                                                 mapTileType.getSize() + "." );
         }
 
+        if ( y < 0 )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'y' must be greater than or equal to 0." );
+        }
+
         return null;
     }
 }
