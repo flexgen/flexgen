@@ -50,6 +50,11 @@ public class MapTileEdge
      */
     public MapTileEdge( String name )
     {
+        if ( name == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'name' cannot be null." );
+        }
+
         this.name = name;
     }
 

@@ -45,6 +45,24 @@ import org.flexgen.test.helper.MapTileEdgeHelper;
 public class MapTileEdgeTest
 {
     /**
+     * Verify that the constructor throws the correct exception when the name parameter is null.
+     */
+    @Test
+    public void constructor_null()
+    {
+        try
+        {
+            new MapTileEdge( null );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.", "Parameter 'name' cannot be null.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the equals() method returns the correct result when called with a null reference.
      */
     @Test

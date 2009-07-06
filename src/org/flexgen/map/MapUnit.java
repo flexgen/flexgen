@@ -50,6 +50,11 @@ public class MapUnit
      */
     public MapUnit( String name )
     {
+        if ( name == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'name' cannot be null." );
+        }
+
         this.name = name;
     }
 
