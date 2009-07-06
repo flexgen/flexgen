@@ -37,7 +37,9 @@ import org.junit.Test;
 
 import org.flexgen.map.MapTile;
 import org.flexgen.map.MapTileOrientation;
+import org.flexgen.map.MapTileType;
 import org.flexgen.test.helper.MapTileTypeHelper;
+import org.flexgen.test.helper.MapUnitHelper;
 
 /**
  * Test class for the MapTile class.
@@ -79,6 +81,29 @@ public class MapTileTest
         {
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'mapTileOrientation' cannot be null.", e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the getMapUnit() method throws the correct exception when the x paramater is too
+     * small.
+     */
+    @Test
+    public void getMapUnit_xTooSmall()
+    {
+        MapTile mapTile = new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 )),
+                                       MapTileOrientation.UPRIGHT );
+
+        try
+        {
+            mapTile.getMapUnit( -1, 0 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'x' must be greater than or equal to 0.",
+                                 e.getMessage() );
         }
     }
 }
