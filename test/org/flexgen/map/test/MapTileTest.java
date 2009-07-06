@@ -38,6 +38,7 @@ import org.junit.Test;
 import org.flexgen.map.MapTile;
 import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
+import org.flexgen.map.MapUnit;
 import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
 import org.flexgen.test.helper.MapUnitHelper;
@@ -175,5 +176,65 @@ public class MapTileTest
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'y' must be less than " + size + ".", e.getMessage() );
         }
+    }
+
+    /**
+     * Verify that the getMapUnit() method returns the correct values for all coordinates in a small
+     * array of map units when the tile is in the upright orientation.
+     */
+    @Test
+    public void getMapUnit_upright()
+    {
+        int size = 4;
+        MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
+        MapTile mapTile = new MapTile( new MapTileType( mapUnits ), MapTileOrientation.UPRIGHT );
+
+        Assert.assertEquals( "Unexpected return value for (0, 0).",
+                             mapUnits[ 0 ][ 0 ], mapTile.getMapUnit( 0, 0 ));
+
+        Assert.assertEquals( "Unexpected return value for (1, 0).",
+                             mapUnits[ 1 ][ 0 ], mapTile.getMapUnit( 1, 0 ));
+
+        Assert.assertEquals( "Unexpected return value for (2, 0).",
+                             mapUnits[ 2 ][ 0 ], mapTile.getMapUnit( 2, 0 ));
+
+        Assert.assertEquals( "Unexpected return value for (3, 0).",
+                             mapUnits[ 3 ][ 0 ], mapTile.getMapUnit( 3, 0 ));
+
+        Assert.assertEquals( "Unexpected return value for (0, 1).",
+                             mapUnits[ 0 ][ 1 ], mapTile.getMapUnit( 0, 1 ));
+
+        Assert.assertEquals( "Unexpected return value for (1, 1).",
+                             mapUnits[ 1 ][ 1 ], mapTile.getMapUnit( 1, 1 ));
+
+        Assert.assertEquals( "Unexpected return value for (2, 1).",
+                             mapUnits[ 2 ][ 1 ], mapTile.getMapUnit( 2, 1 ));
+
+        Assert.assertEquals( "Unexpected return value for (3, 1).",
+                             mapUnits[ 3 ][ 1 ], mapTile.getMapUnit( 3, 1 ));
+
+        Assert.assertEquals( "Unexpected return value for (0, 2).",
+                             mapUnits[ 0 ][ 2 ], mapTile.getMapUnit( 0, 2 ));
+
+        Assert.assertEquals( "Unexpected return value for (1, 2).",
+                             mapUnits[ 1 ][ 2 ], mapTile.getMapUnit( 1, 2 ));
+
+        Assert.assertEquals( "Unexpected return value for (2, 2).",
+                             mapUnits[ 2 ][ 2 ], mapTile.getMapUnit( 2, 2 ));
+
+        Assert.assertEquals( "Unexpected return value for (3, 2).",
+                             mapUnits[ 3 ][ 2 ], mapTile.getMapUnit( 3, 2 ));
+
+        Assert.assertEquals( "Unexpected return value for (0, 3).",
+                             mapUnits[ 0 ][ 3 ], mapTile.getMapUnit( 0, 3 ));
+
+        Assert.assertEquals( "Unexpected return value for (1, 3).",
+                             mapUnits[ 1 ][ 3 ], mapTile.getMapUnit( 1, 3 ));
+
+        Assert.assertEquals( "Unexpected return value for (2, 3).",
+                             mapUnits[ 2 ][ 3 ], mapTile.getMapUnit( 2, 3 ));
+
+        Assert.assertEquals( "Unexpected return value for (3, 3).",
+                             mapUnits[ 3 ][ 3 ], mapTile.getMapUnit( 3, 3 ));
     }
 }

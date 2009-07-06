@@ -101,6 +101,6 @@ public class MapTile
                                                 mapTileType.getSize() + "." );
         }
 
-        return null;
+        return mapTileType.getMapUnit( x, y );
     }
 }
