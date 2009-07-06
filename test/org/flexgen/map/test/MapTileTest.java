@@ -86,7 +86,7 @@ public class MapTileTest
     }
 
     /**
-     * Verify that the getMapUnit() method throws the correct exception when the x paramater is too
+     * Verify that the getMapUnit() method throws the correct exception when the x parameter is too
      * small.
      */
     @Test
@@ -109,7 +109,7 @@ public class MapTileTest
     }
 
     /**
-     * Verify that the getMapUnit() method throws the correct exception when the x paramater is too
+     * Verify that the getMapUnit() method throws the correct exception when the x parameter is too
      * large.
      */
     @Test
@@ -132,7 +132,7 @@ public class MapTileTest
     }
 
     /**
-     * Verify that the getMapUnit() method throws the correct exception when the y paramater is too
+     * Verify that the getMapUnit() method throws the correct exception when the y parameter is too
      * small.
      */
     @Test
