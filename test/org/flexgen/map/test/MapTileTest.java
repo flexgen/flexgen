@@ -37,6 +37,7 @@ import org.junit.Test;
 
 import org.flexgen.map.MapTile;
 import org.flexgen.map.MapTileOrientation;
+import org.flexgen.test.helper.MapTileTypeHelper;
 
 /**
  * Test class for the MapTile class.
@@ -59,6 +60,25 @@ public class MapTileTest
         {
             Assert.assertEquals( "Unexpected message.", "Parameter 'mapTileType' cannot be null.",
                                  e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the map tile orientation
+     * parameter is null.
+     */
+    @Test
+    public void constructor_nullOrientation()
+    {
+        try
+        {
+            new MapTile( MapTileTypeHelper.build(), null );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileOrientation' cannot be null.", e.getMessage() );
         }
     }
 }

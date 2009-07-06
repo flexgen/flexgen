@@ -30,31 +30,29 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-package org.flexgen.map;
+package org.flexgen.test.helper;
+
+import org.flexgen.map.MapTileType;
 
 /**
- * Class representing a map tile. Contains the type and orientation for the map tile.
+ * Test helper class for the MapTileType class.
  */
-public class MapTile
+public class MapTileTypeHelper
 {
     /**
-     * Construct a map tile.
-     *
-     * @param mapTileType
-     *            Type of the map tile to construct. Cannot be null.
-     * @param mapTileOrientation
-     *            Orientation of the map tile to construct. Cannot be null.
+     * Private constructor to keep this class from being instantiated since all methods are static.
      */
-    public MapTile( MapTileType mapTileType, MapTileOrientation mapTileOrientation )
+    private MapTileTypeHelper()
     {
-        if ( mapTileType == null )
-        {
-            throw new IllegalArgumentException( "Parameter 'mapTileType' cannot be null." );
-        }
+    }
 
-        if ( mapTileOrientation == null )
-        {
-            throw new IllegalArgumentException( "Parameter 'mapTileOrientation' cannot be null." );
-        }
+    /**
+     * Build a map tile type with default values.
+     *
+     * @return The generated map tile type.
+     */
+    public static MapTileType build()
+    {
+        return new MapTileType( MapUnitHelper.buildArray( 1 ));
     }
 }
