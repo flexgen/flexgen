@@ -35,15 +35,15 @@ package org.flexgen.map.test;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.flexgen.map.MapTile;
+import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
 import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapUnitHelper;
 
 /**
- * Test class for the MapTile class.
+ * Test class for the MapTileType class.
  */
-public class MapTileTest
+public class MapTileTypeTest
 {
     /**
      * Verify that the constructor throws the correct exception when the map units parameter is
@@ -54,7 +54,7 @@ public class MapTileTest
     {
         try
         {
-            new MapTile( null );
+            new MapTileType( null );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -75,7 +75,7 @@ public class MapTileTest
 
         try
         {
-            new MapTile( mapUnits );
+            new MapTileType( mapUnits );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -106,7 +106,7 @@ public class MapTileTest
 
         try
         {
-            new MapTile( mapUnits );
+            new MapTileType( mapUnits );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -137,7 +137,7 @@ public class MapTileTest
 
         try
         {
-            new MapTile( mapUnits );
+            new MapTileType( mapUnits );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -156,11 +156,11 @@ public class MapTileTest
     @Test
     public void getMapUnit_xTooSmall()
     {
-        MapTile mapTile = new MapTile( MapUnitHelper.buildArray( 1 ));
+        MapTileType mapTileType = new MapTileType( MapUnitHelper.buildArray( 1 ));
 
         try
         {
-            mapTile.getMapUnit( -1, 0 );
+            mapTileType.getMapUnit( -1, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -179,11 +179,11 @@ public class MapTileTest
     public void getMapUnit_xTooLarge()
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTile mapTile = new MapTile( MapUnitHelper.buildArray( size ));
+        MapTileType mapTileType = new MapTileType( MapUnitHelper.buildArray( size ));
 
         try
         {
-            mapTile.getMapUnit( size, 0 );
+            mapTileType.getMapUnit( size, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -200,11 +200,11 @@ public class MapTileTest
     @Test
     public void getMapUnit_yTooSmall()
     {
-        MapTile mapTile = new MapTile( MapUnitHelper.buildArray( 1 ));
+        MapTileType mapTileType = new MapTileType( MapUnitHelper.buildArray( 1 ));
 
         try
         {
-            mapTile.getMapUnit( 0, -1 );
+            mapTileType.getMapUnit( 0, -1 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -223,11 +223,11 @@ public class MapTileTest
     public void getMapUnit_yTooLarge()
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTile mapTile = new MapTile( MapUnitHelper.buildArray( size ));
+        MapTileType mapTileType = new MapTileType( MapUnitHelper.buildArray( size ));
 
         try
         {
-            mapTile.getMapUnit( 0, size );
+            mapTileType.getMapUnit( 0, size );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -246,14 +246,14 @@ public class MapTileTest
     {
         int size = 2;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
-        MapTile mapTile = new MapTile( mapUnits );
+        MapTileType mapTileType = new MapTileType( mapUnits );
 
         for ( int i = 0; i < size; i++ )
         {
             for ( int j = 0; j < size; j++ )
             {
                 Assert.assertEquals( "Unexpected return value for (" + i + ", " + j + ").",
-                                     mapUnits[ i ][ j ], mapTile.getMapUnit( i, j ));
+                                     mapUnits[ i ][ j ], mapTileType.getMapUnit( i, j ));
             }
         }
     }

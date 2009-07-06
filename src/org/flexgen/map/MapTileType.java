@@ -33,25 +33,25 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.flexgen.map;
 
 /**
- * Class representing a map tile that can be used in maps. Contains a two-dimensional array of map
- * units that define the map tile.
+ * Class representing types of map tiles that can be used in maps. Each map tile type contains a
+ * two-dimensional array of map units that define the map tile type.
  */
-public class MapTile
+public class MapTileType
 {
     /**
-     * Two-dimensional array of map units that define the map tile.
+     * Two-dimensional array of map units that define the map tile type.
      */
     private final MapUnit[][] mapUnits;
 
     /**
-     * Construct a map tile.
+     * Construct a map tile type.
      *
      * @param mapUnits
-     *            Two-dimensional array of map units that define the map tile. Cannot be null. Must
-     *            contain at least one row. Each row must contain the same number of elements. Must
-     *            contain the same number of columns as it does rows.
+     *            Two-dimensional array of map units that define the map tile type. Cannot be null.
+     *            Must contain at least one row. Each row must contain the same number of elements.
+     *            Must contain the same number of columns as it does rows.
      */
-    public MapTile( MapUnit[][] mapUnits )
+    public MapTileType( MapUnit[][] mapUnits )
     {
         if ( mapUnits == null )
         {
@@ -87,14 +87,14 @@ public class MapTile
     }
 
     /**
-     * Get the map unit at the specified coordinates in this map tile.
+     * Get the map unit at the specified coordinates in this map tile type.
      *
      * @param x
      *            X coordinate of the map unit to get.
      * @param y
      *            Y coordinate of the map unit to get.
      *
-     * @return The map unit at the specified coordinates in this map tile.
+     * @return The map unit at the specified coordinates in this map tile type.
      */
     public MapUnit getMapUnit( int x, int y )
     {
