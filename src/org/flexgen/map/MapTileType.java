@@ -104,6 +104,12 @@ public class MapTileType
             throw new IllegalArgumentException( "Parameter 'mapTileEdges' cannot be null." );
         }
 
+        if ( mapTileEdges.length != 4 )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'mapTileEdges' must contain 4 elements." );
+        }
+
         this.mapUnits = mapUnits;
     }
 

@@ -35,6 +35,7 @@ package org.flexgen.map.test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import org.flexgen.map.MapTileEdge;
 import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
 import org.flexgen.test.helper.GeneralHelper;
@@ -193,6 +194,62 @@ public class MapTileTypeTest
         catch ( IllegalArgumentException e )
         {
             Assert.assertEquals( "Unexpected message.", "Parameter 'mapTileEdges' cannot be null.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the mapTileEdges parameter
+     * doesn't contain enough elements.
+     */
+    @Test
+    public void constructor_mapTileEdges_tooFew()
+    {
+        MapTileEdge[] mapTileEdges = new MapTileEdge[]
+        {
+            MapTileEdgeHelper.build(),
+            MapTileEdgeHelper.build(),
+            MapTileEdgeHelper.build()
+        };
+
+        try
+        {
+            new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileEdges' must contain 4 elements.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the mapTileEdges parameter
+     * contains too many elements.
+     */
+    @Test
+    public void constructor_mapTileEdges_tooMany()
+    {
+        MapTileEdge[] mapTileEdges = new MapTileEdge[]
+        {
+            MapTileEdgeHelper.build(),
+            MapTileEdgeHelper.build(),
+            MapTileEdgeHelper.build(),
+            MapTileEdgeHelper.build(),
+            MapTileEdgeHelper.build()
+        };
+
+        try
+        {
+            new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileEdges' must contain 4 elements.",
                                  e.getMessage() );
         }
     }
