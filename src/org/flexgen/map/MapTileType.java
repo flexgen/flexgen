@@ -34,7 +34,8 @@ package org.flexgen.map;
 
 /**
  * Class representing types of map tiles that can be used in maps. Each map tile type contains a
- * two-dimensional array of map units that define the map tile type.
+ * two-dimensional array of map units that define the map tile type and an array of map tile edges
+ * that define the four edges of the map tile.
  */
 public class MapTileType
 {
@@ -50,8 +51,11 @@ public class MapTileType
      *            Two-dimensional array of map units that define the map tile type. Cannot be null.
      *            Must contain at least one row. Each row must contain the same number of elements.
      *            Must contain the same number of columns as it does rows. No element can be null.
+     * @param mapTileEdges
+     *            Array of map tile edges that define the four edges of this map tile type. Cannot
+     *            be null. Must contain four elements. No element can be null.
      */
-    public MapTileType( MapUnit[][] mapUnits )
+    public MapTileType( MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges )
     {
         if ( mapUnits == null )
         {

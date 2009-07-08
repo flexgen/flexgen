@@ -40,6 +40,7 @@ import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
 import org.flexgen.test.helper.GeneralHelper;
+import org.flexgen.test.helper.MapTileEdgeHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
 import org.flexgen.test.helper.MapUnitHelper;
 
@@ -76,7 +77,7 @@ public class MapTileTest
     {
         try
         {
-            new MapTile( MapTileTypeHelper.build(), null );
+            new MapTile( MapTileTypeHelper.build( 1 ), null );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -93,7 +94,7 @@ public class MapTileTest
     @Test
     public void getMapUnit_xTooSmall()
     {
-        MapTile mapTile = new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 )),
+        MapTile mapTile = new MapTile( MapTileTypeHelper.build( 1 ),
                                        MapTileOrientation.UPRIGHT );
 
         try
@@ -117,7 +118,7 @@ public class MapTileTest
     public void getMapUnit_xTooLarge()
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTile mapTile = new MapTile( new MapTileType( MapUnitHelper.buildArray( size )),
+        MapTile mapTile = new MapTile( MapTileTypeHelper.build( size ),
                                        MapTileOrientation.UPRIGHT );
 
         try
@@ -139,7 +140,7 @@ public class MapTileTest
     @Test
     public void getMapUnit_yTooSmall()
     {
-        MapTile mapTile = new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 )),
+        MapTile mapTile = new MapTile( MapTileTypeHelper.build( 1 ),
                                        MapTileOrientation.UPRIGHT );
 
         try
@@ -163,7 +164,7 @@ public class MapTileTest
     public void getMapUnit_yTooLarge()
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTile mapTile = new MapTile( new MapTileType( MapUnitHelper.buildArray( size )),
+        MapTile mapTile = new MapTile( MapTileTypeHelper.build( size ),
                                        MapTileOrientation.UPRIGHT );
 
         try
@@ -187,7 +188,8 @@ public class MapTileTest
     {
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
-        MapTile mapTile = new MapTile( new MapTileType( mapUnits ), MapTileOrientation.UPRIGHT );
+        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() ),
+                                       MapTileOrientation.UPRIGHT );
 
         Assert.assertEquals( "Unexpected return value for (0, 0).",
                              mapUnits[ 0 ][ 0 ], mapTile.getMapUnit( 0, 0 ));
@@ -247,7 +249,8 @@ public class MapTileTest
     {
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
-        MapTile mapTile = new MapTile( new MapTileType( mapUnits ), MapTileOrientation.CLOCKWISE );
+        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() ),
+                                       MapTileOrientation.CLOCKWISE );
 
         Assert.assertEquals( "Unexpected return value for (0, 0).",
                              mapUnits[ 3 ][ 0 ], mapTile.getMapUnit( 0, 0 ));
@@ -307,7 +310,8 @@ public class MapTileTest
     {
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
-        MapTile mapTile = new MapTile( new MapTileType( mapUnits ), MapTileOrientation.FLIPPED );
+        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() ),
+                                       MapTileOrientation.FLIPPED );
 
         Assert.assertEquals( "Unexpected return value for (0, 0).",
                              mapUnits[ 3 ][ 3 ], mapTile.getMapUnit( 0, 0 ));
@@ -367,7 +371,7 @@ public class MapTileTest
     {
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
-        MapTile mapTile = new MapTile( new MapTileType( mapUnits ),
+        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() ),
                                        MapTileOrientation.COUNTER_CLOCKWISE );
 
         Assert.assertEquals( "Unexpected return value for (0, 0).",

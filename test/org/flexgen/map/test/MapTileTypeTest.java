@@ -38,6 +38,8 @@ import org.junit.Test;
 import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
 import org.flexgen.test.helper.GeneralHelper;
+import org.flexgen.test.helper.MapTileEdgeHelper;
+import org.flexgen.test.helper.MapTileTypeHelper;
 import org.flexgen.test.helper.MapUnitHelper;
 
 /**
@@ -54,7 +56,7 @@ public class MapTileTypeTest
     {
         try
         {
-            new MapTileType( null );
+            new MapTileType( null, MapTileEdgeHelper.buildArray() );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -75,7 +77,7 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( mapUnits );
+            new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -106,7 +108,7 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( mapUnits );
+            new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -134,7 +136,7 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( mapUnits );
+            new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -165,7 +167,7 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( mapUnits );
+            new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -184,7 +186,7 @@ public class MapTileTypeTest
     public void getSize()
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTileType mapTileType = new MapTileType( MapUnitHelper.buildArray( size ));
+        MapTileType mapTileType = MapTileTypeHelper.build( size );
         Assert.assertEquals( "Unexpected return value.", size, mapTileType.getSize() );
     }
 
@@ -195,7 +197,7 @@ public class MapTileTypeTest
     @Test
     public void getMapUnit_xTooSmall()
     {
-        MapTileType mapTileType = new MapTileType( MapUnitHelper.buildArray( 1 ));
+        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
 
         try
         {
@@ -218,7 +220,7 @@ public class MapTileTypeTest
     public void getMapUnit_xTooLarge()
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTileType mapTileType = new MapTileType( MapUnitHelper.buildArray( size ));
+        MapTileType mapTileType = MapTileTypeHelper.build( size );
 
         try
         {
@@ -239,7 +241,7 @@ public class MapTileTypeTest
     @Test
     public void getMapUnit_yTooSmall()
     {
-        MapTileType mapTileType = new MapTileType( MapUnitHelper.buildArray( 1 ));
+        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
 
         try
         {
@@ -262,7 +264,7 @@ public class MapTileTypeTest
     public void getMapUnit_yTooLarge()
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTileType mapTileType = new MapTileType( MapUnitHelper.buildArray( size ));
+        MapTileType mapTileType = MapTileTypeHelper.build( size );
 
         try
         {
@@ -285,7 +287,7 @@ public class MapTileTypeTest
     {
         int size = 2;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
-        MapTileType mapTileType = new MapTileType( mapUnits );
+        MapTileType mapTileType = new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() );
 
         for ( int i = 0; i < size; i++ )
         {

@@ -55,4 +55,23 @@ public class MapTileEdgeHelper
     {
         return new MapTileEdge( GeneralHelper.getUniqueString() );
     }
+
+    /**
+     * Build an array of map tile edges with default values.
+     *
+     * @return The generated map tile edge array.
+     */
+    public static MapTileEdge[] buildArray()
+    {
+        int size = 4;
+
+        MapTileEdge[] mapTileEdges = new MapTileEdge[ size ];
+
+        for ( int i = 0; i < size; i++ )
+        {
+            mapTileEdges[ i ] = MapTileEdgeHelper.build();
+        }
+
+        return mapTileEdges;
+    }
 }
