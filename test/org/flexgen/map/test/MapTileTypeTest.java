@@ -50,7 +50,7 @@ public class MapTileTypeTest
      * null.
      */
     @Test
-    public void constructor_null()
+    public void constructor_nullArray()
     {
         try
         {
@@ -114,6 +114,34 @@ public class MapTileTypeTest
             Assert.assertEquals(
                 "Unexpected message.",
                 "Parameter 'mapUnits' must contain the same number of elements in each row.",
+                e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the map units parameter
+     * contains a null element.
+     */
+    @Test
+    public void constructor_nullElement()
+    {
+        MapUnit[][] mapUnits = new MapUnit[][]
+        {
+            {
+                null
+            }
+        };
+
+        try
+        {
+            new MapTileType( mapUnits );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                "Unexpected message.",
+                "Parameter 'mapUnits' must not contain any null elements.",
                 e.getMessage() );
         }
     }

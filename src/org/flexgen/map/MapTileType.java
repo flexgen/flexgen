@@ -83,6 +83,18 @@ public class MapTileType
                                                 "number of columns as it does rows." );
         }
 
+        for ( int i = 0; i < mapUnits.length; i++ )
+        {
+            for ( int j = 0; j < mapUnits.length; j++ )
+            {
+                if ( mapUnits[ i ][ j ] == null )
+                {
+                    throw new IllegalArgumentException(
+                            "Parameter 'mapUnits' must not contain any null elements." );
+                }
+            }
+        }
+
         this.mapUnits = mapUnits;
     }
 
