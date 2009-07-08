@@ -49,7 +49,7 @@ public class MapTileType
      * @param mapUnits
      *            Two-dimensional array of map units that define the map tile type. Cannot be null.
      *            Must contain at least one row. Each row must contain the same number of elements.
-     *            Must contain the same number of columns as it does rows.
+     *            Must contain the same number of columns as it does rows. No element can be null.
      */
     public MapTileType( MapUnit[][] mapUnits )
     {
