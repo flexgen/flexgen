@@ -99,6 +99,11 @@ public class MapTileType
             }
         }
 
+        if ( mapTileEdges == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'mapTileEdges' cannot be null." );
+        }
+
         this.mapUnits = mapUnits;
     }
 
