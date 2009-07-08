@@ -50,7 +50,7 @@ import org.flexgen.test.helper.MapUnitHelper;
 public class MapTileTest
 {
     /**
-     * Verify that the constructor throws the correct exception when the map tile type parameter is
+     * Verify that the constructor throws the correct exception when the mapTileType parameter is
      * null.
      */
     @Test
@@ -69,7 +69,7 @@ public class MapTileTest
     }
 
     /**
-     * Verify that the constructor throws the correct exception when the map tile orientation
+     * Verify that the constructor throws the correct exception when the mapTileOrientation
      * parameter is null.
      */
     @Test

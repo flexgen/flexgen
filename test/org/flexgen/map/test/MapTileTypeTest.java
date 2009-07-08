@@ -48,8 +48,7 @@ import org.flexgen.test.helper.MapUnitHelper;
 public class MapTileTypeTest
 {
     /**
-     * Verify that the constructor throws the correct exception when the map units parameter is
-     * null.
+     * Verify that the constructor throws the correct exception when the mapUnits parameter is null.
      */
     @Test
     public void constructor_mapUnits_nullArray()
@@ -67,7 +66,7 @@ public class MapTileTypeTest
     }
 
     /**
-     * Verify that the constructor throws the correct exception when the map units parameter is an
+     * Verify that the constructor throws the correct exception when the mapUnits parameter is an
      * empty array.
      */
     @Test
@@ -89,7 +88,7 @@ public class MapTileTypeTest
     }
 
     /**
-     * Verify that the constructor throws the correct exception when the map units parameter doesn't
+     * Verify that the constructor throws the correct exception when the mapUnits parameter doesn't
      * contain the same number of elements in all of the rows.
      */
     @Test
@@ -121,8 +120,8 @@ public class MapTileTypeTest
     }
 
     /**
-     * Verify that the constructor throws the correct exception when the map units parameter
-     * contains a null element.
+     * Verify that the constructor throws the correct exception when the mapUnits parameter contains
+     * a null element.
      */
     @Test
     public void constructor_mapUnits_nullElement()
@@ -149,7 +148,7 @@ public class MapTileTypeTest
     }
 
     /**
-     * Verify that the constructor throws the correct exception when the map units parameter doesn't
+     * Verify that the constructor throws the correct exception when the mapUnits parameter doesn't
      * contain the same number of columns as it does rows.
      */
     @Test
