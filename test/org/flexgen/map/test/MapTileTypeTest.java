@@ -121,34 +121,6 @@ public class MapTileTypeTest
     }
 
     /**
-     * Verify that the constructor throws the correct exception when the mapUnits parameter contains
-     * a null element.
-     */
-    @Test
-    public void constructor_mapUnits_nullElement()
-    {
-        MapUnit[][] mapUnits = new MapUnit[][]
-        {
-            {
-                null
-            }
-        };
-
-        try
-        {
-            new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() );
-            Assert.fail( "Expected exception." );
-        }
-        catch ( IllegalArgumentException e )
-        {
-            Assert.assertEquals(
-                "Unexpected message.",
-                "Parameter 'mapUnits' must not contain any null elements.",
-                e.getMessage() );
-        }
-    }
-
-    /**
      * Verify that the constructor throws the correct exception when the mapUnits parameter doesn't
      * contain the same number of columns as it does rows.
      */
@@ -175,6 +147,34 @@ public class MapTileTypeTest
             Assert.assertEquals(
                 "Unexpected message.",
                 "Parameter 'mapUnits' must contain the same number of columns as it does rows.",
+                e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the mapUnits parameter contains
+     * a null element.
+     */
+    @Test
+    public void constructor_mapUnits_nullElement()
+    {
+        MapUnit[][] mapUnits = new MapUnit[][]
+        {
+            {
+                null
+            }
+        };
+
+        try
+        {
+            new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                "Unexpected message.",
+                "Parameter 'mapUnits' must not contain any null elements.",
                 e.getMessage() );
         }
     }
