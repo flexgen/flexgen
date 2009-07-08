@@ -52,7 +52,7 @@ public class MapTileTypeTest
      * null.
      */
     @Test
-    public void constructor_nullArray()
+    public void constructor_mapUnits_nullArray()
     {
         try
         {
@@ -71,7 +71,7 @@ public class MapTileTypeTest
      * empty array.
      */
     @Test
-    public void constructor_emptyArray()
+    public void constructor_mapUnits_emptyArray()
     {
         MapUnit[][] mapUnits = new MapUnit[][] {};
 
@@ -93,7 +93,7 @@ public class MapTileTypeTest
      * contain the same number of elements in all of the rows.
      */
     @Test
-    public void constructor_inconsistentRowCount()
+    public void constructor_mapUnits_inconsistentRowCount()
     {
         MapUnit[][] mapUnits = new MapUnit[][]
         {
@@ -125,7 +125,7 @@ public class MapTileTypeTest
      * contains a null element.
      */
     @Test
-    public void constructor_nullElement()
+    public void constructor_mapUnits_nullElement()
     {
         MapUnit[][] mapUnits = new MapUnit[][]
         {
@@ -153,7 +153,7 @@ public class MapTileTypeTest
      * contain the same number of columns as it does rows.
      */
     @Test
-    public void constructor_columnCountNotEqualRowCount()
+    public void constructor_mapUnits_columnCountNotEqualRowCount()
     {
         MapUnit[][] mapUnits = new MapUnit[][]
         {
