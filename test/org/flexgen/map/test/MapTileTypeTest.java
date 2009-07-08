@@ -255,6 +255,34 @@ public class MapTileTypeTest
     }
 
     /**
+     * Verify that the constructor throws the correct exception when the mapTileEdges parameter
+     * contains a null element.
+     */
+    @Test
+    public void constructor_mapTileEdges_nullElement()
+    {
+        MapTileEdge[] mapTileEdges = new MapTileEdge[]
+        {
+            MapTileEdgeHelper.build(),
+            null,
+            MapTileEdgeHelper.build(),
+            MapTileEdgeHelper.build()
+        };
+
+        try
+        {
+            new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileEdges' must not contain any null elements.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the getSize() method returns the correct value for a small array of map units.
      */
     @Test
