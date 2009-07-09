@@ -37,6 +37,7 @@ import org.junit.Test;
 
 import org.flexgen.map.MapTileEdge;
 import org.flexgen.map.MapTileEdgePosition;
+import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
 import org.flexgen.test.helper.GeneralHelper;
@@ -310,6 +311,30 @@ public class MapTileTypeTest
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'distinctMapTileOrientations' cannot be null.",
                                  e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the distinctMapTileOrientations
+     * parameter is an empty array.
+     */
+    @Test
+    public void constructor_distinctMapTileOrientations_emptyArray()
+    {
+        MapTileOrientation[] distinctMapTileOrientations = new MapTileOrientation[] {};
+
+        try
+        {
+            new MapTileType( MapUnitHelper.buildArray( 1 ), MapTileEdgeHelper.buildArray(),
+                             distinctMapTileOrientations );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                    "Unexpected message.",
+                    "Parameter 'distinctMapTileOrientations' must contain at least one element.",
+                    e.getMessage() );
         }
     }
 
