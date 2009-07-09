@@ -145,6 +145,21 @@ public class MapTile
             throw new IllegalArgumentException( "Parameter 'mapTileEdgePosition' cannot be null." );
         }
 
-        return mapTileType.getMapTileEdge( mapTileEdgePosition );
+        // get the index of the map tile edge position
+        int index = mapTileEdgePosition.getIndex();
+
+        // update the index based upon the orientation of the tile
+        if ( mapTileOrientation.equals( MapTileOrientation.CLOCKWISE ))
+        {
+            index -= 1;
+        }
+
+        // take care of index values that have gone out of the valid range
+        if ( index < 0 )
+        {
+            index += 4;
+        }
+
+        return mapTileType.getMapTileEdge( MapTileEdgePosition.get( index ));
     }
 }
