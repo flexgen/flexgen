@@ -50,6 +50,12 @@ public class MapTileType
     private final MapTileEdge[] mapTileEdges;
 
     /**
+     * Array of map tile orientations that specify the distinct orientations that are possible for
+     * this map tile type.
+     */
+    private final MapTileOrientation[] distinctMapTileOrientations;
+
+    /**
      * Construct a map tile type.
      *
      * @param mapUnits
@@ -166,8 +172,9 @@ public class MapTileType
             }
         }
 
-        this.mapUnits = mapUnits;
-        this.mapTileEdges = mapTileEdges;
+        this.mapUnits                    = mapUnits;
+        this.mapTileEdges                = mapTileEdges;
+        this.distinctMapTileOrientations = distinctMapTileOrientations;
     }
 
     /**
@@ -235,5 +242,17 @@ public class MapTileType
         }
 
         return mapTileEdges[ mapTileEdgePosition.getIndex() ];
+    }
+
+    /**
+     * Get the array of map tile orientations that specify the distinct orientations that are
+     * possible for this map tile type.
+     *
+     * @return The array of map tile orientations that specify the distinct orientations that are
+     *         possible for this map tile type.
+     */
+    public MapTileOrientation[] getDistinctMapTileOrientations()
+    {
+        return distinctMapTileOrientations;
     }
 }

@@ -561,4 +561,24 @@ public class MapTileTypeTest
                              mapTileEdges[ 3 ],
                              mapTileType.getMapTileEdge( MapTileEdgePosition.LEFT ));
     }
+
+    /**
+     * Verify that the getMapTileEdge() method returns the correct values.
+     */
+    @Test
+    public void constructor_getDistinctMapTileOrientations()
+    {
+        MapTileOrientation[] distinctMapTileOrientations = new MapTileOrientation[]
+                {
+                    MapTileOrientation.UPRIGHT,
+                    MapTileOrientation.FLIPPED
+                };
+
+        MapTileType mapTileType = new MapTileType( MapUnitHelper.buildArray( 1 ),
+                                                   MapTileEdgeHelper.buildArray(),
+                                                   distinctMapTileOrientations );
+
+        Assert.assertArrayEquals( "Unexpected result.", distinctMapTileOrientations,
+                                  mapTileType.getDistinctMapTileOrientations() );
+    }
 }
