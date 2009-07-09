@@ -298,7 +298,7 @@ public class MapTileTypeTest
      * small.
      */
     @Test
-    public void getMapUnit_xTooSmall()
+    public void getMapUnit_x_TooSmall()
     {
         MapTileType mapTileType = MapTileTypeHelper.build( 1 );
 
@@ -320,7 +320,7 @@ public class MapTileTypeTest
      * large.
      */
     @Test
-    public void getMapUnit_xTooLarge()
+    public void getMapUnit_x_TooLarge()
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
         MapTileType mapTileType = MapTileTypeHelper.build( size );
@@ -342,7 +342,7 @@ public class MapTileTypeTest
      * small.
      */
     @Test
-    public void getMapUnit_yTooSmall()
+    public void getMapUnit_y_TooSmall()
     {
         MapTileType mapTileType = MapTileTypeHelper.build( 1 );
 
@@ -364,7 +364,7 @@ public class MapTileTypeTest
      * large.
      */
     @Test
-    public void getMapUnit_yTooLarge()
+    public void getMapUnit_y_TooLarge()
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
         MapTileType mapTileType = MapTileTypeHelper.build( size );

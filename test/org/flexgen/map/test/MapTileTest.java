@@ -92,7 +92,7 @@ public class MapTileTest
      * small.
      */
     @Test
-    public void getMapUnit_xTooSmall()
+    public void getMapUnit_x_TooSmall()
     {
         MapTile mapTile = new MapTile( MapTileTypeHelper.build( 1 ),
                                        MapTileOrientation.UPRIGHT );
@@ -115,7 +115,7 @@ public class MapTileTest
      * large.
      */
     @Test
-    public void getMapUnit_xTooLarge()
+    public void getMapUnit_x_TooLarge()
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
         MapTile mapTile = new MapTile( MapTileTypeHelper.build( size ),
@@ -138,7 +138,7 @@ public class MapTileTest
      * small.
      */
     @Test
-    public void getMapUnit_yTooSmall()
+    public void getMapUnit_y_TooSmall()
     {
         MapTile mapTile = new MapTile( MapTileTypeHelper.build( 1 ),
                                        MapTileOrientation.UPRIGHT );
@@ -161,7 +161,7 @@ public class MapTileTest
      * large.
      */
     @Test
-    public void getMapUnit_yTooLarge()
+    public void getMapUnit_y_TooLarge()
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
         MapTile mapTile = new MapTile( MapTileTypeHelper.build( size ),
