@@ -124,7 +124,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <target name="checkstyle">
         <taskdef resource="checkstyletask.properties" classpath="${env.CHECKSTYLE_5_0}" />
 
-        <checkstyle config="checkstyle.xml">
+        <checkstyle config="checkstyle.xml" maxWarnings="0">
             <fileset dir="${src.dir}"      />
             <fileset dir="${test.src.dir}" />
         </checkstyle>
