@@ -505,4 +505,33 @@ public class MapTileTest
                              mapTileEdges[ 2 ],
                              mapTile.getMapTileEdge( MapTileEdgePosition.LEFT ));
     }
+
+    /**
+     * Verify that the getMapTileEdge() method returns the correct values for all four edges when
+     * the tile is flipped around 180 degrees.
+     */
+    @Test
+    public void getMapTileEdge_flipped()
+    {
+        MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
+        MapTile mapTile =
+                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges ),
+                             MapTileOrientation.FLIPPED );
+
+        Assert.assertEquals( "Unexpected return value for \"top\".",
+                             mapTileEdges[ 2 ],
+                             mapTile.getMapTileEdge( MapTileEdgePosition.TOP ));
+
+        Assert.assertEquals( "Unexpected return value for \"right\".",
+                             mapTileEdges[ 3 ],
+                             mapTile.getMapTileEdge( MapTileEdgePosition.RIGHT ));
+
+        Assert.assertEquals( "Unexpected return value for \"bottom\".",
+                             mapTileEdges[ 0 ],
+                             mapTile.getMapTileEdge( MapTileEdgePosition.BOTTOM ));
+
+        Assert.assertEquals( "Unexpected return value for \"left\".",
+                             mapTileEdges[ 1 ],
+                             mapTile.getMapTileEdge( MapTileEdgePosition.LEFT ));
+    }
 }

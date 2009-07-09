@@ -153,6 +153,10 @@ public class MapTile
         {
             index -= 1;
         }
+        else if ( mapTileOrientation.equals( MapTileOrientation.FLIPPED ))
+        {
+            index -= 2;
+        }
 
         // take care of index values that have gone out of the valid range
         if ( index < 0 )
