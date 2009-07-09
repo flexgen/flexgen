@@ -37,8 +37,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <module name="Checker">
 
-    <property name="basedir" value="${basedir}" />
-
     <!-- Checks that a package-info.java file exists for each package.   -->
     <!-- See http://checkstyle.sf.net/config_javadoc.html#JavadocPackage -->
     <module name="JavadocPackage" />
