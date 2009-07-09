@@ -60,4 +60,22 @@ public class MapTileEdgePositionTest
         Assert.assertEquals( "Unexpected result for index 3.", MapTileEdgePosition.LEFT,
                              MapTileEdgePosition.get( 3 ));
     }
+
+    /**
+     * Verify that the get() method throws the correct exception when an invalid index is specified.
+     */
+    @Test
+    public void get_invalidIndex()
+    {
+        try
+        {
+            MapTileEdgePosition.get( -1 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'index' must be between 0 and 3.", e.getMessage() );
+        }
+    }
 }

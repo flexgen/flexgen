@@ -97,7 +97,8 @@ public class MapTileEdgePosition
             case 1  : return MapTileEdgePosition.RIGHT;
             case 2  : return MapTileEdgePosition.BOTTOM;
             case 3  : return MapTileEdgePosition.LEFT;
-            default : return null;
+            default : throw new IllegalArgumentException(
+                              "Parameter 'index' must be between 0 and 3." );
         }
     }
 
