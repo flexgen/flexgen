@@ -58,7 +58,10 @@ public class MapTileType
      *            Must contain the same number of columns as it does rows. No element can be null.
      * @param mapTileEdges
      *            Array of map tile edges that define the four edges of this map tile type. Cannot
-     *            be null. Must contain four elements. No element can be null.
+     *            be null. Must contain four elements. No element can be null. The first element is
+     *            the top edge of the tile. The second element is the right edge of the tile. The
+     *            third element is the bottom edge of the tile. The fourth element is the left edge
+     *            of the tile.
      */
     public MapTileType( MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges )
     {
