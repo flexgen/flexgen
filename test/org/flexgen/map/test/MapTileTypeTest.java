@@ -401,4 +401,26 @@ public class MapTileTypeTest
             }
         }
     }
+
+    /**
+     * Verify that the getMapTileEdge() method throws the correct exception when the
+     * mapTileEdgePosition parameter is null.
+     */
+    @Test
+    public void getMapTileEdge_mapTileEdgePosition_null()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
+
+        try
+        {
+            mapTileType.getMapTileEdge( null );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileEdgePosition' cannot be null.",
+                                 e.getMessage() );
+        }
+    }
 }

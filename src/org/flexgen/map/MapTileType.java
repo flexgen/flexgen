@@ -170,4 +170,22 @@ public class MapTileType
 
         return mapUnits[ x ][ y ];
     }
+
+    /**
+     * Get the map tile edge at the specified position in this map tile type.
+     *
+     * @param mapTileEdgePosition
+     *            Position of the map tile edge to get.
+     *
+     * @return The map unit at the specified coordinates in this map tile type.
+     */
+    public MapTileEdge getMapTileEdge( MapTileEdgePosition mapTileEdgePosition )
+    {
+        if ( mapTileEdgePosition == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'mapTileEdgePosition' cannot be null." );
+        }
+
+        return null;
+    }
 }
