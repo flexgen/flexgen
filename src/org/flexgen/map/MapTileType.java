@@ -147,10 +147,22 @@ public class MapTileType
 
         for ( int i = 0; i < distinctMapTileOrientations.length; i++ )
         {
+            // check for a null element
             if ( distinctMapTileOrientations[ i ] == null )
             {
                 throw new IllegalArgumentException( "Parameter 'distinctMapTileOrientations' " +
                                                     "must not contain any null elements." );
+            }
+
+            // check for a duplicate element
+            for ( int j = i + 1; j < distinctMapTileOrientations.length; j++ )
+            {
+                if ( distinctMapTileOrientations[ i ].equals( distinctMapTileOrientations[ j ] ))
+                {
+                    throw new IllegalArgumentException(
+                            "Parameter 'distinctMapTileOrientations' must not contain any " +
+                            "duplicate elements." );
+                }
             }
         }
 
