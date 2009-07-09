@@ -32,31 +32,28 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.test.helper;
 
-import org.flexgen.map.MapTileType;
+import org.flexgen.map.MapTileOrientation;
 
 /**
- * Test helper class for the MapTileType class.
+ * Test helper class for the MapTileOrientation class.
  */
-public class MapTileTypeHelper
+public class MapTileOrientationHelper
 {
+    /**
+     * Array of map tile orientations containing all of the orientations.
+     */
+    public static final MapTileOrientation[] ALL_ORIENTATIONS = new MapTileOrientation[]
+            {
+                MapTileOrientation.UPRIGHT,
+                MapTileOrientation.CLOCKWISE,
+                MapTileOrientation.FLIPPED,
+                MapTileOrientation.COUNTER_CLOCKWISE
+            };
+
     /**
      * Private constructor to keep this class from being instantiated since all methods are static.
      */
-    private MapTileTypeHelper()
+    private MapTileOrientationHelper()
     {
-    }
-
-    /**
-     * Build a map tile type with default values.
-     *
-     * @param size
-     *            The size of the map units array to generate for the map tile type.
-     *
-     * @return The generated map tile type.
-     */
-    public static MapTileType build( int size )
-    {
-        return new MapTileType( MapUnitHelper.buildArray( size ), MapTileEdgeHelper.buildArray(),
-                                MapTileOrientationHelper.ALL_ORIENTATIONS );
     }
 }

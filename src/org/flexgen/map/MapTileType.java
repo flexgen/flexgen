@@ -62,8 +62,14 @@ public class MapTileType
      *            the top edge of the tile. The second element is the right edge of the tile. The
      *            third element is the bottom edge of the tile. The fourth element is the left edge
      *            of the tile.
+     * @param distinctMapTileOrientations
+     *            Array of map tile orientations that specify the distinct orientations that are
+     *            possible for this map tile type. Cannot be null. Must contain at lease one
+     *            element. No element can be null. Cannot contain two or more elements that are
+     *            identical.
      */
-    public MapTileType( MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges )
+    public MapTileType( MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges,
+                        MapTileOrientation[] distinctMapTileOrientations )
     {
         if ( mapUnits == null )
         {

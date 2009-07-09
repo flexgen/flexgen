@@ -44,6 +44,7 @@ import org.flexgen.map.MapUnit;
 import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapTileEdgeHelper;
 import org.flexgen.test.helper.MapTileHelper;
+import org.flexgen.test.helper.MapTileOrientationHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
 import org.flexgen.test.helper.MapUnitHelper;
 
@@ -191,7 +192,8 @@ public class MapTileTest
     {
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
-        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() ),
+        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray(),
+                                                        MapTileOrientationHelper.ALL_ORIENTATIONS ),
                                        MapTileOrientation.UPRIGHT );
 
         Assert.assertEquals( "Unexpected return value for (0, 0).",
@@ -252,7 +254,8 @@ public class MapTileTest
     {
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
-        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() ),
+        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray(),
+                                                        MapTileOrientationHelper.ALL_ORIENTATIONS ),
                                        MapTileOrientation.CLOCKWISE );
 
         Assert.assertEquals( "Unexpected return value for (0, 0).",
@@ -313,7 +316,8 @@ public class MapTileTest
     {
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
-        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() ),
+        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray(),
+                                                        MapTileOrientationHelper.ALL_ORIENTATIONS ),
                                        MapTileOrientation.FLIPPED );
 
         Assert.assertEquals( "Unexpected return value for (0, 0).",
@@ -374,7 +378,8 @@ public class MapTileTest
     {
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
-        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray() ),
+        MapTile mapTile = new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray(),
+                                                        MapTileOrientationHelper.ALL_ORIENTATIONS ),
                                        MapTileOrientation.COUNTER_CLOCKWISE );
 
         Assert.assertEquals( "Unexpected return value for (0, 0).",
@@ -457,7 +462,8 @@ public class MapTileTest
     {
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
-                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges ),
+                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                                              MapTileOrientationHelper.ALL_ORIENTATIONS ),
                              MapTileOrientation.UPRIGHT );
 
         Assert.assertEquals( "Unexpected return value for \"top\".",
@@ -486,7 +492,8 @@ public class MapTileTest
     {
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
-                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges ),
+                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                                              MapTileOrientationHelper.ALL_ORIENTATIONS ),
                              MapTileOrientation.CLOCKWISE );
 
         Assert.assertEquals( "Unexpected return value for \"top\".",
@@ -515,7 +522,8 @@ public class MapTileTest
     {
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
-                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges ),
+                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                                              MapTileOrientationHelper.ALL_ORIENTATIONS ),
                              MapTileOrientation.FLIPPED );
 
         Assert.assertEquals( "Unexpected return value for \"top\".",
@@ -544,7 +552,8 @@ public class MapTileTest
     {
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
-                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges ),
+                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                                              MapTileOrientationHelper.ALL_ORIENTATIONS ),
                              MapTileOrientation.COUNTER_CLOCKWISE );
 
         Assert.assertEquals( "Unexpected return value for \"top\".",
