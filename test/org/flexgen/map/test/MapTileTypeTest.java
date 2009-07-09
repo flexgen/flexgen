@@ -339,6 +339,33 @@ public class MapTileTypeTest
     }
 
     /**
+     * Verify that the constructor throws the correct exception when the distinctMapTileOrientations
+     * parameter contains a null element.
+     */
+    @Test
+    public void constructor_distinctMapTileOrientations_nullElement()
+    {
+        MapTileOrientation[] distinctMapTileOrientations = new MapTileOrientation[]
+                {
+                    null
+                };
+
+        try
+        {
+            new MapTileType( MapUnitHelper.buildArray( 1 ), MapTileEdgeHelper.buildArray(),
+                             distinctMapTileOrientations );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                    "Unexpected message.",
+                    "Parameter 'distinctMapTileOrientations' must not contain any null elements.",
+                    e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the getSize() method returns the correct value for a small array of map units.
      */
     @Test

@@ -145,6 +145,15 @@ public class MapTileType
                     "Parameter 'distinctMapTileOrientations' must contain at least one element." );
         }
 
+        for ( int i = 0; i < distinctMapTileOrientations.length; i++ )
+        {
+            if ( distinctMapTileOrientations[ i ] == null )
+            {
+                throw new IllegalArgumentException( "Parameter 'distinctMapTileOrientations' " +
+                                                    "must not contain any null elements." );
+            }
+        }
+
         this.mapUnits = mapUnits;
         this.mapTileEdges = mapTileEdges;
     }
