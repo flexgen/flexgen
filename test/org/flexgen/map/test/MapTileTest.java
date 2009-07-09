@@ -36,6 +36,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import org.flexgen.map.MapTile;
+import org.flexgen.map.MapTileEdge;
+import org.flexgen.map.MapTileEdgePosition;
 import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
@@ -444,5 +446,34 @@ public class MapTileTest
                                  "Parameter 'mapTileEdgePosition' cannot be null.",
                                  e.getMessage() );
         }
+    }
+
+    /**
+     * Verify that the getMapTileEdge() method returns the correct values for all four edges when
+     * the tile is in the upright orientation.
+     */
+    @Test
+    public void getMapTileEdge_upright()
+    {
+        MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
+        MapTile mapTile =
+                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges ),
+                             MapTileOrientation.UPRIGHT );
+
+        Assert.assertEquals( "Unexpected return value for \"top\".",
+                             mapTileEdges[ 0 ],
+                             mapTile.getMapTileEdge( MapTileEdgePosition.TOP ));
+
+        Assert.assertEquals( "Unexpected return value for \"right\".",
+                             mapTileEdges[ 1 ],
+                             mapTile.getMapTileEdge( MapTileEdgePosition.RIGHT ));
+
+        Assert.assertEquals( "Unexpected return value for \"bottom\".",
+                             mapTileEdges[ 2 ],
+                             mapTile.getMapTileEdge( MapTileEdgePosition.BOTTOM ));
+
+        Assert.assertEquals( "Unexpected return value for \"left\".",
+                             mapTileEdges[ 3 ],
+                             mapTile.getMapTileEdge( MapTileEdgePosition.LEFT ));
     }
 }

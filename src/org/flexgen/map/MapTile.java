@@ -145,6 +145,6 @@ public class MapTile
             throw new IllegalArgumentException( "Parameter 'mapTileEdgePosition' cannot be null." );
         }
 
-        return null;
+        return mapTileType.getMapTileEdge( mapTileEdgePosition );
     }
 }
