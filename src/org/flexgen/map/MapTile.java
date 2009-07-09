@@ -129,4 +129,22 @@ public class MapTile
             throw new IllegalStateException( "Unsupported orientation." );
         }
     }
+
+    /**
+     * Get the map tile edge at the specified position in this map tile.
+     *
+     * @param mapTileEdgePosition
+     *            Position of the map tile edge to get.
+     *
+     * @return The map unit at the specified coordinates in this map tile.
+     */
+    public MapTileEdge getMapTileEdge( MapTileEdgePosition mapTileEdgePosition )
+    {
+        if ( mapTileEdgePosition == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'mapTileEdgePosition' cannot be null." );
+        }
+
+        return null;
+    }
 }

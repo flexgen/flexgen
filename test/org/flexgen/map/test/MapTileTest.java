@@ -41,6 +41,7 @@ import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
 import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapTileEdgeHelper;
+import org.flexgen.test.helper.MapTileHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
 import org.flexgen.test.helper.MapUnitHelper;
 
@@ -421,5 +422,27 @@ public class MapTileTest
 
         Assert.assertEquals( "Unexpected return value for (3, 3).",
                              mapUnits[ 3 ][ 0 ], mapTile.getMapUnit( 3, 3 ));
+    }
+
+    /**
+     * Verify that the getMapTileEdge() method throws the correct exception when the
+     * mapTileEdgePosition parameter is null.
+     */
+    @Test
+    public void getMapTileEdge_mapTileEdgePosition_null()
+    {
+        MapTile mapTile = MapTileHelper.build();
+
+        try
+        {
+            mapTile.getMapTileEdge( null );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileEdgePosition' cannot be null.",
+                                 e.getMessage() );
+        }
     }
 }
