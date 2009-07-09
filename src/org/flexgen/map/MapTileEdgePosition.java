@@ -82,6 +82,26 @@ public class MapTileEdgePosition
     }
 
     /**
+     * Get the map tile edge position that corresponds with the specified index.
+     *
+     * @param index
+     *            Index of the map tile edge position to get.
+     *
+     * @return The map tile edge position that corresponds with the specified index.
+     */
+    public static MapTileEdgePosition get( int index )
+    {
+        switch ( index )
+        {
+            case 0  : return MapTileEdgePosition.TOP;
+            case 1  : return MapTileEdgePosition.RIGHT;
+            case 2  : return MapTileEdgePosition.BOTTOM;
+            case 3  : return MapTileEdgePosition.LEFT;
+            default : return null;
+        }
+    }
+
+    /**
      * Get the index of the map tile edge position. Used when looking up a specific map tile edge in
      * an array containing all of the map tile edges of a map tile.
      *
