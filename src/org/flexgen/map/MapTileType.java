@@ -133,6 +133,12 @@ public class MapTileType
             }
         }
 
+        if ( distinctMapTileOrientations == null )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'distinctMapTileOrientations' cannot be null." );
+        }
+
         this.mapUnits = mapUnits;
         this.mapTileEdges = mapTileEdges;
     }
