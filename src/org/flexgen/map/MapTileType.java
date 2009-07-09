@@ -45,6 +45,11 @@ public class MapTileType
     private final MapUnit[][] mapUnits;
 
     /**
+     * Array of map tile edges that define the four edges of this map tile type.
+     */
+    private final MapTileEdge[] mapTileEdges;
+
+    /**
      * Construct a map tile type.
      *
      * @param mapUnits
@@ -120,6 +125,7 @@ public class MapTileType
         }
 
         this.mapUnits = mapUnits;
+        this.mapTileEdges = mapTileEdges;
     }
 
     /**
@@ -186,6 +192,6 @@ public class MapTileType
             throw new IllegalArgumentException( "Parameter 'mapTileEdgePosition' cannot be null." );
         }
 
-        return null;
+        return mapTileEdges[ mapTileEdgePosition.getIndex() ];
     }
 }
