@@ -110,5 +110,11 @@ public class MapGenerator
             throw new IllegalArgumentException(
                     "Parameter 'maxX' must be greater than or equal to parameter 'minX'." );
         }
+
+        if ( maxY < minY )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'maxY' must be greater than or equal to parameter 'minY'." );
+        }
     }
 }
