@@ -82,7 +82,7 @@ public class MapTileType
      * @param weight
      *            The weight value used to determine the probability of selecting this tile type
      *            when generating a map. Larger values make this tile type more likely to be
-     *            selected. The probability of selecting this tile type is computing by taking the
+     *            selected. The probability of selecting this tile type is computed by taking the
      *            weight of this tile type and dividing it by the sum of the weight values for all
      *            of the tile types. Cannot be negative.
      */
