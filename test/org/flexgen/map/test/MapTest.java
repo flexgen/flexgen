@@ -37,6 +37,7 @@ import org.junit.Test;
 
 import org.flexgen.map.Map;
 import org.flexgen.map.MapTileType;
+import org.flexgen.test.helper.MapTileTypeHelper;
 
 /**
  * Test class for the Map class.
@@ -106,6 +107,35 @@ public class MapTest
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'mapTileTypes' must not contain any null elements.",
                                  e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the mapTileTypes parameter
+     * contains a duplicate element.
+     */
+    @Test
+    public void constructor_mapTileTypes_duplicateElement()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
+
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            mapTileType,
+            mapTileType
+        };
+
+        try
+        {
+            new Map( mapTileTypes );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                    "Unexpected message.",
+                    "Parameter 'mapTileTypes' must not contain any duplicate elements.",
+                    e.getMessage() );
         }
     }
 }

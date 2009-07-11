@@ -62,10 +62,21 @@ public class Map
 
         for ( int i = 0; i < mapTileTypes.length; i++ )
         {
+            // check for a null element
             if ( mapTileTypes[ i ] == null )
             {
                 throw new IllegalArgumentException(
                         "Parameter 'mapTileTypes' must not contain any null elements." );
+            }
+
+            // check for a duplicate element
+            for ( int j = i + 1; j < mapTileTypes.length; j++ )
+            {
+                if ( mapTileTypes[ i ].equals( mapTileTypes[ j ] ))
+                {
+                    throw new IllegalArgumentException(
+                            "Parameter 'mapTileTypes' must not contain any duplicate elements." );
+                }
             }
         }
     }
