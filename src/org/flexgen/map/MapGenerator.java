@@ -33,21 +33,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.flexgen.map;
 
 /**
- * Class representing a map. Contains a data structure linking map tiles to locations in the map.
- * Contains logic for randomly generating a map using a specified set of map tile types.
+ * Class containing logic for randomly generating a map using a specified set of map tile types.
  */
-public class Map
+public class MapGenerator
 {
     /**
-     * Construct a map.
+     * Construct a map generator.
      *
      * @param mapTileTypes
      *            Array of map tile types that define the available map tile types for randomly
      *            generating the map. Cannot be null. Must contain at least one element. No element
      *            can be null. Cannot contain two or more elements that are identical. All map tile
-     *            types in the array must be the same size
+     *            types in the array must be the same size.
      */
-    public Map( MapTileType[] mapTileTypes )
+    public MapGenerator( MapTileType[] mapTileTypes )
     {
         if ( mapTileTypes == null )
         {

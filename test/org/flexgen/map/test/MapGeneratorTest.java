@@ -35,14 +35,14 @@ package org.flexgen.map.test;
 import org.junit.Assert;
 import org.junit.Test;
 
-import org.flexgen.map.Map;
+import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTileType;
 import org.flexgen.test.helper.MapTileTypeHelper;
 
 /**
- * Test class for the Map class.
+ * Test class for the MapGenerator class.
  */
-public class MapTest
+public class MapGeneratorTest
 {
     /**
      * Verify that the constructor throws the correct exception when the mapTileTypes parameter is
@@ -53,7 +53,7 @@ public class MapTest
     {
         try
         {
-            new Map( null );
+            new MapGenerator( null );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -74,7 +74,7 @@ public class MapTest
 
         try
         {
-            new Map( mapTileTypes );
+            new MapGenerator( mapTileTypes );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -99,7 +99,7 @@ public class MapTest
 
         try
         {
-            new Map( mapTileTypes );
+            new MapGenerator( mapTileTypes );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -127,7 +127,7 @@ public class MapTest
 
         try
         {
-            new Map( mapTileTypes );
+            new MapGenerator( mapTileTypes );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -154,7 +154,7 @@ public class MapTest
 
         try
         {
-            new Map( mapTileTypes );
+            new MapGenerator( mapTileTypes );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
