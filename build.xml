@@ -73,23 +73,22 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </target>
 
     <target name="init">
-        <mkdir dir="${work.dir}"         />
-        <mkdir dir="${classes.dir}"      />
-        <mkdir dir="${test.classes.dir}" />
-        <mkdir dir="${jars.dir}"         />
-        <mkdir dir="${javadoc.dir}"      />
+        <mkdir dir="${work.dir}" />
     </target>
 
     <target name="compile" depends="init">
+        <mkdir dir="${classes.dir}" />
         <depend srcDir="${src.dir}" destDir="${classes.dir}" closure="true" />
         <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" source="1.5" />
     </target>
 
     <target name="jar" depends="compile">
+        <mkdir dir="${jars.dir}" />
         <jar jarfile="${jar.file}" basedir="${classes.dir}" />
     </target>
 
     <target name="test.compile" depends="jar">
+        <mkdir dir="${test.classes.dir}" />
         <depend srcDir="${test.src.dir}" destDir="${test.classes.dir}" closure="true"
                 classpathref="test.depend.classpath" />
         <javac srcdir="${test.src.dir}" destdir="${test.classes.dir}" debug="true" source="1.5"
@@ -117,6 +116,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </target>
 
     <target name="javadoc" depends="init">
+        <mkdir dir="${javadoc.dir}" />
         <javadoc destdir="${javadoc.dir}" access="private" classpathref="javadoc.classpath"
                  sourcepathref="javadoc.sourcepath" windowtitle="FlexGen JavaDoc Documentation" />
     </target>
