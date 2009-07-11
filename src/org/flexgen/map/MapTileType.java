@@ -178,6 +178,11 @@ public class MapTileType
             }
         }
 
+        if ( weight < 0 )
+        {
+            throw new IllegalArgumentException( "Parameter 'weight' cannot be less than 0." );
+        }
+
         this.mapUnits                    = mapUnits;
         this.mapTileEdges                = mapTileEdges;
         this.distinctMapTileOrientations = distinctMapTileOrientations;

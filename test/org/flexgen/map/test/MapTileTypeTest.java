@@ -394,6 +394,26 @@ public class MapTileTypeTest
     }
 
     /**
+     * Verify that the constructor throws the correct exception when the weight parameter is less
+     * than zero.
+     */
+    @Test
+    public void constructor_weight_tooSmall()
+    {
+        try
+        {
+            new MapTileType( MapUnitHelper.buildArray( 1 ), MapTileEdgeHelper.buildArray(),
+                             MapTileOrientationHelper.ALL_ORIENTATIONS, -1 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'weight' cannot be less than 0.", e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the getSize() method returns the correct value for a small array of map units.
      */
     @Test
