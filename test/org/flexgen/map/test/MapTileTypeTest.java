@@ -564,10 +564,10 @@ public class MapTileTypeTest
     }
 
     /**
-     * Verify that the getMapTileEdge() method returns the correct values.
+     * Verify that the getDistinctMapTileOrientations() method returns the correct values.
      */
     @Test
-    public void constructor_getDistinctMapTileOrientations()
+    public void getDistinctMapTileOrientations()
     {
         MapTileOrientation[] distinctMapTileOrientations = new MapTileOrientation[]
                 {
