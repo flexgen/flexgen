@@ -104,5 +104,11 @@ public class MapGenerator
                 }
             }
         }
+
+        if ( maxX < minX )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'maxX' must be greater than or equal to parameter 'minX'." );
+        }
     }
 }

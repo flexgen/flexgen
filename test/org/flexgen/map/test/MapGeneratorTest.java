@@ -165,4 +165,25 @@ public class MapGeneratorTest
                     e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the constructor throws the correct exception when the maxX parameter is less than
+     * the minX parameter.
+     */
+    @Test
+    public void constructor_maxX_tooSmall()
+    {
+        try
+        {
+            new MapGenerator( MapTileTypeHelper.buildArray(), 0, 0, -1, 0 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                    "Unexpected message.",
+                    "Parameter 'maxX' must be greater than or equal to parameter 'minX'.",
+                    e.getMessage() );
+        }
+    }
 }

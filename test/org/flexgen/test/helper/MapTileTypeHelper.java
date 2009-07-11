@@ -59,4 +59,17 @@ public class MapTileTypeHelper
         return new MapTileType( MapUnitHelper.buildArray( size ), MapTileEdgeHelper.buildArray(),
                                 MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
     }
+
+    /**
+     * Build an array of map tile types with default values.
+     *
+     * @return The generated map tile type array.
+     */
+    public static MapTileType[] buildArray()
+    {
+        return new MapTileType[]
+        {
+            MapTileTypeHelper.build( 1 )
+        };
+    }
 }
