@@ -83,4 +83,29 @@ public class MapTest
                                  e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the constructor throws the correct exception when the mapTileTypes parameter
+     * contains a null element.
+     */
+    @Test
+    public void constructor_mapTileTypes_nullElement()
+    {
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            null
+        };
+
+        try
+        {
+            new Map( mapTileTypes );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileTypes' must not contain any null elements.",
+                                 e.getMessage() );
+        }
+    }
 }
