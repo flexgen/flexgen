@@ -584,7 +584,7 @@ public class MapTileTypeTest
     }
 
     /**
-     * Verify that the getDistinctMapTileOrientations() method returns the correct values.
+     * Verify that the getDistinctMapTileOrientations() method returns the correct value.
      */
     @Test
     public void getDistinctMapTileOrientations()
