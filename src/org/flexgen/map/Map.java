@@ -60,6 +60,8 @@ public class Map
                     "Parameter 'mapTileTypes' must contain at least one element." );
         }
 
+        int size = 0;
+
         for ( int i = 0; i < mapTileTypes.length; i++ )
         {
             // check for a null element
@@ -76,6 +78,20 @@ public class Map
                 {
                     throw new IllegalArgumentException(
                             "Parameter 'mapTileTypes' must not contain any duplicate elements." );
+                }
+            }
+
+            // check to see that all elements are the same size
+            if ( size == 0 )
+            {
+                size = mapTileTypes[ i ].getSize();
+            }
+            else
+            {
+                if ( size != mapTileTypes[ i ].getSize() )
+                {
+                    throw new IllegalArgumentException( "All map tile types in parameter " +
+                                                        "'mapTileTypes' must be the same size." );
                 }
             }
         }

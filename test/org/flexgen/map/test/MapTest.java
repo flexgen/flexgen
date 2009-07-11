@@ -138,4 +138,31 @@ public class MapTest
                     e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the constructor throws the correct exception when the mapTileTypes parameter
+     * contains map tile types with different sizes.
+     */
+    @Test
+    public void constructor_mapTileTypes_differentSize()
+    {
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            MapTileTypeHelper.build( 1 ),
+            MapTileTypeHelper.build( 2 )
+        };
+
+        try
+        {
+            new Map( mapTileTypes );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                    "Unexpected message.",
+                    "All map tile types in parameter 'mapTileTypes' must be the same size.",
+                    e.getMessage() );
+        }
+    }
 }
