@@ -53,7 +53,7 @@ public class MapGeneratorTest
     {
         try
         {
-            new MapGenerator( null );
+            new MapGenerator( null, 0, 0, 0, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -74,7 +74,7 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( mapTileTypes );
+            new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -99,7 +99,7 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( mapTileTypes );
+            new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -127,7 +127,7 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( mapTileTypes );
+            new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -154,7 +154,7 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( mapTileTypes );
+            new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )

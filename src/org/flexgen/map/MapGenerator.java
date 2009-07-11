@@ -45,8 +45,18 @@ public class MapGenerator
      *            generating the map. Cannot be null. Must contain at least one element. No element
      *            can be null. Cannot contain two or more elements that are identical. All map tile
      *            types in the array must be the same size.
+     * @param minX
+     *            Smallest possible X coordinate for map tiles in the map.
+     * @param minY
+     *            Smallest possible Y coordinate for map tiles in the map.
+     * @param maxX
+     *            Largest possible X coordinate for map tiles in the map. Must be greater than or
+     *            equal to minX.
+     * @param maxY
+     *            Largest possible Y coordinate for map tiles in the map. Must be greater than or
+     *            equal to minY.
      */
-    public MapGenerator( MapTileType[] mapTileTypes )
+    public MapGenerator( MapTileType[] mapTileTypes, int minX, int minY, int maxX, int maxY )
     {
         if ( mapTileTypes == null )
         {
