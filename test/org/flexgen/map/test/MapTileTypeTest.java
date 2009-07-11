@@ -602,4 +602,19 @@ public class MapTileTypeTest
         Assert.assertArrayEquals( "Unexpected result.", distinctMapTileOrientations,
                                   mapTileType.getDistinctMapTileOrientations() );
     }
+
+    /**
+     * Verify that the getWeight() method returns the correct value.
+     */
+    @Test
+    public void getWeight()
+    {
+        int weight = GeneralHelper.getRandom().nextInt( 1000 );
+
+        MapTileType mapTileType = new MapTileType(
+                MapUnitHelper.buildArray( 1 ), MapTileEdgeHelper.buildArray(),
+                MapTileOrientationHelper.ALL_ORIENTATIONS, weight );
+
+        Assert.assertEquals( "Unexpected result.", weight, mapTileType.getWeight() );
+    }
 }

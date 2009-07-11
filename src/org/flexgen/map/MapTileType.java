@@ -56,6 +56,12 @@ public class MapTileType
     private final MapTileOrientation[] distinctMapTileOrientations;
 
     /**
+     * The weight value used to determine the probability of selecting this tile type when
+     * generating a map.
+     */
+    private final int weight;
+
+    /**
      * Construct a map tile type.
      *
      * @param mapUnits
@@ -186,6 +192,7 @@ public class MapTileType
         this.mapUnits                    = mapUnits;
         this.mapTileEdges                = mapTileEdges;
         this.distinctMapTileOrientations = distinctMapTileOrientations;
+        this.weight                      = weight;
     }
 
     /**
@@ -265,5 +272,17 @@ public class MapTileType
     public MapTileOrientation[] getDistinctMapTileOrientations()
     {
         return distinctMapTileOrientations;
+    }
+
+    /**
+     * Get the weight value used to determine the probability of selecting this tile type when
+     * generating a map.
+     *
+     * @return The weight value used to determine the probability of selecting this tile type when
+     *         generating a map.
+     */
+    public int getWeight()
+    {
+        return weight;
     }
 }
