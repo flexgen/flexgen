@@ -53,5 +53,11 @@ public class Map
         {
             throw new IllegalArgumentException( "Parameter 'mapTileTypes' cannot be null." );
         }
+
+        if ( mapTileTypes.length == 0 )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'mapTileTypes' must contain at least one element." );
+        }
     }
 }

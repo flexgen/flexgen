@@ -36,6 +36,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import org.flexgen.map.Map;
+import org.flexgen.map.MapTileType;
 
 /**
  * Test class for the Map class.
@@ -57,6 +58,28 @@ public class MapTest
         catch ( IllegalArgumentException e )
         {
             Assert.assertEquals( "Unexpected message.", "Parameter 'mapTileTypes' cannot be null.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the mapTileTypes parameter is
+     * an empty array.
+     */
+    @Test
+    public void constructor_mapTileTypes_emptyArray()
+    {
+        MapTileType[] mapTileTypes = new MapTileType[] {};
+
+        try
+        {
+            new Map( mapTileTypes );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileTypes' must contain at least one element.",
                                  e.getMessage() );
         }
     }
