@@ -73,9 +73,15 @@ public class MapTileType
      *            possible for this map tile type. Cannot be null. Must contain at lease one
      *            element. No element can be null. Cannot contain two or more elements that are
      *            identical.
+     * @param weight
+     *            The weight value used to determine the probability of selecting this tile type
+     *            when generating a map. Larger values make this tile type more likely to be
+     *            selected. The probability of selecting this tile type is computing by taking the
+     *            weight of this tile type and dividing it by the sum of the weight values for all
+     *            of the tile types. Cannot be negative.
      */
     public MapTileType( MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges,
-                        MapTileOrientation[] distinctMapTileOrientations )
+                        MapTileOrientation[] distinctMapTileOrientations, int weight )
     {
         if ( mapUnits == null )
         {
