@@ -48,6 +48,11 @@ public class MapGenerator
     private final int minY;
 
     /**
+     * Largest possible X coordinate for map tiles in the map.
+     */
+    private final int maxX;
+
+    /**
      * Construct a map generator.
      *
      * @param mapTileTypes
@@ -129,6 +134,7 @@ public class MapGenerator
 
         this.minX = minX;
         this.minY = minY;
+        this.maxX = maxX;
     }
 
     /**
@@ -149,5 +155,15 @@ public class MapGenerator
     public int getMinY()
     {
         return minY;
+    }
+
+    /**
+     * Get the largest possible X coordinate for map tiles in the map.
+     *
+     * @return The largest possible X coordinate for map tiles in the map.
+     */
+    public int getMaxX()
+    {
+        return maxX;
     }
 }

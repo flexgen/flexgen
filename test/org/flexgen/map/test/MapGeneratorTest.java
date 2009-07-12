@@ -232,4 +232,16 @@ public class MapGeneratorTest
                 new MapGenerator( MapTileTypeHelper.buildArray(), 0, value, 5000, 5000 );
         Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMinY() );
     }
+
+    /**
+     * Verify that the getMaxX() method returns the correct value.
+     */
+    @Test
+    public void getMaxX()
+    {
+        int value = GeneralHelper.getRandom().nextInt( 1000 );
+        MapGenerator mapGenerator =
+                new MapGenerator( MapTileTypeHelper.buildArray(), 0, 0, value, 5000 );
+        Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMaxX() );
+    }
 }
