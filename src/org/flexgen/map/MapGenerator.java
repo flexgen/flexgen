@@ -43,6 +43,11 @@ public class MapGenerator
     private final int minX;
 
     /**
+     * Smallest possible Y coordinate for map tiles in the map.
+     */
+    private final int minY;
+
+    /**
      * Construct a map generator.
      *
      * @param mapTileTypes
@@ -123,6 +128,7 @@ public class MapGenerator
         }
 
         this.minX = minX;
+        this.minY = minY;
     }
 
     /**
@@ -133,5 +139,15 @@ public class MapGenerator
     public int getMinX()
     {
         return minX;
+    }
+
+    /**
+     * Get the smallest possible Y coordinate for map tiles in the map.
+     *
+     * @return The smallest possible Y coordinate for map tiles in the map.
+     */
+    public int getMinY()
+    {
+        return minY;
     }
 }

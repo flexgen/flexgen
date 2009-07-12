@@ -220,4 +220,16 @@ public class MapGeneratorTest
                 new MapGenerator( MapTileTypeHelper.buildArray(), value, 0, 5000, 5000 );
         Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMinX() );
     }
+
+    /**
+     * Verify that the getMinY() method returns the correct value.
+     */
+    @Test
+    public void getMinY()
+    {
+        int value = GeneralHelper.getRandom().nextInt( 1000 );
+        MapGenerator mapGenerator =
+                new MapGenerator( MapTileTypeHelper.buildArray(), 0, value, 5000, 5000 );
+        Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMinY() );
+    }
 }
