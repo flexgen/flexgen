@@ -38,6 +38,11 @@ package org.flexgen.map;
 public class MapGenerator
 {
     /**
+     * Smallest possible X coordinate for map tiles in the map.
+     */
+    private final int minX;
+
+    /**
      * Construct a map generator.
      *
      * @param mapTileTypes
@@ -116,5 +121,17 @@ public class MapGenerator
             throw new IllegalArgumentException(
                     "Parameter 'maxY' must be greater than or equal to parameter 'minY'." );
         }
+
+        this.minX = minX;
+    }
+
+    /**
+     * Get the smallest possible X coordinate for map tiles in the map.
+     *
+     * @return The smallest possible X coordinate for map tiles in the map.
+     */
+    public int getMinX()
+    {
+        return minX;
     }
 }

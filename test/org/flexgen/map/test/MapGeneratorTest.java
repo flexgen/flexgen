@@ -37,6 +37,7 @@ import org.junit.Test;
 
 import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTileType;
+import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
 
 /**
@@ -206,5 +207,17 @@ public class MapGeneratorTest
                     "Parameter 'maxY' must be greater than or equal to parameter 'minY'.",
                     e.getMessage() );
         }
+    }
+
+    /**
+     * Verify that the getMinX() method returns the correct value.
+     */
+    @Test
+    public void getMinX()
+    {
+        int value = GeneralHelper.getRandom().nextInt( 1000 );
+        MapGenerator mapGenerator =
+                new MapGenerator( MapTileTypeHelper.buildArray(), value, 0, 5000, 5000 );
+        Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMinX() );
     }
 }
