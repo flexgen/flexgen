@@ -46,7 +46,7 @@ public class MapUnit
      * Construct a map unit.
      *
      * @param name
-     *            Name of the map unit.
+     *            Name of the map unit. Cannot be null.
      */
     public MapUnit( String name )
     {

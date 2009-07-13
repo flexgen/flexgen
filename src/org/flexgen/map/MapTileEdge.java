@@ -46,7 +46,7 @@ public class MapTileEdge
      * Construct a map tile edge.
      *
      * @param name
-     *            Name of the map tile edge.
+     *            Name of the map tile edge. Cannot be null.
      */
     public MapTileEdge( String name )
     {
