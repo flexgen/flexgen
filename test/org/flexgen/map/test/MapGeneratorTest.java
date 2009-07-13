@@ -36,8 +36,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import org.flexgen.map.MapGenerator;
+import org.flexgen.map.MapTileLocation;
 import org.flexgen.map.MapTileType;
 import org.flexgen.test.helper.GeneralHelper;
+import org.flexgen.test.helper.MapGeneratorHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
 
 /**
@@ -255,5 +257,18 @@ public class MapGeneratorTest
         MapGenerator mapGenerator =
                 new MapGenerator( MapTileTypeHelper.buildArray(), 0, 0, 5000, value );
         Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMaxY() );
+    }
+
+    /**
+     * Verify that the getMapTile() method returns null when specifying a location where there is no
+     * map tile.
+     */
+    @Test
+    public void getMapTile_null()
+    {
+        MapGenerator mapGenerator = MapGeneratorHelper.build();
+        MapTileLocation mapTileLocation = new MapTileLocation( 0, 0 );
+        Assert.assertEquals( "Unexpected return value.", null,
+                             mapGenerator.getMapTile( mapTileLocation ));
     }
 }

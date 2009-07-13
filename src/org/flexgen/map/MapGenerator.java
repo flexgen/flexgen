@@ -182,4 +182,17 @@ public class MapGenerator
     {
         return maxY;
     }
+
+    /**
+     * Get the map tile at a specified location.
+     *
+     * @param mapTileLocation
+     *            Location for which to get the map tile.
+     *
+     * @return The map tile at a specified location.
+     */
+    public MapTile getMapTile( MapTileLocation mapTileLocation )
+    {
+        return null;
+    }
 }
