@@ -64,6 +64,8 @@ public class MapTileType
     /**
      * Construct a map tile type.
      *
+     * @param name
+     *            Name of the map tile type. Cannot be null.
      * @param mapUnits
      *            Two-dimensional array of map units that define the map tile type. Cannot be null.
      *            Must contain at least one row. Each row must contain the same number of elements.
@@ -86,7 +88,7 @@ public class MapTileType
      *            weight of this tile type and dividing it by the sum of the weight values for all
      *            of the tile types. Cannot be negative.
      */
-    public MapTileType( MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges,
+    public MapTileType( String name, MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges,
                         MapTileOrientation[] distinctMapTileOrientations, int weight )
     {
         if ( mapUnits == null )

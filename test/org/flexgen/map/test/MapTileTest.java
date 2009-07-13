@@ -193,7 +193,8 @@ public class MapTileTest
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
         MapTile mapTile =
-                new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray(),
+                new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
+                                              mapUnits, MapTileEdgeHelper.buildArray(),
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.UPRIGHT );
 
@@ -256,7 +257,8 @@ public class MapTileTest
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
         MapTile mapTile =
-                new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray(),
+                new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
+                                              mapUnits, MapTileEdgeHelper.buildArray(),
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.CLOCKWISE );
 
@@ -319,7 +321,8 @@ public class MapTileTest
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
         MapTile mapTile =
-                new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray(),
+                new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
+                                              mapUnits, MapTileEdgeHelper.buildArray(),
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.FLIPPED );
 
@@ -382,7 +385,8 @@ public class MapTileTest
         int size = 4;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
         MapTile mapTile =
-                new MapTile( new MapTileType( mapUnits, MapTileEdgeHelper.buildArray(),
+                new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
+                                              mapUnits, MapTileEdgeHelper.buildArray(),
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.COUNTER_CLOCKWISE );
 
@@ -466,7 +470,8 @@ public class MapTileTest
     {
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
-                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
+                                              MapUnitHelper.buildArray( 1 ), mapTileEdges,
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.UPRIGHT );
 
@@ -496,7 +501,8 @@ public class MapTileTest
     {
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
-                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
+                                              MapUnitHelper.buildArray( 1 ), mapTileEdges,
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.CLOCKWISE );
 
@@ -526,7 +532,8 @@ public class MapTileTest
     {
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
-                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
+                                              MapUnitHelper.buildArray( 1 ), mapTileEdges,
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.FLIPPED );
 
@@ -556,7 +563,8 @@ public class MapTileTest
     {
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
-                new MapTile( new MapTileType( MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
+                                              MapUnitHelper.buildArray( 1 ), mapTileEdges,
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.COUNTER_CLOCKWISE );
 
