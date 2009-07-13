@@ -63,6 +63,17 @@ public class MapTileEdgeTest
     }
 
     /**
+     * Verify that the toString() method returns the correct value.
+     */
+    @Test
+    public void toStringTest()
+    {
+        String name = GeneralHelper.getUniqueString();
+        MapTileEdge mapTileEdge = new MapTileEdge( name );
+        Assert.assertEquals( "Unexpected return value.", name, mapTileEdge.toString() );
+    }
+
+    /**
      * Verify that the equals() method returns the correct result when called with a null reference.
      */
     @Test
