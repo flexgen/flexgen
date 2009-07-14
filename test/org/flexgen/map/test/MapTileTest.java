@@ -584,4 +584,20 @@ public class MapTileTest
                              mapTileEdges[ 0 ],
                              mapTile.getMapTileEdge( MapTileEdgePosition.LEFT ));
     }
+
+    /**
+     * Verify that the toString() method returns the correct value.
+     */
+    @Test
+    public void toStringTest()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
+        MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
+        MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
+
+        Assert.assertEquals(
+                "Unexpected return value.",
+                "{ " + mapTileType.toString() + ", " + mapTileOrientation.toString() + " }",
+                mapTile.toString() );
+    }
 }

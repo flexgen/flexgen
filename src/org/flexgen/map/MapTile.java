@@ -170,4 +170,14 @@ public class MapTile
 
         return mapTileType.getMapTileEdge( MapTileEdgePosition.get( index ));
     }
+
+    /**
+     * Get the string representation of this object.
+     *
+     * @return The string representation of this object.
+     */
+    public String toString()
+    {
+        return "{ " + mapTileType.toString() + ", " + mapTileOrientation.toString() + " }";
+    }
 }

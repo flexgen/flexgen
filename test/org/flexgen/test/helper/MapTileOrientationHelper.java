@@ -56,4 +56,14 @@ public class MapTileOrientationHelper
     private MapTileOrientationHelper()
     {
     }
+
+    /**
+     * Get a random map tile orientation.
+     *
+     * @return A random map tile orientation.
+     */
+    public static MapTileOrientation getRandomOrientation()
+    {
+        return MapTileOrientationHelper.ALL_ORIENTATIONS[ GeneralHelper.getRandom().nextInt( 4 ) ];
+    }
 }
