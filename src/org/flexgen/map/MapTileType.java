@@ -91,6 +91,11 @@ public class MapTileType
     public MapTileType( String name, MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges,
                         MapTileOrientation[] distinctMapTileOrientations, int weight )
     {
+        if ( name == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'name' cannot be null." );
+        }
+
         if ( mapUnits == null )
         {
             throw new IllegalArgumentException( "Parameter 'mapUnits' cannot be null." );

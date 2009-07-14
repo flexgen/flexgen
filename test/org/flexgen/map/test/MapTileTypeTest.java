@@ -52,6 +52,25 @@ import org.flexgen.test.helper.MapUnitHelper;
 public class MapTileTypeTest
 {
     /**
+     * Verify that the constructor throws the correct exception when the name parameter is null.
+     */
+    @Test
+    public void constructor_name_null()
+    {
+        try
+        {
+            new MapTileType( null, MapUnitHelper.buildArray( 1 ), MapTileEdgeHelper.buildArray(),
+                             MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.", "Parameter 'name' cannot be null.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the constructor throws the correct exception when the mapUnits parameter is null.
      */
     @Test
