@@ -54,6 +54,6 @@ public class MapTileHelper
      */
     public static MapTile build()
     {
-        return new MapTile( MapTileTypeHelper.build( 1 ), MapTileOrientation.UPRIGHT );
+        return new MapTile( MapTileTypeHelper.build(), MapTileOrientation.UPRIGHT );
     }
 }

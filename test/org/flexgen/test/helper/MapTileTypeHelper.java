@@ -62,6 +62,16 @@ public class MapTileTypeHelper
     }
 
     /**
+     * Build a map tile type with default values.
+     *
+     * @return The generated map tile type.
+     */
+    public static MapTileType build()
+    {
+        return MapTileTypeHelper.build( 1 );
+    }
+
+    /**
      * Build an array of map tile types with default values.
      *
      * @return The generated map tile type array.
@@ -70,7 +80,7 @@ public class MapTileTypeHelper
     {
         return new MapTileType[]
         {
-            MapTileTypeHelper.build( 1 )
+            MapTileTypeHelper.build()
         };
     }
 }

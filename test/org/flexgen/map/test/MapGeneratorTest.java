@@ -120,7 +120,7 @@ public class MapGeneratorTest
     @Test
     public void constructor_mapTileTypes_duplicateElement()
     {
-        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
+        MapTileType mapTileType = MapTileTypeHelper.build();
 
         MapTileType[] mapTileTypes = new MapTileType[]
         {

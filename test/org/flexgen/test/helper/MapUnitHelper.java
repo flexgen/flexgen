@@ -78,4 +78,14 @@ public class MapUnitHelper
 
         return mapUnits;
     }
+
+    /**
+     * Build a two-dimensional array of map units with default values.
+     *
+     * @return The generated map unit array.
+     */
+    public static MapUnit[][] buildArray()
+    {
+        return MapUnitHelper.buildArray( 1 );
+    }
 }

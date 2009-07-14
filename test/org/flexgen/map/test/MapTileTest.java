@@ -81,7 +81,7 @@ public class MapTileTest
     {
         try
         {
-            new MapTile( MapTileTypeHelper.build( 1 ), null );
+            new MapTile( MapTileTypeHelper.build(), null );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -471,7 +471,7 @@ public class MapTileTest
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
                 new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
-                                              MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                                              MapUnitHelper.buildArray(), mapTileEdges,
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.UPRIGHT );
 
@@ -502,7 +502,7 @@ public class MapTileTest
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
                 new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
-                                              MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                                              MapUnitHelper.buildArray(), mapTileEdges,
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.CLOCKWISE );
 
@@ -533,7 +533,7 @@ public class MapTileTest
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
                 new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
-                                              MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                                              MapUnitHelper.buildArray(), mapTileEdges,
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.FLIPPED );
 
@@ -564,7 +564,7 @@ public class MapTileTest
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
         MapTile mapTile =
                 new MapTile( new MapTileType( GeneralHelper.getUniqueString(),
-                                              MapUnitHelper.buildArray( 1 ), mapTileEdges,
+                                              MapUnitHelper.buildArray(), mapTileEdges,
                                               MapTileOrientationHelper.ALL_ORIENTATIONS, 0 ),
                              MapTileOrientation.COUNTER_CLOCKWISE );
 
@@ -591,7 +591,7 @@ public class MapTileTest
     @Test
     public void toStringTest()
     {
-        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
+        MapTileType mapTileType = MapTileTypeHelper.build();
         MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
         MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
 
@@ -635,8 +635,8 @@ public class MapTileTest
     @Test
     public void equals_differentMapTileType()
     {
-        MapTile mapTile1 = new MapTile( MapTileTypeHelper.build( 1 ), MapTileOrientation.UPRIGHT );
-        MapTile mapTile2 = new MapTile( MapTileTypeHelper.build( 1 ), MapTileOrientation.UPRIGHT );
+        MapTile mapTile1 = new MapTile( MapTileTypeHelper.build(), MapTileOrientation.UPRIGHT );
+        MapTile mapTile2 = new MapTile( MapTileTypeHelper.build(), MapTileOrientation.UPRIGHT );
 
         boolean result = mapTile1.equals( mapTile2 );
         Assert.assertEquals( "Unexpected result.", false, result );
@@ -649,7 +649,7 @@ public class MapTileTest
     @Test
     public void equals_differentMapTileOrientation()
     {
-        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
+        MapTileType mapTileType = MapTileTypeHelper.build();
         MapTile mapTile1 = new MapTile( mapTileType, MapTileOrientation.UPRIGHT );
         MapTile mapTile2 = new MapTile( mapTileType, MapTileOrientation.FLIPPED );
 
@@ -664,7 +664,7 @@ public class MapTileTest
     @Test
     public void equals_identical()
     {
-        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
+        MapTileType mapTileType = MapTileTypeHelper.build();
         MapTile mapTile1 = new MapTile( mapTileType, MapTileOrientation.UPRIGHT );
         MapTile mapTile2 = new MapTile( mapTileType, MapTileOrientation.UPRIGHT );
 
@@ -678,7 +678,7 @@ public class MapTileTest
     @Test
     public void hashCodeTest()
     {
-        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
+        MapTileType mapTileType = MapTileTypeHelper.build();
         MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
         MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
 
