@@ -667,4 +667,66 @@ public class MapTileTypeTest
                 MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
         Assert.assertEquals( "Unexpected return value.", name, mapTileType.toString() );
     }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a null reference.
+     */
+    @Test
+    public void equals_null()
+    {
+        MapTileType mapTileType1 = MapTileTypeHelper.build( 1 );
+        MapTileType mapTileType2 = null;
+
+        boolean result = mapTileType1.equals( mapTileType2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with the wrong type of
+     * object.
+     */
+    @Test
+    public void equals_wrongType()
+    {
+        MapTileType mapTileType1 = MapTileTypeHelper.build( 1 );
+        Object      mapTileType2 = new Object();
+
+        boolean result = mapTileType1.equals( mapTileType2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a map tile type
+     * with a different name.
+     */
+    @Test
+    public void equals_differentName()
+    {
+        MapTileType mapTileType1 = MapTileTypeHelper.build( 1 );
+        MapTileType mapTileType2 = MapTileTypeHelper.build( 1 );
+
+        boolean result = mapTileType1.equals( mapTileType2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a map tile type
+     * with an identical name.
+     */
+    @Test
+    public void equals_identicalName()
+    {
+        String name = GeneralHelper.getUniqueString();
+
+        MapTileType mapTileType1 = new MapTileType( name, MapUnitHelper.buildArray( 1 ),
+                                                    MapTileEdgeHelper.buildArray(),
+                                                    MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+
+        MapTileType mapTileType2 = new MapTileType( name, MapUnitHelper.buildArray( 1 ),
+                                                    MapTileEdgeHelper.buildArray(),
+                                                    MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+
+        boolean result = mapTileType1.equals( mapTileType2 );
+        Assert.assertEquals( "Unexpected result.", true, result );
+    }
 }

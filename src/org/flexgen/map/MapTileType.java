@@ -308,4 +308,33 @@ public class MapTileType
     {
         return name;
     }
+
+    /**
+     * Determines whether or not this map tile type is equal to another map tile type.
+     *
+     * @param obj
+     *            The map tile type against which to compare this map tile type.
+     *
+     * @return True if the two map tile types are equal, false otherwise.
+     */
+    public boolean equals( Object obj )
+    {
+        if ( ! ( obj instanceof MapTileType ))
+        {
+            return false;
+        }
+
+        MapTileType mapTileType = (MapTileType) obj;
+        return this.name.equals( mapTileType.name );
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return A hash code value for this object.
+     */
+    public int hashCode()
+    {
+        throw new UnsupportedOperationException( "Not written yet." );
+    }
 }
