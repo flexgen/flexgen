@@ -335,6 +335,6 @@ public class MapTileType
      */
     public int hashCode()
     {
-        throw new UnsupportedOperationException( "Not written yet." );
+        return name.hashCode();
     }
 }
