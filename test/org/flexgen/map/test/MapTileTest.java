@@ -671,4 +671,19 @@ public class MapTileTest
         boolean result = mapTile1.equals( mapTile2 );
         Assert.assertEquals( "Unexpected result.", true, result );
     }
+
+    /**
+     * Verify that the hashCode() method returns the correct value.
+     */
+    @Test
+    public void hashCodeTest()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
+        MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
+        MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
+
+        Assert.assertEquals( "Unexpected return value.",
+                             mapTileType.hashCode() ^ mapTileOrientation.hashCode(),
+                             mapTile.hashCode() );
+    }
 }

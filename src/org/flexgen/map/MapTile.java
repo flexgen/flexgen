@@ -218,6 +218,6 @@ public class MapTile
      */
     public int hashCode()
     {
-        throw new UnsupportedOperationException( "Not written yet." );
+        return mapTileType.hashCode() ^ mapTileOrientation.hashCode();
     }
 }
