@@ -78,4 +78,73 @@ public class MapTileLocationTest
         Assert.assertEquals( "Unexpected return value.", "{ " + x + ", " + y + " }",
                              mapTileLocation.toString() );
     }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a null reference.
+     */
+    @Test
+    public void equals_null()
+    {
+        MapTileLocation mapTileLocation1 = new MapTileLocation( 0, 0 );
+        MapTileLocation mapTileLocation2 = null;
+
+        boolean result = mapTileLocation1.equals( mapTileLocation2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with the wrong type of
+     * object.
+     */
+    @Test
+    public void equals_wrongType()
+    {
+        MapTileLocation mapTileLocation1 = new MapTileLocation( 0, 0 );
+        Object          mapTileLocation2 = new Object();
+
+        boolean result = mapTileLocation1.equals( mapTileLocation2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a map tile
+     * location with a different X coordinate.
+     */
+    @Test
+    public void equals_differentX()
+    {
+        MapTileLocation mapTileLocation1 = new MapTileLocation( 0, 0 );
+        MapTileLocation mapTileLocation2 = new MapTileLocation( 1, 0 );
+
+        boolean result = mapTileLocation1.equals( mapTileLocation2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a map tile
+     * location with a different Y coordinate.
+     */
+    @Test
+    public void equals_differentY()
+    {
+        MapTileLocation mapTileLocation1 = new MapTileLocation( 0, 0 );
+        MapTileLocation mapTileLocation2 = new MapTileLocation( 0, 1 );
+
+        boolean result = mapTileLocation1.equals( mapTileLocation2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with an identical map
+     * tile location.
+     */
+    @Test
+    public void equals_identical()
+    {
+        MapTileLocation mapTileLocation1 = new MapTileLocation( 0, 0 );
+        MapTileLocation mapTileLocation2 = new MapTileLocation( 0, 0 );
+
+        boolean result = mapTileLocation1.equals( mapTileLocation2 );
+        Assert.assertEquals( "Unexpected result.", true, result );
+    }
 }

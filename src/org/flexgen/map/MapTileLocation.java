@@ -90,4 +90,44 @@ public class MapTileLocation
     {
         return "{ " + x + ", " + y + " }";
     }
+
+    /**
+     * Determines whether or not this map tile location is equal to another map tile location.
+     *
+     * @param obj
+     *            The map tile location against which to compare this map tile location.
+     *
+     * @return True if the two map tile locations are equal, false otherwise.
+     */
+    public boolean equals( Object obj )
+    {
+        if ( ! ( obj instanceof MapTileLocation ))
+        {
+            return false;
+        }
+
+        MapTileLocation mapTileLocation = (MapTileLocation) obj;
+
+        if ( this.x != mapTileLocation.x )
+        {
+            return false;
+        }
+
+        if ( this.y != mapTileLocation.y )
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return A hash code value for this object.
+     */
+    public int hashCode()
+    {
+        throw new UnsupportedOperationException( "Not written yet." );
+    }
 }
