@@ -43,12 +43,12 @@ public class MapTileOrientationHelper
      * Array of map tile orientations containing all of the orientations.
      */
     public static final MapTileOrientation[] ALL_ORIENTATIONS = new MapTileOrientation[]
-            {
-                MapTileOrientation.UPRIGHT,
-                MapTileOrientation.CLOCKWISE,
-                MapTileOrientation.FLIPPED,
-                MapTileOrientation.COUNTER_CLOCKWISE
-            };
+    {
+        MapTileOrientation.UPRIGHT,
+        MapTileOrientation.CLOCKWISE,
+        MapTileOrientation.FLIPPED,
+        MapTileOrientation.COUNTER_CLOCKWISE
+    };
 
     /**
      * Private constructor to keep this class from being instantiated since all methods are static.
