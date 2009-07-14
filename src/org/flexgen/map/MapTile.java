@@ -180,4 +180,44 @@ public class MapTile
     {
         return "{ " + mapTileType.toString() + ", " + mapTileOrientation.toString() + " }";
     }
+
+    /**
+     * Determines whether or not this map tile is equal to another map tile.
+     *
+     * @param obj
+     *            The map tile against which to compare this map tile.
+     *
+     * @return True if the two map tiles are equal, false otherwise.
+     */
+    public boolean equals( Object obj )
+    {
+        if ( ! ( obj instanceof MapTile ))
+        {
+            return false;
+        }
+
+        MapTile mapTile = (MapTile) obj;
+
+        if ( ! this.mapTileType.equals( mapTile.mapTileType ))
+        {
+            return false;
+        }
+
+        if ( ! this.mapTileOrientation.equals( mapTile.mapTileOrientation ))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return A hash code value for this object.
+     */
+    public int hashCode()
+    {
+        throw new UnsupportedOperationException( "Not written yet." );
+    }
 }

@@ -600,4 +600,75 @@ public class MapTileTest
                 "{ " + mapTileType.toString() + ", " + mapTileOrientation.toString() + " }",
                 mapTile.toString() );
     }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a null reference.
+     */
+    @Test
+    public void equals_null()
+    {
+        MapTile mapTile1 = MapTileHelper.build();
+        MapTile mapTile2 = null;
+
+        boolean result = mapTile1.equals( mapTile2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with the wrong type of
+     * object.
+     */
+    @Test
+    public void equals_wrongType()
+    {
+        MapTile mapTile1 = MapTileHelper.build();
+        Object  mapTile2 = new Object();
+
+        boolean result = mapTile1.equals( mapTile2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a map tile with a
+     * different map tile type.
+     */
+    @Test
+    public void equals_differentMapTileType()
+    {
+        MapTile mapTile1 = new MapTile( MapTileTypeHelper.build( 1 ), MapTileOrientation.UPRIGHT );
+        MapTile mapTile2 = new MapTile( MapTileTypeHelper.build( 1 ), MapTileOrientation.UPRIGHT );
+
+        boolean result = mapTile1.equals( mapTile2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a map tile with a
+     * different map tile orientation.
+     */
+    @Test
+    public void equals_differentMapTileOrientation()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
+        MapTile mapTile1 = new MapTile( mapTileType, MapTileOrientation.UPRIGHT );
+        MapTile mapTile2 = new MapTile( mapTileType, MapTileOrientation.FLIPPED );
+
+        boolean result = mapTile1.equals( mapTile2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with an identical map
+     * tile.
+     */
+    @Test
+    public void equals_identical()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build( 1 );
+        MapTile mapTile1 = new MapTile( mapTileType, MapTileOrientation.UPRIGHT );
+        MapTile mapTile2 = new MapTile( mapTileType, MapTileOrientation.UPRIGHT );
+
+        boolean result = mapTile1.equals( mapTile2 );
+        Assert.assertEquals( "Unexpected result.", true, result );
+    }
 }
