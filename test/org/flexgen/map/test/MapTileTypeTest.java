@@ -654,4 +654,17 @@ public class MapTileTypeTest
 
         Assert.assertEquals( "Unexpected result.", weight, mapTileType.getWeight() );
     }
+
+    /**
+     * Verify that the toString() method returns the correct value.
+     */
+    @Test
+    public void toStringTest()
+    {
+        String name = GeneralHelper.getUniqueString();
+        MapTileType mapTileType = new MapTileType(
+                name, MapUnitHelper.buildArray( 1 ), MapTileEdgeHelper.buildArray(),
+                MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+        Assert.assertEquals( "Unexpected return value.", name, mapTileType.toString() );
+    }
 }

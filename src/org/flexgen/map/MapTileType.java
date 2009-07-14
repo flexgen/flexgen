@@ -40,6 +40,11 @@ package org.flexgen.map;
 public class MapTileType
 {
     /**
+     * Name of the map tile type.
+     */
+    private final String name;
+
+    /**
      * Two-dimensional array of map units that define the map tile type.
      */
     private final MapUnit[][] mapUnits;
@@ -196,6 +201,7 @@ public class MapTileType
             throw new IllegalArgumentException( "Parameter 'weight' cannot be less than 0." );
         }
 
+        this.name                        = name;
         this.mapUnits                    = mapUnits;
         this.mapTileEdges                = mapTileEdges;
         this.distinctMapTileOrientations = distinctMapTileOrientations;
@@ -291,5 +297,15 @@ public class MapTileType
     public int getWeight()
     {
         return weight;
+    }
+
+    /**
+     * Get the string representation of this object.
+     *
+     * @return The string representation of this object.
+     */
+    public String toString()
+    {
+        return name;
     }
 }
