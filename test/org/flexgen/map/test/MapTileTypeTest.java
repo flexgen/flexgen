@@ -377,9 +377,9 @@ public class MapTileTypeTest
     public void constructor_distinctMapTileOrientations_nullElement()
     {
         MapTileOrientation[] distinctMapTileOrientations = new MapTileOrientation[]
-                {
-                    null
-                };
+        {
+            null
+        };
 
         try
         {
@@ -405,10 +405,10 @@ public class MapTileTypeTest
     public void constructor_distinctMapTileOrientations_duplicateElement()
     {
         MapTileOrientation[] distinctMapTileOrientations = new MapTileOrientation[]
-                {
-                    MapTileOrientation.UPRIGHT,
-                    MapTileOrientation.UPRIGHT
-                };
+        {
+            MapTileOrientation.UPRIGHT,
+            MapTileOrientation.UPRIGHT
+        };
 
         try
         {
@@ -625,10 +625,10 @@ public class MapTileTypeTest
     public void getDistinctMapTileOrientations()
     {
         MapTileOrientation[] distinctMapTileOrientations = new MapTileOrientation[]
-                {
-                    MapTileOrientation.UPRIGHT,
-                    MapTileOrientation.FLIPPED
-                };
+        {
+            MapTileOrientation.UPRIGHT,
+            MapTileOrientation.FLIPPED
+        };
 
         MapTileType mapTileType = new MapTileType( GeneralHelper.getUniqueString(),
                                                    MapUnitHelper.buildArray( 1 ),
