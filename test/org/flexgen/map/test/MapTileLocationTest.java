@@ -64,4 +64,18 @@ public class MapTileLocationTest
         MapTileLocation mapTileLocation = new MapTileLocation( 0, value );
         Assert.assertEquals( "Unexpected return value.", value, mapTileLocation.getY() );
     }
+
+    /**
+     * Verify that the toString() method returns the correct value.
+     */
+    @Test
+    public void toStringTest()
+    {
+        int x = GeneralHelper.getRandom().nextInt( 1000 );
+        int y = GeneralHelper.getRandom().nextInt( 1000 );
+        MapTileLocation mapTileLocation = new MapTileLocation( x, y );
+
+        Assert.assertEquals( "Unexpected return value.", "{ " + x + ", " + y + " }",
+                             mapTileLocation.toString() );
+    }
 }

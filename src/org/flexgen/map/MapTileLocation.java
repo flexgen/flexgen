@@ -80,4 +80,14 @@ public class MapTileLocation
     {
         return y;
     }
+
+    /**
+     * Get the string representation of this object.
+     *
+     * @return The string representation of this object.
+     */
+    public String toString()
+    {
+        return "{ " + x + ", " + y + " }";
+    }
 }
