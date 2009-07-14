@@ -147,4 +147,18 @@ public class MapTileLocationTest
         boolean result = mapTileLocation1.equals( mapTileLocation2 );
         Assert.assertEquals( "Unexpected result.", true, result );
     }
+
+    /**
+     * Verify that the hashCode() method returns the correct value.
+     */
+    @Test
+    public void hashCodeTest()
+    {
+        int x = GeneralHelper.getRandom().nextInt( 1000 );
+        int y = GeneralHelper.getRandom().nextInt( 1000 );
+        MapTileLocation mapTileLocation = new MapTileLocation( x, y );
+
+        Assert.assertEquals( "Unexpected return value.", (( x & 65535 ) << 16 ) | ( y & 65535 ),
+                             mapTileLocation.hashCode() );
+    }
 }

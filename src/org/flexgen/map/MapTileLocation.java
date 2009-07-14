@@ -128,6 +128,6 @@ public class MapTileLocation
      */
     public int hashCode()
     {
-        throw new UnsupportedOperationException( "Not written yet." );
+        return (( x & 65535 ) << 16 ) | ( y & 65535 );
     }
 }
