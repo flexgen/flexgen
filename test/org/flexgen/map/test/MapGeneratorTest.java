@@ -349,4 +349,28 @@ public class MapGeneratorTest
                                  "Parameter 'mapTileLocation' cannot be null.", e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the addMapTile() method works correctly when the mapTile parameter is null.
+     */
+    @Test
+    public void addMapTile_mapTile_null()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build();
+        MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
+        MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
+        MapTileLocation mapTileLocation = new MapTileLocation( 0, 0 );
+
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            mapTileType
+        };
+
+        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
+        mapGenerator.addMapTile( mapTileLocation, mapTile );
+        mapGenerator.addMapTile( mapTileLocation, null );
+
+        Assert.assertEquals( "Unexpected return value.", null,
+                             mapGenerator.getMapTile( mapTileLocation ));
+    }
 }
