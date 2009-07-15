@@ -203,6 +203,11 @@ public class MapGenerator
      */
     public MapTile getMapTile( MapTileLocation mapTileLocation )
     {
+        if ( mapTileLocation == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'mapTileLocation' cannot be null." );
+        }
+
         return map.get( mapTileLocation );
     }
 

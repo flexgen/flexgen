@@ -263,11 +263,32 @@ public class MapGeneratorTest
     }
 
     /**
+     * Verify that the getMapTile() method throws the correct exception when the mapTileLocation
+     * parameter is null.
+     */
+    @Test
+    public void getMapTile_mapTileLocation_null()
+    {
+        MapGenerator mapGenerator = MapGeneratorHelper.build();
+
+        try
+        {
+            mapGenerator.getMapTile( null );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileLocation' cannot be null.", e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the getMapTile() method returns null when specifying a location where there is no
      * map tile.
      */
     @Test
-    public void getMapTile_null()
+    public void getMapTile_noTile()
     {
         MapGenerator mapGenerator = MapGeneratorHelper.build();
         MapTileLocation mapTileLocation = new MapTileLocation( 0, 0 );
