@@ -221,6 +221,11 @@ public class MapGenerator
      */
     public void addMapTile( MapTileLocation mapTileLocation, MapTile mapTile )
     {
+        if ( mapTileLocation == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'mapTileLocation' cannot be null." );
+        }
+
         map.put( mapTileLocation, mapTile );
     }
 }
