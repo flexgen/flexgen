@@ -74,13 +74,26 @@ public class MapTileTypeHelper
     /**
      * Build an array of map tile types with default values.
      *
+     * @param size
+     *            The size of the map units array to generate for the map tile types in the array.
+     *
+     * @return The generated map tile type array.
+     */
+    public static MapTileType[] buildArray( int size )
+    {
+        return new MapTileType[]
+        {
+            MapTileTypeHelper.build( size )
+        };
+    }
+
+    /**
+     * Build an array of map tile types with default values.
+     *
      * @return The generated map tile type array.
      */
     public static MapTileType[] buildArray()
     {
-        return new MapTileType[]
-        {
-            MapTileTypeHelper.build()
-        };
+        return MapTileTypeHelper.buildArray( 1 );
     }
 }

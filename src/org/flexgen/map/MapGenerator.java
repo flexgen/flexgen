@@ -47,6 +47,11 @@ public class MapGenerator
     private final Map< MapTileLocation, MapTile > map;
 
     /**
+     * The size of the map unit array that defines the map tile types used by this map generator.
+     */
+    private final int size;
+
+    /**
      * Smallest possible X coordinate for map tiles in the map.
      */
     private final int minX;
@@ -147,10 +152,23 @@ public class MapGenerator
         }
 
         this.map  = new HashMap< MapTileLocation, MapTile >();
+        this.size = size;
         this.minX = minX;
         this.minY = minY;
         this.maxX = maxX;
         this.maxY = maxY;
+    }
+
+    /**
+     * Get the size of the map unit array that defines the map tile types used by this map
+     * generator.
+     *
+     * @return The size of the map unit array that defines the map tile types used by this map
+     * generator.
+     */
+    public int getSize()
+    {
+        return size;
     }
 
     /**

@@ -215,6 +215,18 @@ public class MapGeneratorTest
     }
 
     /**
+     * Verify that the getSize() method returns the correct value.
+     */
+    @Test
+    public void getSize()
+    {
+        int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
+        MapTileType[] mapTileTypes = MapTileTypeHelper.buildArray( size );
+        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
+        Assert.assertEquals( "Unexpected return value.", size, mapGenerator.getSize() );
+    }
+
+    /**
      * Verify that the getMinX() method returns the correct value.
      */
     @Test
