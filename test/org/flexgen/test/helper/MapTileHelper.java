@@ -33,7 +33,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.flexgen.test.helper;
 
 import org.flexgen.map.MapTile;
-import org.flexgen.map.MapTileOrientation;
 
 /**
  * Test helper class for the MapTile class.
@@ -54,6 +53,7 @@ public class MapTileHelper
      */
     public static MapTile build()
     {
-        return new MapTile( MapTileTypeHelper.build(), MapTileOrientation.UPRIGHT );
+        return new MapTile( MapTileTypeHelper.build(),
+                            MapTileOrientationHelper.getRandomOrientation() );
     }
 }
