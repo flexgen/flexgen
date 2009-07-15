@@ -32,11 +32,181 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.example;
 
+import org.flexgen.map.MapGenerator;
+import org.flexgen.map.MapTile;
+import org.flexgen.map.MapTileEdge;
+import org.flexgen.map.MapTileLocation;
+import org.flexgen.map.MapTileOrientation;
+import org.flexgen.map.MapTileType;
+import org.flexgen.map.MapUnit;
+
 /**
  * Class implementing an example application for the FlexGen library.
  */
 public class Main
 {
+    /**
+     * Grass map unit.
+     */
+    private static final MapUnit GRASS = new MapUnit( "Grass" );
+
+    /**
+     * River map unit.
+     */
+    private static final MapUnit RIVER = new MapUnit( "River" );
+
+    /**
+     * Grass tile edge.
+     */
+    private static final MapTileEdge GRASS_EDGE = new MapTileEdge( "Grass Edge" );
+
+    /**
+     * River tile edge.
+     */
+    private static final MapTileEdge RIVER_EDGE = new MapTileEdge( "River Edge" );
+
+    /**
+     * Tile type representing grass.
+     */
+    private static final MapTileType ALL_GRASS = new MapTileType(
+            "All Grass",
+            new MapUnit[][]
+            {
+                { GRASS, GRASS, GRASS },
+                { GRASS, GRASS, GRASS },
+                { GRASS, GRASS, GRASS }
+            },
+            new MapTileEdge[]
+            {
+                GRASS_EDGE,
+                GRASS_EDGE,
+                GRASS_EDGE,
+                GRASS_EDGE
+            },
+            new MapTileOrientation[]
+            {
+                MapTileOrientation.UPRIGHT
+            },
+            1 );
+
+    /**
+     * Tile type representing a straight river.
+     */
+    private static final MapTileType STRAIGHT_RIVER = new MapTileType(
+            "Straight River",
+            new MapUnit[][]
+            {
+                { GRASS, RIVER, GRASS },
+                { GRASS, RIVER, GRASS },
+                { GRASS, RIVER, GRASS }
+            },
+            new MapTileEdge[]
+            {
+                RIVER_EDGE,
+                GRASS_EDGE,
+                RIVER_EDGE,
+                GRASS_EDGE
+            },
+            new MapTileOrientation[]
+            {
+                MapTileOrientation.UPRIGHT,
+                MapTileOrientation.CLOCKWISE
+            },
+            1 );
+
+    /**
+     * Tile type representing a river corner.
+     */
+    private static final MapTileType CORNER_RIVER = new MapTileType(
+            "Corner River",
+            new MapUnit[][]
+            {
+                { GRASS, RIVER, GRASS },
+                { GRASS, RIVER, RIVER },
+                { GRASS, GRASS, GRASS }
+            },
+            new MapTileEdge[]
+            {
+                RIVER_EDGE,
+                RIVER_EDGE,
+                GRASS_EDGE,
+                GRASS_EDGE
+            },
+            new MapTileOrientation[]
+            {
+                MapTileOrientation.UPRIGHT,
+                MapTileOrientation.CLOCKWISE,
+                MapTileOrientation.FLIPPED,
+                MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            1 );
+
+    /**
+     * Tile type representing a river split three ways.
+     */
+    private static final MapTileType THREE_WAY_RIVER = new MapTileType(
+            "Three Way River",
+            new MapUnit[][]
+            {
+                { GRASS, RIVER, GRASS },
+                { RIVER, RIVER, RIVER },
+                { GRASS, GRASS, GRASS }
+            },
+            new MapTileEdge[]
+            {
+                RIVER_EDGE,
+                RIVER_EDGE,
+                GRASS_EDGE,
+                RIVER_EDGE
+            },
+            new MapTileOrientation[]
+            {
+                MapTileOrientation.UPRIGHT,
+                MapTileOrientation.CLOCKWISE,
+                MapTileOrientation.FLIPPED,
+                MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            1 );
+
+    /**
+     * Tile type representing a river split four ways.
+     */
+    private static final MapTileType FOUR_WAY_RIVER = new MapTileType(
+            "Four Way River",
+            new MapUnit[][]
+            {
+                { GRASS, RIVER, GRASS },
+                { RIVER, RIVER, RIVER },
+                { GRASS, RIVER, GRASS }
+            },
+            new MapTileEdge[]
+            {
+                RIVER_EDGE,
+                RIVER_EDGE,
+                RIVER_EDGE,
+                RIVER_EDGE
+            },
+            new MapTileOrientation[]
+            {
+                MapTileOrientation.UPRIGHT,
+                MapTileOrientation.CLOCKWISE,
+                MapTileOrientation.FLIPPED,
+                MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            1 );
+
+    /**
+     * Array of all map tile types for this example.
+     */
+    private static final MapTileType[] MAP_TILE_TYPES = new MapTileType[]
+    {
+        ALL_GRASS,
+        STRAIGHT_RIVER,
+        CORNER_RIVER,
+        THREE_WAY_RIVER,
+        FOUR_WAY_RIVER
+    };
+
     /**
      * Private constructor to keep this class from being instantiated since all methods are static.
      */
@@ -55,5 +225,26 @@ public class Main
         System.out.println( "FlexGen : Flexible Map Generator Library" );
         System.out.println();
         System.out.println( "Example Application" );
+
+        MapGenerator mapGenerator = new MapGenerator( MAP_TILE_TYPES, -1, -1, 1, 1 );
+
+        mapGenerator.addMapTile( new MapTileLocation( -1, -1 ),
+                                 new MapTile( CORNER_RIVER, MapTileOrientation.CLOCKWISE ));
+        mapGenerator.addMapTile( new MapTileLocation( 0, -1 ),
+                                 new MapTile( THREE_WAY_RIVER, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile( new MapTileLocation( 1, -1 ),
+                                 new MapTile( THREE_WAY_RIVER, MapTileOrientation.FLIPPED ));
+        mapGenerator.addMapTile( new MapTileLocation( -1, 0 ),
+                                 new MapTile( STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile( new MapTileLocation( 0, 0 ),
+                                 new MapTile( ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile( new MapTileLocation( 1, 0 ),
+                                 new MapTile( STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile( new MapTileLocation( -1, 1 ),
+                                 new MapTile( CORNER_RIVER, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile( new MapTileLocation( 0, 1 ),
+                                 new MapTile( STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
+        mapGenerator.addMapTile( new MapTileLocation( 1, 1 ),
+                                 new MapTile( FOUR_WAY_RIVER, MapTileOrientation.UPRIGHT ));
     }
 }
