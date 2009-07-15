@@ -119,8 +119,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <module name="EmptyForIteratorPad" />
         <module name="MethodParamPad" />
         <module name="NoWhitespaceAfter">
-            <property name="tokens"
-                      value="ARRAY_INIT, BNOT, DEC, DOT, INC, UNARY_MINUS, UNARY_PLUS" />
+            <property name="tokens" value="BNOT, DEC, DOT, INC, UNARY_MINUS, UNARY_PLUS" />
         </module>
         <module name="NoWhitespaceBefore" />
         <module name="OperatorWrap">
