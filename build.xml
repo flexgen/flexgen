@@ -34,16 +34,19 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <property environment="env" />
 
-    <property name="base.dir"         value="."                           />
-    <property name="src.dir"          value="${base.dir}/src"             />
-    <property name="test.src.dir"     value="${base.dir}/test"            />
-    <property name="work.dir"         value="${base.dir}/work"            />
-    <property name="classes.dir"      value="${work.dir}/classes"         />
-    <property name="test.classes.dir" value="${work.dir}/test.classes"    />
-    <property name="jars.dir"         value="${work.dir}/jars"            />
-    <property name="jar.file"         value="${jars.dir}/FlexGen.jar"     />
-    <property name="test.jar.file"    value="${jars.dir}/FlexGenTest.jar" />
-    <property name="javadoc.dir"      value="${work.dir}/javadoc"         />
+    <property name="base.dir"            value="."                              />
+    <property name="src.dir"             value="${base.dir}/src"                />
+    <property name="test.src.dir"        value="${base.dir}/test"               />
+    <property name="example.src.dir"     value="${base.dir}/example"            />
+    <property name="work.dir"            value="${base.dir}/work"               />
+    <property name="classes.dir"         value="${work.dir}/classes"            />
+    <property name="test.classes.dir"    value="${work.dir}/test.classes"       />
+    <property name="example.classes.dir" value="${work.dir}/example.classes"    />
+    <property name="jars.dir"            value="${work.dir}/jars"               />
+    <property name="jar.file"            value="${jars.dir}/FlexGen.jar"        />
+    <property name="test.jar.file"       value="${jars.dir}/FlexGenTest.jar"    />
+    <property name="example.jar.file"    value="${jars.dir}/FlexGenExample.jar" />
+    <property name="javadoc.dir"         value="${work.dir}/javadoc"            />
 
     <path id="test.depend.classpath">
         <pathelement path="${jar.file}" />
@@ -59,13 +62,27 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <pathelement path="${test.jar.file}" />
     </path>
 
+    <path id="example.depend.classpath">
+        <pathelement path="${jar.file}" />
+    </path>
+
+    <path id="example.compile.classpath">
+        <path refid="example.depend.classpath" />
+    </path>
+
+    <path id="example.run.classpath">
+        <path refid="example.compile.classpath" />
+        <pathelement path="${example.jar.file}" />
+    </path>
+
     <path id="javadoc.classpath">
         <pathelement path="${env.JUNIT_4_6}" />
     </path>
 
     <path id="javadoc.sourcepath">
-        <pathelement path="${src.dir}"      />
-        <pathelement path="${test.src.dir}" />
+        <pathelement path="${src.dir}"         />
+        <pathelement path="${test.src.dir}"    />
+        <pathelement path="${example.src.dir}" />
     </path>
 
     <target name="clean">
@@ -99,7 +116,19 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <jar jarfile="${test.jar.file}" basedir="${test.classes.dir}" />
     </target>
 
-    <target name="test.run" depends="test.jar">
+    <target name="example.compile" depends="jar">
+        <mkdir dir="${example.classes.dir}" />
+        <depend srcDir="${example.src.dir}" destDir="${example.classes.dir}" closure="true"
+                classpathref="example.depend.classpath" />
+        <javac srcdir="${example.src.dir}" destdir="${example.classes.dir}" debug="true"
+        	   source="1.5" classpathref="example.compile.classpath" />
+    </target>
+
+    <target name="example.jar" depends="example.compile">
+        <jar jarfile="${example.jar.file}" basedir="${example.classes.dir}" />
+    </target>
+
+	<target name="test.run" depends="test.jar">
         <junit fork="true" forkmode="once" haltonfailure="false" failureProperty="test.failed">
             <batchtest>
                 <fileset dir="${test.src.dir}">
@@ -115,6 +144,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <fail message="The tests failed." />
     </target>
 
+	<target name="example.run" depends="example.jar">
+		<java classname="org.flexgen.example.Main" classpathref="example.run.classpath" />
+	</target>
+
     <target name="javadoc" depends="init">
         <mkdir dir="${javadoc.dir}" />
         <javadoc destdir="${javadoc.dir}" access="private" classpathref="javadoc.classpath"
@@ -125,8 +158,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <taskdef resource="checkstyletask.properties" classpath="${env.CHECKSTYLE_5_0}" />
 
         <checkstyle config="checkstyle.xml" maxWarnings="0">
-            <fileset dir="${src.dir}"      />
-            <fileset dir="${test.src.dir}" />
+            <fileset dir="${src.dir}"         />
+            <fileset dir="${test.src.dir}"    />
+            <fileset dir="${example.src.dir}" />
         </checkstyle>
     </target>
 
@@ -151,8 +185,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message="test.jar"                                                       />
         <echo message="    Create a Jar of the FlexGen test classes."                  />
         <echo message=""                                                               />
+        <echo message="example.compile"                                                />
+        <echo message="    Compile the FlexGen example source code."                   />
+        <echo message=""                                                               />
+        <echo message="example.jar"                                                    />
+        <echo message="    Create a Jar of the FlexGen example classes."               />
+        <echo message=""                                                               />
         <echo message="test"                                                           />
         <echo message="    Run the tests."                                             />
+        <echo message=""                                                               />
+        <echo message="example.run"                                                    />
+        <echo message="    Run the FlexGen example application."                       />
         <echo message=""                                                               />
         <echo message="javadoc"                                                        />
         <echo message="    Generate the FlexGen JavaDoc documentation."                />
