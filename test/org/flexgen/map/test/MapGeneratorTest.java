@@ -36,10 +36,13 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import org.flexgen.map.MapGenerator;
+import org.flexgen.map.MapTile;
 import org.flexgen.map.MapTileLocation;
+import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
 import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapGeneratorHelper;
+import org.flexgen.test.helper.MapTileOrientationHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
 
 /**
@@ -269,6 +272,30 @@ public class MapGeneratorTest
         MapGenerator mapGenerator = MapGeneratorHelper.build();
         MapTileLocation mapTileLocation = new MapTileLocation( 0, 0 );
         Assert.assertEquals( "Unexpected return value.", null,
+                             mapGenerator.getMapTile( mapTileLocation ));
+    }
+
+    /**
+     * Verify that the getMapTile() method returns the correct value when specifying a location
+     * where there is a map tile.
+     */
+    @Test
+    public void getMapTile()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build();
+        MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
+        MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
+        MapTileLocation mapTileLocation = new MapTileLocation( 0, 0 );
+
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            mapTileType
+        };
+
+        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
+        mapGenerator.addMapTile( mapTileLocation, mapTile );
+
+        Assert.assertEquals( "Unexpected return value.", mapTile,
                              mapGenerator.getMapTile( mapTileLocation ));
     }
 }

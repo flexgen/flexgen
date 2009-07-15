@@ -32,11 +32,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.map;
 
+import java.util.HashMap;
+import java.util.Map;
+
+
 /**
  * Class containing logic for randomly generating a map using a specified set of map tile types.
  */
 public class MapGenerator
 {
+    /**
+     * Data structure containing the map. Maps map tile locations to map tiles.
+     */
+    private final Map< MapTileLocation, MapTile > map;
+
     /**
      * Smallest possible X coordinate for map tiles in the map.
      */
@@ -137,6 +146,7 @@ public class MapGenerator
                     "Parameter 'maxY' must be greater than or equal to parameter 'minY'." );
         }
 
+        this.map  = new HashMap< MapTileLocation, MapTile >();
         this.minX = minX;
         this.minY = minY;
         this.maxX = maxX;
@@ -193,6 +203,19 @@ public class MapGenerator
      */
     public MapTile getMapTile( MapTileLocation mapTileLocation )
     {
-        return null;
+        return map.get( mapTileLocation );
+    }
+
+    /**
+     * Add a map tile to the map at the specified location.
+     *
+     * @param mapTileLocation
+     *            Location at which to add the map tile.
+     * @param mapTile
+     *            Map tile to add.
+     */
+    public void addMapTile( MapTileLocation mapTileLocation, MapTile mapTile )
+    {
+        map.put( mapTileLocation, mapTile );
     }
 }
