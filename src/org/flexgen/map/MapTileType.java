@@ -254,7 +254,11 @@ public class MapTileType
                                                 mapUnits.length + "." );
         }
 
-        return mapUnits[ x ][ y ];
+        // NOTE: The X and Y coordinates are reversed when accessing the map units array. This is
+        //       done because the obvious approach to initializing a two-dimensional array leads to
+        //       an array that indexes rows using the first index and columns using the second
+        //       index.
+        return mapUnits[ y ][ x ];
     }
 
     /**

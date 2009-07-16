@@ -563,7 +563,7 @@ public class MapTileTypeTest
             for ( int j = 0; j < size; j++ )
             {
                 Assert.assertEquals( "Unexpected return value for (" + i + ", " + j + ").",
-                                     mapUnits[ i ][ j ], mapTileType.getMapUnit( i, j ));
+                                     mapUnits[ j ][ i ], mapTileType.getMapUnit( i, j ));
             }
         }
     }
