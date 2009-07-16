@@ -32,6 +32,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.example;
 
+import java.awt.Color;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTile;
 import org.flexgen.map.MapTileEdge;
@@ -208,6 +215,19 @@ public class Main
     };
 
     /**
+     * Map of map units to colors for this example.
+     */
+    private static final Map< MapUnit, Color > COLOR_MAP;
+
+    static
+    {
+        COLOR_MAP = new HashMap< MapUnit, Color >();
+
+        COLOR_MAP.put( GRASS, new Color(   0, 255,   0 ));
+        COLOR_MAP.put( RIVER, new Color(   0,   0, 255 ));
+    }
+
+    /**
      * Private constructor to keep this class from being instantiated since all methods are static.
      */
     private Main()
@@ -246,5 +266,15 @@ public class Main
                                  new MapTile( STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
         mapGenerator.addMapTile( new MapTileLocation( 1, 1 ),
                                  new MapTile( FOUR_WAY_RIVER, MapTileOrientation.UPRIGHT ));
+
+        File dir = new File( "work/worlds" );
+        dir.mkdirs();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyyMMddHHmmssSSS" );
+        GregorianCalendar now = new GregorianCalendar();
+        String fileName = "work/worlds/" + dateFormat.format( now.getTime() ) + ".png";
+
+        MapRenderer mapRenderer = new MapRenderer( 5, COLOR_MAP );
+        mapRenderer.render( mapGenerator, fileName );
     }
 }
