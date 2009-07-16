@@ -113,7 +113,7 @@ public class MapTile
         }
         else if ( mapTileOrientation.equals( MapTileOrientation.CLOCKWISE ))
         {
-            return mapTileType.getMapUnit(( mapTileType.getSize() - 1 ) - y, x );
+            return mapTileType.getMapUnit( y, ( mapTileType.getSize() - 1 ) - x );
         }
         else if ( mapTileOrientation.equals( MapTileOrientation.FLIPPED ))
         {
@@ -122,7 +122,7 @@ public class MapTile
         }
         else if ( mapTileOrientation.equals( MapTileOrientation.COUNTER_CLOCKWISE ))
         {
-            return mapTileType.getMapUnit( y, ( mapTileType.getSize() - 1 ) - x );
+            return mapTileType.getMapUnit(( mapTileType.getSize() - 1 ) - y, x );
         }
         else
         {
