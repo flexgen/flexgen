@@ -49,7 +49,7 @@ public class MapGenerator
     /**
      * The size of the map unit array that defines the map tile types used by this map generator.
      */
-    private final int size;
+    private final int tileSize;
 
     /**
      * Smallest possible X coordinate for map tiles in the map.
@@ -103,7 +103,7 @@ public class MapGenerator
                     "Parameter 'mapTileTypes' must contain at least one element." );
         }
 
-        int size = 0;
+        int tileSize = 0;
 
         for ( int i = 0; i < mapTileTypes.length; i++ )
         {
@@ -125,13 +125,13 @@ public class MapGenerator
             }
 
             // check to see that all elements are the same size
-            if ( size == 0 )
+            if ( tileSize == 0 )
             {
-                size = mapTileTypes[ i ].getSize();
+                tileSize = mapTileTypes[ i ].getSize();
             }
             else
             {
-                if ( size != mapTileTypes[ i ].getSize() )
+                if ( tileSize != mapTileTypes[ i ].getSize() )
                 {
                     throw new IllegalArgumentException( "All map tile types in parameter " +
                                                         "'mapTileTypes' must be the same size." );
@@ -151,12 +151,12 @@ public class MapGenerator
                     "Parameter 'maxY' must be greater than or equal to parameter 'minY'." );
         }
 
-        this.map  = new HashMap< MapTileLocation, MapTile >();
-        this.size = size;
-        this.minX = minX;
-        this.minY = minY;
-        this.maxX = maxX;
-        this.maxY = maxY;
+        this.map      = new HashMap< MapTileLocation, MapTile >();
+        this.tileSize = tileSize;
+        this.minX     = minX;
+        this.minY     = minY;
+        this.maxX     = maxX;
+        this.maxY     = maxY;
     }
 
     /**
@@ -166,9 +166,9 @@ public class MapGenerator
      * @return The size of the map unit array that defines the map tile types used by this map
      * generator.
      */
-    public int getSize()
+    public int getTileSize()
     {
-        return size;
+        return tileSize;
     }
 
     /**
