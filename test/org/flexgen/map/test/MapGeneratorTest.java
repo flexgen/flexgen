@@ -32,6 +32,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.map.test;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -40,6 +42,7 @@ import org.flexgen.map.MapTile;
 import org.flexgen.map.MapTileLocation;
 import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
+import org.flexgen.map.test.support.TestMapTileAddedListener;
 import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapGeneratorHelper;
 import org.flexgen.test.helper.MapTileOrientationHelper;
@@ -384,5 +387,39 @@ public class MapGeneratorTest
 
         Assert.assertEquals( "Unexpected return value.", null,
                              mapGenerator.getMapTile( mapTileLocation ));
+    }
+
+    /**
+     * Verify that the addMapTile() method works correctly when a map tile added listener has been
+     * added to the map generator.
+     */
+    @Test
+    public void addMapTile_mapTileAddedListener()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build();
+        MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
+        MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
+
+        int x = GeneralHelper.getRandom().nextInt( 1000 );
+        int y = GeneralHelper.getRandom().nextInt( 1000 );
+        MapTileLocation mapTileLocation = new MapTileLocation( x, y );
+
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            mapTileType
+        };
+
+        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, x, y, x, y );
+        TestMapTileAddedListener mapTileAddedListener = new TestMapTileAddedListener();
+        mapGenerator.addMapTileAddedListener( mapTileAddedListener );
+        mapGenerator.addMapTile( mapTileLocation, mapTile );
+
+        List< MapTileLocation > mapTileLocations = mapTileAddedListener.getMapTileLocations();
+
+        Assert.assertEquals( "Unexpected number of map tile locations.", 1,
+                             mapTileLocations.size() );
+
+        Assert.assertEquals( "Unexpected map tile location.", mapTileLocation,
+                             mapTileLocations.get( 0 ) );
     }
 }

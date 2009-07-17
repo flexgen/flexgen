@@ -33,6 +33,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.flexgen.map;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 
@@ -45,6 +47,11 @@ public class MapGenerator
      * Data structure containing the map. Maps map tile locations to map tiles.
      */
     private final Map< MapTileLocation, MapTile > map;
+
+    /**
+     * List of listeners for the event of adding a map tile.
+     */
+    private final List< MapTileAddedListener > mapTileAddedListeners;
 
     /**
      * The size of the map unit array that defines the map tile types used by this map generator.
@@ -151,12 +158,13 @@ public class MapGenerator
                     "Parameter 'maxY' must be greater than or equal to parameter 'minY'." );
         }
 
-        this.map      = new HashMap< MapTileLocation, MapTile >();
-        this.tileSize = tileSize;
-        this.minX     = minX;
-        this.minY     = minY;
-        this.maxX     = maxX;
-        this.maxY     = maxY;
+        this.map                   = new HashMap< MapTileLocation, MapTile >();
+        this.mapTileAddedListeners = new LinkedList< MapTileAddedListener >();
+        this.tileSize              = tileSize;
+        this.minX                  = minX;
+        this.minY                  = minY;
+        this.maxX                  = maxX;
+        this.maxY                  = maxY;
     }
 
     /**
@@ -212,6 +220,17 @@ public class MapGenerator
     }
 
     /**
+     * Add a new listener for the event of adding a map tile to the map.
+     *
+     * @param mapTileAddedListener
+     *            The listener to add.
+     */
+    public void addMapTileAddedListener( MapTileAddedListener mapTileAddedListener )
+    {
+        mapTileAddedListeners.add( mapTileAddedListener );
+    }
+
+    /**
      * Get the map tile at a specified location.
      *
      * @param mapTileLocation
@@ -245,5 +264,10 @@ public class MapGenerator
         }
 
         map.put( mapTileLocation, mapTile );
+
+        for ( MapTileAddedListener mapTileAddedListener : mapTileAddedListeners )
+        {
+            mapTileAddedListener.mapTileAdded( mapTileLocation );
+        }
     }
 }
