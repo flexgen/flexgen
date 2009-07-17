@@ -321,14 +321,17 @@ public class MapGeneratorTest
         MapTileType mapTileType = MapTileTypeHelper.build();
         MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
         MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
-        MapTileLocation mapTileLocation = new MapTileLocation( 0, 0 );
+
+        int x = GeneralHelper.getRandom().nextInt( 1000 );
+        int y = GeneralHelper.getRandom().nextInt( 1000 );
+        MapTileLocation mapTileLocation = new MapTileLocation( x, y );
 
         MapTileType[] mapTileTypes = new MapTileType[]
         {
             mapTileType
         };
 
-        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
+        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, x, y, x, y );
         mapGenerator.addMapTile( mapTileLocation, mapTile );
 
         Assert.assertEquals( "Unexpected return value.", mapTile,
@@ -374,14 +377,17 @@ public class MapGeneratorTest
         MapTileType mapTileType = MapTileTypeHelper.build();
         MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
         MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
-        MapTileLocation mapTileLocation = new MapTileLocation( 0, 0 );
+
+        int x = GeneralHelper.getRandom().nextInt( 1000 );
+        int y = GeneralHelper.getRandom().nextInt( 1000 );
+        MapTileLocation mapTileLocation = new MapTileLocation( x, y );
 
         MapTileType[] mapTileTypes = new MapTileType[]
         {
             mapTileType
         };
 
-        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
+        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, x, y, x, y );
         mapGenerator.addMapTile( mapTileLocation, mapTile );
         mapGenerator.addMapTile( mapTileLocation, null );
 
