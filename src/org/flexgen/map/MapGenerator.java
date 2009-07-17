@@ -164,7 +164,7 @@ public class MapGenerator
      * generator.
      *
      * @return The size of the map unit array that defines the map tile types used by this map
-     * generator.
+     *         generator.
      */
     public int getTileSize()
     {
