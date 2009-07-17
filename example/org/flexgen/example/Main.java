@@ -34,8 +34,6 @@ package org.flexgen.example;
 
 import java.awt.Color;
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -241,7 +239,11 @@ public class Main
         System.out.println();
         System.out.println( "Example Application" );
 
+        File dir = new File( "work/worlds" );
+        dir.mkdirs();
+
         MapGenerator mapGenerator = new MapGenerator( MAP_TILE_TYPES, -1, -1, 1, 1 );
+        mapGenerator.addMapTileAddedListener( new MapRenderer( "work/worlds/", 5, COLOR_MAP ));
 
         mapGenerator.addMapTile( new MapTileLocation( -1, -1 ),
                                  new MapTile( CORNER_RIVER, MapTileOrientation.CLOCKWISE ));
@@ -261,15 +263,5 @@ public class Main
                                  new MapTile( STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
         mapGenerator.addMapTile( new MapTileLocation( 1, 1 ),
                                  new MapTile( FOUR_WAY_RIVER, MapTileOrientation.UPRIGHT ));
-
-        File dir = new File( "work/worlds" );
-        dir.mkdirs();
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyyMMddHHmmssSSS" );
-        GregorianCalendar now = new GregorianCalendar();
-        String fileName = "work/worlds/" + dateFormat.format( now.getTime() ) + ".png";
-
-        MapRenderer mapRenderer = new MapRenderer( 5, COLOR_MAP );
-        mapRenderer.render( mapGenerator, fileName );
     }
 }

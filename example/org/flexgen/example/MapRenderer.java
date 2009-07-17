@@ -37,20 +37,28 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
 
 import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTile;
+import org.flexgen.map.MapTileAddedListener;
 import org.flexgen.map.MapTileLocation;
 import org.flexgen.map.MapUnit;
 
 /**
  * Class implementing logic for rendering a map to an image.
  */
-public class MapRenderer
+public class MapRenderer implements MapTileAddedListener
 {
+    /**
+     * Prefix to use for file names.
+     */
+    private final String fileNamePrefix;
+
     /**
      * The size (in pixels) of map units in rendered images.
      */
@@ -64,15 +72,34 @@ public class MapRenderer
     /**
      * Construct a map renderer.
      *
+     * @param fileNamePrefix
+     *            Prefix to use for file names.
      * @param mapUnitSize
      *            The size (in pixels) of map units in rendered images.
      * @param colorMap
      *            Map of map units to colors.
      */
-    public MapRenderer( int mapUnitSize, Map< MapUnit, Color > colorMap )
+    public MapRenderer( String fileNamePrefix, int mapUnitSize, Map< MapUnit, Color > colorMap )
     {
-        this.mapUnitSize = mapUnitSize;
-        this.colorMap    = colorMap;
+        this.fileNamePrefix = fileNamePrefix;
+        this.mapUnitSize    = mapUnitSize;
+        this.colorMap       = colorMap;
+    }
+
+    /**
+     * Informs the listener that a map tile has been added at the specified location.
+     *
+     * @param mapGenerator
+     *            Map generator that added the map tile.
+     * @param mapTileLocation
+     *            Location at which the map tile was added.
+     */
+    public void mapTileAdded( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyyMMddHHmmssSSS" );
+        GregorianCalendar now = new GregorianCalendar();
+        String fileName = fileNamePrefix + dateFormat.format( now.getTime() ) + ".png";
+        render( mapGenerator, fileName );
     }
 
     /**
@@ -83,7 +110,7 @@ public class MapRenderer
      * @param fileName
      *            File name to use.
      */
-    public void render( MapGenerator mapGenerator, String fileName )
+    private void render( MapGenerator mapGenerator, String fileName )
     {
         // get needed information about the map
         int minX     = mapGenerator.getMinX();

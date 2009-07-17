@@ -267,7 +267,7 @@ public class MapGenerator
 
         for ( MapTileAddedListener mapTileAddedListener : mapTileAddedListeners )
         {
-            mapTileAddedListener.mapTileAdded( mapTileLocation );
+            mapTileAddedListener.mapTileAdded( this, mapTileLocation );
         }
     }
 }

@@ -35,6 +35,7 @@ package org.flexgen.map.test.support;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTileAddedListener;
 import org.flexgen.map.MapTileLocation;
 
@@ -59,10 +60,12 @@ public class TestMapTileAddedListener implements MapTileAddedListener
     /**
      * Informs the listener that a map tile has been added at the specified location.
      *
+     * @param mapGenerator
+     *            Map generator that added the map tile.
      * @param mapTileLocation
      *            Location at which the map tile was added.
      */
-    public void mapTileAdded( MapTileLocation mapTileLocation )
+    public void mapTileAdded( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
     {
         mapTileLocations.add( mapTileLocation );
     }
