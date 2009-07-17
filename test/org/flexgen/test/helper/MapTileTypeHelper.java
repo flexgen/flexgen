@@ -56,9 +56,9 @@ public class MapTileTypeHelper
      */
     public static MapTileType build( int size )
     {
-        return new MapTileType( GeneralHelper.getUniqueString(),
+        return new MapTileType( GeneralHelper.getUniqueString(), 0,
                                 MapUnitHelper.buildArray( size ), MapTileEdgeHelper.buildArray(),
-                                MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                                MapTileOrientationHelper.ALL_ORIENTATIONS );
     }
 
     /**

@@ -59,14 +59,35 @@ public class MapTileTypeTest
     {
         try
         {
-            new MapTileType( null, MapUnitHelper.buildArray(), MapTileEdgeHelper.buildArray(),
-                             MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+            new MapTileType( null, 0, MapUnitHelper.buildArray(), MapTileEdgeHelper.buildArray(),
+                             MapTileOrientationHelper.ALL_ORIENTATIONS );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
         {
             Assert.assertEquals( "Unexpected message.", "Parameter 'name' cannot be null.",
                                  e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the weight parameter is less
+     * than zero.
+     */
+    @Test
+    public void constructor_weight_tooSmall()
+    {
+        try
+        {
+            new MapTileType( GeneralHelper.getUniqueString(), -1,
+                             MapUnitHelper.buildArray(), MapTileEdgeHelper.buildArray(),
+                             MapTileOrientationHelper.ALL_ORIENTATIONS );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'weight' cannot be less than 0.", e.getMessage() );
         }
     }
 
@@ -78,9 +99,9 @@ public class MapTileTypeTest
     {
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              null, MapTileEdgeHelper.buildArray(),
-                             MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                             MapTileOrientationHelper.ALL_ORIENTATIONS );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -101,9 +122,9 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              mapUnits, MapTileEdgeHelper.buildArray(),
-                             MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                             MapTileOrientationHelper.ALL_ORIENTATIONS );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -134,9 +155,9 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              mapUnits, MapTileEdgeHelper.buildArray(),
-                             MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                             MapTileOrientationHelper.ALL_ORIENTATIONS );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -167,9 +188,9 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              mapUnits, MapTileEdgeHelper.buildArray(),
-                             MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                             MapTileOrientationHelper.ALL_ORIENTATIONS );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -197,9 +218,9 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              mapUnits, MapTileEdgeHelper.buildArray(),
-                             MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                             MapTileOrientationHelper.ALL_ORIENTATIONS );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -220,9 +241,9 @@ public class MapTileTypeTest
     {
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              MapUnitHelper.buildArray(), null,
-                             MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                             MapTileOrientationHelper.ALL_ORIENTATIONS );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -248,9 +269,9 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              MapUnitHelper.buildArray(), mapTileEdges,
-                             MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                             MapTileOrientationHelper.ALL_ORIENTATIONS );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -279,9 +300,9 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              MapUnitHelper.buildArray(), mapTileEdges,
-                             MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                             MapTileOrientationHelper.ALL_ORIENTATIONS );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -309,9 +330,9 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              MapUnitHelper.buildArray(), mapTileEdges,
-                             MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                             MapTileOrientationHelper.ALL_ORIENTATIONS );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -331,9 +352,9 @@ public class MapTileTypeTest
     {
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              MapUnitHelper.buildArray(),
-                             MapTileEdgeHelper.buildArray(), null, 0 );
+                             MapTileEdgeHelper.buildArray(), null );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -355,9 +376,9 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              MapUnitHelper.buildArray(), MapTileEdgeHelper.buildArray(),
-                             distinctMapTileOrientations, 0 );
+                             distinctMapTileOrientations );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -383,9 +404,9 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              MapUnitHelper.buildArray(), MapTileEdgeHelper.buildArray(),
-                             distinctMapTileOrientations, 0 );
+                             distinctMapTileOrientations );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -412,9 +433,9 @@ public class MapTileTypeTest
 
         try
         {
-            new MapTileType( GeneralHelper.getUniqueString(),
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
                              MapUnitHelper.buildArray(), MapTileEdgeHelper.buildArray(),
-                             distinctMapTileOrientations, 0 );
+                             distinctMapTileOrientations );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -422,27 +443,6 @@ public class MapTileTypeTest
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'distinctMapTileOrientations' must not contain any " +
                                  "duplicate elements.", e.getMessage() );
-        }
-    }
-
-    /**
-     * Verify that the constructor throws the correct exception when the weight parameter is less
-     * than zero.
-     */
-    @Test
-    public void constructor_weight_tooSmall()
-    {
-        try
-        {
-            new MapTileType( GeneralHelper.getUniqueString(),
-                             MapUnitHelper.buildArray(), MapTileEdgeHelper.buildArray(),
-                             MapTileOrientationHelper.ALL_ORIENTATIONS, -1 );
-            Assert.fail( "Expected exception." );
-        }
-        catch ( IllegalArgumentException e )
-        {
-            Assert.assertEquals( "Unexpected message.",
-                                 "Parameter 'weight' cannot be less than 0.", e.getMessage() );
         }
     }
 
@@ -554,9 +554,9 @@ public class MapTileTypeTest
     {
         int size = 2;
         MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
-        MapTileType mapTileType = new MapTileType( GeneralHelper.getUniqueString(),
+        MapTileType mapTileType = new MapTileType( GeneralHelper.getUniqueString(), 0,
                                                    mapUnits, MapTileEdgeHelper.buildArray(),
-                                                   MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                                                   MapTileOrientationHelper.ALL_ORIENTATIONS );
 
         for ( int i = 0; i < size; i++ )
         {
@@ -597,9 +597,9 @@ public class MapTileTypeTest
     public void getMapTileEdge()
     {
         MapTileEdge[] mapTileEdges = MapTileEdgeHelper.buildArray();
-        MapTileType mapTileType = new MapTileType( GeneralHelper.getUniqueString(),
+        MapTileType mapTileType = new MapTileType( GeneralHelper.getUniqueString(), 0,
                                                    MapUnitHelper.buildArray(), mapTileEdges,
-                                                   MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                                                   MapTileOrientationHelper.ALL_ORIENTATIONS );
 
         Assert.assertEquals( "Unexpected return value for \"top\".",
                              mapTileEdges[ 0 ],
@@ -630,10 +630,10 @@ public class MapTileTypeTest
             MapTileOrientation.FLIPPED
         };
 
-        MapTileType mapTileType = new MapTileType( GeneralHelper.getUniqueString(),
+        MapTileType mapTileType = new MapTileType( GeneralHelper.getUniqueString(), 0,
                                                    MapUnitHelper.buildArray(),
                                                    MapTileEdgeHelper.buildArray(),
-                                                   distinctMapTileOrientations, 0 );
+                                                   distinctMapTileOrientations );
 
         Assert.assertArrayEquals( "Unexpected result.", distinctMapTileOrientations,
                                   mapTileType.getDistinctMapTileOrientations() );
@@ -648,9 +648,9 @@ public class MapTileTypeTest
         int weight = GeneralHelper.getRandom().nextInt( 1000 );
 
         MapTileType mapTileType = new MapTileType(
-                GeneralHelper.getUniqueString(),
+                GeneralHelper.getUniqueString(), weight,
                 MapUnitHelper.buildArray(), MapTileEdgeHelper.buildArray(),
-                MapTileOrientationHelper.ALL_ORIENTATIONS, weight );
+                MapTileOrientationHelper.ALL_ORIENTATIONS );
 
         Assert.assertEquals( "Unexpected result.", weight, mapTileType.getWeight() );
     }
@@ -663,8 +663,8 @@ public class MapTileTypeTest
     {
         String name = GeneralHelper.getUniqueString();
         MapTileType mapTileType = new MapTileType(
-                name, MapUnitHelper.buildArray(), MapTileEdgeHelper.buildArray(),
-                MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                name, 0, MapUnitHelper.buildArray(), MapTileEdgeHelper.buildArray(),
+                MapTileOrientationHelper.ALL_ORIENTATIONS );
         Assert.assertEquals( "Unexpected return value.", name, mapTileType.toString() );
     }
 
@@ -718,13 +718,13 @@ public class MapTileTypeTest
     {
         String name = GeneralHelper.getUniqueString();
 
-        MapTileType mapTileType1 = new MapTileType( name, MapUnitHelper.buildArray(),
+        MapTileType mapTileType1 = new MapTileType( name, 0, MapUnitHelper.buildArray(),
                                                     MapTileEdgeHelper.buildArray(),
-                                                    MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                                                    MapTileOrientationHelper.ALL_ORIENTATIONS );
 
-        MapTileType mapTileType2 = new MapTileType( name, MapUnitHelper.buildArray(),
+        MapTileType mapTileType2 = new MapTileType( name, 0, MapUnitHelper.buildArray(),
                                                     MapTileEdgeHelper.buildArray(),
-                                                    MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                                                    MapTileOrientationHelper.ALL_ORIENTATIONS );
 
         boolean result = mapTileType1.equals( mapTileType2 );
         Assert.assertEquals( "Unexpected result.", true, result );
@@ -738,9 +738,9 @@ public class MapTileTypeTest
     {
         String name = GeneralHelper.getUniqueString();
 
-        MapTileType mapTileType = new MapTileType( name, MapUnitHelper.buildArray(),
+        MapTileType mapTileType = new MapTileType( name, 0, MapUnitHelper.buildArray(),
                                                    MapTileEdgeHelper.buildArray(),
-                                                   MapTileOrientationHelper.ALL_ORIENTATIONS, 0 );
+                                                   MapTileOrientationHelper.ALL_ORIENTATIONS );
 
         Assert.assertEquals( "Unexpected return value.", name.hashCode(), mapTileType.hashCode() );
     }

@@ -45,6 +45,12 @@ public class MapTileType
     private final String name;
 
     /**
+     * The weight value used to determine the probability of selecting this tile type when
+     * generating a map.
+     */
+    private final int weight;
+
+    /**
      * Two-dimensional array of map units that define the map tile type.
      */
     private final MapUnit[][] mapUnits;
@@ -61,16 +67,16 @@ public class MapTileType
     private final MapTileOrientation[] distinctMapTileOrientations;
 
     /**
-     * The weight value used to determine the probability of selecting this tile type when
-     * generating a map.
-     */
-    private final int weight;
-
-    /**
      * Construct a map tile type.
      *
      * @param name
      *            Name of the map tile type. Cannot be null.
+     * @param weight
+     *            The weight value used to determine the probability of selecting this tile type
+     *            when generating a map. Larger values make this tile type more likely to be
+     *            selected. The probability of selecting this tile type is computed by taking the
+     *            weight of this tile type and dividing it by the sum of the weight values for all
+     *            of the tile types. Cannot be negative.
      * @param mapUnits
      *            Two-dimensional array of map units that define the map tile type. Cannot be null.
      *            Must contain at least one row. Each row must contain the same number of elements.
@@ -86,19 +92,18 @@ public class MapTileType
      *            possible for this map tile type. Cannot be null. Must contain at lease one
      *            element. No element can be null. Cannot contain two or more elements that are
      *            identical.
-     * @param weight
-     *            The weight value used to determine the probability of selecting this tile type
-     *            when generating a map. Larger values make this tile type more likely to be
-     *            selected. The probability of selecting this tile type is computed by taking the
-     *            weight of this tile type and dividing it by the sum of the weight values for all
-     *            of the tile types. Cannot be negative.
      */
-    public MapTileType( String name, MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges,
-                        MapTileOrientation[] distinctMapTileOrientations, int weight )
+    public MapTileType( String name, int weight, MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges,
+                        MapTileOrientation[] distinctMapTileOrientations )
     {
         if ( name == null )
         {
             throw new IllegalArgumentException( "Parameter 'name' cannot be null." );
+        }
+
+        if ( weight < 0 )
+        {
+            throw new IllegalArgumentException( "Parameter 'weight' cannot be less than 0." );
         }
 
         if ( mapUnits == null )
@@ -196,16 +201,23 @@ public class MapTileType
             }
         }
 
-        if ( weight < 0 )
-        {
-            throw new IllegalArgumentException( "Parameter 'weight' cannot be less than 0." );
-        }
-
         this.name                        = name;
+        this.weight                      = weight;
         this.mapUnits                    = mapUnits;
         this.mapTileEdges                = mapTileEdges;
         this.distinctMapTileOrientations = distinctMapTileOrientations;
-        this.weight                      = weight;
+    }
+
+    /**
+     * Get the weight value used to determine the probability of selecting this tile type when
+     * generating a map.
+     *
+     * @return The weight value used to determine the probability of selecting this tile type when
+     *         generating a map.
+     */
+    public int getWeight()
+    {
+        return weight;
     }
 
     /**
@@ -289,18 +301,6 @@ public class MapTileType
     public MapTileOrientation[] getDistinctMapTileOrientations()
     {
         return distinctMapTileOrientations;
-    }
-
-    /**
-     * Get the weight value used to determine the probability of selecting this tile type when
-     * generating a map.
-     *
-     * @return The weight value used to determine the probability of selecting this tile type when
-     *         generating a map.
-     */
-    public int getWeight()
-    {
-        return weight;
     }
 
     /**
