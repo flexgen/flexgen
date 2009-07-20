@@ -234,9 +234,11 @@ public class MapTileType
      * Get the map unit at the specified coordinates in this map tile type.
      *
      * @param x
-     *            X coordinate of the map unit to get.
+     *            X coordinate of the map unit to get. Must be greater than or equal to 0. Must be
+     *            less than the size of the array of map units defining this map tile type.
      * @param y
-     *            Y coordinate of the map unit to get.
+     *            Y coordinate of the map unit to get. Must be greater than or equal to 0. Must be
+     *            less than the size of the array of map units defining this map tile type.
      *
      * @return The map unit at the specified coordinates in this map tile type.
      */
