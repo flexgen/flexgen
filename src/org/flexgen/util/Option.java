@@ -42,6 +42,11 @@ package org.flexgen.util;
 public class Option< T >
 {
     /**
+     * The option represented by the class.
+     */
+    private final T option;
+
+    /**
      * Construct an option.
      *
      * @param option
@@ -71,5 +76,17 @@ public class Option< T >
             throw new IllegalArgumentException(
                     "Parameter 'endRange' must be greater than or equal to startRange." );
         }
+
+        this.option = option;
+    }
+
+    /**
+     * Get the option represented by this class.
+     *
+     * @return The option represented by this class.
+     */
+    public T getOption()
+    {
+        return option;
     }
 }

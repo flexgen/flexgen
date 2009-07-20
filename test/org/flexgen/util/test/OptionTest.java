@@ -103,4 +103,15 @@ public class OptionTest
                     e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the getOption() method returns the correct value.
+     */
+    @Test
+    public void getOption()
+    {
+        String value = GeneralHelper.getUniqueString();
+        Option< String > option = new Option< String >( value, 0, 0 );
+        Assert.assertEquals( "Unexpected result.", value, option.getOption() );
+    }
 }
