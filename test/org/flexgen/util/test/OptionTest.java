@@ -50,12 +50,32 @@ public class OptionTest
     {
         try
         {
-            new Option< Object >( null );
+            new Option< Object >( null, 0, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
         {
             Assert.assertEquals( "Unexpected message.", "Parameter 'option' cannot be null.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the startRange parameter is
+     * less than 0.
+     */
+    @Test
+    public void constructor_startRange_tooSmall()
+    {
+        try
+        {
+            new Option< Object >( new Object(), -1, 0 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'startRange' must be greater than or equal to 0.",
                                  e.getMessage() );
         }
     }

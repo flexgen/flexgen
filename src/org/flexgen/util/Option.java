@@ -46,12 +46,23 @@ public class Option< T >
      *
      * @param option
      *            The option represented by the class. Cannot be null.
+     * @param startRange
+     *            The lower bound of random numbers that will result in this option being selected.
+     *            Must be greater than or equal to 0.
+     * @param endRange
+     *            The upper bound of random numbers that will result in this option being selected.
      */
-    public Option( T option )
+    public Option( T option, long startRange, long endRange )
     {
         if ( option == null )
         {
             throw new IllegalArgumentException( "Parameter 'option' cannot be null." );
+        }
+
+        if ( startRange < 0 )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'startRange' must be greater than or equal to 0." );
         }
     }
 }
