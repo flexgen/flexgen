@@ -121,14 +121,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <depend srcDir="${example.src.dir}" destDir="${example.classes.dir}" closure="true"
                 classpathref="example.depend.classpath" />
         <javac srcdir="${example.src.dir}" destdir="${example.classes.dir}" debug="true"
-        	   source="1.5" classpathref="example.compile.classpath" />
+               source="1.5" classpathref="example.compile.classpath" />
     </target>
 
     <target name="example.jar" depends="example.compile">
         <jar jarfile="${example.jar.file}" basedir="${example.classes.dir}" />
     </target>
 
-	<target name="test.run" depends="test.jar">
+    <target name="test.run" depends="test.jar">
         <junit fork="true" forkmode="once" haltonfailure="false" failureProperty="test.failed">
             <batchtest>
                 <fileset dir="${test.src.dir}">
@@ -140,13 +140,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </junit>
     </target>
 
-	<target name="test" depends="test.run" if="test.failed">
+    <target name="test" depends="test.run" if="test.failed">
         <fail message="The tests failed." />
     </target>
 
-	<target name="example.run" depends="example.jar">
-		<java classname="org.flexgen.example.Main" classpathref="example.run.classpath" />
-	</target>
+    <target name="example.run" depends="example.jar">
+        <java classname="org.flexgen.example.Main" classpathref="example.run.classpath" />
+    </target>
 
     <target name="javadoc" depends="init">
         <mkdir dir="${javadoc.dir}" />
