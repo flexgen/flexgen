@@ -35,6 +35,7 @@ package org.flexgen.util.test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.util.Option;
 
 /**
@@ -77,6 +78,29 @@ public class OptionTest
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'startRange' must be greater than or equal to 0.",
                                  e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the endRange parameter is less
+     * than the startRange parameter.
+     */
+    @Test
+    public void constructor_endRange_tooSmall()
+    {
+        int value = GeneralHelper.getRandom().nextInt( 1000 );
+
+        try
+        {
+            new Option< Object >( new Object(), value, value - 1 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                    "Unexpected message.",
+                    "Parameter 'endRange' must be greater than or equal to startRange.",
+                    e.getMessage() );
         }
     }
 }

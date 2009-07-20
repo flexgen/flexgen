@@ -51,6 +51,7 @@ public class Option< T >
      *            Must be greater than or equal to 0.
      * @param endRange
      *            The upper bound of random numbers that will result in this option being selected.
+     *            Must be greater than or equal to startRange.
      */
     public Option( T option, long startRange, long endRange )
     {
@@ -63,6 +64,12 @@ public class Option< T >
         {
             throw new IllegalArgumentException(
                     "Parameter 'startRange' must be greater than or equal to 0." );
+        }
+
+        if ( endRange < startRange )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'endRange' must be greater than or equal to startRange." );
         }
     }
 }
