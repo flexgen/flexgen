@@ -47,16 +47,21 @@ public class Option< T >
     private final T option;
 
     /**
+     * The lower bound of values that will result in this option being selected.
+     */
+    private final long startRange;
+
+    /**
      * Construct an option.
      *
      * @param option
      *            The option represented by the class. Cannot be null.
      * @param startRange
-     *            The lower bound of random numbers that will result in this option being selected.
-     *            Must be greater than or equal to 0.
+     *            The lower bound of values that will result in this option being selected. Must be
+     *            greater than or equal to 0.
      * @param endRange
-     *            The upper bound of random numbers that will result in this option being selected.
-     *            Must be greater than or equal to startRange.
+     *            The upper bound of values that will result in this option being selected. Must be
+     *            greater than or equal to startRange.
      */
     public Option( T option, long startRange, long endRange )
     {
@@ -77,7 +82,8 @@ public class Option< T >
                     "Parameter 'endRange' must be greater than or equal to startRange." );
         }
 
-        this.option = option;
+        this.option     = option;
+        this.startRange = startRange;
     }
 
     /**
@@ -100,6 +106,6 @@ public class Option< T >
      */
     public boolean withinRange( long value )
     {
-        return false;
+        return value > startRange;
     }
 }
