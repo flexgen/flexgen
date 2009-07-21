@@ -52,6 +52,11 @@ public class Option< T >
     private final long startRange;
 
     /**
+     * The upper bound of values that will result in this option being selected.
+     */
+    private final long endRange;
+
+    /**
      * Construct an option.
      *
      * @param option
@@ -84,6 +89,7 @@ public class Option< T >
 
         this.option     = option;
         this.startRange = startRange;
+        this.endRange   = endRange;
     }
 
     /**
@@ -106,6 +112,6 @@ public class Option< T >
      */
     public boolean withinRange( long value )
     {
-        return value > startRange;
+        return value < endRange;
     }
 }
