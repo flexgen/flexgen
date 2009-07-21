@@ -112,6 +112,6 @@ public class Option< T >
      */
     public boolean withinRange( long value )
     {
-        return value < endRange;
+        return (( value >= startRange ) && ( value < endRange ));
     }
 }

@@ -142,6 +142,20 @@ public class OptionTest
     }
 
     /**
+     * Verify that the withinRange() method returns true when called with a value that is smaller
+     * than the range of acceptable values for the option.
+     */
+    @Test
+    public void withinRange_tooSmall()
+    {
+        int startRange = GeneralHelper.getRandom().nextInt( 1000 );
+        int endRange = startRange + 10;
+        int value = startRange - 5;
+        Option< Object > option = new Option< Object >( new Object(), startRange, endRange );
+        Assert.assertEquals( "Unexpected result.", false, option.withinRange( value ));
+    }
+
+    /**
      * Verify that the withinRange() method returns true when called with a value that is within the
      * range of acceptable values for the option.
      */
