@@ -221,13 +221,6 @@ public class Main
     }
 
     /**
-     * Private constructor to keep this class from being instantiated since all methods are static.
-     */
-    private Main()
-    {
-    }
-
-    /**
      * Main entry point for the application.
      *
      * @param args
@@ -263,5 +256,12 @@ public class Main
                                  new MapTile( STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
         mapGenerator.addMapTile( new MapTileLocation( 1, 1 ),
                                  new MapTile( FOUR_WAY_RIVER, MapTileOrientation.UPRIGHT ));
+    }
+
+    /**
+     * Private constructor to keep this class from being instantiated since all methods are static.
+     */
+    private Main()
+    {
     }
 }

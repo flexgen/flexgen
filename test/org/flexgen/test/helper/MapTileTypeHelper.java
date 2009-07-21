@@ -40,13 +40,6 @@ import org.flexgen.map.MapTileType;
 public class MapTileTypeHelper
 {
     /**
-     * Private constructor to keep this class from being instantiated since all methods are static.
-     */
-    private MapTileTypeHelper()
-    {
-    }
-
-    /**
      * Build a map tile type with default values.
      *
      * @param size
@@ -95,5 +88,12 @@ public class MapTileTypeHelper
     public static MapTileType[] buildArray()
     {
         return MapTileTypeHelper.buildArray( 1 );
+    }
+
+    /**
+     * Private constructor to keep this class from being instantiated since all methods are static.
+     */
+    private MapTileTypeHelper()
+    {
     }
 }

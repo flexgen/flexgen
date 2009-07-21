@@ -40,13 +40,6 @@ import org.flexgen.map.MapUnit;
 public class MapUnitHelper
 {
     /**
-     * Private constructor to keep this class from being instantiated since all methods are static.
-     */
-    private MapUnitHelper()
-    {
-    }
-
-    /**
      * Build a map unit with default values.
      *
      * @return The generated map unit.
@@ -87,5 +80,12 @@ public class MapUnitHelper
     public static MapUnit[][] buildArray()
     {
         return MapUnitHelper.buildArray( 1 );
+    }
+
+    /**
+     * Private constructor to keep this class from being instantiated since all methods are static.
+     */
+    private MapUnitHelper()
+    {
     }
 }

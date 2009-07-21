@@ -40,13 +40,6 @@ import org.flexgen.map.MapTile;
 public class MapTileHelper
 {
     /**
-     * Private constructor to keep this class from being instantiated since all methods are static.
-     */
-    private MapTileHelper()
-    {
-    }
-
-    /**
      * Build a map tile with default values.
      *
      * @return The generated map tile.
@@ -55,5 +48,12 @@ public class MapTileHelper
     {
         return new MapTile( MapTileTypeHelper.build(),
                             MapTileOrientationHelper.getRandomOrientation() );
+    }
+
+    /**
+     * Private constructor to keep this class from being instantiated since all methods are static.
+     */
+    private MapTileHelper()
+    {
     }
 }

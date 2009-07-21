@@ -40,13 +40,6 @@ import org.flexgen.map.MapTileEdge;
 public class MapTileEdgeHelper
 {
     /**
-     * Private constructor to keep this class from being instantiated since all methods are static.
-     */
-    private MapTileEdgeHelper()
-    {
-    }
-
-    /**
      * Build a map tile edge with default values.
      *
      * @return The generated map tile edge.
@@ -73,5 +66,12 @@ public class MapTileEdgeHelper
         }
 
         return mapTileEdges;
+    }
+
+    /**
+     * Private constructor to keep this class from being instantiated since all methods are static.
+     */
+    private MapTileEdgeHelper()
+    {
     }
 }

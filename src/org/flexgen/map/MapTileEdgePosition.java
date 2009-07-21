@@ -68,20 +68,6 @@ public class MapTileEdgePosition
     private final int index;
 
     /**
-     * Construct a map tile edge position with the specified name and index.
-     *
-     * @param name
-     *            Name of the map tile position.
-     * @param index
-     *            Index of the map tile edge position.
-     */
-    private MapTileEdgePosition( String name, int index )
-    {
-        this.name = name;
-        this.index = index;
-    }
-
-    /**
      * Get the map tile edge position that corresponds with the specified index.
      *
      * @param index
@@ -100,6 +86,20 @@ public class MapTileEdgePosition
             default : throw new IllegalArgumentException(
                               "Parameter 'index' must be between 0 and 3." );
         }
+    }
+
+    /**
+     * Construct a map tile edge position with the specified name and index.
+     *
+     * @param name
+     *            Name of the map tile position.
+     * @param index
+     *            Index of the map tile edge position.
+     */
+    private MapTileEdgePosition( String name, int index )
+    {
+        this.name = name;
+        this.index = index;
     }
 
     /**

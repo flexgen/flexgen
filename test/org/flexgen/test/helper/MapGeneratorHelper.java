@@ -40,13 +40,6 @@ import org.flexgen.map.MapGenerator;
 public class MapGeneratorHelper
 {
     /**
-     * Private constructor to keep this class from being instantiated since all methods are static.
-     */
-    private MapGeneratorHelper()
-    {
-    }
-
-    /**
      * Build a map generator with default values.
      *
      * @return The generated map generator.
@@ -54,5 +47,12 @@ public class MapGeneratorHelper
     public static MapGenerator build()
     {
         return new MapGenerator( MapTileTypeHelper.buildArray(), 0, 0, 0, 0 );
+    }
+
+    /**
+     * Private constructor to keep this class from being instantiated since all methods are static.
+     */
+    private MapGeneratorHelper()
+    {
     }
 }

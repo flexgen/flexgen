@@ -46,13 +46,6 @@ public class GeneralHelper
     private static Random random = new Random();
 
     /**
-     * Private constructor to keep this class from being instantiated since all methods are static.
-     */
-    private GeneralHelper()
-    {
-    }
-
-    /**
      * Get a random number generator.
      *
      * @return A random number generator.
@@ -71,5 +64,12 @@ public class GeneralHelper
     public static String getUniqueString()
     {
         return UUID.randomUUID().toString();
+    }
+
+    /**
+     * Private constructor to keep this class from being instantiated since all methods are static.
+     */
+    private GeneralHelper()
+    {
     }
 }

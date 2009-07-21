@@ -51,13 +51,6 @@ public class MapTileOrientationHelper
     };
 
     /**
-     * Private constructor to keep this class from being instantiated since all methods are static.
-     */
-    private MapTileOrientationHelper()
-    {
-    }
-
-    /**
      * Get a random map tile orientation.
      *
      * @return A random map tile orientation.
@@ -65,5 +58,12 @@ public class MapTileOrientationHelper
     public static MapTileOrientation getRandomOrientation()
     {
         return MapTileOrientationHelper.ALL_ORIENTATIONS[ GeneralHelper.getRandom().nextInt( 4 ) ];
+    }
+
+    /**
+     * Private constructor to keep this class from being instantiated since all methods are static.
+     */
+    private MapTileOrientationHelper()
+    {
     }
 }
