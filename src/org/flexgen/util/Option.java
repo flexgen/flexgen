@@ -89,4 +89,17 @@ public class Option< T >
     {
         return option;
     }
+
+    /**
+     * Determine whether or not this option is within range of a specified value.
+     *
+     * @param value
+     *            The value to check.
+     *
+     * @return True if the value is within range of this option, false otherwise.
+     */
+    public boolean withinRange( long value )
+    {
+        return false;
+    }
 }

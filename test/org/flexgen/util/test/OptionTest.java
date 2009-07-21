@@ -114,4 +114,16 @@ public class OptionTest
         Option< String > option = new Option< String >( value, 0, 0 );
         Assert.assertEquals( "Unexpected result.", value, option.getOption() );
     }
+
+    /**
+     * Verify that the withinRange() method returns false when there is no range of acceptable
+     * values for the option.
+     */
+    @Test
+    public void withinRange_noRange()
+    {
+        int value = GeneralHelper.getRandom().nextInt( 1000 );
+        Option< Object > option = new Option< Object >( new Object(), value, value );
+        Assert.assertEquals( "Unexpected result.", false, option.withinRange( value ));
+    }
 }
