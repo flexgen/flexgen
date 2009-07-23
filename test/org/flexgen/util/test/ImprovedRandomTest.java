@@ -99,4 +99,21 @@ public class ImprovedRandomTest
         Assert.assertEquals( "Unexpected result for isEmpty().", true,
                              testImprovedRandom.isEmpty() );
     }
+
+    /**
+     * Verify that the limited version of the nextLong() method performs correctly.
+     */
+    @Test
+    public void nextLong_limited()
+    {
+        int value = GeneralHelper.getRandom().nextInt( 1000 );
+
+        TestImprovedRandom testImprovedRandom = new TestImprovedRandom();
+        testImprovedRandom.addTransaction( value );
+
+        Assert.assertEquals( "Unexpected result for nextLong().", value,
+                             testImprovedRandom.nextLong( 1000 ));
+        Assert.assertEquals( "Unexpected result for isEmpty().", true,
+                             testImprovedRandom.isEmpty() );
+    }
 }

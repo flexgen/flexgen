@@ -59,7 +59,7 @@ public class ImprovedRandom extends Random
 
         do
         {
-            bits = ( nextLong() >>> 1 );
+            bits = ( nextLong() & Long.MAX_VALUE );
             value = bits % n;
         }
         while ( bits - value + ( n - 1 ) < 0 );
