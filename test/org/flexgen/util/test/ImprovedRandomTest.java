@@ -116,4 +116,23 @@ public class ImprovedRandomTest
         Assert.assertEquals( "Unexpected result for isEmpty().", true,
                              testImprovedRandom.isEmpty() );
     }
+
+    /**
+     * Verify that the limited version of the nextLong() method performs correctly when the
+     * underlying getLong() method returns a value that needs to be thrown away.
+     */
+    @Test
+    public void nextLong_limited_throwaway()
+    {
+        int value = GeneralHelper.getRandom().nextInt( 1000 );
+
+        TestImprovedRandom testImprovedRandom = new TestImprovedRandom();
+        testImprovedRandom.addTransaction( Long.MAX_VALUE );
+        testImprovedRandom.addTransaction( value );
+
+        Assert.assertEquals( "Unexpected result for nextLong().", value,
+                             testImprovedRandom.nextLong( 1000 ));
+        Assert.assertEquals( "Unexpected result for isEmpty().", true,
+                             testImprovedRandom.isEmpty() );
+    }
 }
