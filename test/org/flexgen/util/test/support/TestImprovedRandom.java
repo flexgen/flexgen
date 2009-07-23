@@ -74,6 +74,26 @@ public class TestImprovedRandom extends ImprovedRandom
     }
 
     /**
+     * Add transactions needed for returning a long.
+     *
+     * @param value
+     *            The value for which to generate transactions.
+     */
+    public void addTransaction( long value )
+    {
+        int high = (int) ( value >>> 32 );
+        int low  = (int) (( value << 32 ) >>> 32 );
+
+        if ( low < 0 )
+        {
+            high++;
+        }
+
+        addTransaction( new TestImprovedRandomTransaction( 32, high ));
+        addTransaction( new TestImprovedRandomTransaction( 32, low  ));
+    }
+
+    /**
      * Get flag indicating whether or not the collection of transactions is empty.
      *
      * @return True if the collection of transactions is empty, false otherwise.
