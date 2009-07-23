@@ -30,56 +30,55 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-package org.flexgen.util.test;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import org.flexgen.test.helper.GeneralHelper;
-import org.flexgen.util.ImprovedRandom;
-import org.flexgen.util.test.support.TestImprovedRandom;
-import org.flexgen.util.test.support.TestImprovedRandomTransaction;
+package org.flexgen.util.test.support;
 
 /**
- * Test class for the ImprovedRandom class.
+ * Class representing a transaction for the TestImprovedRandom class. Contains information needed
+ * for supplying results for calls to the next() method,
  */
-public class ImprovedRandomTest
+public class TestImprovedRandomTransaction
 {
     /**
-     * Verify that the nextLong() method throws the correct exception when the n parameter is too
-     * small.
+     * Expected value for the bits parameter when the next() method is called.
      */
-    @Test
-    public void nextLong_tooSmall()
-    {
-        ImprovedRandom improvedRandom = new ImprovedRandom();
+    private final int bits;
 
-        try
-        {
-            improvedRandom.nextLong( -1 );
-            Assert.fail( "Expected exception." );
-        }
-        catch ( IllegalArgumentException e )
-        {
-            Assert.assertEquals( "Unexpected message.", "Parameter 'n' must be greater than 0.",
-                                 e.getMessage() );
-        }
+    /**
+     * Return value for the next() method when it is called.
+     */
+    private final int result;
+
+    /**
+     * Construct a transaction for the TestImprovedRandom class.
+     *
+     * @param bits
+     *            Expected value for the bits parameter when the next() method is called.
+     * @param result
+     *            Return value for the next() method when it is called.
+     */
+    public TestImprovedRandomTransaction( int bits, int result )
+    {
+        this.bits   = bits;
+        this.result = result;
     }
 
     /**
-     * Verify that the nextInt() method performs correctly.
+     * Get the expected value for the bits parameter when the next() method is called.
+     *
+     * @return The expected value for the bits parameter when the next() method is called.
      */
-    @Test
-    public void nextInt()
+    public int getBits()
     {
-        int value = GeneralHelper.getRandom().nextInt();
+        return bits;
+    }
 
-        TestImprovedRandom testImprovedRandom = new TestImprovedRandom();
-        testImprovedRandom.addTransaction( new TestImprovedRandomTransaction( 32, value ));
-
-        Assert.assertEquals( "Unexpected result for nextInt().", value,
-                             testImprovedRandom.nextInt() );
-        Assert.assertEquals( "Unexpected result for isEmpty().", true,
-                             testImprovedRandom.isEmpty() );
+    /**
+     * Get the return value for the next() method when it is called.
+     *
+     * @return The return value for the next() method when it is called.
+     */
+    public int getResult()
+    {
+        return result;
     }
 }

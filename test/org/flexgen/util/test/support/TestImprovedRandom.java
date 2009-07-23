@@ -32,6 +32,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.util.test.support;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
+import org.junit.Assert;
+
 import org.flexgen.util.ImprovedRandom;
 
 /**
@@ -39,6 +44,45 @@ import org.flexgen.util.ImprovedRandom;
  */
 public class TestImprovedRandom extends ImprovedRandom
 {
+    /**
+     * Transactions to play back when asked for random numbers.
+     */
+    private final Deque< TestImprovedRandomTransaction > transactions;
+
+    /**
+     * Construct a test improved random number generator.
+     */
+    public TestImprovedRandom()
+    {
+        transactions = new LinkedList< TestImprovedRandomTransaction >();
+    }
+
+    /**
+     * Add a transaction.
+     *
+     * @param transaction
+     *            The transaction to add.
+     */
+    public void addTransaction( TestImprovedRandomTransaction transaction )
+    {
+        if ( transaction == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'transaction' cannot be null." );
+        }
+
+        transactions.addLast( transaction );
+    }
+
+    /**
+     * Get flag indicating whether or not the collection of transactions is empty.
+     *
+     * @return True if the collection of transactions is empty, false otherwise.
+     */
+    public boolean isEmpty()
+    {
+        return transactions.isEmpty();
+    }
+
     /**
      * Generates the next random number.
      *
@@ -49,6 +93,13 @@ public class TestImprovedRandom extends ImprovedRandom
      */
     protected int next( int bits )
     {
-        return 0;
+        if ( transactions.isEmpty() )
+        {
+            throw new IllegalStateException( "No transactions available." );
+        }
+
+        TestImprovedRandomTransaction transaction = transactions.removeFirst();
+        Assert.assertEquals( "Unexpected bits parameter.", transaction.getBits(), bits );
+        return transaction.getResult();
     }
 }
