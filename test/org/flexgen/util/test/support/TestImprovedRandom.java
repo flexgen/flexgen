@@ -82,7 +82,7 @@ public class TestImprovedRandom extends ImprovedRandom
     public void addTransaction( long value )
     {
         int high = (int) ( value >>> 32 );
-        int low  = (int) (( value << 32 ) >>> 32 );
+        int low  = (int) ( value & 4294967295L );
 
         if ( low < 0 )
         {
