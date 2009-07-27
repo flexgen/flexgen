@@ -32,6 +32,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.util;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Class implementing logic for chosing a single option from among a number of options with
  * different probabilities.
@@ -41,6 +44,16 @@ package org.flexgen.util;
  */
 public class Chooser< T >
 {
+    /**
+     * The random number generator to use for this class.
+     */
+    private final ImprovedRandom improvedRandom;
+
+    /**
+     * The list of options to choose from.
+     */
+    private final List< Option< T >> options;
+
     /**
      * Construct this class with the specified random number generator.
      *
@@ -53,6 +66,9 @@ public class Chooser< T >
         {
             throw new IllegalArgumentException( "Parameter 'improvedRandom' cannot be null." );
         }
+
+        this.improvedRandom = improvedRandom;
+        this.options = new LinkedList< Option< T >>();
     }
 
     /**
@@ -75,5 +91,19 @@ public class Chooser< T >
             throw new IllegalArgumentException(
                     "Parameter 'weight' must be greater than or equal to 0." );
         }
+
+        options.add( new Option< T >( option, 0, 0 ));
+    }
+
+    /**
+     * Randomly choose one option from the set of available options.
+     *
+     * @return The randomly chosen option.
+     */
+    public T choose()
+    {
+        improvedRandom.nextLong();
+        return options.get( 0 ).getOption();
+//        throw new IllegalStateException( "Illegal state." );
     }
 }

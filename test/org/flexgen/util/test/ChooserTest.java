@@ -35,8 +35,10 @@ package org.flexgen.util.test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.util.Chooser;
 import org.flexgen.util.ImprovedRandom;
+import org.flexgen.util.test.support.TestImprovedRandom;
 
 /**
  * Test class for the Chooser class.
@@ -103,5 +105,27 @@ public class ChooserTest
                                  "Parameter 'weight' must be greater than or equal to 0.",
                                  e.getMessage() );
         }
+    }
+
+    /**
+     * Verify that the choose() method returns the correct value when only one option is specified
+     * with non-zero weight.
+     */
+    @Test
+    public void choose_singleOption_nonZeroWeight()
+    {
+        int weight = GeneralHelper.getRandom().nextInt( 1000 ) + 1;
+        int value = GeneralHelper.getRandom().nextInt( weight );
+        String option = GeneralHelper.getUniqueString();
+
+        TestImprovedRandom testImprovedRandom = new TestImprovedRandom();
+        testImprovedRandom.addTransaction( value );
+
+        Chooser< String > chooser = new Chooser< String >( testImprovedRandom );
+        chooser.addOption( option, weight );
+
+        Assert.assertEquals( "Unexpected result.", option, chooser.choose() );
+        Assert.assertEquals( "Unexpected result for isEmpty().", true,
+                             testImprovedRandom.isEmpty() );
     }
 }
