@@ -43,6 +43,11 @@ public class MapTilePosition
     private final MapTileLocation mapTileLocation;
 
     /**
+     * Map tile orientation.
+     */
+    private final MapTileOrientation mapTileOrientation;
+
+    /**
      * Construct a map tile position.
      *
      * @param mapTileLocation
@@ -62,7 +67,8 @@ public class MapTilePosition
             throw new IllegalArgumentException( "Parameter 'mapTileOrientation' cannot be null." );
         }
 
-        this.mapTileLocation = mapTileLocation;
+        this.mapTileLocation    = mapTileLocation;
+        this.mapTileOrientation = mapTileOrientation;
     }
 
     /**
@@ -73,5 +79,15 @@ public class MapTilePosition
     public MapTileLocation getMapTileLocation()
     {
         return mapTileLocation;
+    }
+
+    /**
+     * Get the map tile orientation.
+     *
+     * @return The map tile orientation.
+     */
+    public MapTileOrientation getMapTileOrientation()
+    {
+        return mapTileOrientation;
     }
 }
