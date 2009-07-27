@@ -45,6 +45,7 @@ import org.flexgen.map.MapTileType;
 import org.flexgen.map.test.support.TestMapTileAddedListener;
 import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapGeneratorHelper;
+import org.flexgen.test.helper.MapTileLocationHelper;
 import org.flexgen.test.helper.MapTileOrientationHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
 
@@ -306,7 +307,7 @@ public class MapGeneratorTest
     public void getMapTile_noTile()
     {
         MapGenerator mapGenerator = MapGeneratorHelper.build();
-        MapTileLocation mapTileLocation = new MapTileLocation( 0, 0 );
+        MapTileLocation mapTileLocation = MapTileLocationHelper.build();
         Assert.assertEquals( "Unexpected return value.", null,
                              mapGenerator.getMapTile( mapTileLocation ));
     }
@@ -322,16 +323,18 @@ public class MapGeneratorTest
         MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
         MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
 
-        int x = GeneralHelper.getRandom().nextInt( 1000 );
-        int y = GeneralHelper.getRandom().nextInt( 1000 );
-        MapTileLocation mapTileLocation = new MapTileLocation( x, y );
+        MapTileLocation mapTileLocation = MapTileLocationHelper.build();
 
         MapTileType[] mapTileTypes = new MapTileType[]
         {
             mapTileType
         };
 
-        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, x, y, x, y );
+        MapGenerator mapGenerator =
+                new MapGenerator( mapTileTypes,
+                                  mapTileLocation.getX(), mapTileLocation.getY(),
+                                  mapTileLocation.getX(), mapTileLocation.getY() );
+
         mapGenerator.addMapTile( mapTileLocation, mapTile );
 
         Assert.assertEquals( "Unexpected return value.", mapTile,
@@ -378,16 +381,18 @@ public class MapGeneratorTest
         MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
         MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
 
-        int x = GeneralHelper.getRandom().nextInt( 1000 );
-        int y = GeneralHelper.getRandom().nextInt( 1000 );
-        MapTileLocation mapTileLocation = new MapTileLocation( x, y );
+        MapTileLocation mapTileLocation = MapTileLocationHelper.build();
 
         MapTileType[] mapTileTypes = new MapTileType[]
         {
             mapTileType
         };
 
-        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, x, y, x, y );
+        MapGenerator mapGenerator =
+                new MapGenerator( mapTileTypes,
+                                  mapTileLocation.getX(), mapTileLocation.getY(),
+                                  mapTileLocation.getX(), mapTileLocation.getY() );
+
         mapGenerator.addMapTile( mapTileLocation, mapTile );
         mapGenerator.addMapTile( mapTileLocation, null );
 
@@ -406,16 +411,18 @@ public class MapGeneratorTest
         MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
         MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
 
-        int x = GeneralHelper.getRandom().nextInt( 1000 );
-        int y = GeneralHelper.getRandom().nextInt( 1000 );
-        MapTileLocation mapTileLocation = new MapTileLocation( x, y );
+        MapTileLocation mapTileLocation = MapTileLocationHelper.build();
 
         MapTileType[] mapTileTypes = new MapTileType[]
         {
             mapTileType
         };
 
-        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, x, y, x, y );
+        MapGenerator mapGenerator =
+                new MapGenerator( mapTileTypes,
+                                  mapTileLocation.getX(), mapTileLocation.getY(),
+                                  mapTileLocation.getX(), mapTileLocation.getY() );
+
         TestMapTileAddedListener mapTileAddedListener = new TestMapTileAddedListener();
         mapGenerator.addMapTileAddedListener( mapTileAddedListener );
         mapGenerator.addMapTile( mapTileLocation, mapTile );
