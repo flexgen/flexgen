@@ -69,5 +69,11 @@ public class Chooser< T >
         {
             throw new IllegalArgumentException( "Parameter 'option' cannot be null." );
         }
+
+        if ( weight < 0 )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'weight' must be greater than or equal to 0." );
+        }
     }
 }

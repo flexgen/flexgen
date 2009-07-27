@@ -82,4 +82,26 @@ public class ChooserTest
                                  e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the addOption() method throws the correct exception when the weight parameter is
+     * less than 0.
+     */
+    @Test
+    public void addOption_weight_tooSmall()
+    {
+        Chooser< Object > chooser = new Chooser< Object >( new ImprovedRandom() );
+
+        try
+        {
+            chooser.addOption( new Object(), -1 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'weight' must be greater than or equal to 0.",
+                                 e.getMessage() );
+        }
+    }
 }
