@@ -66,6 +66,28 @@ public class MapTileLocationTest
     }
 
     /**
+     * Verify that the getNeighborLocations() method returns the correct value.
+     */
+    @Test
+    public void getNeighborLocations()
+    {
+        int x = GeneralHelper.getRandom().nextInt( 1000 );
+        int y = GeneralHelper.getRandom().nextInt( 1000 );
+        MapTileLocation mapTileLocation = new MapTileLocation( x, y );
+
+        MapTileLocation[] neighborLocations = new MapTileLocation[]
+        {
+            new MapTileLocation( x + 1, y ),
+            new MapTileLocation( x - 1, y ),
+            new MapTileLocation( x, y + 1 ),
+            new MapTileLocation( x, y - 1 )
+        };
+
+        Assert.assertArrayEquals( "Unexpected return value.", neighborLocations,
+                                  mapTileLocation.getNeighborLocations() );
+    }
+
+    /**
      * Verify that the toString() method returns the correct value.
      */
     @Test

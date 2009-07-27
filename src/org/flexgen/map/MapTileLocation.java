@@ -82,6 +82,22 @@ public class MapTileLocation
     }
 
     /**
+     * Get an array of map tile locations that are neighbors of this map tile location.
+     *
+     * @return Array of map tile locations that are neighbors of this map tile location.
+     */
+    public MapTileLocation[] getNeighborLocations()
+    {
+        return new MapTileLocation[]
+        {
+            new MapTileLocation( x + 1, y ),
+            new MapTileLocation( x - 1, y ),
+            new MapTileLocation( x, y + 1 ),
+            new MapTileLocation( x, y - 1 )
+        };
+    }
+
+    /**
      * Get the string representation of this object.
      *
      * @return The string representation of this object.
