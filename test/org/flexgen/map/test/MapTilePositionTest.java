@@ -35,6 +35,7 @@ package org.flexgen.map.test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import org.flexgen.map.MapTileLocation;
 import org.flexgen.map.MapTilePosition;
 import org.flexgen.test.helper.MapTileLocationHelper;
 import org.flexgen.test.helper.MapTileOrientationHelper;
@@ -80,5 +81,18 @@ public class MapTilePositionTest
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'mapTileOrientation' cannot be null.", e.getMessage() );
         }
+    }
+
+    /**
+     * Verify that the getMapTileLocation() method returns the correct value.
+     */
+    @Test
+    public void getMapTileLocation()
+    {
+        MapTileLocation mapTileLocation = MapTileLocationHelper.build();
+        MapTilePosition mapTilePosition = new MapTilePosition(
+                mapTileLocation, MapTileOrientationHelper.getRandomOrientation() );
+        Assert.assertEquals( "Unexpected return value.", mapTileLocation,
+                             mapTilePosition.getMapTileLocation() );
     }
 }

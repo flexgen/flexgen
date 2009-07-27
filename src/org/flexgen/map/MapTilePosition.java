@@ -38,6 +38,11 @@ package org.flexgen.map;
 public class MapTilePosition
 {
     /**
+     * Map tile location.
+     */
+    private final MapTileLocation mapTileLocation;
+
+    /**
      * Construct a map tile position.
      *
      * @param mapTileLocation
@@ -56,5 +61,17 @@ public class MapTilePosition
         {
             throw new IllegalArgumentException( "Parameter 'mapTileOrientation' cannot be null." );
         }
+
+        this.mapTileLocation = mapTileLocation;
+    }
+
+    /**
+     * Get the map tile location.
+     *
+     * @return The map tile location.
+     */
+    public MapTileLocation getMapTileLocation()
+    {
+        return mapTileLocation;
     }
 }
