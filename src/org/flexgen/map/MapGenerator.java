@@ -270,4 +270,15 @@ public class MapGenerator
             mapTileAddedListener.mapTileAdded( this, mapTileLocation );
         }
     }
+
+    /**
+     * Generate the map.
+     */
+    public void generate()
+    {
+        // while there are open locations:
+        //   randomly pick tile type
+        //   randomly pick tile placement
+        //   add tile of the appropriate type at the selected placement
+    }
 }
