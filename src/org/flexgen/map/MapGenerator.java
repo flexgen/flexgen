@@ -37,7 +37,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  * Class containing logic for randomly generating a map using a specified set of map tile types.
  */
