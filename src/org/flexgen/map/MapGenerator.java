@@ -278,7 +278,7 @@ public class MapGenerator
     {
         // while there are open locations:
         //   randomly pick tile type
-        //   randomly pick tile placement
-        //   add tile of the appropriate type at the selected placement
+        //   randomly pick tile position (location and orientation)
+        //   add tile of the appropriate type at the selected position
     }
 }
