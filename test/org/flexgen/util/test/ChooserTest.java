@@ -108,11 +108,10 @@ public class ChooserTest
     }
 
     /**
-     * Verify that the choose() method returns the correct value when only one option is specified
-     * with non-zero weight.
+     * Verify that the choose() method returns the correct value when only one option is specified.
      */
     @Test
-    public void choose_singleOption_nonZeroWeight()
+    public void choose_singleOption()
     {
         int weight = GeneralHelper.getRandom().nextInt( 1000 ) + 1;
         int value = GeneralHelper.getRandom().nextInt( weight );
@@ -130,11 +129,11 @@ public class ChooserTest
     }
 
     /**
-     * Verify that the choose() method returns the correct value when multiple options are specified
-     * with non-zero weight.
+     * Verify that the choose() method returns the correct value when multiple options are
+     * specified.
      */
     @Test
-    public void choose_multipleOptions_nonZeroWeight()
+    public void choose_multipleOptions()
     {
         int optionCount = 100;
         int weight = 10;
