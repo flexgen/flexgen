@@ -33,9 +33,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.flexgen.map;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Class containing logic for randomly generating a map using a specified set of map tile types.
@@ -46,6 +48,11 @@ public class MapGenerator
      * Data structure containing the map. Maps map tile locations to map tiles.
      */
     private final Map< MapTileLocation, MapTile > map;
+
+    /**
+     * Set of open locations on the map.
+     */
+    private final Set< MapTileLocation > openLocations;
 
     /**
      * List of listeners for the event of adding a map tile.
@@ -158,6 +165,7 @@ public class MapGenerator
         }
 
         this.map                   = new HashMap< MapTileLocation, MapTile >();
+        this.openLocations         = new HashSet< MapTileLocation >();
         this.mapTileAddedListeners = new LinkedList< MapTileAddedListener >();
         this.tileSize              = tileSize;
         this.minX                  = minX;
@@ -262,7 +270,20 @@ public class MapGenerator
             throw new IllegalArgumentException( "Parameter 'mapTileLocation' cannot be null." );
         }
 
+        openLocations.remove( mapTileLocation );
         map.put( mapTileLocation, mapTile );
+
+        for ( MapTileLocation neighborLocation : mapTileLocation.getNeighborLocations() )
+        {
+            if (( ! map.containsKey( neighborLocation )) &&
+                ( neighborLocation.getX() >= minX ) &&
+                ( neighborLocation.getX() <= maxX ) &&
+                ( neighborLocation.getY() >= minY ) &&
+                ( neighborLocation.getY() <= maxY ))
+            {
+                openLocations.add( neighborLocation );
+            }
+        }
 
         for ( MapTileAddedListener mapTileAddedListener : mapTileAddedListeners )
         {
