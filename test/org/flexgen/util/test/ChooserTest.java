@@ -108,6 +108,27 @@ public class ChooserTest
     }
 
     /**
+     * Verify that the choose() method throws the correct exception when no options are specified.
+     */
+    @Test
+    public void choose_noOptions()
+    {
+        Chooser< Object > chooser = new Chooser< Object >( new ImprovedRandom() );
+
+        try
+        {
+            chooser.choose();
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalStateException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "No options with any weight were added.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the choose() method returns the correct value when only one option is specified.
      */
     @Test

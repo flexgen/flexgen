@@ -109,6 +109,11 @@ public class Chooser< T >
      */
     public T choose()
     {
+        if ( totalWeight == 0 )
+        {
+            throw new IllegalStateException( "No options with any weight were added." );
+        }
+
         long value = improvedRandom.nextLong( totalWeight );
 
         for ( Option< T > option : options )
