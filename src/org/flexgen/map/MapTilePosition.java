@@ -51,5 +51,10 @@ public class MapTilePosition
         {
             throw new IllegalArgumentException( "Parameter 'mapTileLocation' cannot be null." );
         }
+
+        if ( mapTileOrientation == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'mapTileOrientation' cannot be null." );
+        }
     }
 }

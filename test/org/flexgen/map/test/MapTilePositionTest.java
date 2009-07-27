@@ -36,6 +36,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import org.flexgen.map.MapTilePosition;
+import org.flexgen.test.helper.MapTileLocationHelper;
 import org.flexgen.test.helper.MapTileOrientationHelper;
 
 /**
@@ -59,6 +60,25 @@ public class MapTilePositionTest
         {
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'mapTileLocation' cannot be null.", e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the constructor throws the correct exception when the mapTileOrientation
+     * parameter is null.
+     */
+    @Test
+    public void constructor_mapTileOrientation_null()
+    {
+        try
+        {
+            new MapTilePosition( MapTileLocationHelper.build(), null );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileOrientation' cannot be null.", e.getMessage() );
         }
     }
 }
