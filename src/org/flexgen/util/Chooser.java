@@ -55,6 +55,11 @@ public class Chooser< T >
     private final List< Option< T >> options;
 
     /**
+     * The sum of the weight of all available options.
+     */
+    private long totalWeight;
+
+    /**
      * Construct this class with the specified random number generator.
      *
      * @param improvedRandom
@@ -68,7 +73,8 @@ public class Chooser< T >
         }
 
         this.improvedRandom = improvedRandom;
-        this.options = new LinkedList< Option< T >>();
+        this.options        = new LinkedList< Option< T >>();
+        this.totalWeight    = 0;
     }
 
     /**
@@ -92,7 +98,8 @@ public class Chooser< T >
                     "Parameter 'weight' must be greater than or equal to 0." );
         }
 
-        options.add( new Option< T >( option, 0, 0 ));
+        options.add( new Option< T >( option, totalWeight, totalWeight + weight ));
+        totalWeight += weight;
     }
 
     /**
@@ -102,8 +109,16 @@ public class Chooser< T >
      */
     public T choose()
     {
-        improvedRandom.nextLong();
-        return options.get( 0 ).getOption();
-//        throw new IllegalStateException( "Illegal state." );
+        long value = improvedRandom.nextLong( totalWeight );
+
+        for ( Option< T > option : options )
+        {
+            if ( option.withinRange( value ))
+            {
+                return option.getOption();
+            }
+        }
+
+        throw new IllegalStateException( "Illegal state." );
     }
 }

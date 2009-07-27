@@ -128,4 +128,38 @@ public class ChooserTest
         Assert.assertEquals( "Unexpected result for isEmpty().", true,
                              testImprovedRandom.isEmpty() );
     }
+
+    /**
+     * Verify that the choose() method returns the correct value when multiple options are specified
+     * with non-zero weight.
+     */
+    @Test
+    public void choose_multipleOptions_nonZeroWeight()
+    {
+        int optionCount = 100;
+        int weight = 10;
+        String[] options = new String[ optionCount ];
+
+        for ( int i = 0; i < optionCount; i++ )
+        {
+            options[ i ] = GeneralHelper.getUniqueString();
+        }
+
+        int value = GeneralHelper.getRandom().nextInt( optionCount * weight );
+        String chosenOption = options[ value / weight ];
+
+        TestImprovedRandom testImprovedRandom = new TestImprovedRandom();
+        testImprovedRandom.addTransaction( value );
+
+        Chooser< String > chooser = new Chooser< String >( testImprovedRandom );
+
+        for ( int i = 0; i < optionCount; i++ )
+        {
+            chooser.addOption( options[ i ], weight );
+        }
+
+        Assert.assertEquals( "Unexpected result.", chosenOption, chooser.choose() );
+        Assert.assertEquals( "Unexpected result for isEmpty().", true,
+                             testImprovedRandom.isEmpty() );
+    }
 }
