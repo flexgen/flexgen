@@ -36,6 +36,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import org.flexgen.util.Chooser;
+import org.flexgen.util.ImprovedRandom;
 
 /**
  * Test class for the Chooser class.
@@ -58,6 +59,27 @@ public class ChooserTest
         {
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'improvedRandom' cannot be null.", e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the addOption() method throws the correct exception when the option parameter is
+     * null.
+     */
+    @Test
+    public void addOption_option_null()
+    {
+        Chooser< Object > chooser = new Chooser< Object >( new ImprovedRandom() );
+
+        try
+        {
+            chooser.addOption( null, 0 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.", "Parameter 'option' cannot be null.",
+                                 e.getMessage() );
         }
     }
 }

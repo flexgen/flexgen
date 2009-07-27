@@ -54,4 +54,20 @@ public class Chooser< T >
             throw new IllegalArgumentException( "Parameter 'improvedRandom' cannot be null." );
         }
     }
+
+    /**
+     * Add an option that can be randomly chosesn.
+     *
+     * @param option
+     *            The option that can be randomly chosen.
+     * @param weight
+     *            The probability of choosing the option.
+     */
+    public void addOption( T option, int weight )
+    {
+        if ( option == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'option' cannot be null." );
+        }
+    }
 }
