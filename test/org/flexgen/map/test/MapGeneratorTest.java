@@ -56,6 +56,25 @@ import org.flexgen.util.ImprovedRandom;
 public class MapGeneratorTest
 {
     /**
+     * Verify that the constructor throws the correct exception when the improvedRandom parameter is
+     * null.
+     */
+    @Test
+    public void constructor_improvedRandom_null()
+    {
+        try
+        {
+            new MapGenerator( null, MapTileTypeHelper.buildArray(), 0, 0, 0, 0 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'improvedRandom' cannot be null.", e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the constructor throws the correct exception when the mapTileTypes parameter is
      * null.
      */

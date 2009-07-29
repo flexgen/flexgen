@@ -110,6 +110,11 @@ public class MapGenerator
     public MapGenerator( ImprovedRandom improvedRandom, MapTileType[] mapTileTypes,
                          int minX, int minY, int maxX, int maxY )
     {
+        if ( improvedRandom == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'improvedRandom' cannot be null." );
+        }
+
         if ( mapTileTypes == null )
         {
             throw new IllegalArgumentException( "Parameter 'mapTileTypes' cannot be null." );
