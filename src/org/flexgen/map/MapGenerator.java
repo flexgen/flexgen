@@ -39,6 +39,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.flexgen.util.ImprovedRandom;
+
 /**
  * Class containing logic for randomly generating a map using a specified set of map tile types.
  */
@@ -87,6 +89,8 @@ public class MapGenerator
     /**
      * Construct a map generator.
      *
+     * @param improvedRandom
+     *            Random number generator to use for generating the map. Cannot be null.
      * @param mapTileTypes
      *            Array of map tile types that define the available map tile types for randomly
      *            generating the map. Cannot be null. Must contain at least one element. No element
@@ -103,7 +107,8 @@ public class MapGenerator
      *            Largest possible Y coordinate for map tiles in the map. Must be greater than or
      *            equal to minY.
      */
-    public MapGenerator( MapTileType[] mapTileTypes, int minX, int minY, int maxX, int maxY )
+    public MapGenerator( ImprovedRandom improvedRandom, MapTileType[] mapTileTypes,
+                         int minX, int minY, int maxX, int maxY )
     {
         if ( mapTileTypes == null )
         {

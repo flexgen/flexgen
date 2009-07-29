@@ -33,6 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.flexgen.test.helper;
 
 import org.flexgen.map.MapGenerator;
+import org.flexgen.util.ImprovedRandom;
 
 /**
  * Test helper class for the MapGenerator class.
@@ -46,7 +47,7 @@ public class MapGeneratorHelper
      */
     public static MapGenerator build()
     {
-        return new MapGenerator( MapTileTypeHelper.buildArray(), 0, 0, 0, 0 );
+        return new MapGenerator( new ImprovedRandom(), MapTileTypeHelper.buildArray(), 0, 0, 0, 0 );
     }
 
     /**

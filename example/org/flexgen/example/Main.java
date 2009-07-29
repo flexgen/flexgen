@@ -44,6 +44,7 @@ import org.flexgen.map.MapTileLocation;
 import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
+import org.flexgen.util.ImprovedRandom;
 
 /**
  * Class implementing an example application for the FlexGen library.
@@ -235,7 +236,8 @@ public class Main
         File dir = new File( "work/worlds" );
         dir.mkdirs();
 
-        MapGenerator mapGenerator = new MapGenerator( MAP_TILE_TYPES, -1, -1, 1, 1 );
+        MapGenerator mapGenerator =
+                new MapGenerator( new ImprovedRandom(), MAP_TILE_TYPES, -1, -1, 1, 1 );
         mapGenerator.addMapTileAddedListener( new MapRenderer( "work/worlds/", 5, COLOR_MAP ));
 
         mapGenerator.addMapTile( new MapTileLocation( -1, -1 ),

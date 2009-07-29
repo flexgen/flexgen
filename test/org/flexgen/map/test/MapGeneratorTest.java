@@ -48,6 +48,7 @@ import org.flexgen.test.helper.MapGeneratorHelper;
 import org.flexgen.test.helper.MapTileLocationHelper;
 import org.flexgen.test.helper.MapTileOrientationHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
+import org.flexgen.util.ImprovedRandom;
 
 /**
  * Test class for the MapGenerator class.
@@ -63,7 +64,7 @@ public class MapGeneratorTest
     {
         try
         {
-            new MapGenerator( null, 0, 0, 0, 0 );
+            new MapGenerator( new ImprovedRandom(), null, 0, 0, 0, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -84,7 +85,7 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
+            new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -109,7 +110,7 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
+            new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -137,7 +138,7 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
+            new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -164,7 +165,7 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
+            new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -185,7 +186,7 @@ public class MapGeneratorTest
     {
         try
         {
-            new MapGenerator( MapTileTypeHelper.buildArray(), 0, 0, -1, 0 );
+            new MapGenerator( new ImprovedRandom(), MapTileTypeHelper.buildArray(), 0, 0, -1, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -206,7 +207,7 @@ public class MapGeneratorTest
     {
         try
         {
-            new MapGenerator( MapTileTypeHelper.buildArray(), 0, 0, 0, -1 );
+            new MapGenerator( new ImprovedRandom(), MapTileTypeHelper.buildArray(), 0, 0, 0, -1 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -226,7 +227,8 @@ public class MapGeneratorTest
     {
         int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
         MapTileType[] mapTileTypes = MapTileTypeHelper.buildArray( size );
-        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
+        MapGenerator mapGenerator =
+                new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
         Assert.assertEquals( "Unexpected return value.", size, mapGenerator.getTileSize() );
     }
 
@@ -237,8 +239,8 @@ public class MapGeneratorTest
     public void getMinX()
     {
         int value = GeneralHelper.getRandom().nextInt( 1000 );
-        MapGenerator mapGenerator =
-                new MapGenerator( MapTileTypeHelper.buildArray(), value, 0, 5000, 5000 );
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), MapTileTypeHelper.buildArray(), value, 0, 5000, 5000 );
         Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMinX() );
     }
 
@@ -249,8 +251,8 @@ public class MapGeneratorTest
     public void getMinY()
     {
         int value = GeneralHelper.getRandom().nextInt( 1000 );
-        MapGenerator mapGenerator =
-                new MapGenerator( MapTileTypeHelper.buildArray(), 0, value, 5000, 5000 );
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), MapTileTypeHelper.buildArray(), 0, value, 5000, 5000 );
         Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMinY() );
     }
 
@@ -261,8 +263,8 @@ public class MapGeneratorTest
     public void getMaxX()
     {
         int value = GeneralHelper.getRandom().nextInt( 1000 );
-        MapGenerator mapGenerator =
-                new MapGenerator( MapTileTypeHelper.buildArray(), 0, 0, value, 5000 );
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), MapTileTypeHelper.buildArray(), 0, 0, value, 5000 );
         Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMaxX() );
     }
 
@@ -273,8 +275,8 @@ public class MapGeneratorTest
     public void getMaxY()
     {
         int value = GeneralHelper.getRandom().nextInt( 1000 );
-        MapGenerator mapGenerator =
-                new MapGenerator( MapTileTypeHelper.buildArray(), 0, 0, 5000, value );
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), MapTileTypeHelper.buildArray(), 0, 0, 5000, value );
         Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMaxY() );
     }
 
@@ -331,7 +333,7 @@ public class MapGeneratorTest
         };
 
         MapGenerator mapGenerator =
-                new MapGenerator( mapTileTypes,
+                new MapGenerator( new ImprovedRandom(), mapTileTypes,
                                   mapTileLocation.getX(), mapTileLocation.getY(),
                                   mapTileLocation.getX(), mapTileLocation.getY() );
 
@@ -357,7 +359,8 @@ public class MapGeneratorTest
             mapTileType
         };
 
-        MapGenerator mapGenerator = new MapGenerator( mapTileTypes, 0, 0, 0, 0 );
+        MapGenerator mapGenerator =
+                new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
 
         try
         {
@@ -389,7 +392,7 @@ public class MapGeneratorTest
         };
 
         MapGenerator mapGenerator =
-                new MapGenerator( mapTileTypes,
+                new MapGenerator( new ImprovedRandom(), mapTileTypes,
                                   mapTileLocation.getX(), mapTileLocation.getY(),
                                   mapTileLocation.getX(), mapTileLocation.getY() );
 
@@ -419,7 +422,7 @@ public class MapGeneratorTest
         };
 
         MapGenerator mapGenerator =
-                new MapGenerator( mapTileTypes,
+                new MapGenerator( new ImprovedRandom(), mapTileTypes,
                                   mapTileLocation.getX(), mapTileLocation.getY(),
                                   mapTileLocation.getX(), mapTileLocation.getY() );
 
