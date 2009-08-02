@@ -353,6 +353,39 @@ public class MapGenerator
      */
     private boolean legalMapTileType( MapTileType mapTileType )
     {
+        for ( MapTileLocation mapTileLocation : openLocations )
+        {
+            for ( MapTileOrientation mapTileOrientation :
+                    mapTileType.getDistinctMapTileOrientations() )
+            {
+                MapTilePosition mapTilePosition =
+                        new MapTilePosition( mapTileLocation, mapTileOrientation );
+
+                if ( legalMapTilePlacement( mapTileType, mapTilePosition ))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Determine whether or not a specified map tile tile can be legally added to the map at the
+     * specified position.
+     *
+     * @param mapTileType
+     *            Map tile type to check.
+     * @param mapTilePosition
+     *            Map tile position to check.
+     *
+     * @return True if the map tile type can be legally added to the map at the specified position,
+     *         false otherwise.
+     */
+    private boolean legalMapTilePlacement( MapTileType mapTileType,
+                                           MapTilePosition mapTilePosition )
+    {
         return false;
     }
 }
