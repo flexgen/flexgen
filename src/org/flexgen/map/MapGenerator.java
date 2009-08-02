@@ -332,6 +332,11 @@ public class MapGenerator
                 }
             }
 
+            if ( ! chooser.optionsAvailable() )
+            {
+                throw new IllegalStateException( "No map tile types can be placed on the map." );
+            }
+
             // randomly pick tile type
             // randomly pick tile position (location and orientation)
             // add tile of the appropriate type at the selected position
