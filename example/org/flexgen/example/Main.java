@@ -75,7 +75,7 @@ public class Main
      * Tile type representing grass.
      */
     private static final MapTileType ALL_GRASS = new MapTileType(
-            "All Grass", 1,
+            "All Grass", 1000,
             new MapUnit[][]
             {
                 { GRASS, GRASS, GRASS },
@@ -98,7 +98,7 @@ public class Main
      * Tile type representing a straight river.
      */
     private static final MapTileType STRAIGHT_RIVER = new MapTileType(
-            "Straight River", 1,
+            "Straight River", 1000,
             new MapUnit[][]
             {
                 { GRASS, RIVER, GRASS },
@@ -122,7 +122,7 @@ public class Main
      * Tile type representing a river corner.
      */
     private static final MapTileType CORNER_RIVER = new MapTileType(
-            "Corner River", 1,
+            "Corner River", 1000,
             new MapUnit[][]
             {
                 { GRASS, RIVER, GRASS },
@@ -148,7 +148,7 @@ public class Main
      * Tile type representing a river split three ways.
      */
     private static final MapTileType THREE_WAY_RIVER = new MapTileType(
-            "Three Way River", 1,
+            "Three Way River", 1000,
             new MapUnit[][]
             {
                 { GRASS, RIVER, GRASS },
@@ -174,7 +174,7 @@ public class Main
      * Tile type representing a river split four ways.
      */
     private static final MapTileType FOUR_WAY_RIVER = new MapTileType(
-            "Four Way River", 1,
+            "Four Way River", 1000,
             new MapUnit[][]
             {
                 { GRASS, RIVER, GRASS },
