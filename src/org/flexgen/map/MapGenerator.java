@@ -386,6 +386,55 @@ public class MapGenerator
     private boolean legalMapTilePlacement( MapTileType mapTileType,
                                            MapTilePosition mapTilePosition )
     {
-        return false;
+        MapTile mapTile = new MapTile( mapTileType, mapTilePosition.getMapTileOrientation() );
+        MapTileLocation mapTileLocation = mapTilePosition.getMapTileLocation();
+        MapTileLocation neighborLocation;
+        MapTile neighbor;
+
+        neighborLocation =
+                new MapTileLocation( mapTileLocation.getX(), mapTileLocation.getY() - 1 );
+        neighbor = map.get( neighborLocation );
+
+        if (( neighbor != null ) &&
+            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.BOTTOM ).equals(
+                        mapTile.getMapTileEdge( MapTileEdgePosition.TOP ))))
+        {
+            return false;
+        }
+
+        neighborLocation =
+                new MapTileLocation( mapTileLocation.getX(), mapTileLocation.getY() + 1 );
+        neighbor = map.get( neighborLocation );
+
+        if (( neighbor != null ) &&
+            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.TOP ).equals(
+                        mapTile.getMapTileEdge( MapTileEdgePosition.BOTTOM ))))
+        {
+            return false;
+        }
+
+        neighborLocation =
+                new MapTileLocation( mapTileLocation.getX() - 1, mapTileLocation.getY() );
+        neighbor = map.get( neighborLocation );
+
+        if (( neighbor != null ) &&
+            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.RIGHT ).equals(
+                        mapTile.getMapTileEdge( MapTileEdgePosition.LEFT ))))
+        {
+            return false;
+        }
+
+        neighborLocation =
+                new MapTileLocation( mapTileLocation.getX() + 1, mapTileLocation.getY() );
+        neighbor = map.get( neighborLocation );
+
+        if (( neighbor != null ) &&
+            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.LEFT ).equals(
+                        mapTile.getMapTileEdge( MapTileEdgePosition.RIGHT ))))
+        {
+            return false;
+        }
+
+        return true;
     }
 }
