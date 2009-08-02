@@ -190,10 +190,7 @@ public class Main
             },
             new MapTileOrientation[]
             {
-                MapTileOrientation.UPRIGHT,
-                MapTileOrientation.CLOCKWISE,
-                MapTileOrientation.FLIPPED,
-                MapTileOrientation.COUNTER_CLOCKWISE
+                MapTileOrientation.UPRIGHT
             } );
 
     /**
