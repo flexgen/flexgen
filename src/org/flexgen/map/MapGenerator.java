@@ -322,24 +322,52 @@ public class MapGenerator
     {
         while ( ! openLocations.isEmpty() )
         {
-            Chooser< MapTileType > chooser = new Chooser< MapTileType >( improvedRandom );
+            Chooser< MapTileType > mapTileTypeChooser =
+                    new Chooser< MapTileType >( improvedRandom );
 
+            // determine what map tile types can be added to the map
             for ( MapTileType mapTileType : mapTileTypes )
             {
                 if ( legalMapTileType( mapTileType ))
                 {
-                    chooser.addOption( mapTileType, mapTileType.getWeight() );
+                    mapTileTypeChooser.addOption( mapTileType, mapTileType.getWeight() );
                 }
             }
 
-            if ( ! chooser.optionsAvailable() )
+            // ensure that at least one map tile type can be added to the map
+            if ( ! mapTileTypeChooser.optionsAvailable() )
             {
                 throw new IllegalStateException( "No map tile types can be placed on the map." );
             }
 
-            // randomly pick tile type
-            // randomly pick tile position (location and orientation)
-            // add tile of the appropriate type at the selected position
+            // randomly pick a map tile type
+            MapTileType mapTileType = mapTileTypeChooser.choose();
+
+            Chooser< MapTilePosition > mapTilePositionChooser =
+                    new Chooser< MapTilePosition >( improvedRandom );
+
+            // determine at what map tile positions the selected map tile type can be added
+            for ( MapTileLocation mapTileLocation : openLocations )
+            {
+                for ( MapTileOrientation mapTileOrientation :
+                        mapTileType.getDistinctMapTileOrientations() )
+                {
+                    MapTilePosition mapTilePosition =
+                            new MapTilePosition( mapTileLocation, mapTileOrientation );
+
+                    if ( legalMapTilePlacement( mapTileType, mapTilePosition ))
+                    {
+                        mapTilePositionChooser.addOption( mapTilePosition, 1 );
+                    }
+                }
+            }
+
+            // randomly pick a map tile position
+            MapTilePosition mapTilePosition = mapTilePositionChooser.choose();
+
+            // add the selected map tile type at the selected map tile position
+            addMapTile( mapTilePosition.getMapTileLocation(),
+                        new MapTile( mapTileType, mapTilePosition.getMapTileOrientation() ));
         }
     }
 
