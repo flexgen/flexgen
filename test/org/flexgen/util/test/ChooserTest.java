@@ -182,4 +182,26 @@ public class ChooserTest
         Assert.assertEquals( "Unexpected result for isEmpty().", true,
                              testImprovedRandom.isEmpty() );
     }
+
+    /**
+     * Verify that the optionsAvailable() returns the correct value when options are available.
+     */
+    @Test
+    public void optionsAvailable_true()
+    {
+        Chooser< Object > chooser = new Chooser< Object >( new ImprovedRandom() );
+        chooser.addOption( new Object(), 1 );
+        Assert.assertEquals( "Unexpected result.", true, chooser.optionsAvailable() );
+    }
+
+    /**
+     * Verify that the optionsAvailable() returns the correct value when no options are available.
+     */
+    @Test
+    public void optionsAvailable_false()
+    {
+        Chooser< Object > chooser = new Chooser< Object >( new ImprovedRandom() );
+        chooser.addOption( new Object(), 0 );
+        Assert.assertEquals( "Unexpected result.", false, chooser.optionsAvailable() );
+    }
 }

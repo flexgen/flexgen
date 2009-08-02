@@ -126,4 +126,14 @@ public class Chooser< T >
 
         throw new IllegalStateException( "Illegal state." );
     }
+
+    /**
+     * Determine if any options with any weight have been added.
+     *
+     * @return True if at least one option with non-zero weight has been added, false otherwise.
+     */
+    public boolean optionsAvailable()
+    {
+        return ( totalWeight > 0 );
+    }
 }
