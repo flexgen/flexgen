@@ -39,6 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.flexgen.util.Chooser;
 import org.flexgen.util.ImprovedRandom;
 
 /**
@@ -47,24 +48,15 @@ import org.flexgen.util.ImprovedRandom;
 public class MapGenerator
 {
     /**
-     * Data structure containing the map. Maps map tile locations to map tiles.
+     * Random number generator to use for generating the map.
      */
-    private final Map< MapTileLocation, MapTile > map;
+    private final ImprovedRandom improvedRandom;
 
     /**
-     * Set of open locations on the map.
+     * Array of map tile types that define the available map tile types for randomly generating the
+     * map.
      */
-    private final Set< MapTileLocation > openLocations;
-
-    /**
-     * List of listeners for the event of adding a map tile.
-     */
-    private final List< MapTileAddedListener > mapTileAddedListeners;
-
-    /**
-     * The size of the map unit array that defines the map tile types used by this map generator.
-     */
-    private final int tileSize;
+    private final MapTileType[] mapTileTypes;
 
     /**
      * Smallest possible X coordinate for map tiles in the map.
@@ -85,6 +77,26 @@ public class MapGenerator
      * Largest possible Y coordinate for map tiles in the map.
      */
     private final int maxY;
+
+    /**
+     * Data structure containing the map. Maps map tile locations to map tiles.
+     */
+    private final Map< MapTileLocation, MapTile > map;
+
+    /**
+     * Set of open locations on the map.
+     */
+    private final Set< MapTileLocation > openLocations;
+
+    /**
+     * List of listeners for the event of adding a map tile.
+     */
+    private final List< MapTileAddedListener > mapTileAddedListeners;
+
+    /**
+     * The size of the map unit array that defines the map tile types used by this map generator.
+     */
+    private final int tileSize;
 
     /**
      * Construct a map generator.
@@ -174,14 +186,16 @@ public class MapGenerator
                     "Parameter 'maxY' must be greater than or equal to parameter 'minY'." );
         }
 
-        this.map                   = new HashMap< MapTileLocation, MapTile >();
-        this.openLocations         = new HashSet< MapTileLocation >();
-        this.mapTileAddedListeners = new LinkedList< MapTileAddedListener >();
-        this.tileSize              = tileSize;
+        this.improvedRandom        = improvedRandom;
+        this.mapTileTypes          = mapTileTypes;
         this.minX                  = minX;
         this.minY                  = minY;
         this.maxX                  = maxX;
         this.maxY                  = maxY;
+        this.map                   = new HashMap< MapTileLocation, MapTile >();
+        this.openLocations         = new HashSet< MapTileLocation >();
+        this.mapTileAddedListeners = new LinkedList< MapTileAddedListener >();
+        this.tileSize              = tileSize;
     }
 
     /**
@@ -306,9 +320,19 @@ public class MapGenerator
      */
     public void generate()
     {
-        // while there are open locations:
-        //   randomly pick tile type
-        //   randomly pick tile position (location and orientation)
-        //   add tile of the appropriate type at the selected position
+        while ( ! openLocations.isEmpty() )
+        {
+            Chooser< MapTileType > chooser = new Chooser< MapTileType >( improvedRandom );
+
+            for ( MapTileType mapTileType : mapTileTypes )
+            {
+                // if the tile type can be legally placed...
+                chooser.addOption( mapTileType, mapTileType.getWeight() );
+            }
+
+            // randomly pick tile type
+            // randomly pick tile position (location and orientation)
+            // add tile of the appropriate type at the selected position
+        }
     }
 }
