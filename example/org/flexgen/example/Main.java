@@ -197,6 +197,32 @@ public class Main
             } );
 
     /**
+     * Tile type representing a dead-end for a river.
+     */
+    private static final MapTileType DEAD_END_RIVER = new MapTileType(
+            "Dead End River", 1,
+            new MapUnit[][]
+            {
+                { GRASS, RIVER, GRASS },
+                { GRASS, GRASS, GRASS },
+                { GRASS, GRASS, GRASS }
+            },
+            new MapTileEdge[]
+            {
+                RIVER_EDGE,
+                GRASS_EDGE,
+                GRASS_EDGE,
+                GRASS_EDGE
+            },
+            new MapTileOrientation[]
+            {
+                MapTileOrientation.UPRIGHT,
+                MapTileOrientation.CLOCKWISE,
+                MapTileOrientation.FLIPPED,
+                MapTileOrientation.COUNTER_CLOCKWISE
+            } );
+
+    /**
      * Array of all map tile types for this example.
      */
     private static final MapTileType[] MAP_TILE_TYPES = new MapTileType[]
@@ -205,7 +231,8 @@ public class Main
         STRAIGHT_RIVER,
         CORNER_RIVER,
         THREE_WAY_RIVER,
-        FOUR_WAY_RIVER
+        FOUR_WAY_RIVER,
+        DEAD_END_RIVER
     };
 
     /**
@@ -237,27 +264,13 @@ public class Main
         dir.mkdirs();
 
         MapGenerator mapGenerator =
-                new MapGenerator( new ImprovedRandom(), MAP_TILE_TYPES, -1, -1, 1, 1 );
+                new MapGenerator( new ImprovedRandom(), MAP_TILE_TYPES, -10, -10, 10, 10 );
         mapGenerator.addMapTileAddedListener( new MapRenderer( "work/worlds/", 5, COLOR_MAP ));
 
-        mapGenerator.addMapTile( new MapTileLocation( -1, -1 ),
-                                 new MapTile( CORNER_RIVER, MapTileOrientation.CLOCKWISE ));
-        mapGenerator.addMapTile( new MapTileLocation( 0, -1 ),
-                                 new MapTile( THREE_WAY_RIVER, MapTileOrientation.UPRIGHT ));
-        mapGenerator.addMapTile( new MapTileLocation( 1, -1 ),
-                                 new MapTile( THREE_WAY_RIVER, MapTileOrientation.FLIPPED ));
-        mapGenerator.addMapTile( new MapTileLocation( -1, 0 ),
-                                 new MapTile( STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
         mapGenerator.addMapTile( new MapTileLocation( 0, 0 ),
                                  new MapTile( ALL_GRASS, MapTileOrientation.UPRIGHT ));
-        mapGenerator.addMapTile( new MapTileLocation( 1, 0 ),
-                                 new MapTile( STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
-        mapGenerator.addMapTile( new MapTileLocation( -1, 1 ),
-                                 new MapTile( CORNER_RIVER, MapTileOrientation.UPRIGHT ));
-        mapGenerator.addMapTile( new MapTileLocation( 0, 1 ),
-                                 new MapTile( STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
-        mapGenerator.addMapTile( new MapTileLocation( 1, 1 ),
-                                 new MapTile( FOUR_WAY_RIVER, MapTileOrientation.UPRIGHT ));
+
+        mapGenerator.generate();
     }
 
     /**
