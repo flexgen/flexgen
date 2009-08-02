@@ -326,13 +326,28 @@ public class MapGenerator
 
             for ( MapTileType mapTileType : mapTileTypes )
             {
-                // if the tile type can be legally placed...
-                chooser.addOption( mapTileType, mapTileType.getWeight() );
+                if ( legalMapTileType( mapTileType ))
+                {
+                    chooser.addOption( mapTileType, mapTileType.getWeight() );
+                }
             }
 
             // randomly pick tile type
             // randomly pick tile position (location and orientation)
             // add tile of the appropriate type at the selected position
         }
+    }
+
+    /**
+     * Determine whether or not a specified map tile tile can be legally added to the map.
+     *
+     * @param mapTileType
+     *            Map tile type to check.
+     *
+     * @return True if the map tile type can be legally added to the map, false otherwise.
+     */
+    private boolean legalMapTileType( MapTileType mapTileType )
+    {
+        return false;
     }
 }
