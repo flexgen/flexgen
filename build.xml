@@ -151,7 +151,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <target name="javadoc" depends="init">
         <mkdir dir="${javadoc.dir}" />
         <javadoc destdir="${javadoc.dir}" access="private" classpathref="javadoc.classpath"
-                 sourcepathref="javadoc.sourcepath" windowtitle="FlexGen JavaDoc Documentation" />
+                 sourcepathref="javadoc.sourcepath" windowtitle="FlexGen Javadoc Documentation" />
     </target>
 
     <target name="checkstyle">
@@ -198,7 +198,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message="    Run the FlexGen example application."                       />
         <echo message=""                                                               />
         <echo message="javadoc"                                                        />
-        <echo message="    Generate the FlexGen JavaDoc documentation."                />
+        <echo message="    Generate the FlexGen Javadoc documentation."                />
         <echo message=""                                                               />
         <echo message="checkstyle"                                                     />
         <echo message="    Run Checkstyle on the source code."                         />
