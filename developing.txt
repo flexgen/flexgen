@@ -1,6 +1,7 @@
 This file describes everything you need to get started developing on the
 FlexGen project. If you are interested in how to use FlexGen in your own
-project, this file is not for you.
+project, this file is not intended for you and you should instead use the
+documentation available on the FlexGen web site: http://www.flexgen.org/
 
 
 Introduction
