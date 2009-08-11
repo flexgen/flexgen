@@ -78,8 +78,8 @@ To build FlexGen, you can use Ant with the supplied build script. To see
 a list of of build options, use "ant usage". You will most likely be
 interested in the following build options:
 
- - jar         : Create a Jar of the FlexGen classes.
- - test        : Run the tests.
- - example.run : Run the FlexGen example application.
- - javadoc     : Generate the FlexGen JavaDoc documentation.
- - checkstyle  : Run Checkstyle on the source code.
+ - jar               : Create a Jar of the FlexGen classes.
+ - test              : Run the tests.
+ - example.run       : Run the FlexGen example application.
+ - developer.javadoc : Generate the FlexGen Developer Javadoc documentation.
+ - checkstyle        : Run Checkstyle on the source code.
