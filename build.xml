@@ -47,6 +47,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="test.jar.file"         value="${jars.dir}/FlexGenTest.jar"    />
     <property name="example.jar.file"      value="${jars.dir}/FlexGenExample.jar" />
     <property name="developer.javadoc.dir" value="${work.dir}/javadoc.developer"  />
+    <property name="user.javadoc.dir"      value="${work.dir}/javadoc.user"       />
 
     <path id="test.depend.classpath">
         <pathelement path="${jar.file}" />
@@ -83,6 +84,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <pathelement path="${src.dir}"         />
         <pathelement path="${test.src.dir}"    />
         <pathelement path="${example.src.dir}" />
+    </path>
+
+    <path id="user.javadoc.sourcepath">
+        <pathelement path="${src.dir}"         />
     </path>
 
     <target name="clean">
@@ -156,6 +161,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         	     windowtitle="FlexGen Developer Javadoc Documentation" />
     </target>
 
+    <target name="user.javadoc" depends="init">
+        <mkdir dir="${user.javadoc.dir}" />
+        <javadoc destdir="${user.javadoc.dir}" sourcepathref="user.javadoc.sourcepath"
+        	     windowtitle="FlexGen User Javadoc Documentation" />
+    </target>
+
     <target name="checkstyle">
         <taskdef resource="checkstyletask.properties" classpath="${env.CHECKSTYLE_5_0}" />
 
@@ -201,6 +212,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                               />
         <echo message="developer.javadoc"                                              />
         <echo message="    Generate the FlexGen Developer Javadoc documentation."      />
+        <echo message=""                                                               />
+        <echo message="user.javadoc"                                                   />
+        <echo message="    Generate the FlexGen User Javadoc documentation."           />
         <echo message=""                                                               />
         <echo message="checkstyle"                                                     />
         <echo message="    Run Checkstyle on the source code."                         />
