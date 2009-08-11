@@ -13,6 +13,10 @@ these tools available and are comfortable using them. Using these tools
 is not required for developing on the FlexGen project if you wish to use
 other tools.
 
+If you need any assistance with the instructions in this file, you can
+use the FlexGen developers mailing list to get the help you need:
+https://lists.sourceforge.net/lists/listinfo/flexgen-devel
+
 
 Prerequisites
 =============
