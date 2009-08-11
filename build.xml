@@ -156,15 +156,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <target name="developer.javadoc" depends="init">
         <mkdir dir="${developer.javadoc.dir}" />
         <javadoc destdir="${developer.javadoc.dir}" access="private"
-        	     classpathref="developer.javadoc.classpath"
-        	     sourcepathref="developer.javadoc.sourcepath"
-        	     windowtitle="FlexGen Developer Javadoc Documentation" />
+                 classpathref="developer.javadoc.classpath"
+                 sourcepathref="developer.javadoc.sourcepath"
+                 windowtitle="FlexGen Developer Javadoc Documentation" />
     </target>
 
     <target name="user.javadoc" depends="init">
         <mkdir dir="${user.javadoc.dir}" />
         <javadoc destdir="${user.javadoc.dir}" sourcepathref="user.javadoc.sourcepath"
-        	     windowtitle="FlexGen User Javadoc Documentation" />
+                 windowtitle="FlexGen User Javadoc Documentation">
+            <bottom>
+                <![CDATA[
+                    <div style="text-align: center;">
+                        <p>
+                            <a href="http://www.flexgen.org/">
+                                FlexGen Home
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://sourceforge.net/projects/flexgen/">
+<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=266830&amp;type=11"
+     width="120" height="30"
+     alt="Get FlexGen at SourceForge.net. Fast, secure and Free Open Source software downloads" />
+                            </a>
+                        </p>
+                        <p>
+                            Copyright &copy; 2009 - Jeffrey J. Weston
+                            <a href="mailto:jjweston@gmail.com">&lt;jjweston@gmail.com&gt;</a>
+                        </p>
+                        <p>
+                            All rights reserved.
+                        </p>
+                    </div>
+                ]]>
+            </bottom>
+        </javadoc>
     </target>
 
     <target name="checkstyle">
