@@ -157,6 +157,22 @@ div.footer
                     application. The example application is included in the "example" directory in
                     the FlexGen release.
                 </p>
+                <h2>
+                    Map Units
+                </h2>
+                <p>
+                    Map units are the basic building blocks of maps and are the smallest element
+                    present in a map. They represent the fundamental elements that will compose your
+                    map. In the example application, a map is generated that has rivers cutting
+                    through grassland. The map units in the example application are grass and river.
+                    Each map unit in your map must have a unique name, as the name is used to
+                    differentiate one map unit from another. Map units can be constructed as in the
+                    following example:
+                </p>
+                <pre>
+    MapUnit grass = new MapUnit( "Grass" );
+    MapUnit river = new MapUnit( "River" );
+                </pre>
             </div>
         </div>
 
