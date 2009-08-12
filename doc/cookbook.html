@@ -189,6 +189,27 @@ div.footer
     MapUnit river = new MapUnit( "River" );
                 </pre>
                 <h2>
+                    Map Tile Edges
+                </h2>
+                <p>
+                    Map tile edges determine how map tiles may be placed adjacent to each other.
+                    Each map tile type will have a map tile edge specified for each of its four
+                    edges. When determining whether or not a map tile can be placed adjacent to
+                    another map tile, the edges connecting both of the map tiles must match. For
+                    example, if a map tile is being placed on top of another map tile, the bottom
+                    edge of the new map tile must match the top edge of the existing map tile. If a
+                    map tile is being placed adjacent to more than one map tile, this check is
+                    performed for all adjacent tiles. The map tile edges in the example application
+                    define an edge that is made up entirely of grass and an edge with a river
+                    flowing through the middle. Each map tile edge in your map must have a unique
+                    name, as the name is used to differentiate one map tile edge from another. Map
+                    tile edges can be constructed as in the following example:
+                </p>
+                <pre>
+    MapTileEdge grassEdge = new MapTileEdge( "Grass Edge" );
+    MapTileEdge riverEdge = new MapTileEdge( "River Edge" );
+                </pre>
+                <h2>
                     Map Tiles
                 </h2>
                 <p>
