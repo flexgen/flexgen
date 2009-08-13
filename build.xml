@@ -53,6 +53,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="binary.release"        value="FlexGen-${version}"                      />
     <property name="binary.release.dir"    value="${release.dir}/${binary.release}"        />
     <property name="binary.release.file"   value="${release.dir}/${binary.release}.tar.gz" />
+    <property name="source.release"        value="FlexGen-src-${version}"                  />
+    <property name="source.release.dir"    value="${release.dir}/${source.release}"        />
+    <property name="source.release.file"   value="${release.dir}/${source.release}.tar.gz" />
 
     <path id="test.depend.classpath">
         <pathelement path="${jar.file}" />
@@ -228,6 +231,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
         <tar destfile="${binary.release.file}" basedir="${release.dir}"
              includes="${binary.release}/**" compression="gzip" />
+    </target>
+
+    <target name="source.release" depends="release">
+        <mkdir dir="${source.release.dir}" />
+
+        <copy todir="${source.release.dir}">
+            <fileset dir="${base.dir}" excludes=".git/**, bin/**, work/**, .gitignore" />
+        </copy>
+
+        <tar destfile="${source.release.file}" basedir="${release.dir}"
+             includes="${source.release}/**" compression="gzip" />
     </target>
 
     <target name="usage">
