@@ -408,6 +408,21 @@ div.footer
                 <pre>
     mapGenerator.generate();
                 </pre>
+                <h2>
+                    Getting Stuck
+                </h2>
+                <p>
+                    Version 1.0.0 of FlexGen has a known issue where the map generator can "get
+                    stuck" when generating the map. What this means is that that the map generator
+                    can get into a situation where it is impossible to place a map tile in a certain
+                    location in the map because no map tile type in any orientation can fit in that
+                    location. FlexGen has no logic to deal with this situation, and when it occurs
+                    an exception is thrown. To ensure this does not happen, you must define map tile
+                    types such that a map tile type exists for every possible combination of map
+                    tile edges that may occur in the map. Newer versions of FlexGen will contain
+                    logic to solve this problem without requiring you to define map tile types for
+                    every combination of map tile edges.
+                </p>
             </div>
         </div>
 
