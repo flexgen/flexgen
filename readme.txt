@@ -5,7 +5,3 @@ determine what type of map is created.
 
 For more information about FlexGen, please visit the web site:
 http://www.flexgen.org/
-
-
-If you are a developer looking for information on how to get started
-developing on the FlexGen project, please see "developing.txt".
