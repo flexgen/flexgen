@@ -348,6 +348,66 @@ div.footer
                 MapTileOrientation.COUNTER_CLOCKWISE
             } );
                 </pre>
+                <h2>
+                    Generating the Map
+                </h2>
+                <p>
+                    Now that all of the elements have been defined, it is time to construct the map
+                    generator and generate the map. First, you need a random number generator. You
+                    can either use the random number generator included with FlexGen,
+                    <code>org.flexgen.util.ImprovedRandom</code>, or use your own. If you use your
+                    own random number generator, it must be a sublcass of
+                    <code>org.flexgen.util.ImprovedRandom</code>, as that is what the map generator
+                    expects. The random number generator can be constructed as in the following
+                    example:
+                </p>
+                <pre>
+    ImprovedRandom improvedRandom = new ImprovedRandom();
+                </pre>
+                <p>
+                    Next, you need to combine all of your defined map tile types into an array that
+                    you will pass to the map generator constructor. The six map tile types from the
+                    example application can be combined into an array as in the following example:
+                </p>
+                <pre>
+    MapTileType[] mapTileTypes = new MapTileType[]
+    {
+        allGrass,
+        straightRiver,
+        cornerRiver,
+        threeWayRiver,
+        fourWayRiver,
+        deadEndRiver
+    };
+                </pre>
+                <p>
+                    Now you need to construct the map generator. The constructor for the map
+                    generator takes the random number generator, the array of map tile types, and
+                    the minimum and maximum X and Y coordinates for the map. The map generator can
+                    be constructed as in the following example:
+                </p>
+                <pre>
+    MapGenerator mapGenerator = new MapGenerator(
+            improvedRandom, mapTileTypes, -10, -10, 10, 10 );
+                </pre>
+                <p>
+                    The final step before generating the map is that you need to add whatever
+                    initial map tiles tiles you want to the map. You must add at least one map tile
+                    before generating the map. A map tile can be added to the map as in the
+                    following example:
+                </p>
+                <pre>
+    mapGenerator.addMapTile(
+            new MapTileLocation( 0, 0 ),
+            new MapTile( allGrass, MapTileOrientation.UPRIGHT ));
+                </pre>
+                <p>
+                    Finally, you can generate the map. A map can be generated as in the following
+                    example:
+                </p>
+                <pre>
+    mapGenerator.generate();
+                </pre>
             </div>
         </div>
 
