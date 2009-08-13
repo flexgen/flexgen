@@ -181,7 +181,7 @@ div.footer
                     example application, a map is generated that has rivers cutting through
                     grassland. The map units in the example application are grass and river. Each
                     map unit in your map must have a unique name, as the name is used to
-                    differentiate one map unit from another. Map units can be constructed as in the
+                    differentiate one map unit from another. Map units can be constructed with the
                     following example:
                 </p>
                 <pre>
@@ -203,7 +203,7 @@ div.footer
                     define an edge that is made up entirely of grass and an edge with a river
                     flowing through the middle. Each map tile edge in your map must have a unique
                     name, as the name is used to differentiate one map tile edge from another. Map
-                    tile edges can be constructed as in the following example:
+                    tile edges can be constructed with the following example:
                 </p>
                 <pre>
     MapTileEdge grassEdge = new MapTileEdge( "Grass Edge" );
@@ -358,7 +358,7 @@ div.footer
                     <code>org.flexgen.util.ImprovedRandom</code>, or use your own. If you use your
                     own random number generator, it must be a sublcass of
                     <code>org.flexgen.util.ImprovedRandom</code>, as that is what the map generator
-                    expects. The random number generator can be constructed as in the following
+                    expects. The random number generator can be constructed with the following
                     example:
                 </p>
                 <pre>
@@ -367,7 +367,7 @@ div.footer
                 <p>
                     Next, you need to combine all of your defined map tile types into an array that
                     you will pass to the map generator constructor. The six map tile types from the
-                    example application can be combined into an array as in the following example:
+                    example application can be combined into an array with the following example:
                 </p>
                 <pre>
     MapTileType[] mapTileTypes = new MapTileType[]
@@ -384,7 +384,7 @@ div.footer
                     Now you need to construct the map generator. The constructor for the map
                     generator takes the random number generator, the array of map tile types, and
                     the minimum and maximum X and Y coordinates for the map. The map generator can
-                    be constructed as in the following example:
+                    be constructed with the following example:
                 </p>
                 <pre>
     MapGenerator mapGenerator = new MapGenerator(
@@ -393,8 +393,8 @@ div.footer
                 <p>
                     The final step before generating the map is that you need to add whatever
                     initial map tiles tiles you want to the map. You must add at least one map tile
-                    before generating the map. A map tile can be added to the map as in the
-                    following example:
+                    before generating the map. A map tile can be added to the map with the following
+                    example:
                 </p>
                 <pre>
     mapGenerator.addMapTile(
@@ -402,7 +402,7 @@ div.footer
             new MapTile( allGrass, MapTileOrientation.UPRIGHT ));
                 </pre>
                 <p>
-                    Finally, you can generate the map. A map can be generated as in the following
+                    Finally, you can generate the map. A map can be generated with the following
                     example:
                 </p>
                 <pre>
