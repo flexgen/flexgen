@@ -244,6 +244,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
              includes="${source.release}/**" compression="gzip" />
     </target>
 
+    <target name="release.all" depends="binary.release, source.release" />
+
     <target name="usage">
         <echo message="FlexGen Build Options"                                          />
         <echo message=""                                                               />
