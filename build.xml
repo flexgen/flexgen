@@ -36,9 +36,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <property name="version"               value="1.1.0-prerelease"                        />
     <property name="dir.base"              value="."                                       />
-    <property name="dir.src.main"          value="${dir.base}/main"                        />
-    <property name="dir.src.test"          value="${dir.base}/test"                        />
-    <property name="dir.src.example"       value="${dir.base}/example"                     />
+    <property name="dir.src"               value="${dir.base}/src"                         />
+    <property name="dir.src.main"          value="${dir.src}/main"                         />
+    <property name="dir.src.test"          value="${dir.src}/test"                         />
+    <property name="dir.src.example"       value="${dir.src}/example"                      />
     <property name="dir.work"              value="${dir.base}/work"                        />
     <property name="dir.classes.main"      value="${dir.work}/classes"                     />
     <property name="dir.classes.test"      value="${dir.work}/test.classes"                />
