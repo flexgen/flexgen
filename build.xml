@@ -59,44 +59,44 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="dir.release.source"    value="${dir.release}/${release.source}"        />
     <property name="file.release.source"   value="${dir.release}/${release.source}.tar.gz" />
 
-    <path id="test.depend.classpath">
+    <path id="classpath.depend.test">
         <pathelement path="${file.jar.main}" />
     </path>
 
-    <path id="test.compile.classpath">
-        <path refid="test.depend.classpath" />
+    <path id="classpath.compile.test">
+        <path refid="classpath.depend.test" />
         <pathelement path="${env.JUNIT_4_6}" />
     </path>
 
-    <path id="test.run.classpath">
-        <path refid="test.compile.classpath" />
+    <path id="classpath.run.test">
+        <path refid="classpath.compile.test" />
         <pathelement path="${file.jar.test}" />
     </path>
 
-    <path id="example.depend.classpath">
+    <path id="classpath.depend.example">
         <pathelement path="${file.jar.main}" />
     </path>
 
-    <path id="example.compile.classpath">
-        <path refid="example.depend.classpath" />
+    <path id="classpath.compile.example">
+        <path refid="classpath.depend.example" />
     </path>
 
-    <path id="example.run.classpath">
-        <path refid="example.compile.classpath" />
+    <path id="classpath.run.example">
+        <path refid="classpath.compile.example" />
         <pathelement path="${file.jar.example}" />
     </path>
 
-    <path id="developer.javadoc.classpath">
+    <path id="classpath.javadoc.developer">
         <pathelement path="${env.JUNIT_4_6}" />
     </path>
 
-    <path id="developer.javadoc.sourcepath">
+    <path id="sourcepath.javadoc.developer">
         <pathelement path="${dir.src.main}"    />
         <pathelement path="${dir.src.test}"    />
         <pathelement path="${dir.src.example}" />
     </path>
 
-    <path id="user.javadoc.sourcepath">
+    <path id="sourcepath.javadoc.user">
         <pathelement path="${dir.src.main}" />
     </path>
 
@@ -122,9 +122,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <target name="test.compile" depends="jar">
         <mkdir dir="${dir.classes.test}" />
         <depend srcDir="${dir.src.test}" destDir="${dir.classes.test}" closure="true"
-                classpathref="test.depend.classpath" />
+                classpathref="classpath.depend.test" />
         <javac srcdir="${dir.src.test}" destdir="${dir.classes.test}" debug="true" source="1.5"
-               classpathref="test.compile.classpath" />
+               classpathref="classpath.compile.test" />
     </target>
 
     <target name="test.jar" depends="test.compile">
@@ -134,9 +134,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <target name="example.compile" depends="jar">
         <mkdir dir="${dir.classes.example}" />
         <depend srcDir="${dir.src.example}" destDir="${dir.classes.example}" closure="true"
-                classpathref="example.depend.classpath" />
+                classpathref="classpath.depend.example" />
         <javac srcdir="${dir.src.example}" destdir="${dir.classes.example}" debug="true"
-               source="1.5" classpathref="example.compile.classpath" />
+               source="1.5" classpathref="classpath.compile.example" />
     </target>
 
     <target name="example.jar" depends="example.compile">
@@ -151,7 +151,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 </fileset>
             </batchtest>
             <formatter type="brief" usefile="false" />
-            <classpath refid="test.run.classpath" />
+            <classpath refid="classpath.run.test" />
         </junit>
     </target>
 
@@ -160,20 +160,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </target>
 
     <target name="example.run" depends="example.jar">
-        <java classname="org.flexgen.example.Main" classpathref="example.run.classpath" />
+        <java classname="org.flexgen.example.Main" classpathref="classpath.run.example" />
     </target>
 
     <target name="developer.javadoc" depends="init">
         <mkdir dir="${dir.javadoc.developer}" />
         <javadoc destdir="${dir.javadoc.developer}" access="private"
-                 classpathref="developer.javadoc.classpath"
-                 sourcepathref="developer.javadoc.sourcepath"
+                 classpathref="classpath.javadoc.developer"
+                 sourcepathref="sourcepath.javadoc.developer"
                  windowtitle="FlexGen Developer Javadoc Documentation" />
     </target>
 
     <target name="user.javadoc" depends="init">
         <mkdir dir="${dir.javadoc.user}" />
-        <javadoc destdir="${dir.javadoc.user}" sourcepathref="user.javadoc.sourcepath"
+        <javadoc destdir="${dir.javadoc.user}" sourcepathref="sourcepath.javadoc.user"
                  windowtitle="FlexGen User Javadoc Documentation">
             <bottom>
                 <![CDATA[
