@@ -41,9 +41,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="dir.src.test"          value="${dir.src}/test"                         />
     <property name="dir.src.example"       value="${dir.src}/example"                      />
     <property name="dir.work"              value="${dir.base}/work"                        />
-    <property name="dir.classes.main"      value="${dir.work}/classes"                     />
-    <property name="dir.classes.test"      value="${dir.work}/test.classes"                />
-    <property name="dir.classes.example"   value="${dir.work}/example.classes"             />
+    <property name="dir.classes"           value="${dir.work}/classes"                     />
+    <property name="dir.classes.main"      value="${dir.classes}/main"                     />
+    <property name="dir.classes.test"      value="${dir.classes}/test"                     />
+    <property name="dir.classes.example"   value="${dir.classes}/example"                  />
     <property name="dir.jars"              value="${dir.work}/jars"                        />
     <property name="file.jar.main"         value="${dir.jars}/FlexGen.jar"                 />
     <property name="file.jar.test"         value="${dir.jars}/FlexGenTest.jar"             />
