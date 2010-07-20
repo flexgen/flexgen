@@ -108,18 +108,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <mkdir dir="${dir.work}" />
     </target>
 
-    <target name="compile" depends="init">
+    <target name="compile.main" depends="init">
         <mkdir dir="${dir.classes.main}" />
         <depend srcDir="${dir.src.main}" destDir="${dir.classes.main}" closure="true" />
         <javac srcdir="${dir.src.main}" destdir="${dir.classes.main}" debug="true" source="1.5" />
     </target>
 
-    <target name="jar" depends="compile">
+    <target name="jar.main" depends="compile.main">
         <mkdir dir="${dir.jars}" />
         <jar jarfile="${file.jar.main}" basedir="${dir.classes.main}" />
     </target>
 
-    <target name="test.compile" depends="jar">
+    <target name="compile.test" depends="jar.main">
         <mkdir dir="${dir.classes.test}" />
         <depend srcDir="${dir.src.test}" destDir="${dir.classes.test}" closure="true"
                 classpathref="classpath.depend.test" />
@@ -127,11 +127,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                classpathref="classpath.compile.test" />
     </target>
 
-    <target name="test.jar" depends="test.compile">
+    <target name="jar.test" depends="compile.test">
         <jar jarfile="${file.jar.test}" basedir="${dir.classes.test}" />
     </target>
 
-    <target name="example.compile" depends="jar">
+    <target name="compile.example" depends="jar.main">
         <mkdir dir="${dir.classes.example}" />
         <depend srcDir="${dir.src.example}" destDir="${dir.classes.example}" closure="true"
                 classpathref="classpath.depend.example" />
@@ -139,11 +139,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                source="1.5" classpathref="classpath.compile.example" />
     </target>
 
-    <target name="example.jar" depends="example.compile">
+    <target name="jar.example" depends="compile.example">
         <jar jarfile="${file.jar.example}" basedir="${dir.classes.example}" />
     </target>
 
-    <target name="test.run" depends="test.jar">
+    <target name="run.test" depends="jar.test">
         <junit fork="true" forkmode="once" haltonfailure="false" failureProperty="test.failed">
             <batchtest>
                 <fileset dir="${dir.src.test}">
@@ -155,15 +155,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </junit>
     </target>
 
-    <target name="test" depends="test.run" if="test.failed">
+    <target name="test" depends="run.test" if="test.failed">
         <fail message="The tests failed." />
     </target>
 
-    <target name="example.run" depends="example.jar">
+    <target name="run.example" depends="jar.example">
         <java classname="org.flexgen.example.Main" classpathref="classpath.run.example" />
     </target>
 
-    <target name="developer.javadoc" depends="init">
+    <target name="javadoc.developer" depends="init">
         <mkdir dir="${dir.javadoc.developer}" />
         <javadoc destdir="${dir.javadoc.developer}" access="private"
                  classpathref="classpath.javadoc.developer"
@@ -171,7 +171,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                  windowtitle="FlexGen Developer Javadoc Documentation" />
     </target>
 
-    <target name="user.javadoc" depends="init">
+    <target name="javadoc.user" depends="init">
         <mkdir dir="${dir.javadoc.user}" />
         <javadoc destdir="${dir.javadoc.user}" sourcepathref="sourcepath.javadoc.user"
                  windowtitle="FlexGen User Javadoc Documentation">
@@ -218,7 +218,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <mkdir dir="${dir.release}" />
     </target>
 
-    <target name="binary.release" depends="release, jar, user.javadoc">
+    <target name="release.binary" depends="release, jar.main, javadoc.user">
         <mkdir dir="${dir.release.binary}" />
 
         <copy file="${file.jar.main}" todir="${dir.release.binary}" />
@@ -235,7 +235,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
              includes="${release.binary}/**" compression="gzip" />
     </target>
 
-    <target name="source.release" depends="release">
+    <target name="release.source" depends="release">
         <mkdir dir="${dir.release.source}" />
 
         <copy todir="${dir.release.source}">
@@ -246,7 +246,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
              includes="${release.source}/**" compression="gzip" />
     </target>
 
-    <target name="release.all" depends="binary.release, source.release" />
+    <target name="release.all" depends="release.binary, release.source" />
 
     <target name="usage">
         <echo message="FlexGen Build Options"                                          />
@@ -257,34 +257,37 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message="init"                                                           />
         <echo message="    Create all of the directories needed by the build process." />
         <echo message=""                                                               />
-        <echo message="compile"                                                        />
+        <echo message="compile.main"                                                   />
         <echo message="    Compile the FlexGen source code."                           />
         <echo message=""                                                               />
-        <echo message="jar"                                                            />
+        <echo message="jar.main"                                                       />
         <echo message="    Create a Jar of the FlexGen classes."                       />
         <echo message=""                                                               />
-        <echo message="test.compile"                                                   />
+        <echo message="compile.test"                                                   />
         <echo message="    Compile the FlexGen test source code."                      />
         <echo message=""                                                               />
-        <echo message="test.jar"                                                       />
+        <echo message="jar.test"                                                       />
         <echo message="    Create a Jar of the FlexGen test classes."                  />
         <echo message=""                                                               />
-        <echo message="example.compile"                                                />
+        <echo message="compile.example"                                                />
         <echo message="    Compile the FlexGen example source code."                   />
         <echo message=""                                                               />
-        <echo message="example.jar"                                                    />
+        <echo message="jar.example"                                                    />
         <echo message="    Create a Jar of the FlexGen example classes."               />
         <echo message=""                                                               />
-        <echo message="test"                                                           />
+        <echo message="run.test"                                                       />
         <echo message="    Run the tests."                                             />
         <echo message=""                                                               />
-        <echo message="example.run"                                                    />
+        <echo message="test"                                                           />
+        <echo message="    Run the tests, failing the build if any tests fail."        />
+        <echo message=""                                                               />
+        <echo message="run.example"                                                    />
         <echo message="    Run the FlexGen example application."                       />
         <echo message=""                                                               />
-        <echo message="developer.javadoc"                                              />
+        <echo message="javadoc.developer"                                              />
         <echo message="    Generate the FlexGen Developer Javadoc documentation."      />
         <echo message=""                                                               />
-        <echo message="user.javadoc"                                                   />
+        <echo message="javadoc.user"                                                   />
         <echo message="    Generate the FlexGen User Javadoc documentation."           />
         <echo message=""                                                               />
         <echo message="checkstyle"                                                     />
