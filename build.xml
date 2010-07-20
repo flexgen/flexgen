@@ -35,30 +35,30 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property environment="env" />
 
     <property name="version"               value="1.0.0"                                   />
-    <property name="base.dir"              value="."                                       />
-    <property name="src.dir"               value="${base.dir}/src"                         />
-    <property name="test.src.dir"          value="${base.dir}/test"                        />
-    <property name="example.src.dir"       value="${base.dir}/example"                     />
-    <property name="work.dir"              value="${base.dir}/work"                        />
-    <property name="classes.dir"           value="${work.dir}/classes"                     />
-    <property name="test.classes.dir"      value="${work.dir}/test.classes"                />
-    <property name="example.classes.dir"   value="${work.dir}/example.classes"             />
-    <property name="jars.dir"              value="${work.dir}/jars"                        />
-    <property name="jar.file"              value="${jars.dir}/FlexGen.jar"                 />
-    <property name="test.jar.file"         value="${jars.dir}/FlexGenTest.jar"             />
-    <property name="example.jar.file"      value="${jars.dir}/FlexGenExample.jar"          />
-    <property name="developer.javadoc.dir" value="${work.dir}/javadoc.developer"           />
-    <property name="user.javadoc.dir"      value="${work.dir}/javadoc.user"                />
-    <property name="release.dir"           value="${work.dir}/release"                     />
-    <property name="binary.release"        value="FlexGen-${version}"                      />
-    <property name="binary.release.dir"    value="${release.dir}/${binary.release}"        />
-    <property name="binary.release.file"   value="${release.dir}/${binary.release}.tar.gz" />
-    <property name="source.release"        value="FlexGen-src-${version}"                  />
-    <property name="source.release.dir"    value="${release.dir}/${source.release}"        />
-    <property name="source.release.file"   value="${release.dir}/${source.release}.tar.gz" />
+    <property name="dir.base"              value="."                                       />
+    <property name="dir.src.main"          value="${dir.base}/src"                         />
+    <property name="dir.src.test"          value="${dir.base}/test"                        />
+    <property name="dir.src.example"       value="${dir.base}/example"                     />
+    <property name="dir.work"              value="${dir.base}/work"                        />
+    <property name="dir.classes.main"      value="${dir.work}/classes"                     />
+    <property name="dir.classes.test"      value="${dir.work}/test.classes"                />
+    <property name="dir.classes.example"   value="${dir.work}/example.classes"             />
+    <property name="dir.jars"              value="${dir.work}/jars"                        />
+    <property name="file.jar.main"         value="${dir.jars}/FlexGen.jar"                 />
+    <property name="file.jar.test"         value="${dir.jars}/FlexGenTest.jar"             />
+    <property name="file.jar.example"      value="${dir.jars}/FlexGenExample.jar"          />
+    <property name="dir.javadoc.developer" value="${dir.work}/javadoc.developer"           />
+    <property name="dir.javadoc.user"      value="${dir.work}/javadoc.user"                />
+    <property name="dir.release"           value="${dir.work}/release"                     />
+    <property name="release.binary"        value="FlexGen-${version}"                      />
+    <property name="dir.release.binary"    value="${dir.release}/${release.binary}"        />
+    <property name="file.release.binary"   value="${dir.release}/${release.binary}.tar.gz" />
+    <property name="release.source"        value="FlexGen-src-${version}"                  />
+    <property name="dir.release.source"    value="${dir.release}/${release.source}"        />
+    <property name="file.release.source"   value="${dir.release}/${release.source}.tar.gz" />
 
     <path id="test.depend.classpath">
-        <pathelement path="${jar.file}" />
+        <pathelement path="${file.jar.main}" />
     </path>
 
     <path id="test.compile.classpath">
@@ -68,11 +68,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <path id="test.run.classpath">
         <path refid="test.compile.classpath" />
-        <pathelement path="${test.jar.file}" />
+        <pathelement path="${file.jar.test}" />
     </path>
 
     <path id="example.depend.classpath">
-        <pathelement path="${jar.file}" />
+        <pathelement path="${file.jar.main}" />
     </path>
 
     <path id="example.compile.classpath">
@@ -81,7 +81,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <path id="example.run.classpath">
         <path refid="example.compile.classpath" />
-        <pathelement path="${example.jar.file}" />
+        <pathelement path="${file.jar.example}" />
     </path>
 
     <path id="developer.javadoc.classpath">
@@ -89,62 +89,62 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </path>
 
     <path id="developer.javadoc.sourcepath">
-        <pathelement path="${src.dir}"         />
-        <pathelement path="${test.src.dir}"    />
-        <pathelement path="${example.src.dir}" />
+        <pathelement path="${dir.src.main}"    />
+        <pathelement path="${dir.src.test}"    />
+        <pathelement path="${dir.src.example}" />
     </path>
 
     <path id="user.javadoc.sourcepath">
-        <pathelement path="${src.dir}"         />
+        <pathelement path="${dir.src.main}" />
     </path>
 
     <target name="clean">
-        <delete dir="${work.dir}" />
+        <delete dir="${dir.work}" />
     </target>
 
     <target name="init">
-        <mkdir dir="${work.dir}" />
+        <mkdir dir="${dir.work}" />
     </target>
 
     <target name="compile" depends="init">
-        <mkdir dir="${classes.dir}" />
-        <depend srcDir="${src.dir}" destDir="${classes.dir}" closure="true" />
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" source="1.5" />
+        <mkdir dir="${dir.classes.main}" />
+        <depend srcDir="${dir.src.main}" destDir="${dir.classes.main}" closure="true" />
+        <javac srcdir="${dir.src.main}" destdir="${dir.classes.main}" debug="true" source="1.5" />
     </target>
 
     <target name="jar" depends="compile">
-        <mkdir dir="${jars.dir}" />
-        <jar jarfile="${jar.file}" basedir="${classes.dir}" />
+        <mkdir dir="${dir.jars}" />
+        <jar jarfile="${file.jar.main}" basedir="${dir.classes.main}" />
     </target>
 
     <target name="test.compile" depends="jar">
-        <mkdir dir="${test.classes.dir}" />
-        <depend srcDir="${test.src.dir}" destDir="${test.classes.dir}" closure="true"
+        <mkdir dir="${dir.classes.test}" />
+        <depend srcDir="${dir.src.test}" destDir="${dir.classes.test}" closure="true"
                 classpathref="test.depend.classpath" />
-        <javac srcdir="${test.src.dir}" destdir="${test.classes.dir}" debug="true" source="1.5"
+        <javac srcdir="${dir.src.test}" destdir="${dir.classes.test}" debug="true" source="1.5"
                classpathref="test.compile.classpath" />
     </target>
 
     <target name="test.jar" depends="test.compile">
-        <jar jarfile="${test.jar.file}" basedir="${test.classes.dir}" />
+        <jar jarfile="${file.jar.test}" basedir="${dir.classes.test}" />
     </target>
 
     <target name="example.compile" depends="jar">
-        <mkdir dir="${example.classes.dir}" />
-        <depend srcDir="${example.src.dir}" destDir="${example.classes.dir}" closure="true"
+        <mkdir dir="${dir.classes.example}" />
+        <depend srcDir="${dir.src.example}" destDir="${dir.classes.example}" closure="true"
                 classpathref="example.depend.classpath" />
-        <javac srcdir="${example.src.dir}" destdir="${example.classes.dir}" debug="true"
+        <javac srcdir="${dir.src.example}" destdir="${dir.classes.example}" debug="true"
                source="1.5" classpathref="example.compile.classpath" />
     </target>
 
     <target name="example.jar" depends="example.compile">
-        <jar jarfile="${example.jar.file}" basedir="${example.classes.dir}" />
+        <jar jarfile="${file.jar.example}" basedir="${dir.classes.example}" />
     </target>
 
     <target name="test.run" depends="test.jar">
         <junit fork="true" forkmode="once" haltonfailure="false" failureProperty="test.failed">
             <batchtest>
-                <fileset dir="${test.src.dir}">
+                <fileset dir="${dir.src.test}">
                     <include name="**/*Test.java" />
                 </fileset>
             </batchtest>
@@ -162,16 +162,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </target>
 
     <target name="developer.javadoc" depends="init">
-        <mkdir dir="${developer.javadoc.dir}" />
-        <javadoc destdir="${developer.javadoc.dir}" access="private"
+        <mkdir dir="${dir.javadoc.developer}" />
+        <javadoc destdir="${dir.javadoc.developer}" access="private"
                  classpathref="developer.javadoc.classpath"
                  sourcepathref="developer.javadoc.sourcepath"
                  windowtitle="FlexGen Developer Javadoc Documentation" />
     </target>
 
     <target name="user.javadoc" depends="init">
-        <mkdir dir="${user.javadoc.dir}" />
-        <javadoc destdir="${user.javadoc.dir}" sourcepathref="user.javadoc.sourcepath"
+        <mkdir dir="${dir.javadoc.user}" />
+        <javadoc destdir="${dir.javadoc.user}" sourcepathref="user.javadoc.sourcepath"
                  windowtitle="FlexGen User Javadoc Documentation">
             <bottom>
                 <![CDATA[
@@ -206,42 +206,42 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <taskdef resource="checkstyletask.properties" classpath="${env.CHECKSTYLE_5_0}" />
 
         <checkstyle config="checkstyle.xml" maxWarnings="0">
-            <fileset dir="${src.dir}"         />
-            <fileset dir="${test.src.dir}"    />
-            <fileset dir="${example.src.dir}" />
+            <fileset dir="${dir.src.main}"    />
+            <fileset dir="${dir.src.test}"    />
+            <fileset dir="${dir.src.example}" />
         </checkstyle>
     </target>
 
     <target name="release" depends="init">
-        <mkdir dir="${release.dir}" />
+        <mkdir dir="${dir.release}" />
     </target>
 
     <target name="binary.release" depends="release, jar, user.javadoc">
-        <mkdir dir="${binary.release.dir}" />
+        <mkdir dir="${dir.release.binary}" />
 
-        <copy file="${jar.file}" todir="${binary.release.dir}" />
+        <copy file="${file.jar.main}" todir="${dir.release.binary}" />
 
-        <copy todir="${binary.release.dir}">
-            <fileset dir="${base.dir}" includes="doc/**, example/**, readme.txt" />
+        <copy todir="${dir.release.binary}">
+            <fileset dir="${dir.base}" includes="doc/**, example/**, readme.txt" />
         </copy>
 
-        <copy todir="${binary.release.dir}/doc/javadoc">
-            <fileset dir="${user.javadoc.dir}" />
+        <copy todir="${dir.release.binary}/doc/javadoc">
+            <fileset dir="${dir.javadoc.user}" />
         </copy>
 
-        <tar destfile="${binary.release.file}" basedir="${release.dir}"
-             includes="${binary.release}/**" compression="gzip" />
+        <tar destfile="${file.release.binary}" basedir="${dir.release}"
+             includes="${release.binary}/**" compression="gzip" />
     </target>
 
     <target name="source.release" depends="release">
-        <mkdir dir="${source.release.dir}" />
+        <mkdir dir="${dir.release.source}" />
 
-        <copy todir="${source.release.dir}">
-            <fileset dir="${base.dir}" excludes=".git/**, bin/**, work/**, .gitignore" />
+        <copy todir="${dir.release.source}">
+            <fileset dir="${dir.base}" excludes=".git/**, bin/**, work/**, .gitignore" />
         </copy>
 
-        <tar destfile="${source.release.file}" basedir="${release.dir}"
-             includes="${source.release}/**" compression="gzip" />
+        <tar destfile="${file.release.source}" basedir="${dir.release}"
+             includes="${release.source}/**" compression="gzip" />
     </target>
 
     <target name="release.all" depends="binary.release, source.release" />
