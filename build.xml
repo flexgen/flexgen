@@ -120,6 +120,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <mkdir dir="${dir.work}" />
     </target>
 
+    <target name="init.release" depends="init">
+        <mkdir dir="${dir.release}" />
+    </target>
+
     <target name="init.downloads">
         <mkdir dir="${dir.downloads}" />
     </target>
@@ -248,11 +252,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </checkstyle>
     </target>
 
-    <target name="release" depends="init">
-        <mkdir dir="${dir.release}" />
-    </target>
-
-    <target name="release.binary" depends="release, jar.main, javadoc.user">
+    <target name="release.binary" depends="init.release, jar.main, javadoc.user">
         <mkdir dir="${dir.release.binary}" />
 
         <copy file="${file.jar.main}" todir="${dir.release.binary}" />
@@ -269,7 +269,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
              includes="${release.binary}/**" compression="gzip" />
     </target>
 
-    <target name="release.source" depends="release">
+    <target name="release.source" depends="init.release">
         <mkdir dir="${dir.release.source}" />
 
         <copy todir="${dir.release.source}">
@@ -294,6 +294,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                                />
         <echo message="init"                                                            />
         <echo message="    Create the work directory."                                  />
+        <echo message=""                                                                />
+        <echo message="init.release"                                                    />
+        <echo message="    Create directory for releases."                              />
         <echo message=""                                                                />
         <echo message="init.downloads"                                                  />
         <echo message="    Create directory for downloaded files."                      />
