@@ -182,7 +182,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </target>
 
     <target name="run.test" depends="jar.test">
-        <junit fork="true" forkmode="once" haltonfailure="false" failureProperty="test.failed">
+        <junit fork="true" forkmode="once" haltonfailure="false" failureProperty="failed.test">
             <batchtest>
                 <fileset dir="${dir.src.test}">
                     <include name="**/*Test.java" />
@@ -193,7 +193,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </junit>
     </target>
 
-    <target name="test" depends="run.test" if="test.failed">
+    <target name="test" depends="run.test" if="failed.test">
         <fail message="The tests failed." />
     </target>
 
