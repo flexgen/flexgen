@@ -349,6 +349,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message="checkstyle"                                                      />
         <echo message="    Run Checkstyle on the FlexGen source code."                  />
         <echo message=""                                                                />
+        <echo message="release.binary"                                                  />
+        <echo message="    Create a binary release of the FlexGen project."             />
+        <echo message=""                                                                />
+        <echo message="release.source"                                                  />
+        <echo message="    Create a source release of the FlexGen project."             />
+        <echo message=""                                                                />
+        <echo message="release.all"                                                     />
+        <echo message="    Create all releases of the FlexGen project."                 />
+        <echo message=""                                                                />
         <echo message="usage"                                                           />
         <echo message="    Display the FlexGen build options."                          />
     </target>
