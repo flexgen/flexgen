@@ -59,11 +59,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="dir.release.source"    value="${dir.release}/${release.source}"        />
     <property name="file.release.source"   value="${dir.release}/${release.source}.tar.gz" />
 
-    <property name="file.zip.checkstyle"   value="${dir.downloads}/checkstyle-5.0.zip"     />
+    <property name="file.zip.checkstyle"   value="${dir.downloads}/checkstyle-5.1.zip"     />
     <property name="url.checkstyle"
-              value="http://downloads.sourceforge.net/sourceforge/checkstyle/checkstyle-5.0.zip" />
+              value="http://downloads.sourceforge.net/sourceforge/checkstyle/checkstyle-5.1.zip" />
     <property name="file.jar.checkstyle"
-              value="${dir.extracts}/checkstyle-5.0/checkstyle-all-5.0.jar" />
+              value="${dir.extracts}/checkstyle-5.1/checkstyle-all-5.1.jar" />
 
     <property name="file.jar.junit"   value="${dir.downloads}/junit-4.6.jar"               />
     <property name="url.junit"
