@@ -65,9 +65,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="file.jar.checkstyle"
               value="${dir.extracts}/checkstyle-5.1/checkstyle-all-5.1.jar" />
 
-    <property name="file.jar.junit"   value="${dir.downloads}/junit-4.8.1.jar"             />
+    <property name="file.zip.junit"   value="${dir.downloads}/junit4.8.1.zip"              />
     <property name="url.junit"
-              value="http://downloads.sourceforge.net/sourceforge/junit/junit-4.8.1.jar" />
+              value="http://downloads.sourceforge.net/sourceforge/junit/junit4.8.1.zip" />
+    <property name="file.jar.junit"
+              value="${dir.extracts}/junit4.8.1/junit-4.8.1.jar" />
 
     <path id="classpath.depend.test">
         <pathelement path="${file.jar.main}" />
@@ -149,12 +151,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </target>
 
     <target name="check.download.junit" depends="init.downloads">
-        <available property="exists.file.jar.junit" file="${file.jar.junit}" />
+        <available property="exists.file.zip.junit" file="${file.zip.junit}" />
     </target>
 
     <target name="download.junit" depends="check.download.junit"
+            unless="exists.file.zip.junit">
+        <get src="${url.junit}" dest="${file.zip.junit}" />
+    </target>
+
+    <target name="check.extract.junit" depends="download.junit">
+        <available property="exists.file.jar.junit" file="${file.jar.junit}" />
+    </target>
+
+    <target name="extract.junit" depends="check.extract.junit"
             unless="exists.file.jar.junit">
-        <get src="${url.junit}" dest="${file.jar.junit}" />
+        <unzip src="${file.zip.junit}" dest="${dir.extracts}" />
     </target>
 
     <target name="compile.main" depends="init">
@@ -168,7 +179,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <jar jarfile="${file.jar.main}" basedir="${dir.classes.main}" />
     </target>
 
-    <target name="compile.test" depends="jar.main, download.junit">
+    <target name="compile.test" depends="jar.main, extract.junit">
         <mkdir dir="${dir.classes.test}" />
         <depend srcDir="${dir.src.test}" destDir="${dir.classes.test}" closure="true"
                 classpathref="classpath.depend.test" />
@@ -329,6 +340,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                                />
         <echo message="download.junit"                                                  />
         <echo message="    Download JUnit."                                             />
+        <echo message=""                                                                />
+        <echo message="check.extract.junit"                                             />
+        <echo message="    Check to see if JUnit has already been extracted."           />
+        <echo message=""                                                                />
+        <echo message="extract.checkstyle"                                              />
+        <echo message="    Extract Checkstyle."                                         />
         <echo message=""                                                                />
         <echo message="compile.main"                                                    />
         <echo message="    Compile the FlexGen source code."                            />
