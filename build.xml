@@ -65,9 +65,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="file.jar.checkstyle"
               value="${dir.extracts}/checkstyle-5.1/checkstyle-all-5.1.jar" />
 
-    <property name="file.jar.junit"   value="${dir.downloads}/junit-4.6.jar"               />
+    <property name="file.jar.junit"   value="${dir.downloads}/junit-4.8.1.jar"             />
     <property name="url.junit"
-              value="http://downloads.sourceforge.net/sourceforge/junit/junit-4.6.jar" />
+              value="http://downloads.sourceforge.net/sourceforge/junit/junit-4.8.1.jar" />
 
     <path id="classpath.depend.test">
         <pathelement path="${file.jar.main}" />
