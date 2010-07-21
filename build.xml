@@ -293,7 +293,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message="    Remove all generated files and all downloaded files."        />
         <echo message=""                                                                />
         <echo message="init"                                                            />
-        <echo message="    Create all of the directories needed by the build process."  />
+        <echo message="    Create the work directory."                                  />
         <echo message=""                                                                />
         <echo message="init.downloads"                                                  />
         <echo message="    Create directory for downloaded files."                      />
