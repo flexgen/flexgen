@@ -32,8 +32,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <project name="FlexGen" default="usage">
 
-    <property environment="env" />
-
     <property name="version"               value="1.1.0-prerelease"                        />
     <property name="dir.base"              value="."                                       />
     <property name="dir.downloads"         value="${dir.base}/.downloads"                  />
@@ -67,13 +65,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="file.jar.checkstyle"
               value="${dir.extracts}/checkstyle-5.0/checkstyle-all-5.0.jar" />
 
+    <property name="file.jar.junit"   value="${dir.downloads}/junit-4.6.jar"               />
+    <property name="url.junit"
+              value="http://downloads.sourceforge.net/sourceforge/junit/junit-4.6.jar" />
+
     <path id="classpath.depend.test">
         <pathelement path="${file.jar.main}" />
     </path>
 
     <path id="classpath.compile.test">
         <path refid="classpath.depend.test" />
-        <pathelement path="${env.JUNIT_4_6}" />
+        <pathelement path="${file.jar.junit}" />
     </path>
 
     <path id="classpath.run.test">
@@ -95,7 +97,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </path>
 
     <path id="classpath.javadoc.developer">
-        <pathelement path="${env.JUNIT_4_6}" />
+        <pathelement path="${file.jar.junit}" />
     </path>
 
     <path id="sourcepath.javadoc.developer">
@@ -146,6 +148,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <unzip src="${file.zip.checkstyle}" dest="${dir.extracts}" />
     </target>
 
+    <target name="check.download.junit" depends="init.downloads">
+        <available property="exists.file.jar.junit" file="${file.jar.junit}" />
+    </target>
+
+    <target name="download.junit" depends="check.download.junit"
+            unless="exists.file.jar.junit">
+        <get src="${url.junit}" dest="${file.jar.junit}" />
+    </target>
+
     <target name="compile.main" depends="init">
         <mkdir dir="${dir.classes.main}" />
         <depend srcDir="${dir.src.main}" destDir="${dir.classes.main}" closure="true" />
@@ -157,7 +168,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <jar jarfile="${file.jar.main}" basedir="${dir.classes.main}" />
     </target>
 
-    <target name="compile.test" depends="jar.main">
+    <target name="compile.test" depends="jar.main, download.junit">
         <mkdir dir="${dir.classes.test}" />
         <depend srcDir="${dir.src.test}" destDir="${dir.classes.test}" closure="true"
                 classpathref="classpath.depend.test" />
@@ -312,6 +323,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                                />
         <echo message="extract.checkstyle"                                              />
         <echo message="    Extract Checkstyle."                                         />
+        <echo message=""                                                                />
+        <echo message="check.download.junit"                                            />
+        <echo message="    Check to see if JUnit has already been downloaded."          />
+        <echo message=""                                                                />
+        <echo message="download.junit"                                                  />
+        <echo message="    Download JUnit."                                             />
         <echo message=""                                                                />
         <echo message="compile.main"                                                    />
         <echo message="    Compile the FlexGen source code."                            />
