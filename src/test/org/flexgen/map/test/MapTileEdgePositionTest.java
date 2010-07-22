@@ -110,4 +110,17 @@ public class MapTileEdgePositionTest
         Assert.assertEquals( "Unexpected result for LEFT.", "Left",
                              MapTileEdgePosition.LEFT.toString() );
     }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a null reference.
+     */
+    @Test
+    public void equals_null()
+    {
+        MapTileEdgePosition mapTileEdgePosition1 = MapTileEdgePosition.LEFT;
+        MapTileEdgePosition mapTileEdgePosition2 = null;
+
+        boolean result = mapTileEdgePosition1.equals( mapTileEdgePosition2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
 }
