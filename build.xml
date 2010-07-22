@@ -279,6 +279,22 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <fail message="The tests failed." />
     </target>
 
+    <target name="checkstyle" depends="extract.checkstyle">
+        <taskdef resource="checkstyletask.properties" classpath="${file.jar.checkstyle}" />
+
+        <checkstyle config="checkstyle.xml" maxWarnings="0">
+            <fileset dir="${dir.src.main}"    />
+            <fileset dir="${dir.src.test}"    />
+            <fileset dir="${dir.src.example}" />
+        </checkstyle>
+    </target>
+
+    <target name="cobertura" depends="clean, jar.main.instrumented, run.test">
+        <cobertura-report destdir="${dir.cobertura.report}"
+                          srcdir="${dir.src.main}"
+                          datafile="${file.data.cobertura}" />
+    </target>
+
     <target name="run.example" depends="jar.example">
         <java classname="org.flexgen.example.Main" classpathref="classpath.run.example" />
     </target>
@@ -322,22 +338,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 ]]>
             </bottom>
         </javadoc>
-    </target>
-
-    <target name="checkstyle" depends="extract.checkstyle">
-        <taskdef resource="checkstyletask.properties" classpath="${file.jar.checkstyle}" />
-
-        <checkstyle config="checkstyle.xml" maxWarnings="0">
-            <fileset dir="${dir.src.main}"    />
-            <fileset dir="${dir.src.test}"    />
-            <fileset dir="${dir.src.example}" />
-        </checkstyle>
-    </target>
-
-    <target name="cobertura" depends="clean, jar.main.instrumented, run.test">
-        <cobertura-report destdir="${dir.cobertura.report}"
-                          srcdir="${dir.src.main}"
-                          datafile="${file.data.cobertura}" />
     </target>
 
     <target name="release.binary" depends="init.release, jar.main, javadoc.user">
@@ -455,6 +455,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message="test"                                                            />
         <echo message="    Run the FlexGen tests, failing the build if any tests fail." />
         <echo message=""                                                                />
+        <echo message="checkstyle"                                                      />
+        <echo message="    Run Checkstyle on the FlexGen source code."                  />
+        <echo message=""                                                                />
+        <echo message="cobertura"                                                       />
+        <echo message="    Run Cobertura on the FlexGen source code."                   />
+        <echo message=""                                                                />
         <echo message="run.example"                                                     />
         <echo message="    Run the FlexGen example application."                        />
         <echo message=""                                                                />
@@ -463,12 +469,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                                />
         <echo message="javadoc.user"                                                    />
         <echo message="    Generate the FlexGen User Javadoc documentation."            />
-        <echo message=""                                                                />
-        <echo message="checkstyle"                                                      />
-        <echo message="    Run Checkstyle on the FlexGen source code."                  />
-        <echo message=""                                                                />
-        <echo message="cobertura"                                                       />
-        <echo message="    Run Cobertura on the FlexGen source code."                   />
         <echo message=""                                                                />
         <echo message="release.binary"                                                  />
         <echo message="    Create a binary release of the FlexGen project."             />
