@@ -151,4 +151,18 @@ public class MapTileEdgePositionTest
         boolean result = mapTileEdgePosition1.equals( mapTileEdgePosition2 );
         Assert.assertEquals( "Unexpected result.", false, result );
     }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with an identical map
+     * tile edge position.
+     */
+    @Test
+    public void equals_identicalInstance()
+    {
+        MapTileEdgePosition mapTileEdgePosition1 = MapTileEdgePosition.BOTTOM;
+        MapTileEdgePosition mapTileEdgePosition2 = MapTileEdgePosition.BOTTOM;
+
+        boolean result = mapTileEdgePosition1.equals( mapTileEdgePosition2 );
+        Assert.assertEquals( "Unexpected result.", true, result );
+    }
 }
