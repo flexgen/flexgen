@@ -65,11 +65,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="file.jar.checkstyle"
               value="${dir.extracts}/checkstyle-5.1/checkstyle-all-5.1.jar" />
 
-    <property name="file.zip.junit"   value="${dir.downloads}/junit4.8.1.zip"              />
+    <property name="file.zip.junit"   value="${dir.downloads}/junit4.8.2.zip"              />
     <property name="url.junit"
-              value="http://downloads.sourceforge.net/sourceforge/junit/junit4.8.1.zip" />
+              value="http://github.com/downloads/KentBeck/junit/junit4.8.2.zip" />
     <property name="file.jar.junit"
-              value="${dir.extracts}/junit4.8.1/junit-4.8.1.jar" />
+              value="${dir.extracts}/junit4.8.2/junit-4.8.2.jar" />
 
     <path id="classpath.depend.test">
         <pathelement path="${file.jar.main}" />

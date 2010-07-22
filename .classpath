@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path=".downloads/extracts/junit4.8.1/junit-4.8.1.jar" sourcepath=".downloads/extracts/junit4.8.1/junit-4.8.1-src.jar"/>
 	<classpathentry kind="src" path="src/main"/>
 	<classpathentry kind="src" path="src/test"/>
 	<classpathentry kind="src" path="src/example"/>
+	<classpathentry kind="lib" path=".downloads/extracts/junit4.8.2/junit-4.8.2.jar" sourcepath=".downloads/extracts/junit4.8.2/junit-4.8.2-src.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
