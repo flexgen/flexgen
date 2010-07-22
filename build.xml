@@ -63,17 +63,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="file.release.source"
               value="${dir.release}/${release.source}.tar.gz"                                    />
 
-    <property name="file.zip.checkstyle"           value="${dir.downloads}/checkstyle-5.1.zip"   />
-    <property name="url.checkstyle"
-              value="http://downloads.sourceforge.net/sourceforge/checkstyle/checkstyle-5.1.zip" />
-    <property name="file.jar.checkstyle"
-              value="${dir.extracts}/checkstyle-5.1/checkstyle-all-5.1.jar"                      />
-
     <property name="file.zip.junit"                value="${dir.downloads}/junit4.8.2.zip"       />
     <property name="url.junit"
               value="http://github.com/downloads/KentBeck/junit/junit4.8.2.zip"                  />
     <property name="file.jar.junit"
               value="${dir.extracts}/junit4.8.2/junit-4.8.2.jar"                                 />
+
+    <property name="file.zip.checkstyle"           value="${dir.downloads}/checkstyle-5.1.zip"   />
+    <property name="url.checkstyle"
+              value="http://downloads.sourceforge.net/sourceforge/checkstyle/checkstyle-5.1.zip" />
+    <property name="file.jar.checkstyle"
+              value="${dir.extracts}/checkstyle-5.1/checkstyle-all-5.1.jar"                      />
 
     <property name="file.tar.cobertura"
               value="${dir.downloads}/cobertura-1.9.4.1-bin.tar.gz"                              />
@@ -152,24 +152,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <mkdir dir="${dir.downloads}" />
     </target>
 
-    <target name="check.download.checkstyle" depends="init.downloads">
-        <available property="exists.file.zip.checkstyle" file="${file.zip.checkstyle}" />
-    </target>
-
-    <target name="download.checkstyle" depends="check.download.checkstyle"
-            unless="exists.file.zip.checkstyle">
-        <get src="${url.checkstyle}" dest="${file.zip.checkstyle}" />
-    </target>
-
-    <target name="check.extract.checkstyle" depends="download.checkstyle">
-        <available property="exists.file.jar.checkstyle" file="${file.jar.checkstyle}" />
-    </target>
-
-    <target name="extract.checkstyle" depends="check.extract.checkstyle"
-            unless="exists.file.jar.checkstyle">
-        <unzip src="${file.zip.checkstyle}" dest="${dir.extracts}" />
-    </target>
-
     <target name="check.download.junit" depends="init.downloads">
         <available property="exists.file.zip.junit" file="${file.zip.junit}" />
     </target>
@@ -186,6 +168,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <target name="extract.junit" depends="check.extract.junit"
             unless="exists.file.jar.junit">
         <unzip src="${file.zip.junit}" dest="${dir.extracts}" />
+    </target>
+
+    <target name="check.download.checkstyle" depends="init.downloads">
+        <available property="exists.file.zip.checkstyle" file="${file.zip.checkstyle}" />
+    </target>
+
+    <target name="download.checkstyle" depends="check.download.checkstyle"
+            unless="exists.file.zip.checkstyle">
+        <get src="${url.checkstyle}" dest="${file.zip.checkstyle}" />
+    </target>
+
+    <target name="check.extract.checkstyle" depends="download.checkstyle">
+        <available property="exists.file.jar.checkstyle" file="${file.jar.checkstyle}" />
+    </target>
+
+    <target name="extract.checkstyle" depends="check.extract.checkstyle"
+            unless="exists.file.jar.checkstyle">
+        <unzip src="${file.zip.checkstyle}" dest="${dir.extracts}" />
     </target>
 
     <target name="check.download.cobertura" depends="init.downloads">
@@ -389,18 +389,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message="init.downloads"                                                  />
         <echo message="    Create directory for downloaded files."                      />
         <echo message=""                                                                />
-        <echo message="check.download.checkstyle"                                       />
-        <echo message="    Check to see if Checkstyle has already been downloaded."     />
-        <echo message=""                                                                />
-        <echo message="download.checkstyle"                                             />
-        <echo message="    Download Checkstyle."                                        />
-        <echo message=""                                                                />
-        <echo message="check.extract.checkstyle"                                        />
-        <echo message="    Check to see if Checkstyle has already been extracted."      />
-        <echo message=""                                                                />
-        <echo message="extract.checkstyle"                                              />
-        <echo message="    Extract Checkstyle."                                         />
-        <echo message=""                                                                />
         <echo message="check.download.junit"                                            />
         <echo message="    Check to see if JUnit has already been downloaded."          />
         <echo message=""                                                                />
@@ -412,6 +400,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                                />
         <echo message="extract.junit"                                                   />
         <echo message="    Extract JUnit."                                              />
+        <echo message=""                                                                />
+        <echo message="check.download.checkstyle"                                       />
+        <echo message="    Check to see if Checkstyle has already been downloaded."     />
+        <echo message=""                                                                />
+        <echo message="download.checkstyle"                                             />
+        <echo message="    Download Checkstyle."                                        />
+        <echo message=""                                                                />
+        <echo message="check.extract.checkstyle"                                        />
+        <echo message="    Check to see if Checkstyle has already been extracted."      />
+        <echo message=""                                                                />
+        <echo message="extract.checkstyle"                                              />
+        <echo message="    Extract Checkstyle."                                         />
         <echo message=""                                                                />
         <echo message="check.download.cobertura"                                        />
         <echo message="    Check to see if Cobertura has already been downloaded."      />
