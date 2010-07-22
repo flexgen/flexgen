@@ -144,6 +144,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <mkdir dir="${dir.work}" />
     </target>
 
+    <target name="init.jars" depends="init">
+        <mkdir dir="${dir.jars}" />
+    </target>
+
     <target name="init.release" depends="init">
         <mkdir dir="${dir.release}" />
     </target>
@@ -212,8 +216,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <javac srcdir="${dir.src.main}" destdir="${dir.classes.main}" debug="true" source="1.5" />
     </target>
 
-    <target name="jar.main" depends="compile.main">
-        <mkdir dir="${dir.jars}" />
+    <target name="jar.main" depends="init.jars, compile.main">
         <jar jarfile="${file.jar.main}" basedir="${dir.classes.main}" />
     </target>
 
@@ -226,8 +229,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </cobertura-instrument>
     </target>
 
-    <target name="jar.main.instrumented" depends="compile.main.instrumented">
-        <mkdir dir="${dir.jars}" />
+    <target name="jar.main.instrumented" depends="init.jars, compile.main.instrumented">
         <jar jarfile="${file.jar.main.instrumented}" basedir="${dir.classes.main.instrumented}" />
 
         <path id="classpath.compile.test">
