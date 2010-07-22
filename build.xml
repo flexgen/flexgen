@@ -32,44 +32,64 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <project name="FlexGen" default="usage">
 
-    <property name="version"               value="1.1.0-prerelease"                        />
-    <property name="dir.base"              value="."                                       />
-    <property name="dir.downloads"         value="${dir.base}/.downloads"                  />
-    <property name="dir.extracts"          value="${dir.downloads}/extracts"               />
-    <property name="dir.src"               value="${dir.base}/src"                         />
-    <property name="dir.src.main"          value="${dir.src}/main"                         />
-    <property name="dir.src.test"          value="${dir.src}/test"                         />
-    <property name="dir.src.example"       value="${dir.src}/example"                      />
-    <property name="dir.work"              value="${dir.base}/work"                        />
-    <property name="dir.classes"           value="${dir.work}/classes"                     />
-    <property name="dir.classes.main"      value="${dir.classes}/main"                     />
-    <property name="dir.classes.test"      value="${dir.classes}/test"                     />
-    <property name="dir.classes.example"   value="${dir.classes}/example"                  />
-    <property name="dir.jars"              value="${dir.work}/jars"                        />
-    <property name="file.jar.main"         value="${dir.jars}/FlexGen.jar"                 />
-    <property name="file.jar.test"         value="${dir.jars}/FlexGenTest.jar"             />
-    <property name="file.jar.example"      value="${dir.jars}/FlexGenExample.jar"          />
-    <property name="dir.javadoc.developer" value="${dir.work}/javadoc.developer"           />
-    <property name="dir.javadoc.user"      value="${dir.work}/javadoc.user"                />
-    <property name="dir.release"           value="${dir.work}/release"                     />
-    <property name="release.binary"        value="FlexGen-${version}"                      />
-    <property name="dir.release.binary"    value="${dir.release}/${release.binary}"        />
-    <property name="file.release.binary"   value="${dir.release}/${release.binary}.tar.gz" />
-    <property name="release.source"        value="FlexGen-src-${version}"                  />
-    <property name="dir.release.source"    value="${dir.release}/${release.source}"        />
-    <property name="file.release.source"   value="${dir.release}/${release.source}.tar.gz" />
+    <property name="version"                       value="1.1.0-prerelease"                      />
+    <property name="dir.base"                      value="."                                     />
+    <property name="dir.downloads"                 value="${dir.base}/.downloads"                />
+    <property name="dir.extracts"                  value="${dir.downloads}/extracts"             />
+    <property name="dir.src"                       value="${dir.base}/src"                       />
+    <property name="dir.src.main"                  value="${dir.src}/main"                       />
+    <property name="dir.src.test"                  value="${dir.src}/test"                       />
+    <property name="dir.src.example"               value="${dir.src}/example"                    />
+    <property name="dir.work"                      value="${dir.base}/work"                      />
+    <property name="dir.classes"                   value="${dir.work}/classes"                   />
+    <property name="dir.classes.main"              value="${dir.classes}/main"                   />
+    <property name="dir.classes.main.instrumented" value="${dir.classes}/main.instrumented"      />
+    <property name="dir.classes.test"              value="${dir.classes}/test"                   />
+    <property name="dir.classes.example"           value="${dir.classes}/example"                />
+    <property name="dir.jars"                      value="${dir.work}/jars"                      />
+    <property name="file.jar.main"                 value="${dir.jars}/FlexGen.jar"               />
+    <property name="file.jar.main.instrumented"    value="${dir.jars}/FlexGenInstrumented.jar"   />
+    <property name="file.jar.test"                 value="${dir.jars}/FlexGenTest.jar"           />
+    <property name="file.jar.example"              value="${dir.jars}/FlexGenExample.jar"        />
+    <property name="dir.javadoc.developer"         value="${dir.work}/javadoc.developer"         />
+    <property name="dir.javadoc.user"              value="${dir.work}/javadoc.user"              />
+    <property name="dir.release"                   value="${dir.work}/release"                   />
+    <property name="release.binary"                value="FlexGen-${version}"                    />
+    <property name="dir.release.binary"            value="${dir.release}/${release.binary}"      />
+    <property name="file.release.binary"          
+              value="${dir.release}/${release.binary}.tar.gz"                                    />
+    <property name="release.source"                value="FlexGen-src-${version}"                />
+    <property name="dir.release.source"            value="${dir.release}/${release.source}"      />
+    <property name="file.release.source"
+              value="${dir.release}/${release.source}.tar.gz"                                    />
 
-    <property name="file.zip.checkstyle"   value="${dir.downloads}/checkstyle-5.1.zip"     />
+    <property name="file.zip.checkstyle"           value="${dir.downloads}/checkstyle-5.1.zip"   />
     <property name="url.checkstyle"
               value="http://downloads.sourceforge.net/sourceforge/checkstyle/checkstyle-5.1.zip" />
     <property name="file.jar.checkstyle"
-              value="${dir.extracts}/checkstyle-5.1/checkstyle-all-5.1.jar" />
+              value="${dir.extracts}/checkstyle-5.1/checkstyle-all-5.1.jar"                      />
 
-    <property name="file.zip.junit"        value="${dir.downloads}/junit4.8.2.zip"         />
+    <property name="file.zip.junit"                value="${dir.downloads}/junit4.8.2.zip"       />
     <property name="url.junit"
-              value="http://github.com/downloads/KentBeck/junit/junit4.8.2.zip" />
+              value="http://github.com/downloads/KentBeck/junit/junit4.8.2.zip"                  />
     <property name="file.jar.junit"
-              value="${dir.extracts}/junit4.8.2/junit-4.8.2.jar" />
+              value="${dir.extracts}/junit4.8.2/junit-4.8.2.jar"                                 />
+
+    <property name="file.tar.cobertura"
+              value="${dir.downloads}/cobertura-1.9.4.1-bin.tar.gz"                              />
+    <property name="url.cobertura"
+              value="http://downloads.sourceforge.net/sourceforge/cobertura/cobertura-1.9.4.1-bin.tar.gz" />
+    <property name="dir.cobertura"                 value="${dir.extracts}/cobertura-1.9.4.1"     />
+    <property name="file.jar.cobertura"            value="${dir.cobertura}/cobertura.jar"        />
+    <property name="file.data.cobertura"           value="${dir.work}/cobertura.ser"             />
+    <property name="dir.cobertura.report"          value="${dir.work}/cobertura"                 />
+
+    <path id="classpath.cobertura">
+        <pathelement path="${file.jar.cobertura}" />
+        <fileset dir="${dir.cobertura}/lib">
+            <include name="*.jar" />
+        </fileset>
+    </path>
 
     <path id="classpath.depend.test">
         <pathelement path="${file.jar.main}" />
@@ -168,6 +188,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <unzip src="${file.zip.junit}" dest="${dir.extracts}" />
     </target>
 
+    <target name="check.download.cobertura" depends="init.downloads">
+        <available property="exists.file.tar.cobertura" file="${file.tar.cobertura}" />
+    </target>
+
+    <target name="download.cobertura" depends="check.download.cobertura"
+            unless="exists.file.tar.cobertura">
+        <get src="${url.cobertura}" dest="${file.tar.cobertura}" />
+    </target>
+
+    <target name="check.extract.cobertura" depends="download.cobertura">
+        <available property="exists.file.jar.cobertura" file="${file.jar.cobertura}" />
+    </target>
+
+    <target name="extract.cobertura" depends="check.extract.cobertura"
+            unless="exists.file.jar.cobertura">
+        <untar src="${file.tar.cobertura}" dest="${dir.extracts}" compression="gzip" />
+    </target>
+
     <target name="compile.main" depends="init">
         <mkdir dir="${dir.classes.main}" />
         <depend srcDir="${dir.src.main}" destDir="${dir.classes.main}" closure="true" />
@@ -177,6 +215,27 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <target name="jar.main" depends="compile.main">
         <mkdir dir="${dir.jars}" />
         <jar jarfile="${file.jar.main}" basedir="${dir.classes.main}" />
+    </target>
+
+    <target name="compile.main.instrumented" depends="extract.cobertura, compile.main">
+        <taskdef classpathref="classpath.cobertura" resource="tasks.properties"/>
+
+        <cobertura-instrument todir="${dir.classes.main.instrumented}"
+                              datafile="${file.data.cobertura}">
+            <fileset dir="${dir.classes.main}" />
+        </cobertura-instrument>
+    </target>
+
+    <target name="jar.main.instrumented" depends="compile.main.instrumented">
+        <mkdir dir="${dir.jars}" />
+        <jar jarfile="${file.jar.main.instrumented}" basedir="${dir.classes.main.instrumented}" />
+
+        <path id="classpath.compile.test">
+            <pathelement path="${file.jar.main.instrumented}" />
+            <path refid="classpath.depend.test" />
+            <pathelement path="${file.jar.junit}" />
+            <path refid="classpath.cobertura" />
+        </path>
     </target>
 
     <target name="compile.test" depends="jar.main, extract.junit">
@@ -205,6 +264,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <target name="run.test" depends="jar.test">
         <junit fork="true" forkmode="once" haltonfailure="false" failureProperty="failed.test">
+            <sysproperty key="net.sourceforge.cobertura.datafile" file="${file.data.cobertura}" />
             <batchtest>
                 <fileset dir="${dir.src.test}">
                     <include name="**/*Test.java" />
@@ -272,6 +332,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <fileset dir="${dir.src.test}"    />
             <fileset dir="${dir.src.example}" />
         </checkstyle>
+    </target>
+
+    <target name="cobertura" depends="clean, jar.main.instrumented, run.test">
+        <cobertura-report destdir="${dir.cobertura.report}"
+                          srcdir="${dir.src.main}"
+                          datafile="${file.data.cobertura}" />
     </target>
 
     <target name="release.binary" depends="init.release, jar.main, javadoc.user">
@@ -347,11 +413,29 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message="extract.checkstyle"                                              />
         <echo message="    Extract Checkstyle."                                         />
         <echo message=""                                                                />
+        <echo message="check.download.cobertura"                                        />
+        <echo message="    Check to see if Cobertura has already been downloaded."      />
+        <echo message=""                                                                />
+        <echo message="download.cobertura"                                              />
+        <echo message="    Download Cobertura."                                         />
+        <echo message=""                                                                />
+        <echo message="check.extract.cobertura"                                         />
+        <echo message="    Check to see if Cobertura has already been extracted."       />
+        <echo message=""                                                                />
+        <echo message="extract.cobertura"                                               />
+        <echo message="    Extract Cobertura."                                          />
+        <echo message=""                                                                />
         <echo message="compile.main"                                                    />
         <echo message="    Compile the FlexGen source code."                            />
         <echo message=""                                                                />
         <echo message="jar.main"                                                        />
         <echo message="    Create a Jar of the FlexGen classes."                        />
+        <echo message=""                                                                />
+        <echo message="compile.main.instrumented"                                       />
+        <echo message="    Create an instrumented version of the FlexGen classes."      />
+        <echo message=""                                                                />
+        <echo message="jar.main.instrumented"                                           />
+        <echo message="    Create a Jar of the instrumented FlexGen classes."           />
         <echo message=""                                                                />
         <echo message="compile.test"                                                    />
         <echo message="    Compile the FlexGen test source code."                       />
@@ -382,6 +466,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message=""                                                                />
         <echo message="checkstyle"                                                      />
         <echo message="    Run Checkstyle on the FlexGen source code."                  />
+        <echo message=""                                                                />
+        <echo message="cobertura"                                                       />
+        <echo message="    Run Cobertura on the FlexGen source code."                   />
         <echo message=""                                                                />
         <echo message="release.binary"                                                  />
         <echo message="    Create a binary release of the FlexGen project."             />
