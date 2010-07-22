@@ -232,10 +232,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <target name="jar.main.instrumented" depends="init.jars, compile.main.instrumented">
         <jar jarfile="${file.jar.main.instrumented}" basedir="${dir.classes.main.instrumented}" />
 
-        <path id="classpath.compile.test">
+        <path id="classpath.run.test">
             <pathelement path="${file.jar.main.instrumented}" />
-            <path refid="classpath.depend.test" />
-            <pathelement path="${file.jar.junit}" />
+            <path refid="classpath.compile.test" />
+            <pathelement path="${file.jar.test}" />
             <path refid="classpath.cobertura" />
         </path>
     </target>
