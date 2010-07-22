@@ -78,4 +78,20 @@ public class MapTileEdgePositionTest
                                  "Parameter 'index' must be between 0 and 3.", e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the getIndex() method returns the correct value for all map tile edge positions.
+     */
+    @Test
+    public void getIndex()
+    {
+        Assert.assertEquals( "Unexpected result for TOP.", 0,
+                             MapTileEdgePosition.TOP.getIndex() );
+        Assert.assertEquals( "Unexpected result for RIGHT.", 1,
+                             MapTileEdgePosition.RIGHT.getIndex() );
+        Assert.assertEquals( "Unexpected result for BOTTOM.", 2,
+                             MapTileEdgePosition.BOTTOM.getIndex() );
+        Assert.assertEquals( "Unexpected result for LEFT.", 3,
+                             MapTileEdgePosition.LEFT.getIndex() );
+    }
 }
