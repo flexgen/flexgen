@@ -165,4 +165,20 @@ public class MapTileEdgePositionTest
         boolean result = mapTileEdgePosition1.equals( mapTileEdgePosition2 );
         Assert.assertEquals( "Unexpected result.", true, result );
     }
+
+    /**
+     * Verify that the hashCode() method returns the correct value for all map tile edge positions.
+     */
+    @Test
+    public void hashCodeTest()
+    {
+        Assert.assertEquals( "Unexpected result for TOP.", "Top".hashCode(),
+                             MapTileEdgePosition.TOP.hashCode() );
+        Assert.assertEquals( "Unexpected result for RIGHT.", "Right".hashCode(),
+                             MapTileEdgePosition.RIGHT.hashCode() );
+        Assert.assertEquals( "Unexpected result for BOTTOM.", "Bottom".hashCode(),
+                             MapTileEdgePosition.BOTTOM.hashCode() );
+        Assert.assertEquals( "Unexpected result for LEFT.", "Left".hashCode(),
+                             MapTileEdgePosition.LEFT.hashCode() );
+    }
 }
