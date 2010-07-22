@@ -94,4 +94,20 @@ public class MapTileEdgePositionTest
         Assert.assertEquals( "Unexpected result for LEFT.", 3,
                              MapTileEdgePosition.LEFT.getIndex() );
     }
+
+    /**
+     * Verify that the toString() method returns the correct value for all map tile edge positions.
+     */
+    @Test
+    public void toStringTest()
+    {
+        Assert.assertEquals( "Unexpected result for TOP.", "Top",
+                             MapTileEdgePosition.TOP.toString() );
+        Assert.assertEquals( "Unexpected result for RIGHT.", "Right",
+                             MapTileEdgePosition.RIGHT.toString() );
+        Assert.assertEquals( "Unexpected result for BOTTOM.", "Bottom",
+                             MapTileEdgePosition.BOTTOM.toString() );
+        Assert.assertEquals( "Unexpected result for LEFT.", "Left",
+                             MapTileEdgePosition.LEFT.toString() );
+    }
 }
