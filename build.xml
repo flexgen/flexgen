@@ -410,8 +410,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message="check.extract.junit"                                             />
         <echo message="    Check to see if JUnit has already been extracted."           />
         <echo message=""                                                                />
-        <echo message="extract.checkstyle"                                              />
-        <echo message="    Extract Checkstyle."                                         />
+        <echo message="extract.junit"                                                   />
+        <echo message="    Extract JUnit."                                              />
         <echo message=""                                                                />
         <echo message="check.download.cobertura"                                        />
         <echo message="    Check to see if Cobertura has already been downloaded."      />
