@@ -123,4 +123,18 @@ public class MapTileEdgePositionTest
         boolean result = mapTileEdgePosition1.equals( mapTileEdgePosition2 );
         Assert.assertEquals( "Unexpected result.", false, result );
     }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with the wrong type of
+     * object.
+     */
+    @Test
+    public void equals_wrongType()
+    {
+        MapTileEdgePosition mapTileEdgePosition1 = MapTileEdgePosition.RIGHT;
+        Object              mapTileEdgePosition2 = new Object();
+
+        boolean result = mapTileEdgePosition1.equals( mapTileEdgePosition2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
 }
