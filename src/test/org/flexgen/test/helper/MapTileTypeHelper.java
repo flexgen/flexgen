@@ -70,15 +70,21 @@ public class MapTileTypeHelper
      *
      * @param mapUnitArraySize
      *            The size of the map units array to generate for the map tile types in the array.
+     * @param mapTileArraySize
+     *            The size of the array to build.
      *
      * @return The generated map tile type array.
      */
-    public static MapTileType[] buildArray( int mapUnitArraySize )
+    public static MapTileType[] buildArray( int mapUnitArraySize, int mapTileArraySize )
     {
-        return new MapTileType[]
+        MapTileType[] mapTileTypes = new MapTileType[ mapTileArraySize ];
+
+        for ( int i = 0; i < mapTileArraySize; i++ )
         {
-            MapTileTypeHelper.build( mapUnitArraySize )
-        };
+            mapTileTypes[ i ] = MapTileTypeHelper.build( mapUnitArraySize );
+        }
+
+        return mapTileTypes;
     }
 
     /**
@@ -88,7 +94,7 @@ public class MapTileTypeHelper
      */
     public static MapTileType[] buildArray()
     {
-        return MapTileTypeHelper.buildArray( 1 );
+        return MapTileTypeHelper.buildArray( 1, 1 );
     }
 
     /**

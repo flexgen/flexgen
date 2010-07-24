@@ -245,7 +245,9 @@ public class MapGeneratorTest
     public void getTileSize()
     {
         int mapUnitArraySize = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTileType[] mapTileTypes = MapTileTypeHelper.buildArray( mapUnitArraySize );
+        int mapTileArraySize = GeneralHelper.getRandom().nextInt( 5 ) + 2;
+        MapTileType[] mapTileTypes =
+                MapTileTypeHelper.buildArray( mapUnitArraySize, mapTileArraySize );
         MapGenerator mapGenerator =
                 new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
         Assert.assertEquals( "Unexpected return value.", mapUnitArraySize,
