@@ -348,7 +348,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <copy file="${file.jar.main}" todir="${dir.release.binary}" />
 
         <copy todir="${dir.release.binary}">
-            <fileset dir="${dir.base}" includes="doc/**, example/**, readme.txt" />
+            <fileset dir="${dir.base}"
+                     includes="doc/**, example/**, readme.txt, releasenotes.txt" />
         </copy>
 
         <copy todir="${dir.release.binary}/doc/javadoc">
