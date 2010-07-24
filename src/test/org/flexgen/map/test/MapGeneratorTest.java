@@ -48,6 +48,7 @@ import org.flexgen.test.helper.MapGeneratorHelper;
 import org.flexgen.test.helper.MapTileLocationHelper;
 import org.flexgen.test.helper.MapTileOrientationHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
+import org.flexgen.test.helper.tiles.RiverTiles;
 import org.flexgen.util.ImprovedRandom;
 
 /**
@@ -459,5 +460,52 @@ public class MapGeneratorTest
 
         Assert.assertEquals( "Unexpected map tile location.", mapTileLocation,
                              mapTileLocations.get( 0 ) );
+    }
+
+    /**
+     * Verify that the generate() method throws the correct exception when there are no legal map
+     * tile types that can be placed on the map.
+     */
+    @Test
+    public void generate_noLegalMapTileTypes()
+    {
+        MapGenerator mapGenerator =
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, -1, -1, 1, 1 );
+
+        mapGenerator.addMapTile(
+                new MapTileLocation( -1, -1 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( 0, -1 ),
+                new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( 1, -1 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( -1, 0 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( 1, 0 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( -1, 1 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( 0, 1 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( 1, 1 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+
+        try
+        {
+            mapGenerator.generate();
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalStateException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "No map tile types can be placed on the map.", e.getMessage() );
+        }
     }
 }
