@@ -32,6 +32,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.map.test;
 
+import java.lang.reflect.Constructor;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -180,6 +182,38 @@ public class MapTileTest
         {
             Assert.assertEquals( "Unexpected message.",
                                  "Parameter 'y' must be less than " + size + ".", e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the getMapUnit() method throws the correct exception when the map tile is
+     * constructed with an unsupported map tile orientation.
+     *
+     * @throws Exception
+     *             For any errors that occur.
+     */
+    @Test
+    public void getMapUnit_unsupportedOrientation() throws Exception
+    {
+        // use reflection to construct an unsupported map tile orientation
+        Class< MapTileOrientation > mapTileOrientationClass = MapTileOrientation.class;
+        Constructor< MapTileOrientation > mapTileOrientationConstructor =
+                mapTileOrientationClass.getDeclaredConstructor( String.class );
+        mapTileOrientationConstructor.setAccessible( true );
+        MapTileOrientation mapTileOrientation =
+                mapTileOrientationConstructor.newInstance( GeneralHelper.getUniqueString() );
+
+        MapTile mapTile = new MapTile( MapTileTypeHelper.build( 1 ), mapTileOrientation );
+
+        try
+        {
+            mapTile.getMapUnit( 0, 0 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalStateException e )
+        {
+            Assert.assertEquals( "Unexpected message.", "Unsupported orientation.",
+                                 e.getMessage() );
         }
     }
 
