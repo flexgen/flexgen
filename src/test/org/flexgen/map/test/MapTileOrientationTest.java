@@ -112,4 +112,21 @@ public class MapTileOrientationTest
         boolean result = mapTileOrientation1.equals( mapTileOrientation2 );
         Assert.assertEquals( "Unexpected result.", true, result );
     }
+
+    /**
+     * Verify that the hashCode() method returns the correct value for all map tile orientations.
+     */
+    @Test
+    public void hashCodeTest()
+    {
+        Assert.assertEquals( "Unexpected result for UPRIGHT.", "Upright".hashCode(),
+                             MapTileOrientation.UPRIGHT.hashCode() );
+        Assert.assertEquals( "Unexpected result for CLOCKWISE.", "Clockwise".hashCode(),
+                             MapTileOrientation.CLOCKWISE.hashCode() );
+        Assert.assertEquals( "Unexpected result for FLIPPED.", "Flipped".hashCode(),
+                             MapTileOrientation.FLIPPED.hashCode() );
+        Assert.assertEquals( "Unexpected result for COUNTER_CLOCKWISE.",
+                             "CounterClockwise".hashCode(),
+                             MapTileOrientation.COUNTER_CLOCKWISE.hashCode() );
+    }
 }
