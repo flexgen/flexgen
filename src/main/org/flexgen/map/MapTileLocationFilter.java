@@ -59,6 +59,13 @@ public interface MapTileLocationFilter
     int getMaxX();
 
     /**
+     * Get the largest possible Y coordinate for allowed map tile locations.
+     *
+     * @return The largest possible Y coordinate for allowed map tile locations.
+     */
+    int getMaxY();
+
+    /**
      * Return a flag indicating whether or not the specified map tile location is allowed.
      *
      * @param mapTileLocation

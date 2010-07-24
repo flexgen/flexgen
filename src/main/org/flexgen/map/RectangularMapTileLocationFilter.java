@@ -54,6 +54,11 @@ public class RectangularMapTileLocationFilter implements MapTileLocationFilter
     private final int maxX;
 
     /**
+     * Largest possible Y coordinate for map tiles in the map.
+     */
+    private final int maxY;
+
+    /**
      * Construct a rectangular map tile location filter.
      *
      * @param minX
@@ -84,6 +89,7 @@ public class RectangularMapTileLocationFilter implements MapTileLocationFilter
         this.minX = minX;
         this.minY = minY;
         this.maxX = maxX;
+        this.maxY = maxY;
     }
 
     /**
@@ -114,6 +120,16 @@ public class RectangularMapTileLocationFilter implements MapTileLocationFilter
     public int getMaxX()
     {
         return maxX;
+    }
+
+    /**
+     * Get the largest possible Y coordinate for allowed map tile locations.
+     *
+     * @return The largest possible Y coordinate for allowed map tile locations.
+     */
+    public int getMaxY()
+    {
+        return maxY;
     }
 
     /**
