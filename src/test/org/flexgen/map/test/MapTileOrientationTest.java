@@ -57,4 +57,17 @@ public class MapTileOrientationTest
         Assert.assertEquals( "Unexpected result for COUNTER_CLOCKWISE.", "CounterClockwise",
                              MapTileOrientation.COUNTER_CLOCKWISE.toString() );
     }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a null reference.
+     */
+    @Test
+    public void equals_null()
+    {
+        MapTileOrientation mapTileOrientation1 = MapTileOrientation.FLIPPED;
+        MapTileOrientation mapTileOrientation2 = null;
+
+        boolean result = mapTileOrientation1.equals( mapTileOrientation2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
 }
