@@ -39,6 +39,11 @@ package org.flexgen.map;
 public class RectangularMapTileLocationFilter implements MapTileLocationFilter
 {
     /**
+     * Smallest possible X coordinate for map tiles in the map.
+     */
+    private final int minX;
+
+    /**
      * Construct a rectangular map tile location filter.
      *
      * @param minX
@@ -65,6 +70,18 @@ public class RectangularMapTileLocationFilter implements MapTileLocationFilter
             throw new IllegalArgumentException(
                     "Parameter 'maxY' must be greater than or equal to parameter 'minY'." );
         }
+
+        this.minX = minX;
+    }
+
+    /**
+     * Get the smallest possible X coordinate for allowed map tile locations.
+     *
+     * @return The smallest possible X coordinate for allowed map tile locations.
+     */
+    public int getMinX()
+    {
+        return minX;
     }
 
     /**

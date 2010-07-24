@@ -36,6 +36,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import org.flexgen.map.RectangularMapTileLocationFilter;
+import org.flexgen.test.helper.GeneralHelper;
 
 /**
  * Test class for the RectangularMapTileLocationFilter class.
@@ -82,5 +83,18 @@ public class RectangularMapTileLocationFilterTest
                     "Parameter 'maxY' must be greater than or equal to parameter 'minY'.",
                     e.getMessage() );
         }
+    }
+
+    /**
+     * Verify that the getMinX() method returns the correct value.
+     */
+    @Test
+    public void getMinX()
+    {
+        int value = GeneralHelper.getRandom().nextInt( 1000 );
+        RectangularMapTileLocationFilter rectangularMapTileLocationFilter =
+                new RectangularMapTileLocationFilter( value, 0, 5000, 5000 );
+        Assert.assertEquals( "Unexpected return value.", value,
+                             rectangularMapTileLocationFilter.getMinX() );
     }
 }

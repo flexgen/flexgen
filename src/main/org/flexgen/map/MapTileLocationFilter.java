@@ -38,6 +38,13 @@ package org.flexgen.map;
 public interface MapTileLocationFilter
 {
     /**
+     * Get the smallest possible X coordinate for allowed map tile locations.
+     *
+     * @return The smallest possible X coordinate for allowed map tile locations.
+     */
+    int getMinX();
+
+    /**
      * Return a flag indicating whether or not the specified map tile location is allowed.
      *
      * @param mapTileLocation
