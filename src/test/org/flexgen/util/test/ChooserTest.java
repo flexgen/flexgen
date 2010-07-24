@@ -38,6 +38,7 @@ import org.junit.Test;
 import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.util.Chooser;
 import org.flexgen.util.ImprovedRandom;
+import org.flexgen.util.test.support.BrokenImprovedRandom;
 import org.flexgen.util.test.support.TestImprovedRandom;
 
 /**
@@ -125,6 +126,30 @@ public class ChooserTest
             Assert.assertEquals( "Unexpected message.",
                                  "No options with any weight were added.",
                                  e.getMessage() );
+        }
+    }
+
+    /**
+     * Verify that the choose() method throws the correct exception when encountering an illegal
+     * state.
+     */
+    @Test
+    public void choose_illegalState()
+    {
+        int weight = GeneralHelper.getRandom().nextInt( 1000 ) + 1;
+        String option = GeneralHelper.getUniqueString();
+
+        Chooser< Object > chooser = new Chooser< Object >( new BrokenImprovedRandom() );
+        chooser.addOption( option, weight );
+
+        try
+        {
+            chooser.choose();
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalStateException e )
+        {
+            Assert.assertEquals( "Unexpected message.", "Illegal state.", e.getMessage() );
         }
     }
 
