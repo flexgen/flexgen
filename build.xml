@@ -297,8 +297,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                           datafile="${file.data.cobertura}" />
     </target>
 
-    <target name="run.example" depends="jar.example">
-        <java classname="org.flexgen.example.Main" classpathref="classpath.run.example" />
+    <target name="run.example.river" depends="jar.example">
+        <java classname="org.flexgen.example.RiverExample" classpathref="classpath.run.example" />
     </target>
 
     <target name="javadoc.developer" depends="init">
@@ -464,8 +464,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <echo message="cobertura"                                                       />
         <echo message="    Run Cobertura on the FlexGen source code."                   />
         <echo message=""                                                                />
-        <echo message="run.example"                                                     />
-        <echo message="    Run the FlexGen example application."                        />
+        <echo message="run.example.river"                                               />
+        <echo message="    Run the FlexGen grass and rivers example application."       />
         <echo message=""                                                                />
         <echo message="javadoc.developer"                                               />
         <echo message="    Generate the FlexGen Developer Javadoc documentation."       />

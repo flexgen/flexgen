@@ -47,9 +47,10 @@ import org.flexgen.map.MapUnit;
 import org.flexgen.util.ImprovedRandom;
 
 /**
- * Class implementing an example application for the FlexGen library.
+ * Class implementing an example application for the FlexGen library that generates a map with grass
+ * and rivers.
  */
-public class Main
+public class RiverExample
 {
     /**
      * Grass map unit.
@@ -255,14 +256,15 @@ public class Main
     {
         System.out.println( "FlexGen : Flexible Map Generator Library" );
         System.out.println();
-        System.out.println( "Example Application" );
+        System.out.println( "Example Application - Grass and Rivers" );
 
-        File dir = new File( "work/worlds" );
+        String dirName = "work/worlds/River";
+        File dir = new File( dirName );
         dir.mkdirs();
 
         MapGenerator mapGenerator =
                 new MapGenerator( new ImprovedRandom(), MAP_TILE_TYPES, -10, -10, 10, 10 );
-        mapGenerator.addMapTileAddedListener( new MapRenderer( "work/worlds/", 5, COLOR_MAP ));
+        mapGenerator.addMapTileAddedListener( new MapRenderer( dirName + "/", 5, COLOR_MAP ));
 
         mapGenerator.addMapTile( new MapTileLocation( 0, 0 ),
                                  new MapTile( ALL_GRASS, MapTileOrientation.UPRIGHT ));
@@ -273,7 +275,7 @@ public class Main
     /**
      * Private constructor to keep this class from being instantiated since all methods are static.
      */
-    private Main()
+    private RiverExample()
     {
     }
 }
