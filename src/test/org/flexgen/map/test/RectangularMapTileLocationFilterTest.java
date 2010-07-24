@@ -62,4 +62,25 @@ public class RectangularMapTileLocationFilterTest
                     e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the constructor throws the correct exception when the maxY parameter is less than
+     * the minY parameter.
+     */
+    @Test
+    public void constructor_maxY_tooSmall()
+    {
+        try
+        {
+            new RectangularMapTileLocationFilter( 0, 0, 0, -1 );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                    "Unexpected message.",
+                    "Parameter 'maxY' must be greater than or equal to parameter 'minY'.",
+                    e.getMessage() );
+        }
+    }
 }
