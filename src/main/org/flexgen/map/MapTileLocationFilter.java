@@ -45,6 +45,13 @@ public interface MapTileLocationFilter
     int getMinX();
 
     /**
+     * Get the smallest possible Y coordinate for allowed map tile locations.
+     *
+     * @return The smallest possible Y coordinate for allowed map tile locations.
+     */
+    int getMinY();
+
+    /**
      * Return a flag indicating whether or not the specified map tile location is allowed.
      *
      * @param mapTileLocation

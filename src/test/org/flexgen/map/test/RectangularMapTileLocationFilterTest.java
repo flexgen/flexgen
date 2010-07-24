@@ -97,4 +97,17 @@ public class RectangularMapTileLocationFilterTest
         Assert.assertEquals( "Unexpected return value.", value,
                              rectangularMapTileLocationFilter.getMinX() );
     }
+
+    /**
+     * Verify that the getMinY() method returns the correct value.
+     */
+    @Test
+    public void getMinY()
+    {
+        int value = GeneralHelper.getRandom().nextInt( 1000 );
+        RectangularMapTileLocationFilter rectangularMapTileLocationFilter =
+                new RectangularMapTileLocationFilter( 0, value, 5000, 5000 );
+        Assert.assertEquals( "Unexpected return value.", value,
+                             rectangularMapTileLocationFilter.getMinY() );
+    }
 }

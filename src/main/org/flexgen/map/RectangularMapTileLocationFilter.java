@@ -44,6 +44,11 @@ public class RectangularMapTileLocationFilter implements MapTileLocationFilter
     private final int minX;
 
     /**
+     * Smallest possible Y coordinate for map tiles in the map.
+     */
+    private final int minY;
+
+    /**
      * Construct a rectangular map tile location filter.
      *
      * @param minX
@@ -72,6 +77,7 @@ public class RectangularMapTileLocationFilter implements MapTileLocationFilter
         }
 
         this.minX = minX;
+        this.minY = minY;
     }
 
     /**
@@ -82,6 +88,16 @@ public class RectangularMapTileLocationFilter implements MapTileLocationFilter
     public int getMinX()
     {
         return minX;
+    }
+
+    /**
+     * Get the smallest possible Y coordinate for allowed map tile locations.
+     *
+     * @return The smallest possible Y coordinate for allowed map tile locations.
+     */
+    public int getMinY()
+    {
+        return minY;
     }
 
     /**
