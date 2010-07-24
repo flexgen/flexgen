@@ -23,57 +23,33 @@ Prerequisites
 
 The FlexGen project uses the JUnit library for unit testing and
 Checkstyle for ensuring the source code matches the FlexGen coding
-conventions. While you are able to build the FlexGen project without
-using JUnit and Checkstyle, any contributions to the FlexGen project will
-need to be unit tested and conform with the FlexGen coding conventions.
+conventions. The Ant build script supplied with FlexGen will download
+JUnit and Checkstyle for you. Any contributions to the FlexGen project
+must be unit tested and conform with the FlexGen coding conventions.
 
 
 JUnit
 =====
 
-You will need to download and install JUnit on your computer. FlexGen
-uses version 4.6 of JUnit. You can download JUnit from here:
-
-https://sourceforge.net/project/downloading.php?group_id=15278&filename=junit4.6.zip&a=79745167
-
-Extract JUnit 4.6 to a directory on your computer. We'll call this
-directory <JUNIT_HOME>.
-
-To enable FlexGen to use JUnit in Eclipse, you will need to create a
-Java user library in Eclipse for Junit. Call the user library
-"JUNIT-4.6" and point it to "<JUNIT_HOME>/junit-4.6.jar".
-
-To enable FlexGen to use JUnit in Ant, you will need to create an
-environment variable that points to the JUnit Jar. Call the environment
-variable "JUNIT_4_6" and set it to "<JUNIT_HOME>/junit-4.6.jar".
+Eclipse will complain about missing the JUnit library until you download
+JUnit using Ant. To fix this error, run the "extract.junit" target using
+Ant. After Ant has finished, refresh the FlexGen project in Eclipse to
+fix the error.
 
 
 Checkstyle
 ==========
 
-You will need to download and install Checkstyle on your computer.
-FlexGen uses version 5.0 of Checkstyle. You can download Checkstyle
-here:
-
-https://sourceforge.net/project/downloading.php?group_id=29721&filename=checkstyle-5.0.zip&a=71657525
-
-Extract Checkstyle 5.0 to a directory on your computer. We'll call this
-directory <CHECKSTYLE_HOME>.
-
-To enable FlexGen to use Checkstyle in Eclipse, you can use an Eclipse
-plug-in for Checkstyle and use the supplied Checkstyle configuration in
-the FlexGen project. One such plug-in is "eclipse-cs". Instructions for
+There is a plug-in for Eclipse that allows you to use Checkstyle from
+within Eclipse. One such plug-in is "eclipse-cs". Instructions for
 installing the plug-in are available here:
 
 http://eclipse-cs.sourceforge.net/
 
 Follow the instructions for installing the plug-in and configuring it to
-use the FlexGen Checkstyle configuration.
-
-To enable FlexGen to use Checkstyle in Ant, you will need to create an
-environment variable that points to the Checkstyle Jar. Call the
-environment variable "CHECKSTYLE_5_0" and set it to
-"<CHECKSTYLE_HOME>/checkstyle-all-5.0.jar".
+use the FlexGen Checkstyle configuration. FlexGen currently uses version
+5.1 of Checkstyle. Make sure the Eclipse Checkstyle plug-in you use
+matches this version.
 
 
 Building
