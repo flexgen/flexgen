@@ -123,19 +123,20 @@ public class MapTileTest
     @Test
     public void getMapUnit_x_tooLarge()
     {
-        int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTile mapTile = new MapTile( MapTileTypeHelper.build( size ),
+        int mapUnitArraySize = GeneralHelper.getRandom().nextInt( 5 ) + 1;
+        MapTile mapTile = new MapTile( MapTileTypeHelper.build( mapUnitArraySize ),
                                        MapTileOrientation.UPRIGHT );
 
         try
         {
-            mapTile.getMapUnit( size, 0 );
+            mapTile.getMapUnit( mapUnitArraySize, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
         {
             Assert.assertEquals( "Unexpected message.",
-                                 "Parameter 'x' must be less than " + size + ".", e.getMessage() );
+                                 "Parameter 'x' must be less than " + mapUnitArraySize + ".",
+                                 e.getMessage() );
         }
     }
 
@@ -169,19 +170,20 @@ public class MapTileTest
     @Test
     public void getMapUnit_y_tooLarge()
     {
-        int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTile mapTile = new MapTile( MapTileTypeHelper.build( size ),
+        int mapUnitArraySize = GeneralHelper.getRandom().nextInt( 5 ) + 1;
+        MapTile mapTile = new MapTile( MapTileTypeHelper.build( mapUnitArraySize ),
                                        MapTileOrientation.UPRIGHT );
 
         try
         {
-            mapTile.getMapUnit( 0, size );
+            mapTile.getMapUnit( 0, mapUnitArraySize );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
         {
             Assert.assertEquals( "Unexpected message.",
-                                 "Parameter 'y' must be less than " + size + ".", e.getMessage() );
+                                 "Parameter 'y' must be less than " + mapUnitArraySize + ".",
+                                 e.getMessage() );
         }
     }
 
@@ -224,8 +226,8 @@ public class MapTileTest
     @Test
     public void getMapUnit_upright()
     {
-        int size = 4;
-        MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
+        int mapUnitArraySize = 4;
+        MapUnit[][] mapUnits = MapUnitHelper.buildArray( mapUnitArraySize );
         MapTile mapTile =
                 new MapTile( new MapTileType( GeneralHelper.getUniqueString(), 0,
                                               mapUnits, MapTileEdgeHelper.buildArray(),
@@ -288,8 +290,8 @@ public class MapTileTest
     @Test
     public void getMapUnit_clockwise()
     {
-        int size = 4;
-        MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
+        int mapUnitArraySize = 4;
+        MapUnit[][] mapUnits = MapUnitHelper.buildArray( mapUnitArraySize );
         MapTile mapTile =
                 new MapTile( new MapTileType( GeneralHelper.getUniqueString(), 0,
                                               mapUnits, MapTileEdgeHelper.buildArray(),
@@ -352,8 +354,8 @@ public class MapTileTest
     @Test
     public void getMapUnit_flipped()
     {
-        int size = 4;
-        MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
+        int mapUnitArraySize = 4;
+        MapUnit[][] mapUnits = MapUnitHelper.buildArray( mapUnitArraySize );
         MapTile mapTile =
                 new MapTile( new MapTileType( GeneralHelper.getUniqueString(), 0,
                                               mapUnits, MapTileEdgeHelper.buildArray(),
@@ -416,8 +418,8 @@ public class MapTileTest
     @Test
     public void getMapUnit_counterClockwise()
     {
-        int size = 4;
-        MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
+        int mapUnitArraySize = 4;
+        MapUnit[][] mapUnits = MapUnitHelper.buildArray( mapUnitArraySize );
         MapTile mapTile =
                 new MapTile( new MapTileType( GeneralHelper.getUniqueString(), 0,
                                               mapUnits, MapTileEdgeHelper.buildArray(),

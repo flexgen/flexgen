@@ -452,9 +452,9 @@ public class MapTileTypeTest
     @Test
     public void getSize()
     {
-        int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTileType mapTileType = MapTileTypeHelper.build( size );
-        Assert.assertEquals( "Unexpected return value.", size, mapTileType.getSize() );
+        int mapUnitArraySize = GeneralHelper.getRandom().nextInt( 5 ) + 1;
+        MapTileType mapTileType = MapTileTypeHelper.build( mapUnitArraySize );
+        Assert.assertEquals( "Unexpected return value.", mapUnitArraySize, mapTileType.getSize() );
     }
 
     /**
@@ -486,18 +486,19 @@ public class MapTileTypeTest
     @Test
     public void getMapUnit_x_tooLarge()
     {
-        int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTileType mapTileType = MapTileTypeHelper.build( size );
+        int mapUnitArraySize = GeneralHelper.getRandom().nextInt( 5 ) + 1;
+        MapTileType mapTileType = MapTileTypeHelper.build( mapUnitArraySize );
 
         try
         {
-            mapTileType.getMapUnit( size, 0 );
+            mapTileType.getMapUnit( mapUnitArraySize, 0 );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
         {
             Assert.assertEquals( "Unexpected message.",
-                                 "Parameter 'x' must be less than " + size + ".", e.getMessage() );
+                                 "Parameter 'x' must be less than " + mapUnitArraySize + ".",
+                                 e.getMessage() );
         }
     }
 
@@ -530,18 +531,19 @@ public class MapTileTypeTest
     @Test
     public void getMapUnit_y_tooLarge()
     {
-        int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTileType mapTileType = MapTileTypeHelper.build( size );
+        int mapUnitArraySize = GeneralHelper.getRandom().nextInt( 5 ) + 1;
+        MapTileType mapTileType = MapTileTypeHelper.build( mapUnitArraySize );
 
         try
         {
-            mapTileType.getMapUnit( 0, size );
+            mapTileType.getMapUnit( 0, mapUnitArraySize );
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
         {
             Assert.assertEquals( "Unexpected message.",
-                                 "Parameter 'y' must be less than " + size + ".", e.getMessage() );
+                                 "Parameter 'y' must be less than " + mapUnitArraySize + ".",
+                                 e.getMessage() );
         }
     }
 
@@ -552,15 +554,15 @@ public class MapTileTypeTest
     @Test
     public void getMapUnit()
     {
-        int size = 2;
-        MapUnit[][] mapUnits = MapUnitHelper.buildArray( size );
+        int mapUnitArraySize = 2;
+        MapUnit[][] mapUnits = MapUnitHelper.buildArray( mapUnitArraySize );
         MapTileType mapTileType = new MapTileType( GeneralHelper.getUniqueString(), 0,
                                                    mapUnits, MapTileEdgeHelper.buildArray(),
                                                    MapTileOrientationHelper.ALL_ORIENTATIONS );
 
-        for ( int i = 0; i < size; i++ )
+        for ( int i = 0; i < mapUnitArraySize; i++ )
         {
-            for ( int j = 0; j < size; j++ )
+            for ( int j = 0; j < mapUnitArraySize; j++ )
             {
                 Assert.assertEquals( "Unexpected return value for (" + i + ", " + j + ").",
                                      mapUnits[ j ][ i ], mapTileType.getMapUnit( i, j ));

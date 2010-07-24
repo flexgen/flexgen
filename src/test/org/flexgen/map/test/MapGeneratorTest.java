@@ -244,11 +244,12 @@ public class MapGeneratorTest
     @Test
     public void getTileSize()
     {
-        int size = GeneralHelper.getRandom().nextInt( 5 ) + 1;
-        MapTileType[] mapTileTypes = MapTileTypeHelper.buildArray( size );
+        int mapUnitArraySize = GeneralHelper.getRandom().nextInt( 5 ) + 1;
+        MapTileType[] mapTileTypes = MapTileTypeHelper.buildArray( mapUnitArraySize );
         MapGenerator mapGenerator =
                 new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
-        Assert.assertEquals( "Unexpected return value.", size, mapGenerator.getTileSize() );
+        Assert.assertEquals( "Unexpected return value.", mapUnitArraySize,
+                             mapGenerator.getTileSize() );
     }
 
     /**

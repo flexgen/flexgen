@@ -42,15 +42,16 @@ public class MapTileTypeHelper
     /**
      * Build a map tile type with default values.
      *
-     * @param size
+     * @param mapUnitArraySize
      *            The size of the map units array to generate for the map tile type.
      *
      * @return The generated map tile type.
      */
-    public static MapTileType build( int size )
+    public static MapTileType build( int mapUnitArraySize )
     {
         return new MapTileType( GeneralHelper.getUniqueString(), 0,
-                                MapUnitHelper.buildArray( size ), MapTileEdgeHelper.buildArray(),
+                                MapUnitHelper.buildArray( mapUnitArraySize ),
+                                MapTileEdgeHelper.buildArray(),
                                 MapTileOrientationHelper.ALL_ORIENTATIONS );
     }
 
@@ -67,16 +68,16 @@ public class MapTileTypeHelper
     /**
      * Build an array of map tile types with default values.
      *
-     * @param size
+     * @param mapUnitArraySize
      *            The size of the map units array to generate for the map tile types in the array.
      *
      * @return The generated map tile type array.
      */
-    public static MapTileType[] buildArray( int size )
+    public static MapTileType[] buildArray( int mapUnitArraySize )
     {
         return new MapTileType[]
         {
-            MapTileTypeHelper.build( size )
+            MapTileTypeHelper.build( mapUnitArraySize )
         };
     }
 
