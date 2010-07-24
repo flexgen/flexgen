@@ -558,4 +558,31 @@ public class MapGeneratorTest
 
         MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
     }
+
+    /**
+     * Verify that the generate() method works correctly when generating a map with one open
+     * location that is on the top side of an existing tile.
+     */
+    @Test
+    public void generate_topNeighbor()
+    {
+        MapGenerator expectedMapGenerator =
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 0, 1 );
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 0 ),
+                new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 1 ),
+                new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
+
+        MapGenerator actualMapGenerator =
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 0, 1 );
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 0, 1 ),
+                new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
+
+        actualMapGenerator.generate();
+
+        MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+    }
 }
