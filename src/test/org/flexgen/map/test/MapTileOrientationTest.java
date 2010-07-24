@@ -84,4 +84,18 @@ public class MapTileOrientationTest
         boolean result = mapTileOrientation1.equals( mapTileOrientation2 );
         Assert.assertEquals( "Unexpected result.", false, result );
     }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with a different map
+     * tile orientation.
+     */
+    @Test
+    public void equals_differentInstance()
+    {
+        MapTileOrientation mapTileOrientation1 = MapTileOrientation.COUNTER_CLOCKWISE;
+        MapTileOrientation mapTileOrientation2 = MapTileOrientation.UPRIGHT;
+
+        boolean result = mapTileOrientation1.equals( mapTileOrientation2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
 }
