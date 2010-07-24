@@ -612,4 +612,31 @@ public class MapGeneratorTest
 
         MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
     }
+
+    /**
+     * Verify that the generate() method works correctly when generating a map with one open
+     * location that is on the right side of an existing tile.
+     */
+    @Test
+    public void generate_rightNeighbor()
+    {
+        MapGenerator expectedMapGenerator =
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 1, 0 );
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 0 ),
+                new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 1, 0 ),
+                new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
+
+        MapGenerator actualMapGenerator =
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 1, 0 );
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 1, 0 ),
+                new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
+
+        actualMapGenerator.generate();
+
+        MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+    }
 }
