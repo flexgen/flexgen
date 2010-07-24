@@ -110,4 +110,17 @@ public class RectangularMapTileLocationFilterTest
         Assert.assertEquals( "Unexpected return value.", value,
                              rectangularMapTileLocationFilter.getMinY() );
     }
+
+    /**
+     * Verify that the getMaxX() method returns the correct value.
+     */
+    @Test
+    public void getMaxX()
+    {
+        int value = GeneralHelper.getRandom().nextInt( 1000 );
+        RectangularMapTileLocationFilter rectangularMapTileLocationFilter =
+                new RectangularMapTileLocationFilter( 0, 0, value, 5000 );
+        Assert.assertEquals( "Unexpected return value.", value,
+                rectangularMapTileLocationFilter.getMaxX() );
+    }
 }
