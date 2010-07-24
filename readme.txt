@@ -4,4 +4,5 @@ that their edges match. You can define map tiles however you want to
 determine what type of map is created.
 
 For more information about FlexGen, please visit the web site:
+
 http://www.flexgen.org/
