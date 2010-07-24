@@ -70,4 +70,18 @@ public class MapTileOrientationTest
         boolean result = mapTileOrientation1.equals( mapTileOrientation2 );
         Assert.assertEquals( "Unexpected result.", false, result );
     }
+
+    /**
+     * Verify that the equals() method returns the correct result when called with the wrong type of
+     * object.
+     */
+    @Test
+    public void equals_wrongType()
+    {
+        MapTileOrientation mapTileOrientation1 = MapTileOrientation.CLOCKWISE;
+        Object             mapTileOrientation2 = new Object();
+
+        boolean result = mapTileOrientation1.equals( mapTileOrientation2 );
+        Assert.assertEquals( "Unexpected result.", false, result );
+    }
 }
