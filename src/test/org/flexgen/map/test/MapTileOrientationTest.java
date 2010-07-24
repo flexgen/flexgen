@@ -90,7 +90,7 @@ public class MapTileOrientationTest
      * tile orientation.
      */
     @Test
-    public void equals_differentInstance()
+    public void equals_different()
     {
         MapTileOrientation mapTileOrientation1 = MapTileOrientation.COUNTER_CLOCKWISE;
         MapTileOrientation mapTileOrientation2 = MapTileOrientation.UPRIGHT;
@@ -104,7 +104,7 @@ public class MapTileOrientationTest
      * tile orientation.
      */
     @Test
-    public void equals_identicalInstance()
+    public void equals_identical()
     {
         MapTileOrientation mapTileOrientation1 = MapTileOrientation.FLIPPED;
         MapTileOrientation mapTileOrientation2 = MapTileOrientation.FLIPPED;

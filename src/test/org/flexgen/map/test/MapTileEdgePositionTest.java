@@ -143,7 +143,7 @@ public class MapTileEdgePositionTest
      * tile edge position.
      */
     @Test
-    public void equals_differentInstance()
+    public void equals_different()
     {
         MapTileEdgePosition mapTileEdgePosition1 = MapTileEdgePosition.TOP;
         MapTileEdgePosition mapTileEdgePosition2 = MapTileEdgePosition.BOTTOM;
@@ -157,7 +157,7 @@ public class MapTileEdgePositionTest
      * tile edge position.
      */
     @Test
-    public void equals_identicalInstance()
+    public void equals_identical()
     {
         MapTileEdgePosition mapTileEdgePosition1 = MapTileEdgePosition.BOTTOM;
         MapTileEdgePosition mapTileEdgePosition2 = MapTileEdgePosition.BOTTOM;
