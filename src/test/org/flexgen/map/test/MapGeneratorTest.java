@@ -508,4 +508,27 @@ public class MapGeneratorTest
                                  "No map tile types can be placed on the map.", e.getMessage() );
         }
     }
+
+    /**
+     * Verify that the generate() method works correctly when there are no open locations.
+     */
+    @Test
+    public void generate_noOpenLocations()
+    {
+        MapGenerator expectedMapGenerator =
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 0, 0 );
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 0 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+
+        MapGenerator actualMapGenerator =
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 0, 0 );
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 0, 0 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+
+        actualMapGenerator.generate();
+
+        MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+    }
 }

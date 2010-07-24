@@ -32,7 +32,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.test.helper;
 
+import org.junit.Assert;
+
 import org.flexgen.map.MapGenerator;
+import org.flexgen.map.MapTileLocation;
 import org.flexgen.util.ImprovedRandom;
 
 /**
@@ -48,6 +51,33 @@ public class MapGeneratorHelper
     public static MapGenerator build()
     {
         return new MapGenerator( new ImprovedRandom(), MapTileTypeHelper.buildArray(), 0, 0, 0, 0 );
+    }
+
+    /**
+     * Verify that two map generators are equal.
+     *
+     * @param expected
+     *            The expected map generator.
+     * @param actual
+     *            The actual map generator.
+     */
+    public static void assertAreEqual( MapGenerator expected, MapGenerator actual )
+    {
+        Assert.assertEquals( "Unexpected value for minX.", expected.getMinX(), actual.getMinX() );
+        Assert.assertEquals( "Unexpected value for minY.", expected.getMinY(), actual.getMinY() );
+        Assert.assertEquals( "Unexpected value for maxX.", expected.getMaxX(), actual.getMaxX() );
+        Assert.assertEquals( "Unexpected value for maxY.", expected.getMaxY(), actual.getMaxY() );
+
+        for ( int y = expected.getMinY(); y <= expected.getMaxY(); y++ )
+        {
+            for ( int x = expected.getMinX(); x <= expected.getMaxX(); x++ )
+            {
+                MapTileLocation mapTileLocation = new MapTileLocation( x, y );
+                Assert.assertEquals( "Unexpected map tile at " + mapTileLocation.toString() + ".",
+                                     expected.getMapTile( mapTileLocation ),
+                                     actual.getMapTile( mapTileLocation ));
+            }
+        }
     }
 
     /**
