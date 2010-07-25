@@ -247,6 +247,24 @@ public class MapGeneratorTest
     }
 
     /**
+     * Verify that the constructor that doesn't take the mapTileLocationFilter parameter works the
+     * same as the constructor that does.
+     */
+    @Test
+    public void constructor_withoutMapTileLocationFilter()
+    {
+        MapTileType[] mapTileTypes = MapTileTypeHelper.buildArray();
+
+        MapGenerator expectedMapGenerator =
+                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                                  new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
+        MapGenerator actualMapGenerator =
+                new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
+
+        MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+    }
+
+    /**
      * Verify that the getTileSize() method returns the correct value.
      */
     @Test
