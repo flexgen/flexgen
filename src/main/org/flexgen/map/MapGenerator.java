@@ -94,34 +94,6 @@ public class MapGenerator
      *            generating the map. Cannot be null. Must contain at least one element. No element
      *            can be null. Cannot contain two or more elements that are identical. All map tile
      *            types in the array must be the same size.
-     * @param minX
-     *            Smallest possible X coordinate for map tiles in the map.
-     * @param minY
-     *            Smallest possible Y coordinate for map tiles in the map.
-     * @param maxX
-     *            Largest possible X coordinate for map tiles in the map. Must be greater than or
-     *            equal to minX.
-     * @param maxY
-     *            Largest possible Y coordinate for map tiles in the map. Must be greater than or
-     *            equal to minY.
-     */
-    public MapGenerator( ImprovedRandom improvedRandom, MapTileType[] mapTileTypes,
-                         int minX, int minY, int maxX, int maxY )
-    {
-        this( improvedRandom, mapTileTypes,
-              new RectangularMapTileLocationFilter( minX, minY, maxX, maxY ));
-    }
-
-    /**
-     * Construct a map generator.
-     *
-     * @param improvedRandom
-     *            Random number generator to use for generating the map. Cannot be null.
-     * @param mapTileTypes
-     *            Array of map tile types that define the available map tile types for randomly
-     *            generating the map. Cannot be null. Must contain at least one element. No element
-     *            can be null. Cannot contain two or more elements that are identical. All map tile
-     *            types in the array must be the same size.
      * @param mapTileLocationFilter
      *            Map tile location filter for open locations.
      */
@@ -187,6 +159,34 @@ public class MapGenerator
         this.openLocations         = new HashSet< MapTileLocation >();
         this.mapTileAddedListeners = new LinkedList< MapTileAddedListener >();
         this.tileSize              = tileSize;
+    }
+
+    /**
+     * Construct a map generator.
+     *
+     * @param improvedRandom
+     *            Random number generator to use for generating the map. Cannot be null.
+     * @param mapTileTypes
+     *            Array of map tile types that define the available map tile types for randomly
+     *            generating the map. Cannot be null. Must contain at least one element. No element
+     *            can be null. Cannot contain two or more elements that are identical. All map tile
+     *            types in the array must be the same size.
+     * @param minX
+     *            Smallest possible X coordinate for map tiles in the map.
+     * @param minY
+     *            Smallest possible Y coordinate for map tiles in the map.
+     * @param maxX
+     *            Largest possible X coordinate for map tiles in the map. Must be greater than or
+     *            equal to minX.
+     * @param maxY
+     *            Largest possible Y coordinate for map tiles in the map. Must be greater than or
+     *            equal to minY.
+     */
+    public MapGenerator( ImprovedRandom improvedRandom, MapTileType[] mapTileTypes,
+                         int minX, int minY, int maxX, int maxY )
+    {
+        this( improvedRandom, mapTileTypes,
+              new RectangularMapTileLocationFilter( minX, minY, maxX, maxY ));
     }
 
     /**
