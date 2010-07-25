@@ -142,6 +142,9 @@ public class RectangularMapTileLocationFilter implements MapTileLocationFilter
      */
     public boolean allowLocation( MapTileLocation mapTileLocation )
     {
-        throw new UnsupportedOperationException();
+        return (( mapTileLocation.getX() >= minX ) &&
+                ( mapTileLocation.getY() >= minY ) &&
+                ( mapTileLocation.getX() <= maxX ) &&
+                ( mapTileLocation.getY() <= maxY ));
     }
 }
