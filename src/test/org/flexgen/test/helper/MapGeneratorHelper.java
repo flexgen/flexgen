@@ -36,6 +36,7 @@ import org.junit.Assert;
 
 import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTileLocation;
+import org.flexgen.map.RectangularMapTileLocationFilter;
 import org.flexgen.util.ImprovedRandom;
 
 /**
@@ -50,7 +51,8 @@ public class MapGeneratorHelper
      */
     public static MapGenerator build()
     {
-        return new MapGenerator( new ImprovedRandom(), MapTileTypeHelper.buildArray(), 0, 0, 0, 0 );
+        return new MapGenerator( new ImprovedRandom(), MapTileTypeHelper.buildArray(),
+                                 new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
     }
 
     /**

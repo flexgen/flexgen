@@ -42,6 +42,7 @@ import org.flexgen.map.MapTile;
 import org.flexgen.map.MapTileLocation;
 import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
+import org.flexgen.map.RectangularMapTileLocationFilter;
 import org.flexgen.map.test.support.TestMapTileAddedListener;
 import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapGeneratorHelper;
@@ -65,7 +66,8 @@ public class MapGeneratorTest
     {
         try
         {
-            new MapGenerator( null, MapTileTypeHelper.buildArray(), 0, 0, 0, 0 );
+            new MapGenerator( null, MapTileTypeHelper.buildArray(),
+                              new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -84,7 +86,8 @@ public class MapGeneratorTest
     {
         try
         {
-            new MapGenerator( new ImprovedRandom(), null, 0, 0, 0, 0 );
+            new MapGenerator( new ImprovedRandom(), null,
+                              new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -105,7 +108,8 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
+            new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                              new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -130,7 +134,8 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
+            new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                              new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -158,7 +163,8 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
+            new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                              new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -185,7 +191,8 @@ public class MapGeneratorTest
 
         try
         {
-            new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
+            new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                              new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
             Assert.fail( "Expected exception." );
         }
         catch ( IllegalArgumentException e )
@@ -250,7 +257,8 @@ public class MapGeneratorTest
         MapTileType[] mapTileTypes =
                 MapTileTypeHelper.buildArray( mapUnitArraySize, mapTileArraySize );
         MapGenerator mapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
+                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                                  new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
         Assert.assertEquals( "Unexpected return value.", mapUnitArraySize,
                              mapGenerator.getTileSize() );
     }
@@ -263,7 +271,8 @@ public class MapGeneratorTest
     {
         int value = GeneralHelper.getRandom().nextInt( 1000 );
         MapGenerator mapGenerator = new MapGenerator(
-                new ImprovedRandom(), MapTileTypeHelper.buildArray(), value, 0, 5000, 5000 );
+                new ImprovedRandom(), MapTileTypeHelper.buildArray(),
+                new RectangularMapTileLocationFilter( value, 0, 5000, 5000 ));
         Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMinX() );
     }
 
@@ -275,7 +284,8 @@ public class MapGeneratorTest
     {
         int value = GeneralHelper.getRandom().nextInt( 1000 );
         MapGenerator mapGenerator = new MapGenerator(
-                new ImprovedRandom(), MapTileTypeHelper.buildArray(), 0, value, 5000, 5000 );
+                new ImprovedRandom(), MapTileTypeHelper.buildArray(),
+                new RectangularMapTileLocationFilter( 0, value, 5000, 5000 ));
         Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMinY() );
     }
 
@@ -287,7 +297,8 @@ public class MapGeneratorTest
     {
         int value = GeneralHelper.getRandom().nextInt( 1000 );
         MapGenerator mapGenerator = new MapGenerator(
-                new ImprovedRandom(), MapTileTypeHelper.buildArray(), 0, 0, value, 5000 );
+                new ImprovedRandom(), MapTileTypeHelper.buildArray(),
+                new RectangularMapTileLocationFilter( 0, 0, value, 5000 ));
         Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMaxX() );
     }
 
@@ -299,7 +310,8 @@ public class MapGeneratorTest
     {
         int value = GeneralHelper.getRandom().nextInt( 1000 );
         MapGenerator mapGenerator = new MapGenerator(
-                new ImprovedRandom(), MapTileTypeHelper.buildArray(), 0, 0, 5000, value );
+                new ImprovedRandom(), MapTileTypeHelper.buildArray(),
+                new RectangularMapTileLocationFilter( 0, 0, 5000, value ));
         Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMaxY() );
     }
 
@@ -355,10 +367,11 @@ public class MapGeneratorTest
             mapTileType
         };
 
-        MapGenerator mapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes,
-                                  mapTileLocation.getX(), mapTileLocation.getY(),
-                                  mapTileLocation.getX(), mapTileLocation.getY() );
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), mapTileTypes,
+                new RectangularMapTileLocationFilter(
+                        mapTileLocation.getX(), mapTileLocation.getY(),
+                        mapTileLocation.getX(), mapTileLocation.getY() ));
 
         mapGenerator.addMapTile( mapTileLocation, mapTile );
 
@@ -383,7 +396,8 @@ public class MapGeneratorTest
         };
 
         MapGenerator mapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes, 0, 0, 0, 0 );
+                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                                  new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
 
         try
         {
@@ -414,10 +428,11 @@ public class MapGeneratorTest
             mapTileType
         };
 
-        MapGenerator mapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes,
-                                  mapTileLocation.getX(), mapTileLocation.getY(),
-                                  mapTileLocation.getX(), mapTileLocation.getY() );
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), mapTileTypes,
+                new RectangularMapTileLocationFilter(
+                        mapTileLocation.getX(), mapTileLocation.getY(),
+                        mapTileLocation.getX(), mapTileLocation.getY() ));
 
         mapGenerator.addMapTile( mapTileLocation, mapTile );
         mapGenerator.addMapTile( mapTileLocation, null );
@@ -444,10 +459,11 @@ public class MapGeneratorTest
             mapTileType
         };
 
-        MapGenerator mapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes,
-                                  mapTileLocation.getX(), mapTileLocation.getY(),
-                                  mapTileLocation.getX(), mapTileLocation.getY() );
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), mapTileTypes,
+                new RectangularMapTileLocationFilter(
+                        mapTileLocation.getX(), mapTileLocation.getY(),
+                        mapTileLocation.getX(), mapTileLocation.getY() ));
 
         TestMapTileAddedListener mapTileAddedListener = new TestMapTileAddedListener();
         mapGenerator.addMapTileAddedListener( mapTileAddedListener );
@@ -470,7 +486,8 @@ public class MapGeneratorTest
     public void generate_noLegalMapTileTypes()
     {
         MapGenerator mapGenerator =
-                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, -1, -1, 1, 1 );
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( -1, -1, 1, 1 ));
 
         mapGenerator.addMapTile(
                 new MapTileLocation( -1, -1 ),
@@ -516,13 +533,15 @@ public class MapGeneratorTest
     public void generate_noOpenLocations()
     {
         MapGenerator expectedMapGenerator =
-                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 0, 0 );
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
         expectedMapGenerator.addMapTile(
                 new MapTileLocation( 0, 0 ),
                 new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
 
         MapGenerator actualMapGenerator =
-                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 0, 0 );
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
         actualMapGenerator.addMapTile(
                 new MapTileLocation( 0, 0 ),
                 new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
@@ -540,7 +559,8 @@ public class MapGeneratorTest
     public void generate_bottomNeighbor()
     {
         MapGenerator expectedMapGenerator =
-                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 0, 1 );
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( 0, 0, 0, 1 ));
         expectedMapGenerator.addMapTile(
                 new MapTileLocation( 0, 0 ),
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
@@ -549,7 +569,8 @@ public class MapGeneratorTest
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
 
         MapGenerator actualMapGenerator =
-                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 0, 1 );
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( 0, 0, 0, 1 ));
         actualMapGenerator.addMapTile(
                 new MapTileLocation( 0, 0 ),
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
@@ -567,7 +588,8 @@ public class MapGeneratorTest
     public void generate_topNeighbor()
     {
         MapGenerator expectedMapGenerator =
-                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 0, 1 );
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( 0, 0, 0, 1 ));
         expectedMapGenerator.addMapTile(
                 new MapTileLocation( 0, 0 ),
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
@@ -576,7 +598,8 @@ public class MapGeneratorTest
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
 
         MapGenerator actualMapGenerator =
-                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 0, 1 );
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( 0, 0, 0, 1 ));
         actualMapGenerator.addMapTile(
                 new MapTileLocation( 0, 1 ),
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
@@ -594,7 +617,8 @@ public class MapGeneratorTest
     public void generate_leftNeighbor()
     {
         MapGenerator expectedMapGenerator =
-                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 1, 0 );
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( 0, 0, 1, 0 ));
         expectedMapGenerator.addMapTile(
                 new MapTileLocation( 0, 0 ),
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
@@ -603,7 +627,8 @@ public class MapGeneratorTest
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
 
         MapGenerator actualMapGenerator =
-                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 1, 0 );
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( 0, 0, 1, 0 ));
         actualMapGenerator.addMapTile(
                 new MapTileLocation( 0, 0 ),
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
@@ -621,7 +646,8 @@ public class MapGeneratorTest
     public void generate_rightNeighbor()
     {
         MapGenerator expectedMapGenerator =
-                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 1, 0 );
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( 0, 0, 1, 0 ));
         expectedMapGenerator.addMapTile(
                 new MapTileLocation( 0, 0 ),
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
@@ -630,7 +656,8 @@ public class MapGeneratorTest
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
 
         MapGenerator actualMapGenerator =
-                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES, 0, 0, 1, 0 );
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( 0, 0, 1, 0 ));
         actualMapGenerator.addMapTile(
                 new MapTileLocation( 1, 0 ),
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
