@@ -32,6 +32,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.map;
 
+import java.util.Collection;
+import java.util.LinkedList;
+
 /**
  * Class implementing logic for filtering map tile locations based upon a specified rectangular
  * area.
@@ -133,18 +136,29 @@ public class RectangularMapTileLocationFilter implements MapTileLocationFilter
     }
 
     /**
-     * Return a flag indicating whether or not the specified map tile location is allowed.
+     * Get a filtered collection of map tile locations.
      *
-     * @param mapTileLocation
-     *            Map tile location under consideration.
+     * @param mapTileLocations
+     *            Collection of map tile locations to filter.
      *
-     * @return True if the map tile location is allowed, false otherwise.
+     * @return A filtered collection of map tile locations.
      */
-    public boolean allowLocation( MapTileLocation mapTileLocation )
+    public Collection< MapTileLocation > getFilteredMapTileLocations(
+            Collection< MapTileLocation > mapTileLocations )
     {
-        return (( mapTileLocation.getX() >= minX ) &&
+        Collection< MapTileLocation > filteredOpenLocations = new LinkedList< MapTileLocation >();
+
+        for ( MapTileLocation mapTileLocation : mapTileLocations )
+        {
+            if (( mapTileLocation.getX() >= minX ) &&
                 ( mapTileLocation.getY() >= minY ) &&
                 ( mapTileLocation.getX() <= maxX ) &&
-                ( mapTileLocation.getY() <= maxY ));
+                ( mapTileLocation.getY() <= maxY ))
+            {
+                filteredOpenLocations.add( mapTileLocation );
+            }
+        }
+
+        return filteredOpenLocations;
     }
 }

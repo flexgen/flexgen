@@ -32,6 +32,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.map;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -306,7 +307,8 @@ public class MapGenerator
      */
     public void generate()
     {
-        Set< MapTileLocation > filteredOpenLocations = getFilteredOpenLocations();
+        Collection< MapTileLocation > filteredOpenLocations =
+                mapTileLocationFilter.getFilteredMapTileLocations( openLocations );
 
         while ( ! filteredOpenLocations.isEmpty() )
         {
@@ -357,7 +359,8 @@ public class MapGenerator
             addMapTile( mapTilePosition.getMapTileLocation(),
                         new MapTile( mapTileType, mapTilePosition.getMapTileOrientation() ));
 
-            filteredOpenLocations = getFilteredOpenLocations();
+            filteredOpenLocations =
+                    mapTileLocationFilter.getFilteredMapTileLocations( openLocations );
         }
     }
 
@@ -372,7 +375,7 @@ public class MapGenerator
      * @return True if the map tile type can be legally added to the map, false otherwise.
      */
     private boolean legalMapTileType( MapTileType mapTileType,
-                                      Set< MapTileLocation > filteredOpenLocations )
+                                      Collection< MapTileLocation > filteredOpenLocations )
     {
         for ( MapTileLocation mapTileLocation : filteredOpenLocations )
         {
@@ -457,25 +460,5 @@ public class MapGenerator
         }
 
         return true;
-    }
-
-    /**
-     * Get a set of open locations filtered by the map tile location filter.
-     *
-     * @return A set of open locations filtered by the map tile location filter.
-     */
-    private Set< MapTileLocation > getFilteredOpenLocations()
-    {
-        Set< MapTileLocation > filteredOpenLocations = new HashSet< MapTileLocation >();
-
-        for ( MapTileLocation mapTileLocation : openLocations )
-        {
-            if ( mapTileLocationFilter.allowLocation( mapTileLocation ))
-            {
-                filteredOpenLocations.add( mapTileLocation );
-            }
-        }
-
-        return filteredOpenLocations;
     }
 }

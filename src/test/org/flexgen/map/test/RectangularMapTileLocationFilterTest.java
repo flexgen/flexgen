@@ -32,6 +32,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.map.test;
 
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.Random;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -139,78 +143,41 @@ public class RectangularMapTileLocationFilterTest
     }
 
     /**
-     * Verify that the allowLocation() method returns the correct value when the specified X
-     * coordinate is too small.
+     * Verify that the getFilteredMapTileLocations() method correctly filters a collection of
+     * locations.
      */
     @Test
-    public void allowLocation_xTooSmall()
+    public void getFilteredMapTileLocations()
     {
-        int value = GeneralHelper.getRandom().nextInt( 1000 );
-        RectangularMapTileLocationFilter rectangularMapTileLocationFilter =
-                new RectangularMapTileLocationFilter( value, 0, 5000, 0 );
-        Assert.assertEquals( "Unexpected return value.", false,
-                             rectangularMapTileLocationFilter.allowLocation(
-                                     new MapTileLocation( value - 5, 0 )));
-    }
+        int max = 1000;
+        Random random = GeneralHelper.getRandom();
 
-    /**
-     * Verify that the allowLocation() method returns the correct value when the specified X
-     * coordinate is too large.
-     */
-    @Test
-    public void allowLocation_xTooLarge()
-    {
-        int value = GeneralHelper.getRandom().nextInt( 1000 );
-        RectangularMapTileLocationFilter rectangularMapTileLocationFilter =
-                new RectangularMapTileLocationFilter( 0, 0, value, 0 );
-        Assert.assertEquals( "Unexpected return value.", false,
-                             rectangularMapTileLocationFilter.allowLocation(
-                                     new MapTileLocation( value + 5, 0 )));
-    }
+        MapTileLocation smallX   = new MapTileLocation( -5, random.nextInt( max + 1 ));
+        MapTileLocation smallY   = new MapTileLocation( random.nextInt( max + 1 ), -5 );
+        MapTileLocation bigX     = new MapTileLocation( max + 5, random.nextInt( max + 1 ));
+        MapTileLocation bigY     = new MapTileLocation( random.nextInt( max + 1 ), max + 5 );
+        MapTileLocation inRange1 = new MapTileLocation( random.nextInt( max + 1 ),
+                                                        random.nextInt( max + 1 ) );
+        MapTileLocation inRange2 = new MapTileLocation( random.nextInt( max + 1 ),
+                                                        random.nextInt( max + 1 ) );
 
-    /**
-     * Verify that the allowLocation() method returns the correct value when the specified Y
-     * coordinate is too small.
-     */
-    @Test
-    public void allowLocation_yTooSmall()
-    {
-        int value = GeneralHelper.getRandom().nextInt( 1000 );
-        RectangularMapTileLocationFilter rectangularMapTileLocationFilter =
-                new RectangularMapTileLocationFilter( 0, value, 0, 5000 );
-        Assert.assertEquals( "Unexpected return value.", false,
-                             rectangularMapTileLocationFilter.allowLocation(
-                                     new MapTileLocation( 0, value - 5 )));
-    }
+        Collection< MapTileLocation > mapTileLocations = new LinkedList< MapTileLocation >();
+        mapTileLocations.add( smallX );
+        mapTileLocations.add( smallY );
+        mapTileLocations.add( bigX );
+        mapTileLocations.add( bigY );
+        mapTileLocations.add( inRange1 );
+        mapTileLocations.add( inRange2 );
 
-    /**
-     * Verify that the allowLocation() method returns the correct value when the specified Y
-     * coordinate is too large.
-     */
-    @Test
-    public void allowLocation_yTooLarge()
-    {
-        int value = GeneralHelper.getRandom().nextInt( 1000 );
         RectangularMapTileLocationFilter rectangularMapTileLocationFilter =
-                new RectangularMapTileLocationFilter( 0, 0, 0, value );
-        Assert.assertEquals( "Unexpected return value.", false,
-                             rectangularMapTileLocationFilter.allowLocation(
-                                     new MapTileLocation( 0, value + 5 )));
-    }
+                new RectangularMapTileLocationFilter( 0, 0, max, max );
+        Collection< MapTileLocation > filteredMapTileLocations =
+                rectangularMapTileLocationFilter.getFilteredMapTileLocations( mapTileLocations );
 
-    /**
-     * Verify that the allowLocation() method returns the correct value when the specified
-     * coordinates are within range.
-     */
-    @Test
-    public void allowLocation_withinRange()
-    {
-        int x = GeneralHelper.getRandom().nextInt( 1000 );
-        int y = GeneralHelper.getRandom().nextInt( 1000 );
-        RectangularMapTileLocationFilter rectangularMapTileLocationFilter =
-                new RectangularMapTileLocationFilter( 0, 0, 1000, 1000 );
-        Assert.assertEquals( "Unexpected return value.", true,
-                             rectangularMapTileLocationFilter.allowLocation(
-                                     new MapTileLocation( x, y )));
+        Assert.assertEquals( "Unexpected collection size.", 2, filteredMapTileLocations.size() );
+        Assert.assertEquals( "Missing element " + inRange1.toString() + ".", true,
+                             filteredMapTileLocations.contains( inRange1 ));
+        Assert.assertEquals( "Missing element " + inRange2.toString() + ".", true,
+                             filteredMapTileLocations.contains( inRange2 ));
     }
 }

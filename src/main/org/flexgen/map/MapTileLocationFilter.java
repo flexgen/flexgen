@@ -32,6 +32,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.map;
 
+import java.util.Collection;
+
 /**
  * Interface for filtering map tile locations.
  */
@@ -66,12 +68,13 @@ public interface MapTileLocationFilter
     int getMaxY();
 
     /**
-     * Return a flag indicating whether or not the specified map tile location is allowed.
+     * Get a filtered collection of map tile locations.
      *
-     * @param mapTileLocation
-     *            Map tile location under consideration.
+     * @param mapTileLocations
+     *            Collection of map tile locations to filter.
      *
-     * @return True if the map tile location is allowed, false otherwise.
+     * @return A filtered collection of map tile locations.
      */
-    boolean allowLocation( MapTileLocation mapTileLocation );
+    Collection< MapTileLocation > getFilteredMapTileLocations(
+            Collection< MapTileLocation > mapTileLocations );
 }
