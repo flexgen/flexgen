@@ -95,7 +95,7 @@ public class MapGenerator
      *            can be null. Cannot contain two or more elements that are identical. All map tile
      *            types in the array must be the same size.
      * @param mapTileLocationFilter
-     *            Map tile location filter for open locations.
+     *            Map tile location filter for open locations. Cannot be null.
      */
     public MapGenerator( ImprovedRandom improvedRandom, MapTileType[] mapTileTypes,
                          MapTileLocationFilter mapTileLocationFilter )
@@ -150,6 +150,12 @@ public class MapGenerator
                                                         "'mapTileTypes' must be the same size." );
                 }
             }
+        }
+
+        if ( mapTileLocationFilter == null )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'mapTileLocationFilter' cannot be null." );
         }
 
         this.improvedRandom        = improvedRandom;

@@ -205,6 +205,26 @@ public class MapGeneratorTest
     }
 
     /**
+     * Verify that the constructor throws the correct exception when the improvedRandom parameter is
+     * null.
+     */
+    @Test
+    public void constructor_mapTileLocationFilter_null()
+    {
+        try
+        {
+            new MapGenerator( new ImprovedRandom(), MapTileTypeHelper.buildArray(), null );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileLocationFilter' cannot be null.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the constructor throws the correct exception when the maxX parameter is less than
      * the minX parameter.
      */
