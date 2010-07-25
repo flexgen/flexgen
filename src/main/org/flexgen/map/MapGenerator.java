@@ -59,24 +59,9 @@ public class MapGenerator
     private final MapTileType[] mapTileTypes;
 
     /**
-     * Smallest possible X coordinate for map tiles in the map.
+     * Map tile location filter for open locations.
      */
-    private final int minX;
-
-    /**
-     * Smallest possible Y coordinate for map tiles in the map.
-     */
-    private final int minY;
-
-    /**
-     * Largest possible X coordinate for map tiles in the map.
-     */
-    private final int maxX;
-
-    /**
-     * Largest possible Y coordinate for map tiles in the map.
-     */
-    private final int maxY;
+    private final MapTileLocationFilter mapTileLocationFilter;
 
     /**
      * Data structure containing the map. Maps map tile locations to map tiles.
@@ -121,6 +106,26 @@ public class MapGenerator
      */
     public MapGenerator( ImprovedRandom improvedRandom, MapTileType[] mapTileTypes,
                          int minX, int minY, int maxX, int maxY )
+    {
+        this( improvedRandom, mapTileTypes,
+              new RectangularMapTileLocationFilter( minX, minY, maxX, maxY ));
+    }
+
+    /**
+     * Construct a map generator.
+     *
+     * @param improvedRandom
+     *            Random number generator to use for generating the map. Cannot be null.
+     * @param mapTileTypes
+     *            Array of map tile types that define the available map tile types for randomly
+     *            generating the map. Cannot be null. Must contain at least one element. No element
+     *            can be null. Cannot contain two or more elements that are identical. All map tile
+     *            types in the array must be the same size.
+     * @param mapTileLocationFilter
+     *            Map tile location filter for open locations.
+     */
+    public MapGenerator( ImprovedRandom improvedRandom, MapTileType[] mapTileTypes,
+                         MapTileLocationFilter mapTileLocationFilter )
     {
         if ( improvedRandom == null )
         {
@@ -174,24 +179,9 @@ public class MapGenerator
             }
         }
 
-        if ( maxX < minX )
-        {
-            throw new IllegalArgumentException(
-                    "Parameter 'maxX' must be greater than or equal to parameter 'minX'." );
-        }
-
-        if ( maxY < minY )
-        {
-            throw new IllegalArgumentException(
-                    "Parameter 'maxY' must be greater than or equal to parameter 'minY'." );
-        }
-
         this.improvedRandom        = improvedRandom;
         this.mapTileTypes          = mapTileTypes;
-        this.minX                  = minX;
-        this.minY                  = minY;
-        this.maxX                  = maxX;
-        this.maxY                  = maxY;
+        this.mapTileLocationFilter = mapTileLocationFilter;
         this.map                   = new HashMap< MapTileLocation, MapTile >();
         this.openLocations         = new HashSet< MapTileLocation >();
         this.mapTileAddedListeners = new LinkedList< MapTileAddedListener >();
@@ -217,7 +207,7 @@ public class MapGenerator
      */
     public int getMinX()
     {
-        return minX;
+        return mapTileLocationFilter.getMinX();
     }
 
     /**
@@ -227,7 +217,7 @@ public class MapGenerator
      */
     public int getMinY()
     {
-        return minY;
+        return mapTileLocationFilter.getMinY();
     }
 
     /**
@@ -237,7 +227,7 @@ public class MapGenerator
      */
     public int getMaxX()
     {
-        return maxX;
+        return mapTileLocationFilter.getMaxX();
     }
 
     /**
@@ -247,7 +237,7 @@ public class MapGenerator
      */
     public int getMaxY()
     {
-        return maxY;
+        return mapTileLocationFilter.getMaxY();
     }
 
     /**
@@ -299,11 +289,7 @@ public class MapGenerator
 
         for ( MapTileLocation neighborLocation : mapTileLocation.getNeighborLocations() )
         {
-            if (( ! map.containsKey( neighborLocation )) &&
-                ( neighborLocation.getX() >= minX ) &&
-                ( neighborLocation.getX() <= maxX ) &&
-                ( neighborLocation.getY() >= minY ) &&
-                ( neighborLocation.getY() <= maxY ))
+            if ( ! map.containsKey( neighborLocation ))
             {
                 openLocations.add( neighborLocation );
             }
@@ -320,7 +306,9 @@ public class MapGenerator
      */
     public void generate()
     {
-        while ( ! openLocations.isEmpty() )
+        Set< MapTileLocation > filteredOpenLocations = getFilteredOpenLocations();
+
+        while ( ! filteredOpenLocations.isEmpty() )
         {
             Chooser< MapTileType > mapTileTypeChooser =
                     new Chooser< MapTileType >( improvedRandom );
@@ -328,7 +316,7 @@ public class MapGenerator
             // determine what map tile types can be added to the map
             for ( MapTileType mapTileType : mapTileTypes )
             {
-                if ( legalMapTileType( mapTileType ))
+                if ( legalMapTileType( mapTileType, filteredOpenLocations ))
                 {
                     mapTileTypeChooser.addOption( mapTileType, mapTileType.getWeight() );
                 }
@@ -347,7 +335,7 @@ public class MapGenerator
                     new Chooser< MapTilePosition >( improvedRandom );
 
             // determine at what map tile positions the selected map tile type can be added
-            for ( MapTileLocation mapTileLocation : openLocations )
+            for ( MapTileLocation mapTileLocation : filteredOpenLocations )
             {
                 for ( MapTileOrientation mapTileOrientation :
                         mapTileType.getDistinctMapTileOrientations() )
@@ -368,6 +356,8 @@ public class MapGenerator
             // add the selected map tile type at the selected map tile position
             addMapTile( mapTilePosition.getMapTileLocation(),
                         new MapTile( mapTileType, mapTilePosition.getMapTileOrientation() ));
+
+            filteredOpenLocations = getFilteredOpenLocations();
         }
     }
 
@@ -376,12 +366,15 @@ public class MapGenerator
      *
      * @param mapTileType
      *            Map tile type to check.
+     * @param filteredOpenLocations
+     *            Set of open locations filtered by the map tile location filter.
      *
      * @return True if the map tile type can be legally added to the map, false otherwise.
      */
-    private boolean legalMapTileType( MapTileType mapTileType )
+    private boolean legalMapTileType( MapTileType mapTileType,
+                                      Set< MapTileLocation > filteredOpenLocations )
     {
-        for ( MapTileLocation mapTileLocation : openLocations )
+        for ( MapTileLocation mapTileLocation : filteredOpenLocations )
         {
             for ( MapTileOrientation mapTileOrientation :
                     mapTileType.getDistinctMapTileOrientations() )
@@ -464,5 +457,25 @@ public class MapGenerator
         }
 
         return true;
+    }
+
+    /**
+     * Get a set of open locations filtered by the map tile location filter.
+     *
+     * @return A set of open locations filtered by the map tile location filter.
+     */
+    private Set< MapTileLocation > getFilteredOpenLocations()
+    {
+        Set< MapTileLocation > filteredOpenLocations = new HashSet< MapTileLocation >();
+
+        for ( MapTileLocation mapTileLocation : openLocations )
+        {
+            if ( mapTileLocationFilter.allowLocation( mapTileLocation ))
+            {
+                filteredOpenLocations.add( mapTileLocation );
+            }
+        }
+
+        return filteredOpenLocations;
     }
 }
