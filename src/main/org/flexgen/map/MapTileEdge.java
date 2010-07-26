@@ -59,6 +59,24 @@ public class MapTileEdge
     }
 
     /**
+     * Add a map tile edge to the collection of map tile edges that match this map tile edge. It is
+     * assumed that this map tile edge will match with itself if no matching map tile edges are
+     * added, otherwise you must explicitly add this map tile edge as a matching map tile edge to
+     * itself in order to ensure it will match with itself.
+     *
+     * @param mapTileEdge
+     *            Map tile edge to add to the collection of map tile edges that match this map tile
+     *            edge. Cannot be null. Cannot add the same map tile edge twice.
+     */
+    public void addMatchingMapTileEdge( MapTileEdge mapTileEdge )
+    {
+        if ( mapTileEdge == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'mapTileEdge' cannot be null." );
+        }
+    }
+
+    /**
      * Get the string representation of this object.
      *
      * @return The string representation of this object.

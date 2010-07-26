@@ -63,6 +63,27 @@ public class MapTileEdgeTest
     }
 
     /**
+     * Verify that the addMatchingMapTileEdge() method throws the correct exception when the
+     * mapTileEdge parameter is null.
+     */
+    @Test
+    public void addMatchingMapTileEdge_null()
+    {
+        MapTileEdge mapTileEdge = MapTileEdgeHelper.build();
+
+        try
+        {
+            mapTileEdge.addMatchingMapTileEdge( null );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.", "Parameter 'mapTileEdge' cannot be null.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the toString() method returns the correct value.
      */
     @Test
