@@ -302,55 +302,179 @@ public class MapGeneratorTest
     }
 
     /**
-     * Verify that the getMinX() method returns the correct value.
+     * Verify that the getMinX() method returns the correct value when the map contains a tile
+     * within the boundaries of the map tile location filter.
      */
     @Test
-    public void getMinX()
+    public void getMinX_tileWithinBoundary()
     {
-        int value = GeneralHelper.getRandom().nextInt( 1000 );
+        int minX  = GeneralHelper.getRandom().nextInt( 1000 );
+        int tileX = GeneralHelper.getRandom().nextInt( 1000 ) + minX  + 1;
+        int maxX  = GeneralHelper.getRandom().nextInt( 1000 ) + tileX + 1;
+
         MapGenerator mapGenerator = new MapGenerator(
-                new ImprovedRandom(), MapTileTypeHelper.buildArray(),
-                new RectangularMapTileLocationFilter( value, 0, 5000, 5000 ));
-        Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMinX() );
+                new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                new RectangularMapTileLocationFilter( minX, 0, maxX, 0 ));
+
+        mapGenerator.addMapTile(
+                new MapTileLocation( tileX, 0 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+
+        Assert.assertEquals( "Unexpected return value.", minX, mapGenerator.getMinX() );
     }
 
     /**
-     * Verify that the getMinY() method returns the correct value.
+     * Verify that the getMinX() method returns the correct value when the map contains a tile
+     * outside the boundaries of the map tile location filter.
      */
     @Test
-    public void getMinY()
+    public void getMinX_tileOutsideBoundary()
     {
-        int value = GeneralHelper.getRandom().nextInt( 1000 );
+        int tileX = GeneralHelper.getRandom().nextInt( 1000 );
+        int minX  = GeneralHelper.getRandom().nextInt( 1000 ) + tileX + 1;
+        int maxX  = GeneralHelper.getRandom().nextInt( 1000 ) + minX  + 1;
+
         MapGenerator mapGenerator = new MapGenerator(
-                new ImprovedRandom(), MapTileTypeHelper.buildArray(),
-                new RectangularMapTileLocationFilter( 0, value, 5000, 5000 ));
-        Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMinY() );
+                new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                new RectangularMapTileLocationFilter( minX, 0, maxX, 0 ));
+
+        mapGenerator.addMapTile(
+                new MapTileLocation( tileX, 0 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+
+        Assert.assertEquals( "Unexpected return value.", tileX, mapGenerator.getMinX() );
     }
 
     /**
-     * Verify that the getMaxX() method returns the correct value.
+     * Verify that the getMinY() method returns the correct value when the map contains a tile
+     * within the boundaries of the map tile location filter.
      */
     @Test
-    public void getMaxX()
+    public void getMinY_tileWithinBoundary()
     {
-        int value = GeneralHelper.getRandom().nextInt( 1000 );
+        int minY  = GeneralHelper.getRandom().nextInt( 1000 );
+        int tileY = GeneralHelper.getRandom().nextInt( 1000 ) + minY  + 1;
+        int maxY  = GeneralHelper.getRandom().nextInt( 1000 ) + tileY + 1;
+
         MapGenerator mapGenerator = new MapGenerator(
-                new ImprovedRandom(), MapTileTypeHelper.buildArray(),
-                new RectangularMapTileLocationFilter( 0, 0, value, 5000 ));
-        Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMaxX() );
+                new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                new RectangularMapTileLocationFilter( 0, minY, 0, maxY ));
+
+        mapGenerator.addMapTile(
+                new MapTileLocation( 0, tileY ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+
+        Assert.assertEquals( "Unexpected return value.", minY, mapGenerator.getMinY() );
     }
 
     /**
-     * Verify that the getMaxY() method returns the correct value.
+     * Verify that the getMinY() method returns the correct value when the map contains a tile
+     * outside the boundaries of the map tile location filter.
      */
     @Test
-    public void getMaxY()
+    public void getMinY_tileOutsideBoundary()
     {
-        int value = GeneralHelper.getRandom().nextInt( 1000 );
+        int tileY = GeneralHelper.getRandom().nextInt( 1000 );
+        int minY  = GeneralHelper.getRandom().nextInt( 1000 ) + tileY + 1;
+        int maxY  = GeneralHelper.getRandom().nextInt( 1000 ) + minY  + 1;
+
         MapGenerator mapGenerator = new MapGenerator(
-                new ImprovedRandom(), MapTileTypeHelper.buildArray(),
-                new RectangularMapTileLocationFilter( 0, 0, 5000, value ));
-        Assert.assertEquals( "Unexpected return value.", value, mapGenerator.getMaxY() );
+                new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                new RectangularMapTileLocationFilter( 0, minY, 0, maxY ));
+
+        mapGenerator.addMapTile(
+                new MapTileLocation( 0, tileY ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+
+        Assert.assertEquals( "Unexpected return value.", tileY, mapGenerator.getMinY() );
+    }
+
+    /**
+     * Verify that the getMaxX() method returns the correct value when the map contains a tile
+     * within the boundaries of the map tile location filter.
+     */
+    @Test
+    public void getMaxX_tileWithinBoundary()
+    {
+        int minX  = GeneralHelper.getRandom().nextInt( 1000 );
+        int tileX = GeneralHelper.getRandom().nextInt( 1000 ) + minX  + 1;
+        int maxX  = GeneralHelper.getRandom().nextInt( 1000 ) + tileX + 1;
+
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                new RectangularMapTileLocationFilter( minX, 0, maxX, 0 ));
+
+        mapGenerator.addMapTile(
+                new MapTileLocation( tileX, 0 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+
+        Assert.assertEquals( "Unexpected return value.", maxX, mapGenerator.getMaxX() );
+    }
+
+    /**
+     * Verify that the getMaxX() method returns the correct value when the map contains a tile
+     * outside the boundaries of the map tile location filter.
+     */
+    @Test
+    public void getMaxX_tileOutsideBoundary()
+    {
+        int minX  = GeneralHelper.getRandom().nextInt( 1000 );
+        int maxX  = GeneralHelper.getRandom().nextInt( 1000 ) + minX + 1;
+        int tileX = GeneralHelper.getRandom().nextInt( 1000 ) + maxX + 1;
+
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                new RectangularMapTileLocationFilter( minX, 0, maxX, 0 ));
+
+        mapGenerator.addMapTile(
+                new MapTileLocation( tileX, 0 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+
+        Assert.assertEquals( "Unexpected return value.", tileX, mapGenerator.getMaxX() );
+    }
+
+    /**
+     * Verify that the getMaxY() method returns the correct value when the map contains a tile
+     * within the boundaries of the map tile location filter.
+     */
+    @Test
+    public void getMaxY_tileWithinBoundary()
+    {
+        int minY  = GeneralHelper.getRandom().nextInt( 1000 );
+        int tileY = GeneralHelper.getRandom().nextInt( 1000 ) + minY  + 1;
+        int maxY  = GeneralHelper.getRandom().nextInt( 1000 ) + tileY + 1;
+
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                new RectangularMapTileLocationFilter( 0, minY, 0, maxY ));
+
+        mapGenerator.addMapTile(
+                new MapTileLocation( 0, tileY ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+
+        Assert.assertEquals( "Unexpected return value.", maxY, mapGenerator.getMaxY() );
+    }
+
+    /**
+     * Verify that the getMaxY() method returns the correct value when the map contains a tile
+     * outside the boundaries of the map tile location filter.
+     */
+    @Test
+    public void getMaxY_tileOutsideBoundary()
+    {
+        int minY  = GeneralHelper.getRandom().nextInt( 1000 );
+        int maxY  = GeneralHelper.getRandom().nextInt( 1000 ) + minY + 1;
+        int tileY = GeneralHelper.getRandom().nextInt( 1000 ) + maxY + 1;
+
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                new RectangularMapTileLocationFilter( 0, minY, 0, maxY ));
+
+        mapGenerator.addMapTile(
+                new MapTileLocation( 0, tileY ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+
+        Assert.assertEquals( "Unexpected return value.", tileY, mapGenerator.getMaxY() );
     }
 
     /**

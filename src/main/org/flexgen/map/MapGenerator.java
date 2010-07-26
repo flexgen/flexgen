@@ -214,7 +214,17 @@ public class MapGenerator
      */
     public int getMinX()
     {
-        return mapTileLocationFilter.getMinX();
+        int minX = mapTileLocationFilter.getMinX();
+
+        for ( MapTileLocation mapTileLocation : map.keySet() )
+        {
+            if ( mapTileLocation.getX() < minX )
+            {
+                minX = mapTileLocation.getX();
+            }
+        }
+
+        return minX;
     }
 
     /**
@@ -224,7 +234,17 @@ public class MapGenerator
      */
     public int getMinY()
     {
-        return mapTileLocationFilter.getMinY();
+        int minY = mapTileLocationFilter.getMinY();
+
+        for ( MapTileLocation mapTileLocation : map.keySet() )
+        {
+            if ( mapTileLocation.getY() < minY )
+            {
+                minY = mapTileLocation.getY();
+            }
+        }
+
+        return minY;
     }
 
     /**
@@ -234,7 +254,17 @@ public class MapGenerator
      */
     public int getMaxX()
     {
-        return mapTileLocationFilter.getMaxX();
+        int maxX = mapTileLocationFilter.getMaxX();
+
+        for ( MapTileLocation mapTileLocation : map.keySet() )
+        {
+            if ( mapTileLocation.getX() > maxX )
+            {
+                maxX = mapTileLocation.getX();
+            }
+        }
+
+        return maxX;
     }
 
     /**
@@ -244,7 +274,17 @@ public class MapGenerator
      */
     public int getMaxY()
     {
-        return mapTileLocationFilter.getMaxY();
+        int maxY = mapTileLocationFilter.getMaxY();
+
+        for ( MapTileLocation mapTileLocation : map.keySet() )
+        {
+            if ( mapTileLocation.getY() > maxY )
+            {
+                maxY = mapTileLocation.getY();
+            }
+        }
+
+        return maxY;
     }
 
     /**
