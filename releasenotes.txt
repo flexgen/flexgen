@@ -2,6 +2,8 @@ Version 1.1.0
     - Renamed the existing example application to be a "grass and
       rivers" example application. This paves the way for future example
       applications to be created.
+    - Added ability to arbitrarily restrict the size and shape of maps
+      using the map tile location filter.
 
 Version 1.0.0
     - Initial FlexGen release.
