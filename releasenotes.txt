@@ -6,6 +6,7 @@ Version 1.1.0
       using a map tile location filter.
     - Added ability to arbitrarily specify how map tile edges match with
       other map tile edges.
+    - Added example application for creating a dungeon map.
 
 Version 1.0.0
     - Initial FlexGen release.
