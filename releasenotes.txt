@@ -4,6 +4,8 @@ Version 1.1.0
       applications to be created.
     - Added ability to arbitrarily restrict the size and shape of maps
       using the map tile location filter.
+    - Added ability to arbitrarily specify how map tile edges match with
+      other map tile edges.
 
 Version 1.0.0
     - Initial FlexGen release.
