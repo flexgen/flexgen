@@ -94,6 +94,19 @@ public class MapTileEdge
     }
 
     /**
+     * Determine if a specified map tile edge matches this map tile edge.
+     *
+     * @param mapTileEdge
+     *            Map tile edge to check.
+     *
+     * @return True if the specified map tile edge matches this map tile edge, false otherwise.
+     */
+    public boolean mapTileEdgeMatches( MapTileEdge mapTileEdge )
+    {
+        return this.equals( mapTileEdge );
+    }
+
+    /**
      * Get the string representation of this object.
      *
      * @return The string representation of this object.

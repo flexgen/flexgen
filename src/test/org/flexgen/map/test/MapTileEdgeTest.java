@@ -107,6 +107,22 @@ public class MapTileEdgeTest
     }
 
     /**
+     * Verify that the mapTileEdgeMatches() method returns the correct value when no matching map
+     * tile edges have been added to the map tile edge.
+     */
+    @Test
+    public void mapTileEdgeMatches_noMatchingMapTileEdgesAdded()
+    {
+        MapTileEdge mapTileEdge1 = MapTileEdgeHelper.build();
+        MapTileEdge mapTileEdge2 = MapTileEdgeHelper.build();
+
+        Assert.assertEquals( "Unexpected value for mapTileEdge1.", true,
+                             mapTileEdge1.mapTileEdgeMatches( mapTileEdge1 ));
+        Assert.assertEquals( "Unexpected value for mapTileEdge2.", false,
+                             mapTileEdge1.mapTileEdgeMatches( mapTileEdge2 ));
+    }
+
+    /**
      * Verify that the toString() method returns the correct value.
      */
     @Test
