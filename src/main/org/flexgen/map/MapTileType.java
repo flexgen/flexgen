@@ -92,9 +92,14 @@ public class MapTileType
      *            possible for this map tile type. Cannot be null. Must contain at lease one
      *            element. No element can be null. Cannot contain two or more elements that are
      *            identical.
+     * @param openMapTileEdgePositions
+     *            Array of map tile edge positions that specify the open edges for this map tile
+     *            type. Cannot be null. Must contain at lease one element. No element can be null.
+     *            Cannot contain two or more elements that are identical.
      */
     public MapTileType( String name, int weight, MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges,
-                        MapTileOrientation[] distinctMapTileOrientations )
+                        MapTileOrientation[] distinctMapTileOrientations,
+                        MapTileEdgePosition[] openMapTileEdgePositions )
     {
         if ( name == null )
         {
@@ -201,11 +206,57 @@ public class MapTileType
             }
         }
 
+        if ( openMapTileEdgePositions == null )
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'openMapTileEdgePositions' cannot be null." );
+        }
+
         this.name                        = name;
         this.weight                      = weight;
         this.mapUnits                    = mapUnits;
         this.mapTileEdges                = mapTileEdges;
         this.distinctMapTileOrientations = distinctMapTileOrientations;
+    }
+
+    /**
+     * Construct a map tile type.
+     *
+     * @param name
+     *            Name of the map tile type. Cannot be null.
+     * @param weight
+     *            The weight value used to determine the probability of selecting this tile type
+     *            when generating a map. Larger values make this tile type more likely to be
+     *            selected. The probability of selecting this tile type is computed by taking the
+     *            weight of this tile type and dividing it by the sum of the weight values for all
+     *            of the tile types. Cannot be negative.
+     * @param mapUnits
+     *            Two-dimensional array of map units that define the map tile type. Cannot be null.
+     *            Must contain at least one row. Each row must contain the same number of elements.
+     *            Must contain the same number of columns as it does rows. No element can be null.
+     * @param mapTileEdges
+     *            Array of map tile edges that define the four edges of this map tile type. Cannot
+     *            be null. Must contain four elements. No element can be null. The first element is
+     *            the top edge of the tile. The second element is the right edge of the tile. The
+     *            third element is the bottom edge of the tile. The fourth element is the left edge
+     *            of the tile.
+     * @param distinctMapTileOrientations
+     *            Array of map tile orientations that specify the distinct orientations that are
+     *            possible for this map tile type. Cannot be null. Must contain at lease one
+     *            element. No element can be null. Cannot contain two or more elements that are
+     *            identical.
+     */
+    public MapTileType( String name, int weight, MapUnit[][] mapUnits, MapTileEdge[] mapTileEdges,
+                        MapTileOrientation[] distinctMapTileOrientations )
+    {
+        this( name, weight, mapUnits, mapTileEdges, distinctMapTileOrientations,
+              new MapTileEdgePosition[]
+              {
+                  MapTileEdgePosition.TOP,
+                  MapTileEdgePosition.RIGHT,
+                  MapTileEdgePosition.BOTTOM,
+                  MapTileEdgePosition.LEFT,
+              } );
     }
 
     /**

@@ -447,6 +447,29 @@ public class MapTileTypeTest
     }
 
     /**
+     * Verify that the constructor throws the correct exception when the openMapTileEdgePositions
+     * parameter is null.
+     */
+    @Test
+    public void constructor_openMapTileEdgePositions_nullArray()
+    {
+        try
+        {
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
+                             MapUnitHelper.buildArray(),
+                             MapTileEdgeHelper.buildArray(),
+                             MapTileOrientationHelper.ALL_ORIENTATIONS, null );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'openMapTileEdgePositions' cannot be null.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the getSize() method returns the correct value for a small array of map units.
      */
     @Test
