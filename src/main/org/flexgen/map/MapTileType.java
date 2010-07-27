@@ -218,6 +218,16 @@ public class MapTileType
                     "Parameter 'openMapTileEdgePositions' must contain at least one element." );
         }
 
+        for ( int i = 0; i < openMapTileEdgePositions.length; i++ )
+        {
+            // check for a null element
+            if ( openMapTileEdgePositions[ i ] == null )
+            {
+                throw new IllegalArgumentException( "Parameter 'openMapTileEdgePositions' " +
+                                                    "must not contain any null elements." );
+            }
+        }
+
         this.name                        = name;
         this.weight                      = weight;
         this.mapUnits                    = mapUnits;
