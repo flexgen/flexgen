@@ -123,6 +123,28 @@ public class MapTileEdgeTest
     }
 
     /**
+     * Verify that the mapTileEdgeMatches() method returns the correct value when matching map
+     * tile edges have been added to the map tile edge.
+     */
+    @Test
+    public void mapTileEdgeMatches_matchingMapTileEdgesAdded()
+    {
+        MapTileEdge mapTileEdge1 = MapTileEdgeHelper.build();
+        MapTileEdge mapTileEdge2 = MapTileEdgeHelper.build();
+        MapTileEdge mapTileEdge3 = MapTileEdgeHelper.build();
+
+        mapTileEdge1.addMatchingMapTileEdge( mapTileEdge2 );
+        mapTileEdge1.addMatchingMapTileEdge( mapTileEdge3 );
+
+        Assert.assertEquals( "Unexpected value for mapTileEdge1.", false,
+                             mapTileEdge1.mapTileEdgeMatches( mapTileEdge1 ));
+        Assert.assertEquals( "Unexpected value for mapTileEdge2.", true,
+                             mapTileEdge1.mapTileEdgeMatches( mapTileEdge2 ));
+        Assert.assertEquals( "Unexpected value for mapTileEdge3.", true,
+                             mapTileEdge1.mapTileEdgeMatches( mapTileEdge3 ));
+    }
+
+    /**
      * Verify that the toString() method returns the correct value.
      */
     @Test

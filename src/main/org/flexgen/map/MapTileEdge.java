@@ -103,7 +103,14 @@ public class MapTileEdge
      */
     public boolean mapTileEdgeMatches( MapTileEdge mapTileEdge )
     {
-        return this.equals( mapTileEdge );
+        if ( matchingMapTileEdges.isEmpty() )
+        {
+            return this.equals( mapTileEdge );
+        }
+        else
+        {
+            return matchingMapTileEdges.contains( mapTileEdge );
+        }
     }
 
     /**
