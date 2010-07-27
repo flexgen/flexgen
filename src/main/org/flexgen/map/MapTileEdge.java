@@ -32,6 +32,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.map;
 
+import java.util.Collection;
+import java.util.LinkedList;
+
 /**
  * Class representing an edge for a map tile.
  */
@@ -41,6 +44,11 @@ public class MapTileEdge
      * Name of the map tile edge.
      */
     private final String name;
+
+    /**
+     * Collection of map tile edges that match this map tile edge.
+     */
+    private final Collection< MapTileEdge > matchingMapTileEdges;
 
     /**
      * Construct a map tile edge.
@@ -55,7 +63,8 @@ public class MapTileEdge
             throw new IllegalArgumentException( "Parameter 'name' cannot be null." );
         }
 
-        this.name = name;
+        this.name                 = name;
+        this.matchingMapTileEdges = new LinkedList< MapTileEdge >();
     }
 
     /**
@@ -74,6 +83,14 @@ public class MapTileEdge
         {
             throw new IllegalArgumentException( "Parameter 'mapTileEdge' cannot be null." );
         }
+
+        if ( matchingMapTileEdges.contains( mapTileEdge ))
+        {
+            throw new IllegalArgumentException(
+                    "Cannot add the same map tile edge more than once." );
+        }
+
+        matchingMapTileEdges.add( mapTileEdge );
     }
 
     /**

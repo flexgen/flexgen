@@ -84,6 +84,29 @@ public class MapTileEdgeTest
     }
 
     /**
+     * Verify that the addMatchingMapTileEdge() method throws the correct exception when adding the
+     * same map tile edge more than once.
+     */
+    @Test
+    public void addMatchingMapTileEdge_identical()
+    {
+        MapTileEdge mapTileEdge = MapTileEdgeHelper.build();
+        mapTileEdge.addMatchingMapTileEdge( mapTileEdge );
+
+        try
+        {
+            mapTileEdge.addMatchingMapTileEdge( mapTileEdge );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Cannot add the same map tile edge more than once.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the toString() method returns the correct value.
      */
     @Test
