@@ -3,7 +3,7 @@ Version 1.1.0
       rivers" example application. This paves the way for future example
       applications to be created.
     - Added ability to arbitrarily restrict the size and shape of maps
-      using the map tile location filter.
+      using a map tile location filter.
     - Added ability to arbitrarily specify how map tile edges match with
       other map tile edges.
 
