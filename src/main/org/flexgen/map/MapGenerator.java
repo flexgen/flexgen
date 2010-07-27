@@ -466,7 +466,7 @@ public class MapGenerator
         neighbor = map.get( neighborLocation );
 
         if (( neighbor != null ) &&
-            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.BOTTOM ).equals(
+            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.BOTTOM ).mapTileEdgeMatches(
                         mapTile.getMapTileEdge( MapTileEdgePosition.TOP ))))
         {
             return false;
@@ -477,7 +477,7 @@ public class MapGenerator
         neighbor = map.get( neighborLocation );
 
         if (( neighbor != null ) &&
-            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.TOP ).equals(
+            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.TOP ).mapTileEdgeMatches(
                         mapTile.getMapTileEdge( MapTileEdgePosition.BOTTOM ))))
         {
             return false;
@@ -488,7 +488,7 @@ public class MapGenerator
         neighbor = map.get( neighborLocation );
 
         if (( neighbor != null ) &&
-            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.RIGHT ).equals(
+            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.RIGHT ).mapTileEdgeMatches(
                         mapTile.getMapTileEdge( MapTileEdgePosition.LEFT ))))
         {
             return false;
@@ -499,7 +499,7 @@ public class MapGenerator
         neighbor = map.get( neighborLocation );
 
         if (( neighbor != null ) &&
-            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.LEFT ).equals(
+            ( ! neighbor.getMapTileEdge( MapTileEdgePosition.LEFT ).mapTileEdgeMatches(
                         mapTile.getMapTileEdge( MapTileEdgePosition.RIGHT ))))
         {
             return false;

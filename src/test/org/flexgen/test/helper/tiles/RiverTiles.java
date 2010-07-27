@@ -60,7 +60,20 @@ public class RiverTiles
     /**
      * River tile edge.
      */
-    private static final MapTileEdge RIVER_EDGE = new MapTileEdge( "River Edge" );
+    private static final MapTileEdge RIVER_EDGE_1 = new MapTileEdge( "River Edge 1" );
+
+    /**
+     * River tile edge.
+     */
+    private static final MapTileEdge RIVER_EDGE_2 = new MapTileEdge( "River Edge 2" );
+
+    static
+    {
+        RIVER_EDGE_1.addMatchingMapTileEdge( RIVER_EDGE_1 );
+        RIVER_EDGE_1.addMatchingMapTileEdge( RIVER_EDGE_2 );
+        RIVER_EDGE_2.addMatchingMapTileEdge( RIVER_EDGE_1 );
+        RIVER_EDGE_2.addMatchingMapTileEdge( RIVER_EDGE_2 );
+    }
 
     /**
      * Tile type representing grass.
@@ -98,9 +111,9 @@ public class RiverTiles
             },
             new MapTileEdge[]
             {
-                RIVER_EDGE,
+                RIVER_EDGE_1,
                 GRASS_EDGE,
-                RIVER_EDGE,
+                RIVER_EDGE_2,
                 GRASS_EDGE
             },
             new MapTileOrientation[]
