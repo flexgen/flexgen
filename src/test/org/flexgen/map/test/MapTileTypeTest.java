@@ -750,6 +750,29 @@ public class MapTileTypeTest
     }
 
     /**
+     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the open
+     * map tile edge positions have been specified.
+     */
+    @Test
+    public void getOpenMapTileEdgePositions_specified()
+    {
+        MapTileEdgePosition[] openMapTileEdgePositions = new MapTileEdgePosition[]
+        {
+            MapTileEdgePosition.RIGHT,
+            MapTileEdgePosition.BOTTOM
+        };
+
+        MapTileType mapTileType = new MapTileType( GeneralHelper.getUniqueString(), 0,
+                                                   MapUnitHelper.buildArray(),
+                                                   MapTileEdgeHelper.buildArray(),
+                                                   MapTileOrientationHelper.ALL_ORIENTATIONS,
+                                                   openMapTileEdgePositions );
+
+        Assert.assertArrayEquals( "Unexpected result.", openMapTileEdgePositions,
+                                  mapTileType.getOpenMapTileEdgePositions() );
+    }
+
+    /**
      * Verify that the getWeight() method returns the correct value.
      */
     @Test

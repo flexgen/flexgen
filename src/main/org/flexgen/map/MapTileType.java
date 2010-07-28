@@ -67,6 +67,11 @@ public class MapTileType
     private final MapTileOrientation[] distinctMapTileOrientations;
 
     /**
+     * Array of map tile edge positions that specify the open edges for this map tile type.
+     */
+    private final MapTileEdgePosition[] openMapTileEdgePositions;
+
+    /**
      * Construct a map tile type.
      *
      * @param name
@@ -244,6 +249,7 @@ public class MapTileType
         this.mapUnits                    = mapUnits;
         this.mapTileEdges                = mapTileEdges;
         this.distinctMapTileOrientations = distinctMapTileOrientations;
+        this.openMapTileEdgePositions    = openMapTileEdgePositions;
     }
 
     /**
@@ -381,6 +387,17 @@ public class MapTileType
     public MapTileOrientation[] getDistinctMapTileOrientations()
     {
         return distinctMapTileOrientations;
+    }
+
+    /**
+     * Get the array of map tile edge positions that specify the open edges for this map tile type.
+     *
+     * @return The array of map tile edge positions that specify the open edges for this map tile
+     *         type.
+     */
+    public MapTileEdgePosition[] getOpenMapTileEdgePositions()
+    {
+        return openMapTileEdgePositions;
     }
 
     /**
