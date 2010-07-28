@@ -42,6 +42,7 @@ import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
 import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapTileEdgeHelper;
+import org.flexgen.test.helper.MapTileEdgePositionHelper;
 import org.flexgen.test.helper.MapTileOrientationHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
 import org.flexgen.test.helper.MapUnitHelper;
@@ -769,6 +770,22 @@ public class MapTileTypeTest
                                                    openMapTileEdgePositions );
 
         Assert.assertArrayEquals( "Unexpected result.", openMapTileEdgePositions,
+                                  mapTileType.getOpenMapTileEdgePositions() );
+    }
+
+    /**
+     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the
+     * default value for the open map tile edge positions is used.
+     */
+    @Test
+    public void getOpenMapTileEdgePositions_defaults()
+    {
+        MapTileType mapTileType = new MapTileType( GeneralHelper.getUniqueString(), 0,
+                                                   MapUnitHelper.buildArray(),
+                                                   MapTileEdgeHelper.buildArray(),
+                                                   MapTileOrientationHelper.ALL_ORIENTATIONS );
+
+        Assert.assertArrayEquals( "Unexpected result.", MapTileEdgePositionHelper.ALL_POSITIONS,
                                   mapTileType.getOpenMapTileEdgePositions() );
     }
 
