@@ -525,6 +525,36 @@ public class MapTileTypeTest
     }
 
     /**
+     * Verify that the constructor throws the correct exception when the openMapTileEdgePositions
+     * parameter contains a duplicate element.
+     */
+    @Test
+    public void constructor_openMapTileEdgePositions_duplicateElement()
+    {
+        MapTileEdgePosition[] openMapTileEdgePositions = new MapTileEdgePosition[]
+        {
+            MapTileEdgePosition.BOTTOM,
+            MapTileEdgePosition.BOTTOM
+        };
+
+        try
+        {
+            new MapTileType( GeneralHelper.getUniqueString(), 0,
+                             MapUnitHelper.buildArray(),
+                             MapTileEdgeHelper.buildArray(),
+                             MapTileOrientationHelper.ALL_ORIENTATIONS, openMapTileEdgePositions );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals(
+                    "Unexpected message.",
+                    "Parameter 'openMapTileEdgePositions' must not contain any duplicate elements.",
+                    e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the getSize() method returns the correct value for a small array of map units.
      */
     @Test

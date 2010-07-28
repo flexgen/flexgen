@@ -226,6 +226,17 @@ public class MapTileType
                 throw new IllegalArgumentException( "Parameter 'openMapTileEdgePositions' " +
                                                     "must not contain any null elements." );
             }
+
+            // check for a duplicate element
+            for ( int j = i + 1; j < openMapTileEdgePositions.length; j++ )
+            {
+                if ( openMapTileEdgePositions[ i ].equals( openMapTileEdgePositions[ j ] ))
+                {
+                    throw new IllegalArgumentException(
+                            "Parameter 'openMapTileEdgePositions' must not contain any " +
+                            "duplicate elements." );
+                }
+            }
         }
 
         this.name                        = name;
