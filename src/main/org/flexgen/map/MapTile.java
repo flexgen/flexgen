@@ -204,6 +204,10 @@ public class MapTile
             {
                 index -= 2;
             }
+            else if ( mapTileOrientation.equals( MapTileOrientation.COUNTER_CLOCKWISE ))
+            {
+                index -= 3;
+            }
 
             // take care of index values that have gone out of the valid range
             if ( index < 0 )

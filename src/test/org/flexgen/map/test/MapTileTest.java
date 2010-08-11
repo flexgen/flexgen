@@ -720,6 +720,38 @@ public class MapTileTest
     }
 
     /**
+     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the tile
+     * is rotated 90 degrees counter-clockwise.
+     */
+    @Test
+    public void getOpenMapTileEdgePositions_counterClockwise()
+    {
+        MapTileEdgePosition[] openMapTileEdgePositions = new MapTileEdgePosition[]
+        {
+            MapTileEdgePosition.RIGHT,
+            MapTileEdgePosition.LEFT
+        };
+
+        MapTile mapTile = new MapTile( new MapTileType( GeneralHelper.getUniqueString(), 0,
+                                                        MapUnitHelper.buildArray(),
+                                                        MapTileEdgeHelper.buildArray(),
+                                                        MapTileOrientationHelper.ALL_ORIENTATIONS,
+                                                        openMapTileEdgePositions ),
+                                       MapTileOrientation.COUNTER_CLOCKWISE );
+
+        Collection< MapTileEdgePosition > actualOpenMapTileEdgePositions =
+                Arrays.asList( mapTile.getOpenMapTileEdgePositions() );
+
+        Assert.assertEquals( "Unexpected collection size.", 2,
+                             actualOpenMapTileEdgePositions.size() );
+
+        Assert.assertTrue( "Collection does not contain \"BOTTOM\".",
+                           actualOpenMapTileEdgePositions.contains( MapTileEdgePosition.BOTTOM ));
+        Assert.assertTrue( "Collection does not contain \"TOP\".",
+                           actualOpenMapTileEdgePositions.contains( MapTileEdgePosition.TOP ));
+    }
+
+    /**
      * Verify that the toString() method returns the correct value.
      */
     @Test
