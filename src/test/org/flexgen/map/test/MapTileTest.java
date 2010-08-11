@@ -223,7 +223,7 @@ public class MapTileTest
 
     /**
      * Verify that the getMapUnit() method returns the correct values for all coordinates in a small
-     * array of map units when the tile is in the upright orientation.
+     * array of map units when the map tile is in the upright orientation.
      */
     @Test
     public void getMapUnit_upright()
@@ -287,7 +287,7 @@ public class MapTileTest
 
     /**
      * Verify that the getMapUnit() method returns the correct values for all coordinates in a small
-     * array of map units when the tile is rotated 90 degrees clockwise.
+     * array of map units when the map tile is rotated 90 degrees clockwise.
      */
     @Test
     public void getMapUnit_clockwise()
@@ -351,7 +351,7 @@ public class MapTileTest
 
     /**
      * Verify that the getMapUnit() method returns the correct values for all coordinates in a small
-     * array of map units when the tile is flipped around 180 degrees.
+     * array of map units when the map tile is flipped around 180 degrees.
      */
     @Test
     public void getMapUnit_flipped()
@@ -415,7 +415,7 @@ public class MapTileTest
 
     /**
      * Verify that the getMapUnit() method returns the correct values for all coordinates in a small
-     * array of map units when the tile is rotated 90 degrees counter-clockwise.
+     * array of map units when the map tile is rotated 90 degrees counter-clockwise.
      */
     @Test
     public void getMapUnit_counterClockwise()
@@ -501,7 +501,7 @@ public class MapTileTest
 
     /**
      * Verify that the getMapTileEdge() method returns the correct values for all four edges when
-     * the tile is in the upright orientation.
+     * the map tile is in the upright orientation.
      */
     @Test
     public void getMapTileEdge_upright()
@@ -532,7 +532,7 @@ public class MapTileTest
 
     /**
      * Verify that the getMapTileEdge() method returns the correct values for all four edges when
-     * the tile is rotated 90 degrees clockwise.
+     * the map tile is rotated 90 degrees clockwise.
      */
     @Test
     public void getMapTileEdge_clockwise()
@@ -563,7 +563,7 @@ public class MapTileTest
 
     /**
      * Verify that the getMapTileEdge() method returns the correct values for all four edges when
-     * the tile is flipped around 180 degrees.
+     * the map tile is flipped around 180 degrees.
      */
     @Test
     public void getMapTileEdge_flipped()
@@ -594,7 +594,7 @@ public class MapTileTest
 
     /**
      * Verify that the getMapTileEdge() method returns the correct values for all four edges when
-     * the tile is rotated 90 degrees counter-clockwise.
+     * the map tile is rotated 90 degrees counter-clockwise.
      */
     @Test
     public void getMapTileEdge_counterClockwise()
@@ -624,8 +624,8 @@ public class MapTileTest
     }
 
     /**
-     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the tile
-     * is in the upright orientation.
+     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the map
+     * tile is in the upright orientation.
      */
     @Test
     public void getOpenMapTileEdgePositions_upright()
@@ -656,8 +656,8 @@ public class MapTileTest
     }
 
     /**
-     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the tile
-     * is rotated 90 degrees clockwise.
+     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the map
+     * tile is rotated 90 degrees clockwise.
      */
     @Test
     public void getOpenMapTileEdgePositions_clockwise()
@@ -688,8 +688,8 @@ public class MapTileTest
     }
 
     /**
-     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the tile
-     * is flipped around 180 degrees.
+     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the map
+     * tile is flipped around 180 degrees.
      */
     @Test
     public void getOpenMapTileEdgePositions_flipped()
@@ -720,8 +720,8 @@ public class MapTileTest
     }
 
     /**
-     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the tile
-     * is rotated 90 degrees counter-clockwise.
+     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the map
+     * tile is rotated 90 degrees counter-clockwise.
      */
     @Test
     public void getOpenMapTileEdgePositions_counterClockwise()
