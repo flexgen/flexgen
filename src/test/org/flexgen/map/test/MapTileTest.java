@@ -33,6 +33,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.flexgen.map.test;
 
 import java.lang.reflect.Constructor;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -619,6 +621,38 @@ public class MapTileTest
         Assert.assertEquals( "Unexpected return value for \"left\".",
                              mapTileEdges[ 0 ],
                              mapTile.getMapTileEdge( MapTileEdgePosition.LEFT ));
+    }
+
+    /**
+     * Verify that the getOpenMapTileEdgePositions() method returns the correct value when the tile
+     * is in the upright orientation.
+     */
+    @Test
+    public void getOpenMapTileEdgePositions_upright()
+    {
+        MapTileEdgePosition[] openMapTileEdgePositions = new MapTileEdgePosition[]
+        {
+            MapTileEdgePosition.RIGHT,
+            MapTileEdgePosition.BOTTOM
+        };
+
+        MapTile mapTile = new MapTile( new MapTileType( GeneralHelper.getUniqueString(), 0,
+                                                        MapUnitHelper.buildArray(),
+                                                        MapTileEdgeHelper.buildArray(),
+                                                        MapTileOrientationHelper.ALL_ORIENTATIONS,
+                                                        openMapTileEdgePositions ),
+                                       MapTileOrientation.UPRIGHT );
+
+        Collection< MapTileEdgePosition > actualOpenMapTileEdgePositions =
+                Arrays.asList( mapTile.getOpenMapTileEdgePositions() );
+
+        Assert.assertEquals( "Unexpected collection size.", 2,
+                             actualOpenMapTileEdgePositions.size() );
+
+        Assert.assertTrue( "Collection does not contain \"RIGHT\".",
+                           actualOpenMapTileEdgePositions.contains( MapTileEdgePosition.RIGHT ));
+        Assert.assertTrue( "Collection does not contain \"BOTTOM\".",
+                           actualOpenMapTileEdgePositions.contains( MapTileEdgePosition.BOTTOM ));
     }
 
     /**

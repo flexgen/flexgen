@@ -176,6 +176,19 @@ public class MapTile
     }
 
     /**
+     * Get the array of map tile edge positions that specify the open edges for this map tile.
+     *
+     * @return The array of map tile edge positions that specify the open edges for this map tile.
+     */
+    public MapTileEdgePosition[] getOpenMapTileEdgePositions()
+    {
+        MapTileEdgePosition[] originalOpenMapTileEdgePositions =
+                mapTileType.getOpenMapTileEdgePositions();
+
+        return originalOpenMapTileEdgePositions;
+    }
+
+    /**
      * Get the string representation of this object.
      *
      * @return The string representation of this object.
