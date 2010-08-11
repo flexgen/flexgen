@@ -42,7 +42,6 @@ import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
 import org.flexgen.test.helper.GeneralHelper;
 import org.flexgen.test.helper.MapTileEdgeHelper;
-import org.flexgen.test.helper.MapTileEdgePositionHelper;
 import org.flexgen.test.helper.MapTileOrientationHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
 import org.flexgen.test.helper.MapUnitHelper;
@@ -785,7 +784,7 @@ public class MapTileTypeTest
                                                    MapTileEdgeHelper.buildArray(),
                                                    MapTileOrientationHelper.ALL_ORIENTATIONS );
 
-        Assert.assertArrayEquals( "Unexpected result.", MapTileEdgePositionHelper.ALL_POSITIONS,
+        Assert.assertArrayEquals( "Unexpected result.", MapTileEdgePosition.ALL_POSITIONS,
                                   mapTileType.getOpenMapTileEdgePositions() );
     }
 

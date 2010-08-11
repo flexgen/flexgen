@@ -58,6 +58,17 @@ public class MapTileEdgePosition
     public static final MapTileEdgePosition LEFT = new MapTileEdgePosition( "Left", 3 );
 
     /**
+     * Array of map tile edge positions containing all of the positions.
+     */
+    public static final MapTileEdgePosition[] ALL_POSITIONS = new MapTileEdgePosition[]
+    {
+        MapTileEdgePosition.TOP,
+        MapTileEdgePosition.RIGHT,
+        MapTileEdgePosition.BOTTOM,
+        MapTileEdgePosition.LEFT,
+    };
+
+    /**
      * Name of the map tile edge position.
      */
     private final String name;

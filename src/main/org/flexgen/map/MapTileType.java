@@ -283,13 +283,7 @@ public class MapTileType
                         MapTileOrientation[] distinctMapTileOrientations )
     {
         this( name, weight, mapUnits, mapTileEdges, distinctMapTileOrientations,
-              new MapTileEdgePosition[]
-              {
-                  MapTileEdgePosition.TOP,
-                  MapTileEdgePosition.RIGHT,
-                  MapTileEdgePosition.BOTTOM,
-                  MapTileEdgePosition.LEFT,
-              } );
+              MapTileEdgePosition.ALL_POSITIONS );
     }
 
     /**
