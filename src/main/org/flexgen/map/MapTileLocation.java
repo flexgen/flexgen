@@ -84,6 +84,34 @@ public class MapTileLocation
     /**
      * Get an array of map tile locations that are neighbors of this map tile location.
      *
+     * @param neighborMapTileEdgePositions
+     *            Array of map tile edge positions specifying the neighbors of this map tile
+     *            location.
+     *
+     * @return Array of map tile locations that are neighbors of this map tile location.
+     */
+    public MapTileLocation[] getNeighborLocations(
+            MapTileEdgePosition[] neighborMapTileEdgePositions )
+    {
+        MapTileLocation[] neighborLocations =
+                new MapTileLocation[ neighborMapTileEdgePositions.length ];
+
+        for ( int i = 0; i < neighborMapTileEdgePositions.length; i++ )
+        {
+            MapTileEdgePosition mapTileEdgePosition = neighborMapTileEdgePositions[ i ];
+
+            if ( mapTileEdgePosition.equals( MapTileEdgePosition.TOP ))
+            {
+                neighborLocations[ i ] = new MapTileLocation( x, y - 1 );
+            }
+        }
+
+        return neighborLocations;
+    }
+
+    /**
+     * Get an array of map tile locations that are neighbors of this map tile location.
+     *
      * @return Array of map tile locations that are neighbors of this map tile location.
      */
     public MapTileLocation[] getNeighborLocations()

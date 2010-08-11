@@ -35,6 +35,7 @@ package org.flexgen.map.test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import org.flexgen.map.MapTileEdgePosition;
 import org.flexgen.map.MapTileLocation;
 import org.flexgen.test.helper.GeneralHelper;
 
@@ -66,10 +67,11 @@ public class MapTileLocationTest
     }
 
     /**
-     * Verify that the getNeighborLocations() method returns the correct value.
+     * Verify that the getNeighborLocations() method returns the correct value when called without
+     * specifying the neighboring map tile edge positions.
      */
     @Test
-    public void getNeighborLocations()
+    public void getNeighborLocations_defaultNeighbors()
     {
         int x = GeneralHelper.getRandom().nextInt( 1000 );
         int y = GeneralHelper.getRandom().nextInt( 1000 );
@@ -85,6 +87,32 @@ public class MapTileLocationTest
 
         Assert.assertArrayEquals( "Unexpected return value.", neighborLocations,
                                   mapTileLocation.getNeighborLocations() );
+    }
+
+    /**
+     * Verify that the getNeighborLocations() method returns the correct value when called with
+     * specifying the top neighboring map tile edge position.
+     */
+    @Test
+    public void getNeighborLocations_topNeighbor()
+    {
+        int x = GeneralHelper.getRandom().nextInt( 1000 );
+        int y = GeneralHelper.getRandom().nextInt( 1000 );
+        MapTileLocation mapTileLocation = new MapTileLocation( x, y );
+
+        MapTileLocation[] neighborLocations = new MapTileLocation[]
+        {
+            new MapTileLocation( x, y - 1 )
+        };
+
+        MapTileEdgePosition[] neighborMapTileEdgePositions = new MapTileEdgePosition[]
+        {
+            MapTileEdgePosition.TOP
+        };
+
+        Assert.assertArrayEquals(
+                "Unexpected return value.", neighborLocations,
+                mapTileLocation.getNeighborLocations( neighborMapTileEdgePositions ));
     }
 
     /**
