@@ -185,7 +185,32 @@ public class MapTile
         MapTileEdgePosition[] originalOpenMapTileEdgePositions =
                 mapTileType.getOpenMapTileEdgePositions();
 
-        return originalOpenMapTileEdgePositions;
+        MapTileEdgePosition[] translatedOpenMapTileEdgePositions =
+                new MapTileEdgePosition[ originalOpenMapTileEdgePositions.length ];
+
+        for ( int i = 0; i < originalOpenMapTileEdgePositions.length; i++ )
+        {
+            MapTileEdgePosition mapTileEdgePosition = originalOpenMapTileEdgePositions[ i ];
+
+            // get the index of the map tile edge position
+            int index = mapTileEdgePosition.getIndex();
+
+            // update the index based upon the orientation of the tile
+            if ( mapTileOrientation.equals( MapTileOrientation.CLOCKWISE ))
+            {
+                index -= 1;
+            }
+
+            // take care of index values that have gone out of the valid range
+            if ( index < 0 )
+            {
+                index += 4;
+            }
+
+            translatedOpenMapTileEdgePositions[ i ] = MapTileEdgePosition.get( index );
+        }
+
+        return translatedOpenMapTileEdgePositions;
     }
 
     /**
