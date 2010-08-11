@@ -79,10 +79,10 @@ public class MapTileLocationTest
 
         MapTileLocation[] neighborLocations = new MapTileLocation[]
         {
+            new MapTileLocation( x, y - 1 ),
             new MapTileLocation( x + 1, y ),
-            new MapTileLocation( x - 1, y ),
             new MapTileLocation( x, y + 1 ),
-            new MapTileLocation( x, y - 1 )
+            new MapTileLocation( x - 1, y )
         };
 
         Assert.assertArrayEquals( "Unexpected return value.", neighborLocations,

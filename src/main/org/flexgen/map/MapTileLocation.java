@@ -128,13 +128,7 @@ public class MapTileLocation
      */
     public MapTileLocation[] getNeighborLocations()
     {
-        return new MapTileLocation[]
-        {
-            new MapTileLocation( x + 1, y ),
-            new MapTileLocation( x - 1, y ),
-            new MapTileLocation( x, y + 1 ),
-            new MapTileLocation( x, y - 1 )
-        };
+        return getNeighborLocations( MapTileEdgePosition.ALL_POSITIONS );
     }
 
     /**
