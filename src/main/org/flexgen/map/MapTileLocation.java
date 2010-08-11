@@ -108,6 +108,10 @@ public class MapTileLocation
             {
                 neighborLocations[ i ] = new MapTileLocation( x + 1, y );
             }
+            if ( mapTileEdgePosition.equals( MapTileEdgePosition.BOTTOM ))
+            {
+                neighborLocations[ i ] = new MapTileLocation( x, y + 1 );
+            }
         }
 
         return neighborLocations;

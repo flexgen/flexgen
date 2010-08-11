@@ -142,6 +142,32 @@ public class MapTileLocationTest
     }
 
     /**
+     * Verify that the getNeighborLocations() method returns the correct value when called with
+     * specifying the bottom neighboring map tile edge position.
+     */
+    @Test
+    public void getNeighborLocations_bottomNeighbor()
+    {
+        int x = GeneralHelper.getRandom().nextInt( 1000 );
+        int y = GeneralHelper.getRandom().nextInt( 1000 );
+        MapTileLocation mapTileLocation = new MapTileLocation( x, y );
+
+        MapTileLocation[] neighborLocations = new MapTileLocation[]
+        {
+            new MapTileLocation( x, y + 1 )
+        };
+
+        MapTileEdgePosition[] neighborMapTileEdgePositions = new MapTileEdgePosition[]
+        {
+            MapTileEdgePosition.BOTTOM
+        };
+
+        Assert.assertArrayEquals(
+                "Unexpected return value.", neighborLocations,
+                mapTileLocation.getNeighborLocations( neighborMapTileEdgePositions ));
+    }
+
+    /**
      * Verify that the toString() method returns the correct value.
      */
     @Test
