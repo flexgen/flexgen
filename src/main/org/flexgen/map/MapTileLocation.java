@@ -112,6 +112,10 @@ public class MapTileLocation
             {
                 neighborLocations[ i ] = new MapTileLocation( x, y + 1 );
             }
+            if ( mapTileEdgePosition.equals( MapTileEdgePosition.LEFT ))
+            {
+                neighborLocations[ i ] = new MapTileLocation( x - 1, y );
+            }
         }
 
         return neighborLocations;
