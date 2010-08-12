@@ -331,6 +331,11 @@ public class MapGenerator
             throw new IllegalArgumentException( "Parameter 'mapTileLocation' cannot be null." );
         }
 
+        if ( mapTile == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'mapTile' cannot be null." );
+        }
+
         openLocations.remove( mapTileLocation );
         map.put( mapTileLocation, mapTile );
 

@@ -574,21 +574,20 @@ public class MapGeneratorTest
     }
 
     /**
-     * Verify that the addMapTile() method works correctly when the mapTile parameter is null.
+     * Verify that the addMapTile() method throws the correct exception when the mapTile parameter
+     * is null.
      */
     @Test
     public void addMapTile_mapTile_null()
     {
         MapTileType mapTileType = MapTileTypeHelper.build();
-        MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
-        MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
-
-        MapTileLocation mapTileLocation = MapTileLocationHelper.build();
 
         MapTileType[] mapTileTypes = new MapTileType[]
         {
             mapTileType
         };
+
+        MapTileLocation mapTileLocation = MapTileLocationHelper.build();
 
         MapGenerator mapGenerator = new MapGenerator(
                 new ImprovedRandom(), mapTileTypes,
@@ -596,11 +595,16 @@ public class MapGeneratorTest
                         mapTileLocation.getX(), mapTileLocation.getY(),
                         mapTileLocation.getX(), mapTileLocation.getY() ));
 
-        mapGenerator.addMapTile( mapTileLocation, mapTile );
-        mapGenerator.addMapTile( mapTileLocation, null );
-
-        Assert.assertEquals( "Unexpected return value.", null,
-                             mapGenerator.getMapTile( mapTileLocation ));
+        try
+        {
+            mapGenerator.addMapTile( mapTileLocation, null );
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTile' cannot be null.", e.getMessage() );
+        }
     }
 
     /**
