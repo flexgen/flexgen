@@ -355,6 +355,21 @@ public class MapGenerator
     }
 
     /**
+     * Remove a map tile from the map at the specified location.
+     *
+     * @param mapTileLocation
+     *            Location at which to remove the map tile. Cannot be null. Map tile must be present
+     *            at the specified location.
+     */
+    public void removeMapTile( MapTileLocation mapTileLocation )
+    {
+        if ( mapTileLocation == null )
+        {
+            throw new IllegalArgumentException( "Parameter 'mapTileLocation' cannot be null." );
+        }
+    }
+
+    /**
      * Generate the map.
      */
     public void generate()
