@@ -642,7 +642,7 @@ public class MapGeneratorTest
                              mapTileLocations.size() );
 
         Assert.assertEquals( "Unexpected map tile location.", mapTileLocation,
-                             mapTileLocations.get( 0 ) );
+                             mapTileLocations.get( 0 ));
     }
 
     /**
