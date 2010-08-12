@@ -40,6 +40,7 @@ import java.util.Map;
 import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTile;
 import org.flexgen.map.MapTileEdge;
+import org.flexgen.map.MapTileEdgePosition;
 import org.flexgen.map.MapTileLocation;
 import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
@@ -127,6 +128,13 @@ public class DungeonExample
             new MapTileOrientation[]
             {
                 MapTileOrientation.UPRIGHT
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.BOTTOM,
+                MapTileEdgePosition.LEFT
             } );
 
     /**
@@ -153,6 +161,13 @@ public class DungeonExample
                 MapTileOrientation.CLOCKWISE,
                 MapTileOrientation.FLIPPED,
                 MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.BOTTOM,
+                MapTileEdgePosition.LEFT
             } );
 
     /**
@@ -177,6 +192,13 @@ public class DungeonExample
             {
                 MapTileOrientation.UPRIGHT,
                 MapTileOrientation.CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.BOTTOM,
+                MapTileEdgePosition.LEFT
             } );
 
     /**
@@ -203,6 +225,12 @@ public class DungeonExample
                 MapTileOrientation.CLOCKWISE,
                 MapTileOrientation.FLIPPED,
                 MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.BOTTOM,
+                MapTileEdgePosition.LEFT
             } );
 
     /**
@@ -229,6 +257,13 @@ public class DungeonExample
                 MapTileOrientation.CLOCKWISE,
                 MapTileOrientation.FLIPPED,
                 MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.BOTTOM,
+                MapTileEdgePosition.LEFT
             } );
 
     /**
@@ -255,6 +290,11 @@ public class DungeonExample
                 MapTileOrientation.CLOCKWISE,
                 MapTileOrientation.FLIPPED,
                 MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.BOTTOM
             } );
 
     /**
@@ -281,6 +321,12 @@ public class DungeonExample
                 MapTileOrientation.CLOCKWISE,
                 MapTileOrientation.FLIPPED,
                 MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.BOTTOM
             } );
 
     /**
@@ -307,6 +353,12 @@ public class DungeonExample
                 MapTileOrientation.CLOCKWISE,
                 MapTileOrientation.FLIPPED,
                 MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.BOTTOM,
+                MapTileEdgePosition.LEFT
             } );
 
     /**
@@ -333,6 +385,13 @@ public class DungeonExample
                 MapTileOrientation.CLOCKWISE,
                 MapTileOrientation.FLIPPED,
                 MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.BOTTOM,
+                MapTileEdgePosition.LEFT
             } );
 
     /**
@@ -357,6 +416,11 @@ public class DungeonExample
             {
                 MapTileOrientation.UPRIGHT,
                 MapTileOrientation.CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.BOTTOM
             } );
 
     /**
@@ -383,6 +447,11 @@ public class DungeonExample
                 MapTileOrientation.CLOCKWISE,
                 MapTileOrientation.FLIPPED,
                 MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.RIGHT
             } );
 
     /**
@@ -409,6 +478,12 @@ public class DungeonExample
                 MapTileOrientation.CLOCKWISE,
                 MapTileOrientation.FLIPPED,
                 MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.LEFT
             } );
 
     /**
@@ -432,6 +507,13 @@ public class DungeonExample
             new MapTileOrientation[]
             {
                 MapTileOrientation.UPRIGHT
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.BOTTOM,
+                MapTileEdgePosition.LEFT
             } );
 
     /**
