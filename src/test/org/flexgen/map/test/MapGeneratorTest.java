@@ -49,6 +49,7 @@ import org.flexgen.test.helper.MapGeneratorHelper;
 import org.flexgen.test.helper.MapTileLocationHelper;
 import org.flexgen.test.helper.MapTileOrientationHelper;
 import org.flexgen.test.helper.MapTileTypeHelper;
+import org.flexgen.test.helper.tiles.DungeonTiles;
 import org.flexgen.test.helper.tiles.RiverTiles;
 import org.flexgen.util.ImprovedRandom;
 
@@ -827,6 +828,38 @@ public class MapGeneratorTest
         actualMapGenerator.addMapTile(
                 new MapTileLocation( 1, 0 ),
                 new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.CLOCKWISE ));
+
+        actualMapGenerator.generate();
+
+        MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+    }
+
+    /**
+     * Verify that the generate() method works correctly when using a tile set with limited open
+     * map tile edge positions.
+     */
+    @Test
+    public void generate_limitedOpenMapTileEdgePositions()
+    {
+        MapGenerator expectedMapGenerator =
+                new MapGenerator( new ImprovedRandom(), DungeonTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( -1, -1, 1, 1 ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, -1 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 0 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 1 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+
+        MapGenerator actualMapGenerator =
+                new MapGenerator( new ImprovedRandom(), DungeonTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( -1, -1, 1, 1 ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 0, -1 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
 
         actualMapGenerator.generate();
 

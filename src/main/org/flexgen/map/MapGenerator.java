@@ -339,7 +339,8 @@ public class MapGenerator
         openLocations.remove( mapTileLocation );
         map.put( mapTileLocation, mapTile );
 
-        for ( MapTileLocation neighborLocation : mapTileLocation.getNeighborLocations() )
+        for ( MapTileLocation neighborLocation :
+                mapTileLocation.getNeighborLocations( mapTile.getOpenMapTileEdgePositions() ))
         {
             if ( ! map.containsKey( neighborLocation ))
             {
