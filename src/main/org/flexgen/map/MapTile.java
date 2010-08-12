@@ -198,21 +198,21 @@ public class MapTile
             // update the index based upon the orientation of the tile
             if ( mapTileOrientation.equals( MapTileOrientation.CLOCKWISE ))
             {
-                index -= 1;
+                index += 1;
             }
             else if ( mapTileOrientation.equals( MapTileOrientation.FLIPPED ))
             {
-                index -= 2;
+                index += 2;
             }
             else if ( mapTileOrientation.equals( MapTileOrientation.COUNTER_CLOCKWISE ))
             {
-                index -= 3;
+                index += 3;
             }
 
             // take care of index values that have gone out of the valid range
-            if ( index < 0 )
+            if ( index > 3 )
             {
-                index += 4;
+                index -= 4;
             }
 
             translatedOpenMapTileEdgePositions[ i ] = MapTileEdgePosition.get( index );

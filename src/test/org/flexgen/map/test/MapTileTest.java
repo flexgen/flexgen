@@ -681,10 +681,10 @@ public class MapTileTest
         Assert.assertEquals( "Unexpected collection size.", 2,
                              actualOpenMapTileEdgePositions.size() );
 
-        Assert.assertTrue( "Collection does not contain \"TOP\".",
-                           actualOpenMapTileEdgePositions.contains( MapTileEdgePosition.TOP ));
-        Assert.assertTrue( "Collection does not contain \"RIGHT\".",
-                           actualOpenMapTileEdgePositions.contains( MapTileEdgePosition.RIGHT ));
+        Assert.assertTrue( "Collection does not contain \"BOTTOM\".",
+                           actualOpenMapTileEdgePositions.contains( MapTileEdgePosition.BOTTOM ));
+        Assert.assertTrue( "Collection does not contain \"LEFT\".",
+                           actualOpenMapTileEdgePositions.contains( MapTileEdgePosition.LEFT ));
     }
 
     /**
@@ -729,7 +729,7 @@ public class MapTileTest
         MapTileEdgePosition[] openMapTileEdgePositions = new MapTileEdgePosition[]
         {
             MapTileEdgePosition.RIGHT,
-            MapTileEdgePosition.LEFT
+            MapTileEdgePosition.BOTTOM
         };
 
         MapTile mapTile = new MapTile( new MapTileType( GeneralHelper.getUniqueString(), 0,
@@ -745,10 +745,10 @@ public class MapTileTest
         Assert.assertEquals( "Unexpected collection size.", 2,
                              actualOpenMapTileEdgePositions.size() );
 
-        Assert.assertTrue( "Collection does not contain \"BOTTOM\".",
-                           actualOpenMapTileEdgePositions.contains( MapTileEdgePosition.BOTTOM ));
         Assert.assertTrue( "Collection does not contain \"TOP\".",
                            actualOpenMapTileEdgePositions.contains( MapTileEdgePosition.TOP ));
+        Assert.assertTrue( "Collection does not contain \"RIGHT\".",
+                           actualOpenMapTileEdgePositions.contains( MapTileEdgePosition.RIGHT ));
     }
 
     /**
