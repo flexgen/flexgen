@@ -367,6 +367,12 @@ public class MapGenerator
         {
             throw new IllegalArgumentException( "Parameter 'mapTileLocation' cannot be null." );
         }
+
+        if ( ! map.containsKey( mapTileLocation ))
+        {
+            throw new IllegalArgumentException(
+                    "Parameter 'mapTileLocation' must locate an existing map tile." );
+        }
     }
 
     /**

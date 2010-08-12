@@ -676,6 +676,37 @@ public class MapGeneratorTest
     }
 
     /**
+     * Verify that the removeMapTile() method throws the correct exception when there is no map tile
+     * at the specified map tile location.
+     */
+    @Test
+    public void removeMapTile_noMapTile()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build();
+
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            mapTileType
+        };
+
+        MapGenerator mapGenerator =
+                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                                  new RectangularMapTileLocationFilter( 0, 0, 0, 0 ));
+
+        try
+        {
+            mapGenerator.removeMapTile( new MapTileLocation( 0, 0 ));
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalArgumentException e )
+        {
+            Assert.assertEquals( "Unexpected message.",
+                                 "Parameter 'mapTileLocation' must locate an existing map tile.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the generate() method throws the correct exception when there are no legal map
      * tile types that can be placed on the map.
      */
