@@ -302,7 +302,7 @@ public class MapGenerator
      * Get the map tile at a specified location.
      *
      * @param mapTileLocation
-     *            Location for which to get the map tile.
+     *            Location for which to get the map tile. Cannot be null.
      *
      * @return The map tile at a specified location.
      */
@@ -320,9 +320,9 @@ public class MapGenerator
      * Add a map tile to the map at the specified location.
      *
      * @param mapTileLocation
-     *            Location at which to add the map tile.
+     *            Location at which to add the map tile. Cannot be null.
      * @param mapTile
-     *            Map tile to add.
+     *            Map tile to add. Cannot be null.
      */
     public void addMapTile( MapTileLocation mapTileLocation, MapTile mapTile )
     {
