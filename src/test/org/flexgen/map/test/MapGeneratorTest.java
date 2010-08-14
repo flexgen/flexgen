@@ -707,6 +707,37 @@ public class MapGeneratorTest
     }
 
     /**
+     * Verify that the removeMapTile() method removes the map tile at the specified map tile
+     * location.
+     */
+    @Test
+    public void removeMapTile_tileRemoved()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build();
+        MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
+        MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
+
+        MapTileLocation mapTileLocation = MapTileLocationHelper.build();
+
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            mapTileType
+        };
+
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), mapTileTypes,
+                new RectangularMapTileLocationFilter(
+                        mapTileLocation.getX(), mapTileLocation.getY(),
+                        mapTileLocation.getX(), mapTileLocation.getY() ));
+
+        mapGenerator.addMapTile( mapTileLocation, mapTile );
+        mapGenerator.removeMapTile( mapTileLocation );
+
+        Assert.assertEquals( "Unexpected map tile.", null,
+                             mapGenerator.getMapTile( mapTileLocation ));
+    }
+
+    /**
      * Verify that the generate() method throws the correct exception when there are no legal map
      * tile types that can be placed on the map.
      */

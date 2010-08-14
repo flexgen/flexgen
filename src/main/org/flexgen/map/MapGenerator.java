@@ -373,6 +373,8 @@ public class MapGenerator
             throw new IllegalArgumentException(
                     "Parameter 'mapTileLocation' must locate an existing map tile." );
         }
+
+        map.remove( mapTileLocation );
     }
 
     /**
