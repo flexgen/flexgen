@@ -609,6 +609,36 @@ public class MapGeneratorTest
     }
 
     /**
+     * Verify that the addMapTile() method adds the specified map tile at the specified map tile
+     * location.
+     */
+    @Test
+    public void addMapTile_tileAdded()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build();
+        MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
+        MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
+
+        MapTileLocation mapTileLocation = MapTileLocationHelper.build();
+
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            mapTileType
+        };
+
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), mapTileTypes,
+                new RectangularMapTileLocationFilter(
+                        mapTileLocation.getX(), mapTileLocation.getY(),
+                        mapTileLocation.getX(), mapTileLocation.getY() ));
+
+        mapGenerator.addMapTile( mapTileLocation, mapTile );
+
+        Assert.assertEquals( "Unexpected map tile.", mapTile,
+                             mapGenerator.getMapTile( mapTileLocation ));
+    }
+
+    /**
      * Verify that the addMapTile() method works correctly when a map tile added listener has been
      * added to the map generator.
      */
