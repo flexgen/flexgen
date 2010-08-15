@@ -399,6 +399,8 @@ public class MapGenerator
                                                    mapTileLocation.getY() + 1 ));
         openLocations.remove( new MapTileLocation( mapTileLocation.getX() - 1,
                                                    mapTileLocation.getY() ));
+        openLocations.remove( new MapTileLocation( mapTileLocation.getX() + 1,
+                                                   mapTileLocation.getY() ));
 
         for ( MapTileRemovedListener mapTileRemovedListener : mapTileRemovedListeners )
         {
