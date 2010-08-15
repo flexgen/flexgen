@@ -50,11 +50,17 @@ public class TestMapTileAddedListener implements MapTileAddedListener
     private List< MapTileLocation > mapTileLocations;
 
     /**
+     * The list of map generators that have added map tiles.
+     */
+    private List< MapGenerator > mapGenerators;
+
+    /**
      * Construct a test map tile added listener.
      */
     public TestMapTileAddedListener()
     {
         mapTileLocations = new LinkedList< MapTileLocation >();
+        mapGenerators = new LinkedList< MapGenerator >();
     }
 
     /**
@@ -68,6 +74,7 @@ public class TestMapTileAddedListener implements MapTileAddedListener
     public void mapTileAdded( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
     {
         mapTileLocations.add( mapTileLocation );
+        mapGenerators.add( mapGenerator );
     }
 
     /**
@@ -78,5 +85,15 @@ public class TestMapTileAddedListener implements MapTileAddedListener
     public List< MapTileLocation > getMapTileLocations()
     {
         return mapTileLocations;
+    }
+
+    /**
+     * Get the list of map generators that have added map tiles.
+     *
+     * @return The list of map generators that have added map tiles.
+     */
+    public List< MapGenerator > getMapGenerators()
+    {
+        return mapGenerators;
     }
 }

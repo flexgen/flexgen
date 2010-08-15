@@ -395,7 +395,7 @@ public class MapGenerator
 
         for ( MapTileRemovedListener mapTileRemovedListener : mapTileRemovedListeners )
         {
-            mapTileRemovedListener.mapTileRemoved( null, mapTileLocation );
+            mapTileRemovedListener.mapTileRemoved( this, mapTileLocation );
         }
     }
 

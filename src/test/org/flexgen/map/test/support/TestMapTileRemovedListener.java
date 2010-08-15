@@ -50,11 +50,17 @@ public class TestMapTileRemovedListener implements MapTileRemovedListener
     private List< MapTileLocation > mapTileLocations;
 
     /**
+     * The list of map generators that have removed map tiles.
+     */
+    private List< MapGenerator > mapGenerators;
+
+    /**
      * Construct a test map tile removed listener.
      */
     public TestMapTileRemovedListener()
     {
         mapTileLocations = new LinkedList< MapTileLocation >();
+        mapGenerators = new LinkedList< MapGenerator >();
     }
 
     /**
@@ -68,6 +74,7 @@ public class TestMapTileRemovedListener implements MapTileRemovedListener
     public void mapTileRemoved( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
     {
         mapTileLocations.add( mapTileLocation );
+        mapGenerators.add( mapGenerator );
     }
 
     /**
@@ -78,5 +85,15 @@ public class TestMapTileRemovedListener implements MapTileRemovedListener
     public List< MapTileLocation > getMapTileLocations()
     {
         return mapTileLocations;
+    }
+
+    /**
+     * Get the list of map generators that have removed map tiles.
+     *
+     * @return The list of map generators that have removed map tiles.
+     */
+    public List< MapGenerator > getMapGenerators()
+    {
+        return mapGenerators;
     }
 }

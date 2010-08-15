@@ -674,6 +674,14 @@ public class MapGeneratorTest
 
         Assert.assertEquals( "Unexpected map tile location.", mapTileLocation,
                              mapTileLocations.get( 0 ));
+
+        List< MapGenerator > mapGenerators = mapTileAddedListener.getMapGenerators();
+
+        Assert.assertEquals( "Unexpected number of map generators.", 1,
+                             mapGenerators.size() );
+
+        Assert.assertEquals( "Unexpected map generator.", mapGenerator,
+                             mapGenerators.get( 0 ));
     }
 
     /**
@@ -805,6 +813,14 @@ public class MapGeneratorTest
 
         Assert.assertEquals( "Unexpected map tile location.", mapTileLocation,
                              mapTileLocations.get( 0 ));
+
+        List< MapGenerator > mapGenerators = mapTileRemovedListener.getMapGenerators();
+
+        Assert.assertEquals( "Unexpected number of map generators.", 1,
+                             mapGenerators.size() );
+
+        Assert.assertEquals( "Unexpected map generator.", mapGenerator,
+                             mapGenerators.get( 0 ));
     }
 
     /**
