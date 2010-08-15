@@ -777,6 +777,61 @@ public class MapGeneratorTest
     }
 
     /**
+     * Verify that the removeMapTile() method correctly removes the open location on the top side of
+     * the removed map tile.
+     */
+    @Test
+    public void removeMapTile_removeOpenLocation_topNeighbor()
+    {
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            DungeonTiles.STRAIGHT_HALLWAY_TYPE,
+            DungeonTiles.CORNER_HALLWAY_TYPE
+        };
+
+        MapGenerator expectedMapGenerator =
+                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                                  new RectangularMapTileLocationFilter( 0, 0, 1, 2 ));
+
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 1 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 1, 1 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.FLIPPED ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 2 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 1, 2 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+
+        MapGenerator actualMapGenerator =
+                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                                  new RectangularMapTileLocationFilter( 0, 0, 1, 2 ));
+
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 0, 2 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 1, 2 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 0, 1 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+
+        actualMapGenerator.removeMapTile( new MapTileLocation( 0, 1 ));
+
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 0, 1 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+
+        actualMapGenerator.generate();
+
+        MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+    }
+
+    /**
      * Verify that the removeMapTile() method correctly removes the open location on the bottom side
      * of the removed map tile.
      */
