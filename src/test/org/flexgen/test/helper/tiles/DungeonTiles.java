@@ -93,12 +93,35 @@ public class DungeonTiles
             } );
 
     /**
-     * Array of all map tile types for this helper.
+     * Tile type representing a corner hallway.
      */
-    public static final MapTileType[] MAP_TILE_TYPES = new MapTileType[]
-    {
-        STRAIGHT_HALLWAY_TYPE
-    };
+    public static final MapTileType CORNER_HALLWAY_TYPE = new MapTileType(
+            "Corner Hallway", 300,
+            new MapUnit[][]
+            {
+                { WALL_UNIT, FLOOR_UNIT, WALL_UNIT  },
+                { WALL_UNIT, FLOOR_UNIT, FLOOR_UNIT },
+                { WALL_UNIT, WALL_UNIT,  WALL_UNIT  }
+            },
+            new MapTileEdge[]
+            {
+                HALLWAY_EDGE,
+                HALLWAY_EDGE,
+                WALL_EDGE,
+                WALL_EDGE
+            },
+            new MapTileOrientation[]
+            {
+                MapTileOrientation.UPRIGHT,
+                MapTileOrientation.CLOCKWISE,
+                MapTileOrientation.FLIPPED,
+                MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.RIGHT
+            } );
 
     /**
      * Private constructor to keep this class from being instantiated since all methods are static.
