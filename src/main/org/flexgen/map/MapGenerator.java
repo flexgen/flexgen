@@ -80,6 +80,11 @@ public class MapGenerator
     private final List< MapTileAddedListener > mapTileAddedListeners;
 
     /**
+     * List of listeners for the event of removing a map tile.
+     */
+    private final List< MapTileRemovedListener > mapTileRemovedListeners;
+
+    /**
      * The size of the map unit array that defines the map tile types used by this map generator.
      */
     private final int tileSize;
@@ -158,13 +163,14 @@ public class MapGenerator
                     "Parameter 'mapTileLocationFilter' cannot be null." );
         }
 
-        this.improvedRandom        = improvedRandom;
-        this.mapTileTypes          = mapTileTypes;
-        this.mapTileLocationFilter = mapTileLocationFilter;
-        this.map                   = new HashMap< MapTileLocation, MapTile >();
-        this.openLocations         = new HashSet< MapTileLocation >();
-        this.mapTileAddedListeners = new LinkedList< MapTileAddedListener >();
-        this.tileSize              = tileSize;
+        this.improvedRandom          = improvedRandom;
+        this.mapTileTypes            = mapTileTypes;
+        this.mapTileLocationFilter   = mapTileLocationFilter;
+        this.map                     = new HashMap< MapTileLocation, MapTile >();
+        this.openLocations           = new HashSet< MapTileLocation >();
+        this.mapTileAddedListeners   = new LinkedList< MapTileAddedListener >();
+        this.mapTileRemovedListeners = new LinkedList< MapTileRemovedListener >();
+        this.tileSize                = tileSize;
     }
 
     /**
@@ -299,6 +305,17 @@ public class MapGenerator
     }
 
     /**
+     * Add a new listener for the event of removing a map tile from the map.
+     *
+     * @param mapTileRemovedListener
+     *            The listener to add.
+     */
+    public void addMapTileRemovedListener( MapTileRemovedListener mapTileRemovedListener )
+    {
+        mapTileRemovedListeners.add( mapTileRemovedListener );
+    }
+
+    /**
      * Get the map tile at a specified location.
      *
      * @param mapTileLocation
@@ -375,6 +392,11 @@ public class MapGenerator
         }
 
         map.remove( mapTileLocation );
+
+        for ( MapTileRemovedListener mapTileRemovedListener : mapTileRemovedListeners )
+        {
+            mapTileRemovedListener.mapTileRemoved( null, mapTileLocation );
+        }
     }
 
     /**
