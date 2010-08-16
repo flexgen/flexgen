@@ -783,14 +783,8 @@ public class MapGeneratorTest
     @Test
     public void removeMapTile_removeOpenLocation_topNeighbor()
     {
-        MapTileType[] mapTileTypes = new MapTileType[]
-        {
-            DungeonTiles.STRAIGHT_HALLWAY_TYPE,
-            DungeonTiles.CORNER_HALLWAY_TYPE
-        };
-
         MapGenerator expectedMapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                new MapGenerator( new ImprovedRandom(), DungeonTiles.MAP_TILE_TYPES,
                                   new RectangularMapTileLocationFilter( 0, 0, 1, 2 ));
 
         expectedMapGenerator.addMapTile(
@@ -807,7 +801,7 @@ public class MapGeneratorTest
                 new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
 
         MapGenerator actualMapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                new MapGenerator( new ImprovedRandom(), DungeonTiles.MAP_TILE_TYPES,
                                   new RectangularMapTileLocationFilter( 0, 0, 1, 2 ));
 
         actualMapGenerator.addMapTile(
@@ -838,14 +832,8 @@ public class MapGeneratorTest
     @Test
     public void removeMapTile_removeOpenLocation_bottomNeighbor()
     {
-        MapTileType[] mapTileTypes = new MapTileType[]
-        {
-            DungeonTiles.STRAIGHT_HALLWAY_TYPE,
-            DungeonTiles.CORNER_HALLWAY_TYPE
-        };
-
         MapGenerator expectedMapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                new MapGenerator( new ImprovedRandom(), DungeonTiles.MAP_TILE_TYPES,
                                   new RectangularMapTileLocationFilter( 0, 0, 1, 2 ));
 
         expectedMapGenerator.addMapTile(
@@ -863,7 +851,7 @@ public class MapGeneratorTest
                              MapTileOrientation.COUNTER_CLOCKWISE ));
 
         MapGenerator actualMapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                new MapGenerator( new ImprovedRandom(), DungeonTiles.MAP_TILE_TYPES,
                                   new RectangularMapTileLocationFilter( 0, 0, 1, 2 ));
 
         actualMapGenerator.addMapTile(
@@ -894,14 +882,8 @@ public class MapGeneratorTest
     @Test
     public void removeMapTile_removeOpenLocation_leftNeighbor()
     {
-        MapTileType[] mapTileTypes = new MapTileType[]
-        {
-            DungeonTiles.STRAIGHT_HALLWAY_TYPE,
-            DungeonTiles.CORNER_HALLWAY_TYPE
-        };
-
         MapGenerator expectedMapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                new MapGenerator( new ImprovedRandom(), DungeonTiles.MAP_TILE_TYPES,
                                   new RectangularMapTileLocationFilter( 0, 0, 2, 1 ));
 
         expectedMapGenerator.addMapTile(
@@ -918,7 +900,7 @@ public class MapGeneratorTest
                 new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
 
         MapGenerator actualMapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                new MapGenerator( new ImprovedRandom(), DungeonTiles.MAP_TILE_TYPES,
                                   new RectangularMapTileLocationFilter( 0, 0, 2, 1 ));
 
         actualMapGenerator.addMapTile(
@@ -949,14 +931,8 @@ public class MapGeneratorTest
     @Test
     public void removeMapTile_removeOpenLocation_rightNeighbor()
     {
-        MapTileType[] mapTileTypes = new MapTileType[]
-        {
-            DungeonTiles.STRAIGHT_HALLWAY_TYPE,
-            DungeonTiles.CORNER_HALLWAY_TYPE
-        };
-
         MapGenerator expectedMapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                new MapGenerator( new ImprovedRandom(), DungeonTiles.MAP_TILE_TYPES,
                                   new RectangularMapTileLocationFilter( 0, 0, 2, 1 ));
 
         expectedMapGenerator.addMapTile(
@@ -974,7 +950,7 @@ public class MapGeneratorTest
                              MapTileOrientation.COUNTER_CLOCKWISE ));
 
         MapGenerator actualMapGenerator =
-                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                new MapGenerator( new ImprovedRandom(), DungeonTiles.MAP_TILE_TYPES,
                                   new RectangularMapTileLocationFilter( 0, 0, 2, 1 ));
 
         actualMapGenerator.addMapTile(
