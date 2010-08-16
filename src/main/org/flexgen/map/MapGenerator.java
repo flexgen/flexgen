@@ -75,6 +75,11 @@ public class MapGenerator
     private final Set< MapTileLocation > openLocations;
 
     /**
+     * Map tiles that are excluded for various locations in the map.
+     */
+    private final Map< MapTileLocation, Collection< MapTile >> excludedMapTilesMap;
+
+    /**
      * List of listeners for the event of adding a map tile.
      */
     private final List< MapTileAddedListener > mapTileAddedListeners;
@@ -168,6 +173,7 @@ public class MapGenerator
         this.mapTileLocationFilter   = mapTileLocationFilter;
         this.map                     = new HashMap< MapTileLocation, MapTile >();
         this.openLocations           = new HashSet< MapTileLocation >();
+        this.excludedMapTilesMap     = new HashMap< MapTileLocation, Collection< MapTile > >();
         this.mapTileAddedListeners   = new LinkedList< MapTileAddedListener >();
         this.mapTileRemovedListeners = new LinkedList< MapTileRemovedListener >();
         this.tileSize                = tileSize;
@@ -369,7 +375,14 @@ public class MapGenerator
 
         if ( badOpenLocationsExist() )
         {
-            throw new IllegalStateException( "A bad location has been added." );
+            removeMapTile( mapTileLocation );
+
+            if ( ! excludedMapTilesMap.containsKey( mapTileLocation ))
+            {
+                excludedMapTilesMap.put( mapTileLocation, new LinkedList< MapTile >() );
+            }
+
+            excludedMapTilesMap.get( mapTileLocation ).add( mapTile );
         }
     }
 
@@ -587,6 +600,12 @@ public class MapGenerator
         if (( neighbor != null ) &&
             ( ! neighbor.getMapTileEdge( MapTileEdgePosition.LEFT ).mapTileEdgeMatches(
                         mapTile.getMapTileEdge( MapTileEdgePosition.RIGHT ))))
+        {
+            return false;
+        }
+
+        if (( excludedMapTilesMap.containsKey( mapTileLocation )) &&
+            ( excludedMapTilesMap.get( mapTileLocation ).contains( mapTile )))
         {
             return false;
         }

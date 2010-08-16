@@ -67,7 +67,7 @@ public class DungeonTiles
      * Tile type representing a straight hallway.
      */
     public static final MapTileType STRAIGHT_HALLWAY_TYPE = new MapTileType(
-            "Straight Hallway", 1500,
+            "Straight Hallway", 1,
             new MapUnit[][]
             {
                 { WALL_UNIT, FLOOR_UNIT, WALL_UNIT },
@@ -96,7 +96,7 @@ public class DungeonTiles
      * Tile type representing a corner hallway.
      */
     public static final MapTileType CORNER_HALLWAY_TYPE = new MapTileType(
-            "Corner Hallway", 300,
+            "Corner Hallway", 1,
             new MapUnit[][]
             {
                 { WALL_UNIT, FLOOR_UNIT, WALL_UNIT  },
