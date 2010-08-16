@@ -1588,11 +1588,11 @@ public class MapGeneratorTest
     }
 
     /**
-     * Verify that the generate() method throws the correct exception when there are no legal map
-     * tile types that can be placed on the map.
+     * Verify that the generate() method throws the correct exception when it is impossible to add a
+     * map tile to one or more locations on the map.
      */
     @Test
-    public void generate_noLegalMapTileTypes()
+    public void generate_badLocation()
     {
         MapGenerator mapGenerator =
                 new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
@@ -1640,8 +1640,8 @@ public class MapGeneratorTest
         }
         catch ( IllegalStateException e )
         {
-            Assert.assertEquals( "Unexpected message.",
-                                 "No map tile types can be placed on the map.", e.getMessage() );
+            Assert.assertEquals( "Unexpected message.", "A bad location currently exists.",
+                                 e.getMessage() );
         }
     }
 

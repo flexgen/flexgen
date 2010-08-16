@@ -440,6 +440,11 @@ public class MapGenerator
      */
     public void generate()
     {
+        if ( badOpenLocationsExist() )
+        {
+            throw new IllegalStateException( "A bad location currently exists." );
+        }
+
         Collection< MapTileLocation > filteredOpenLocations =
                 mapTileLocationFilter.getFilteredMapTileLocations( openLocations );
 
@@ -455,12 +460,6 @@ public class MapGenerator
                 {
                     mapTileTypeChooser.addOption( mapTileType, mapTileType.getWeight() );
                 }
-            }
-
-            // ensure that at least one map tile type can be added to the map
-            if ( ! mapTileTypeChooser.optionsAvailable() )
-            {
-                throw new IllegalStateException( "No map tile types can be placed on the map." );
             }
 
             // randomly pick a map tile type
