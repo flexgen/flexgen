@@ -1398,6 +1398,47 @@ public class MapGeneratorTest
     }
 
     /**
+     * Verify that the removeMapTile() method correctly adds open locations for the map tile one
+     * down and one left from the removed map tile.
+     */
+    @Test
+    public void removeMapTile_addOpenLocation_down1_left1()
+    {
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            DungeonTiles.STRAIGHT_HALLWAY_TYPE
+        };
+
+        MapGenerator expectedMapGenerator =
+                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                                  new RectangularMapTileLocationFilter( 0, 0, 1, 1 ));
+
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 0 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 1 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+
+        MapGenerator actualMapGenerator =
+                new MapGenerator( new ImprovedRandom(), mapTileTypes,
+                                  new RectangularMapTileLocationFilter( 0, 0, 1, 1 ));
+
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 1, 0 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 0, 1 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+
+        actualMapGenerator.removeMapTile( new MapTileLocation( 1, 0 ));
+
+        actualMapGenerator.generate();
+
+        MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+    }
+
+    /**
      * Verify that the removeMapTile() method works correctly when a map tile removed listener has
      * been added to the map generator.
      */
