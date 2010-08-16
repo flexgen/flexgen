@@ -1,5 +1,4 @@
 - Milestone 2:
-  - Update open location logic to handle removing map tiles from the map.
   - Map examples:
     - Rivers that start in mountains, end in ocean, and don't loop.
     - Towns that are fully connected by roads.
