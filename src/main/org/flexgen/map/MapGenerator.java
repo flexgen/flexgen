@@ -395,9 +395,11 @@ public class MapGenerator
                                                    mapTileLocation.getY() ));
 
         addOpenLocations(
-                new MapTileLocation( mapTileLocation.getX(), mapTileLocation.getY() - 1 ));
+                new MapTileLocation( mapTileLocation.getX(),     mapTileLocation.getY() - 1 ));
         addOpenLocations(
-                new MapTileLocation( mapTileLocation.getX(), mapTileLocation.getY() + 1 ));
+                new MapTileLocation( mapTileLocation.getX(),     mapTileLocation.getY() + 1 ));
+        addOpenLocations(
+                new MapTileLocation( mapTileLocation.getX() - 1, mapTileLocation.getY()     ));
 
         for ( MapTileRemovedListener mapTileRemovedListener : mapTileRemovedListeners )
         {
