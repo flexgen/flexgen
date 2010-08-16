@@ -610,6 +610,67 @@ public class MapGeneratorTest
     }
 
     /**
+     * Verify that the addMapTile() method throws the correct exception when the newly added map
+     * tile makes it impossible to add a map tile to one or more locations on the map and when it is
+     * impossible to add a map tile to one or more locations on the map.
+     */
+    @Test
+    public void addMapTile_badLocation()
+    {
+        MapGenerator mapGenerator =
+                new MapGenerator( new ImprovedRandom(), RiverTiles.MAP_TILE_TYPES,
+                                  new RectangularMapTileLocationFilter( -1, -1, 1, 1 ));
+
+        mapGenerator.addMapTile(
+                new MapTileLocation( -1, -1 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( 1, -1 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( -1, 0 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( 1, 0 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( -1, 1 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( 1, 1 ),
+                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( 0, -1 ),
+                new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
+
+        try
+        {
+            mapGenerator.addMapTile(
+                    new MapTileLocation( 0, 1 ),
+                    new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalStateException e )
+        {
+            Assert.assertEquals( "Unexpected message.", "A bad location has been added.",
+                                 e.getMessage() );
+        }
+
+        try
+        {
+            mapGenerator.addMapTile(
+                    new MapTileLocation( 0, 2 ),
+                    new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalStateException e )
+        {
+            Assert.assertEquals( "Unexpected message.", "A bad location currently exists.",
+                                 e.getMessage() );
+        }
+    }
+
+    /**
      * Verify that the addMapTile() method adds the specified map tile at the specified map tile
      * location.
      */
@@ -1541,9 +1602,6 @@ public class MapGeneratorTest
                 new MapTileLocation( -1, -1 ),
                 new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
         mapGenerator.addMapTile(
-                new MapTileLocation( 0, -1 ),
-                new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
-        mapGenerator.addMapTile(
                 new MapTileLocation( 1, -1 ),
                 new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
         mapGenerator.addMapTile(
@@ -1556,11 +1614,24 @@ public class MapGeneratorTest
                 new MapTileLocation( -1, 1 ),
                 new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
         mapGenerator.addMapTile(
-                new MapTileLocation( 0, 1 ),
-                new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
-        mapGenerator.addMapTile(
                 new MapTileLocation( 1, 1 ),
                 new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+        mapGenerator.addMapTile(
+                new MapTileLocation( 0, -1 ),
+                new MapTile( RiverTiles.STRAIGHT_RIVER, MapTileOrientation.UPRIGHT ));
+
+        try
+        {
+            mapGenerator.addMapTile(
+                    new MapTileLocation( 0, 1 ),
+                    new MapTile( RiverTiles.ALL_GRASS, MapTileOrientation.UPRIGHT ));
+            Assert.fail( "Expected exception." );
+        }
+        catch ( IllegalStateException e )
+        {
+            Assert.assertEquals( "Unexpected message.", "A bad location has been added.",
+                                 e.getMessage() );
+        }
 
         try
         {

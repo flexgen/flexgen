@@ -353,6 +353,11 @@ public class MapGenerator
             throw new IllegalArgumentException( "Parameter 'mapTile' cannot be null." );
         }
 
+        if ( badOpenLocationsExist() )
+        {
+            throw new IllegalStateException( "A bad location currently exists." );
+        }
+
         openLocations.remove( mapTileLocation );
         map.put( mapTileLocation, mapTile );
         addOpenLocations( mapTileLocation );
@@ -360,6 +365,11 @@ public class MapGenerator
         for ( MapTileAddedListener mapTileAddedListener : mapTileAddedListeners )
         {
             mapTileAddedListener.mapTileAdded( this, mapTileLocation );
+        }
+
+        if ( badOpenLocationsExist() )
+        {
+            throw new IllegalStateException( "A bad location has been added." );
         }
     }
 
@@ -606,5 +616,35 @@ public class MapGenerator
                 }
             }
         }
+    }
+
+    /**
+     * Get a flag indicating whether or not any bad open locations exist. A bad open location is an
+     * open location where no legal map tile can be placed there.
+     *
+     * @return True if one or more bad locations exist, false otherwise.
+     */
+    private boolean badOpenLocationsExist()
+    {
+start:  for ( MapTileLocation mapTileLocation : openLocations )
+        {
+            for ( MapTileType mapTileType : mapTileTypes )
+            {
+                for ( MapTileOrientation mapTileOrientation :
+                        mapTileType.getDistinctMapTileOrientations() )
+                {
+                    if ( legalMapTilePlacement(
+                            mapTileType, new MapTilePosition( mapTileLocation,
+                                                              mapTileOrientation )))
+                    {
+                        continue start;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }
