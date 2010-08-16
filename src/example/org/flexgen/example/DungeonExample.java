@@ -568,7 +568,10 @@ public class DungeonExample
 
         MapGenerator mapGenerator =
                 new MapGenerator( new ImprovedRandom(), MAP_TILE_TYPES, -10, -10, 10, 10 );
-        mapGenerator.addMapTileAddedListener( new MapRenderer( dirName + "/", 5, COLOR_MAP ));
+
+        MapRenderer mapRenderer = new MapRenderer( dirName + "/", 5, COLOR_MAP );
+        mapGenerator.addMapTileAddedListener( mapRenderer );
+        mapGenerator.addMapTileRemovedListener( mapRenderer );
 
         mapGenerator.addMapTile( new MapTileLocation( 0, 0 ),
                                  new MapTile( OPEN_FLOOR_TYPE, MapTileOrientation.UPRIGHT ));

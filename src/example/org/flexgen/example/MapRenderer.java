@@ -47,12 +47,13 @@ import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTile;
 import org.flexgen.map.MapTileAddedListener;
 import org.flexgen.map.MapTileLocation;
+import org.flexgen.map.MapTileRemovedListener;
 import org.flexgen.map.MapUnit;
 
 /**
  * Class implementing logic for rendering a map to an image.
  */
-public class MapRenderer implements MapTileAddedListener
+public class MapRenderer implements MapTileAddedListener, MapTileRemovedListener
 {
     /**
      * Prefix to use for file names.
@@ -96,10 +97,20 @@ public class MapRenderer implements MapTileAddedListener
      */
     public void mapTileAdded( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
     {
-        SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyyMMddHHmmssSSS" );
-        GregorianCalendar now = new GregorianCalendar();
-        String fileName = fileNamePrefix + dateFormat.format( now.getTime() ) + ".png";
-        render( mapGenerator, fileName );
+        render( mapGenerator );
+    }
+
+    /**
+     * Informs the listener that a map tile has been removed at the specified location.
+     *
+     * @param mapGenerator
+     *            Map generator that removed the map tile.
+     * @param mapTileLocation
+     *            Location at which the map tile was removed.
+     */
+    public void mapTileRemoved( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
+    {
+        render( mapGenerator );
     }
 
     /**
@@ -107,11 +118,14 @@ public class MapRenderer implements MapTileAddedListener
      *
      * @param mapGenerator
      *            Map generator containing the map to render.
-     * @param fileName
-     *            File name to use.
      */
-    private void render( MapGenerator mapGenerator, String fileName )
+    private void render( MapGenerator mapGenerator )
     {
+        // determine the file name for the map
+        SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyyMMddHHmmssSSS" );
+        GregorianCalendar now = new GregorianCalendar();
+        String fileName = fileNamePrefix + dateFormat.format( now.getTime() ) + ".png";
+
         // get needed information about the map
         int minX     = mapGenerator.getMinX();
         int minY     = mapGenerator.getMinY();
