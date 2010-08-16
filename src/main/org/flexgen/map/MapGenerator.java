@@ -355,15 +355,7 @@ public class MapGenerator
 
         openLocations.remove( mapTileLocation );
         map.put( mapTileLocation, mapTile );
-
-        for ( MapTileLocation neighborLocation :
-                mapTileLocation.getNeighborLocations( mapTile.getOpenMapTileEdgePositions() ))
-        {
-            if ( ! map.containsKey( neighborLocation ))
-            {
-                openLocations.add( neighborLocation );
-            }
-        }
+        addOpenLocations( mapTileLocation );
 
         for ( MapTileAddedListener mapTileAddedListener : mapTileAddedListeners )
         {
@@ -401,6 +393,9 @@ public class MapGenerator
                                                    mapTileLocation.getY() ));
         openLocations.remove( new MapTileLocation( mapTileLocation.getX() + 1,
                                                    mapTileLocation.getY() ));
+
+        addOpenLocations(
+                new MapTileLocation( mapTileLocation.getX(), mapTileLocation.getY() - 1 ));
 
         for ( MapTileRemovedListener mapTileRemovedListener : mapTileRemovedListeners )
         {
@@ -566,5 +561,28 @@ public class MapGenerator
         }
 
         return true;
+    }
+
+    /**
+     * Add open locations for the map tile at the specified map tile location.
+     *
+     * @param mapTileLocation
+     *            Map tile location specifying the map tile for which to add open locations.
+     */
+    private void addOpenLocations( MapTileLocation mapTileLocation )
+    {
+        MapTile mapTile = map.get( mapTileLocation );
+
+        if ( mapTile != null )
+        {
+            for ( MapTileLocation neighborLocation :
+                    mapTileLocation.getNeighborLocations( mapTile.getOpenMapTileEdgePositions() ))
+            {
+                if ( ! map.containsKey( neighborLocation ))
+                {
+                    openLocations.add( neighborLocation );
+                }
+            }
+        }
     }
 }
