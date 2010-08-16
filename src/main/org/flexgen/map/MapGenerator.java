@@ -385,14 +385,14 @@ public class MapGenerator
 
         map.remove( mapTileLocation );
 
-        openLocations.remove( new MapTileLocation( mapTileLocation.getX(),
-                                                   mapTileLocation.getY() - 1 ));
-        openLocations.remove( new MapTileLocation( mapTileLocation.getX(),
-                                                   mapTileLocation.getY() + 1 ));
-        openLocations.remove( new MapTileLocation( mapTileLocation.getX() - 1,
-                                                   mapTileLocation.getY() ));
-        openLocations.remove( new MapTileLocation( mapTileLocation.getX() + 1,
-                                                   mapTileLocation.getY() ));
+        openLocations.remove(
+                new MapTileLocation( mapTileLocation.getX(),     mapTileLocation.getY() - 1 ));
+        openLocations.remove(
+                new MapTileLocation( mapTileLocation.getX(),     mapTileLocation.getY() + 1 ));
+        openLocations.remove(
+                new MapTileLocation( mapTileLocation.getX() - 1, mapTileLocation.getY()     ));
+        openLocations.remove(
+                new MapTileLocation( mapTileLocation.getX() + 1, mapTileLocation.getY()     ));
 
         addOpenLocations(
                 new MapTileLocation( mapTileLocation.getX(),     mapTileLocation.getY() - 1 ));
