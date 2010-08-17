@@ -10,6 +10,11 @@ Version 1.1.0
     - Added ability to arbitrarily specify open edges for map tiles.
     - Removed ability to add "null" map tiles to the map.
     - Added ability to remove map tiles from the map.
+    - Added logic to deal with situations where it is impossible to
+      place a map tile in a certain location in the map because no map
+      tile type in any orientation can fit in that location. When this
+      situation occurs, map tiles are removed from the map in the order
+      in which they were added until the situation is resolved.
 
 Version 1.0.0
     - Initial FlexGen release.
