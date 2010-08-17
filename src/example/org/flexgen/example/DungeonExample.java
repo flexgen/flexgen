@@ -45,6 +45,7 @@ import org.flexgen.map.MapTileLocation;
 import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
+import org.flexgen.map.RectangularMapTileLocationFilter;
 import org.flexgen.util.ImprovedRandom;
 
 /**
@@ -566,11 +567,15 @@ public class DungeonExample
         File dir = new File( dirName );
         dir.mkdirs();
 
-        MapGenerator mapGenerator =
-                new MapGenerator( new ImprovedRandom(), MAP_TILE_TYPES, -10, -10, 10, 10 );
+        LocalMapTileLocationFilter localMapTileLocationFilter = new LocalMapTileLocationFilter(
+                new RectangularMapTileLocationFilter( -10, -10, 10, 10 ));
+
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), MAP_TILE_TYPES, localMapTileLocationFilter );
 
         MapRenderer mapRenderer = new MapRenderer( dirName + "/", 5, COLOR_MAP );
         mapGenerator.addMapTileAddedListener( mapRenderer );
+        mapGenerator.addMapTileAddedListener( localMapTileLocationFilter );
         mapGenerator.addMapTileRemovedListener( mapRenderer );
 
         mapGenerator.addMapTile( new MapTileLocation( 0, 0 ),
