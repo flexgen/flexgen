@@ -1836,7 +1836,10 @@ public class MapGeneratorTest
     {
         MapGenerator expectedMapGenerator =
                 new MapGenerator( new ImprovedRandom(), DungeonTiles.MAP_TILE_TYPES,
-                                  new RectangularMapTileLocationFilter( 0, 0, 2, 2 ));
+                                  new RectangularMapTileLocationFilter( 0, 0, 2, 3 ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 2, 3 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
         expectedMapGenerator.addMapTile(
                 new MapTileLocation( 2, 2 ),
                 new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
@@ -1857,9 +1860,12 @@ public class MapGeneratorTest
                 new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
         expectedMapGenerator.addMapTile(
                 new MapTileLocation( 0, 2 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 3 ),
                 new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
         expectedMapGenerator.addMapTile(
-                new MapTileLocation( 1, 2 ),
+                new MapTileLocation( 1, 3 ),
                 new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.FLIPPED ));
 
         TestImprovedRandom testImprovedRandom = new TestImprovedRandom();
@@ -1867,10 +1873,15 @@ public class MapGeneratorTest
         testImprovedRandom.addTransaction( 1 );
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
 
         MapGenerator actualMapGenerator =
                 new MapGenerator( testImprovedRandom, DungeonTiles.MAP_TILE_TYPES,
-                                  new RectangularMapTileLocationFilter( 0, 0, 2, 2 ));
+                                  new RectangularMapTileLocationFilter( 0, 0, 2, 3 ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 2, 3 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
         actualMapGenerator.addMapTile(
                 new MapTileLocation( 2, 2 ),
                 new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
@@ -1891,6 +1902,9 @@ public class MapGeneratorTest
                 new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
         actualMapGenerator.addMapTile(
                 new MapTileLocation( 0, 2 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 0, 3 ),
                 new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
 
         actualMapGenerator.generate();

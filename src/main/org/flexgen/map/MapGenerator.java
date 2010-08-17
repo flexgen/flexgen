@@ -70,6 +70,11 @@ public class MapGenerator
     private final Map< MapTileLocation, MapTile > map;
 
     /**
+     * Data structure tracking when each map tile location was added to the map.
+     */
+    private final Map< MapTileLocation, Integer > mapAge;
+
+    /**
      * Set of open locations on the map.
      */
     private final Set< MapTileLocation > openLocations;
@@ -93,6 +98,11 @@ public class MapGenerator
      * The size of the map unit array that defines the map tile types used by this map generator.
      */
     private final int tileSize;
+
+    /**
+     * Counter tracking the age of map tile locations as they are added to the map.
+     */
+    private int ageCounter;
 
     /**
      * Construct a map generator.
@@ -172,11 +182,13 @@ public class MapGenerator
         this.mapTileTypes            = mapTileTypes;
         this.mapTileLocationFilter   = mapTileLocationFilter;
         this.map                     = new HashMap< MapTileLocation, MapTile >();
+        this.mapAge                  = new HashMap< MapTileLocation, Integer >();
         this.openLocations           = new HashSet< MapTileLocation >();
         this.excludedMapTilesMap     = new HashMap< MapTileLocation, Collection< MapTile > >();
         this.mapTileAddedListeners   = new LinkedList< MapTileAddedListener >();
         this.mapTileRemovedListeners = new LinkedList< MapTileRemovedListener >();
         this.tileSize                = tileSize;
+        this.ageCounter              = 0;
     }
 
     /**
@@ -366,6 +378,7 @@ public class MapGenerator
 
         openLocations.remove( mapTileLocation );
         map.put( mapTileLocation, mapTile );
+        mapAge.put( mapTileLocation, ageCounter++ );
         addOpenLocations( mapTileLocation );
 
         for ( MapTileAddedListener mapTileAddedListener : mapTileAddedListeners )
@@ -373,16 +386,74 @@ public class MapGenerator
             mapTileAddedListener.mapTileAdded( this, mapTileLocation );
         }
 
-        if ( badOpenLocationsExist() )
-        {
-            removeMapTile( mapTileLocation );
+        boolean done = ! badOpenLocationsExist();
+        MapTileLocation localMapTileLocation = mapTileLocation;
 
-            if ( ! excludedMapTilesMap.containsKey( mapTileLocation ))
+        while ( ! done )
+        {
+            MapTile localMapTile = map.get( localMapTileLocation );
+            removeMapTile( localMapTileLocation );
+
+            if ( ! excludedMapTilesMap.containsKey( localMapTileLocation ))
             {
-                excludedMapTilesMap.put( mapTileLocation, new LinkedList< MapTile >() );
+                excludedMapTilesMap.put( localMapTileLocation, new LinkedList< MapTile >() );
             }
 
-            excludedMapTilesMap.get( mapTileLocation ).add( mapTile );
+            excludedMapTilesMap.get( localMapTileLocation ).add( localMapTile );
+
+            if ( badOpenLocationsExist() )
+            {
+                excludedMapTilesMap.remove( localMapTileLocation );
+
+                MapTileLocation mostRecentMapTileLocation = null;
+                MapTileLocation tempMapTileLocation;
+
+                tempMapTileLocation = new MapTileLocation(
+                        localMapTileLocation.getX(), localMapTileLocation.getY() - 1 );
+                if (( mapAge.containsKey( tempMapTileLocation )) &&
+                    (( mostRecentMapTileLocation == null ) ||
+                     ( mapAge.get( mostRecentMapTileLocation ) <
+                       mapAge.get( tempMapTileLocation ))))
+                {
+                    mostRecentMapTileLocation = tempMapTileLocation;
+                }
+
+                tempMapTileLocation = new MapTileLocation(
+                        localMapTileLocation.getX(), localMapTileLocation.getY() + 1 );
+                if (( mapAge.containsKey( tempMapTileLocation )) &&
+                    (( mostRecentMapTileLocation == null ) ||
+                     ( mapAge.get( mostRecentMapTileLocation ) <
+                       mapAge.get( tempMapTileLocation ))))
+                {
+                    mostRecentMapTileLocation = tempMapTileLocation;
+                }
+
+                tempMapTileLocation = new MapTileLocation(
+                        localMapTileLocation.getX() - 1, localMapTileLocation.getY() );
+                if (( mapAge.containsKey( tempMapTileLocation )) &&
+                    (( mostRecentMapTileLocation == null ) ||
+                     ( mapAge.get( mostRecentMapTileLocation ) <
+                       mapAge.get( tempMapTileLocation ))))
+                {
+                    mostRecentMapTileLocation = tempMapTileLocation;
+                }
+
+                tempMapTileLocation = new MapTileLocation(
+                        localMapTileLocation.getX() + 1, localMapTileLocation.getY() );
+                if (( mapAge.containsKey( tempMapTileLocation )) &&
+                    (( mostRecentMapTileLocation == null ) ||
+                     ( mapAge.get( mostRecentMapTileLocation ) <
+                       mapAge.get( tempMapTileLocation ))))
+                {
+                    mostRecentMapTileLocation = tempMapTileLocation;
+                }
+
+                localMapTileLocation = mostRecentMapTileLocation;
+            }
+            else
+            {
+                done = true;
+            }
         }
     }
 
@@ -407,6 +478,7 @@ public class MapGenerator
         }
 
         map.remove( mapTileLocation );
+        mapAge.remove( mapTileLocation );
 
         openLocations.remove(
                 new MapTileLocation( mapTileLocation.getX(),     mapTileLocation.getY() - 1 ));
@@ -453,16 +525,16 @@ public class MapGenerator
      */
     public void generate()
     {
-        if ( badOpenLocationsExist() )
-        {
-            throw new IllegalStateException( "A bad location currently exists." );
-        }
-
         Collection< MapTileLocation > filteredOpenLocations =
                 mapTileLocationFilter.getFilteredMapTileLocations( openLocations );
 
         while ( ! filteredOpenLocations.isEmpty() )
         {
+            if ( badOpenLocationsExist() )
+            {
+                throw new IllegalStateException( "A bad location currently exists." );
+            }
+
             Chooser< MapTileType > mapTileTypeChooser =
                     new Chooser< MapTileType >( improvedRandom );
 
