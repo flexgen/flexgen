@@ -124,15 +124,6 @@ public class DungeonTiles
             } );
 
     /**
-     * Array of all map tile types for this helper.
-     */
-    public static final MapTileType[] MAP_TILE_TYPES = new MapTileType[]
-    {
-        STRAIGHT_HALLWAY_TYPE,
-        CORNER_HALLWAY_TYPE
-    };
-
-    /**
      * Private constructor to keep this class from being instantiated since all methods are static.
      */
     private DungeonTiles()
