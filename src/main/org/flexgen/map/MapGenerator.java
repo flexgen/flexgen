@@ -371,11 +371,6 @@ public class MapGenerator
             throw new IllegalArgumentException( "Parameter 'mapTile' cannot be null." );
         }
 
-        if ( badOpenLocationsExist() )
-        {
-            throw new IllegalStateException( "A bad location currently exists." );
-        }
-
         openLocations.remove( mapTileLocation );
         map.put( mapTileLocation, mapTile );
         mapAge.put( mapTileLocation, ageCounter++ );
@@ -530,11 +525,6 @@ public class MapGenerator
 
         while ( ! filteredOpenLocations.isEmpty() )
         {
-            if ( badOpenLocationsExist() )
-            {
-                throw new IllegalStateException( "A bad location currently exists." );
-            }
-
             Chooser< MapTileType > mapTileTypeChooser =
                     new Chooser< MapTileType >( improvedRandom );
 
