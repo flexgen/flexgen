@@ -124,6 +124,38 @@ public class DungeonTiles
             } );
 
     /**
+     * Tile type representing a hallway with a three-way intersection.
+     */
+    public static final MapTileType THREE_WAY_HALLWAY_TYPE = new MapTileType(
+            "Three-Way Hallway", 1,
+            new MapUnit[][]
+            {
+                { WALL_UNIT,  FLOOR_UNIT, WALL_UNIT  },
+                { FLOOR_UNIT, FLOOR_UNIT, FLOOR_UNIT },
+                { WALL_UNIT,  WALL_UNIT,  WALL_UNIT  }
+            },
+            new MapTileEdge[]
+            {
+                HALLWAY_EDGE,
+                HALLWAY_EDGE,
+                WALL_EDGE,
+                HALLWAY_EDGE
+            },
+            new MapTileOrientation[]
+            {
+                MapTileOrientation.UPRIGHT,
+                MapTileOrientation.CLOCKWISE,
+                MapTileOrientation.FLIPPED,
+                MapTileOrientation.COUNTER_CLOCKWISE
+            },
+            new MapTileEdgePosition[]
+            {
+                MapTileEdgePosition.TOP,
+                MapTileEdgePosition.RIGHT,
+                MapTileEdgePosition.LEFT
+            } );
+
+    /**
      * Private constructor to keep this class from being instantiated since all methods are static.
      */
     private DungeonTiles()

@@ -1739,24 +1739,13 @@ public class MapGeneratorTest
         MapTileType[] mapTileTypes = new MapTileType[]
         {
             DungeonTiles.STRAIGHT_HALLWAY_TYPE,
-            DungeonTiles.CORNER_HALLWAY_TYPE
+            DungeonTiles.CORNER_HALLWAY_TYPE,
+            DungeonTiles.THREE_WAY_HALLWAY_TYPE
         };
 
         MapGenerator expectedMapGenerator =
                 new MapGenerator( new ImprovedRandom(), mapTileTypes,
-                                  new RectangularMapTileLocationFilter( 0, 0, 2, 3 ));
-        expectedMapGenerator.addMapTile(
-                new MapTileLocation( 2, 3 ),
-                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
-        expectedMapGenerator.addMapTile(
-                new MapTileLocation( 2, 2 ),
-                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
-        expectedMapGenerator.addMapTile(
-                new MapTileLocation( 2, 1 ),
-                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
-        expectedMapGenerator.addMapTile(
-                new MapTileLocation( 2, 0 ),
-                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.FLIPPED ));
+                                  new RectangularMapTileLocationFilter( 0, 0, 7, 5 ));
         expectedMapGenerator.addMapTile(
                 new MapTileLocation( 1, 0 ),
                 new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
@@ -1771,34 +1760,135 @@ public class MapGeneratorTest
                 new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
         expectedMapGenerator.addMapTile(
                 new MapTileLocation( 0, 3 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 4 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 0, 5 ),
                 new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
         expectedMapGenerator.addMapTile(
-                new MapTileLocation( 1, 3 ),
+                new MapTileLocation( 1, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 2, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 3, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 4, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 5, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 6, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 7, 5 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE,
+                             MapTileOrientation.COUNTER_CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 7, 4 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 7, 3 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 7, 2 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 7, 1 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 7, 0 ),
                 new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.FLIPPED ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 6, 0 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 5, 0 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 4, 0 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 3, 0 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 2, 0 ),
+                new MapTile( DungeonTiles.THREE_WAY_HALLWAY_TYPE, MapTileOrientation.FLIPPED ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 2, 1 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 2, 2 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 2, 3 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 3, 3 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 4, 3 ),
+                new MapTile( DungeonTiles.THREE_WAY_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 5, 3 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE,
+                             MapTileOrientation.COUNTER_CLOCKWISE ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 5, 2 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.FLIPPED ));
+        expectedMapGenerator.addMapTile(
+                new MapTileLocation( 4, 2 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
 
         TestImprovedRandom testImprovedRandom = new TestImprovedRandom();
+
+        testImprovedRandom.addTransaction( 1 );
+        testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 1 );
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 1 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
 
         MapGenerator actualMapGenerator =
                 new MapGenerator( testImprovedRandom, mapTileTypes,
-                                  new RectangularMapTileLocationFilter( 0, 0, 2, 3 ));
-        actualMapGenerator.addMapTile(
-                new MapTileLocation( 2, 3 ),
-                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
-        actualMapGenerator.addMapTile(
-                new MapTileLocation( 2, 2 ),
-                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
-        actualMapGenerator.addMapTile(
-                new MapTileLocation( 2, 1 ),
-                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
-        actualMapGenerator.addMapTile(
-                new MapTileLocation( 2, 0 ),
-                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.FLIPPED ));
+                                  new RectangularMapTileLocationFilter( 0, 0, 7, 5 ));
         actualMapGenerator.addMapTile(
                 new MapTileLocation( 1, 0 ),
                 new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
@@ -1813,7 +1903,87 @@ public class MapGeneratorTest
                 new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
         actualMapGenerator.addMapTile(
                 new MapTileLocation( 0, 3 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 0, 4 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 0, 5 ),
                 new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 1, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 2, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 3, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 4, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 5, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 6, 5 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 7, 5 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE,
+                             MapTileOrientation.COUNTER_CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 7, 4 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 7, 3 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 7, 2 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 7, 1 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 7, 0 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.FLIPPED ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 6, 0 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 5, 0 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 4, 0 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 3, 0 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 2, 0 ),
+                new MapTile( DungeonTiles.THREE_WAY_HALLWAY_TYPE, MapTileOrientation.FLIPPED ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 2, 1 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 2, 2 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 2, 3 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 3, 3 ),
+                new MapTile( DungeonTiles.STRAIGHT_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 4, 3 ),
+                new MapTile( DungeonTiles.THREE_WAY_HALLWAY_TYPE, MapTileOrientation.UPRIGHT ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 5, 3 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE,
+                             MapTileOrientation.COUNTER_CLOCKWISE ));
+        actualMapGenerator.addMapTile(
+                new MapTileLocation( 5, 2 ),
+                new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.FLIPPED ));
 
         actualMapGenerator.generate();
 
