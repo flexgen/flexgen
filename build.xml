@@ -270,6 +270,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <batchtest>
                 <fileset dir="${dir.src.test}">
                     <include name="**/*Test.java" />
+                    <include name="**/*Test_*.java" />
                 </fileset>
             </batchtest>
             <formatter type="brief" usefile="false" />

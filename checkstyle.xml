@@ -97,7 +97,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <module name="PackageName" />
         <module name="ParameterName" />
         <module name="StaticVariableName" />
-        <module name="TypeName" />
+        <module name="TypeName">
+            <property name="format" value="^[A-z][a-zA-Z0-9]*(_[A-z][a-zA-Z0-9]*)*$" />
+        </module>
 
         <!-- Checks for imports                              -->
         <!-- See http://checkstyle.sf.net/config_import.html -->
