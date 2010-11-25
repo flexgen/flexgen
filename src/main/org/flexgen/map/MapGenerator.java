@@ -405,40 +405,32 @@ public class MapGenerator
 
                 tempMapTileLocation = new MapTileLocation(
                         localMapTileLocation.getX(), localMapTileLocation.getY() - 1 );
-                if (( mapAge.containsKey( tempMapTileLocation )) &&
-                    (( mostRecentMapTileLocation == null ) ||
-                     ( mapAge.get( mostRecentMapTileLocation ) <
-                       mapAge.get( tempMapTileLocation ))))
+
+                if ( compareMapTileLocationAge( tempMapTileLocation, mostRecentMapTileLocation ))
                 {
                     mostRecentMapTileLocation = tempMapTileLocation;
                 }
 
                 tempMapTileLocation = new MapTileLocation(
                         localMapTileLocation.getX(), localMapTileLocation.getY() + 1 );
-                if (( mapAge.containsKey( tempMapTileLocation )) &&
-                    (( mostRecentMapTileLocation == null ) ||
-                     ( mapAge.get( mostRecentMapTileLocation ) <
-                       mapAge.get( tempMapTileLocation ))))
+
+                if ( compareMapTileLocationAge( tempMapTileLocation, mostRecentMapTileLocation ))
                 {
                     mostRecentMapTileLocation = tempMapTileLocation;
                 }
 
                 tempMapTileLocation = new MapTileLocation(
                         localMapTileLocation.getX() - 1, localMapTileLocation.getY() );
-                if (( mapAge.containsKey( tempMapTileLocation )) &&
-                    (( mostRecentMapTileLocation == null ) ||
-                     ( mapAge.get( mostRecentMapTileLocation ) <
-                       mapAge.get( tempMapTileLocation ))))
+
+                if ( compareMapTileLocationAge( tempMapTileLocation, mostRecentMapTileLocation ))
                 {
                     mostRecentMapTileLocation = tempMapTileLocation;
                 }
 
                 tempMapTileLocation = new MapTileLocation(
                         localMapTileLocation.getX() + 1, localMapTileLocation.getY() );
-                if (( mapAge.containsKey( tempMapTileLocation )) &&
-                    (( mostRecentMapTileLocation == null ) ||
-                     ( mapAge.get( mostRecentMapTileLocation ) <
-                       mapAge.get( tempMapTileLocation ))))
+
+                if ( compareMapTileLocationAge( tempMapTileLocation, mostRecentMapTileLocation ))
                 {
                     mostRecentMapTileLocation = tempMapTileLocation;
                 }
@@ -726,5 +718,23 @@ start:  for ( MapTileLocation mapTileLocation : openLocations )
         }
 
         return false;
+    }
+
+    /**
+     * Compares the age of two map tile locations.
+     *
+     * @param mapTileLocation1
+     *            The first map tile location to compare.
+     * @param mapTileLocation2
+     *            The second map tile location to compare.
+     *
+     * @return True if the first map location exists and is newer than the second map location.
+     */
+    private boolean compareMapTileLocationAge( MapTileLocation mapTileLocation1,
+                                               MapTileLocation mapTileLocation2 )
+    {
+        return (( mapAge.containsKey( mapTileLocation1 )) &&
+                (( mapTileLocation2 == null ) ||
+                 ( mapAge.get( mapTileLocation2 ) < mapAge.get( mapTileLocation1 ))));
     }
 }
