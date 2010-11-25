@@ -8,7 +8,7 @@ Version 1.1.0
       other map tile edges.
     - Added example application for creating a dungeon map.
     - Added ability to arbitrarily specify open edges for map tiles.
-    - Removed ability to add "null" map tiles to the map.
+    - Removed ability to add null map tiles to the map.
     - Added ability to remove map tiles from the map.
     - Added logic to deal with situations where it is impossible to
       place a map tile in a certain location in the map because no map
