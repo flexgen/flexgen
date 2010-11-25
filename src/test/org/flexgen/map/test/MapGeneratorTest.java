@@ -1744,6 +1744,69 @@ public class MapGeneratorTest
         };
 
         MapGenerator expectedMapGenerator =
+                generate_badLocationCorrection_getExpextedMapGenerator( mapTileTypes );
+
+        TestImprovedRandom testImprovedRandom = new TestImprovedRandom();
+
+        testImprovedRandom.addTransaction( 1 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 1 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 1 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 0 );
+
+        MapGenerator actualMapGenerator = generate_badLocationCorrection_getActualMapGenerator(
+                mapTileTypes, testImprovedRandom );
+
+        actualMapGenerator.generate();
+
+        MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+    }
+
+    /**
+     * Get the expected map generator for the generate_badLocationCorrection() test.
+     *
+     * @param mapTileTypes
+     *            Map tile types for the expected map generator.
+     *
+     * @return The expected map generator for the generate_badLocationCorrection() test.
+     */
+    private MapGenerator generate_badLocationCorrection_getExpextedMapGenerator(
+            MapTileType[] mapTileTypes )
+    {
+        MapGenerator expectedMapGenerator =
                 new MapGenerator( new ImprovedRandom(), mapTileTypes,
                                   new RectangularMapTileLocationFilter( 0, 0, 7, 5 ));
         expectedMapGenerator.addMapTile(
@@ -1845,47 +1908,22 @@ public class MapGeneratorTest
                 new MapTileLocation( 4, 2 ),
                 new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.CLOCKWISE ));
 
-        TestImprovedRandom testImprovedRandom = new TestImprovedRandom();
+        return expectedMapGenerator;
+    }
 
-        testImprovedRandom.addTransaction( 1 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 1 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 1 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
-
+    /**
+     * Get the actual map generator for the generate_badLocationCorrection() test.
+     *
+     * @param mapTileTypes
+     *            Map tile types for the actual map generator.
+     * @param testImprovedRandom
+     *            Random number generator for the actual map generator.
+     *
+     * @return The actual map generator for the generate_badLocationCorrection() test.
+     */
+    private MapGenerator generate_badLocationCorrection_getActualMapGenerator(
+            MapTileType[] mapTileTypes, TestImprovedRandom testImprovedRandom )
+    {
         MapGenerator actualMapGenerator =
                 new MapGenerator( testImprovedRandom, mapTileTypes,
                                   new RectangularMapTileLocationFilter( 0, 0, 7, 5 ));
@@ -1985,8 +2023,6 @@ public class MapGeneratorTest
                 new MapTileLocation( 5, 2 ),
                 new MapTile( DungeonTiles.CORNER_HALLWAY_TYPE, MapTileOrientation.FLIPPED ));
 
-        actualMapGenerator.generate();
-
-        MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+        return actualMapGenerator;
     }
 }
