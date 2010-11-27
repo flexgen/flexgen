@@ -386,15 +386,14 @@ public class MapGenerator
 
         while ( ! done )
         {
-            MapTile localMapTile = map.get( localMapTileLocation );
-            removeMapTile( localMapTileLocation );
-
             if ( ! excludedMapTilesMap.containsKey( localMapTileLocation ))
             {
                 excludedMapTilesMap.put( localMapTileLocation, new LinkedList< MapTile >() );
             }
 
-            excludedMapTilesMap.get( localMapTileLocation ).add( localMapTile );
+            excludedMapTilesMap.get( localMapTileLocation ).add( map.get( localMapTileLocation ));
+
+            removeNewerMapTileLocations( localMapTileLocation );
 
             if ( badOpenLocationsExist() )
             {
@@ -736,5 +735,88 @@ start:  for ( MapTileLocation mapTileLocation : openLocations )
         return (( mapAge.containsKey( mapTileLocation1 )) &&
                 (( mapTileLocation2 == null ) ||
                  ( mapAge.get( mapTileLocation2 ) < mapAge.get( mapTileLocation1 ))));
+    }
+
+    /**
+     * Remove the specified map tile location and all connected map tile locations that are newer
+     * than the specified map tile location.
+     *
+     * @param mapTileLocation
+     *            Map tile location to remove.
+     */
+    private void removeNewerMapTileLocations( MapTileLocation mapTileLocation )
+    {
+        // list of map tile locations to be removed that need to have their adjacent map tile
+        // locations checked to see if they also need to be removed
+        List< MapTileLocation > openRemovedMapTileLocationList =
+                new LinkedList< MapTileLocation >();
+
+        // list of map tile locations to be removed that have already had their adjacent map
+        // tile locations checked
+        List< MapTileLocation > closedRemovedMapTileLocationList =
+                new LinkedList< MapTileLocation >();
+
+        openRemovedMapTileLocationList.add( mapTileLocation );
+
+        while ( ! openRemovedMapTileLocationList.isEmpty() )
+        {
+            closedRemovedMapTileLocationList.addAll( openRemovedMapTileLocationList );
+
+            List< MapTileLocation > tempRemovedMapTileLocationList =
+                    new LinkedList< MapTileLocation >( openRemovedMapTileLocationList );
+
+            openRemovedMapTileLocationList.clear();
+
+            for ( MapTileLocation removedMapTileLocation : tempRemovedMapTileLocationList )
+            {
+                for ( MapTileEdgePosition mapTileEdgePosition :
+                        map.get( removedMapTileLocation ).getOpenMapTileEdgePositions() )
+                {
+                    MapTileLocation tempMapTileLocation = null;
+
+                    if ( mapTileEdgePosition.equals( MapTileEdgePosition.TOP ))
+                    {
+                        tempMapTileLocation =
+                                new MapTileLocation( removedMapTileLocation.getX(),
+                                                     removedMapTileLocation.getY() - 1 );
+                    }
+
+                    if ( mapTileEdgePosition.equals( MapTileEdgePosition.RIGHT ))
+                    {
+                        tempMapTileLocation =
+                                new MapTileLocation( removedMapTileLocation.getX() + 1,
+                                                     removedMapTileLocation.getY() );
+                    }
+
+                    if ( mapTileEdgePosition.equals( MapTileEdgePosition.BOTTOM ))
+                    {
+                        tempMapTileLocation =
+                                new MapTileLocation( removedMapTileLocation.getX(),
+                                                     removedMapTileLocation.getY() + 1 );
+                    }
+
+                    if ( mapTileEdgePosition.equals( MapTileEdgePosition.LEFT ))
+                    {
+                        tempMapTileLocation =
+                                new MapTileLocation( removedMapTileLocation.getX() - 1,
+                                                     removedMapTileLocation.getY() );
+                    }
+
+                    if (( mapAge.containsKey( tempMapTileLocation )) &&
+                        ( ! openRemovedMapTileLocationList.contains( tempMapTileLocation )) &&
+                        ( ! closedRemovedMapTileLocationList.contains( tempMapTileLocation )) &&
+                        ( mapAge.get( tempMapTileLocation ) >
+                          mapAge.get( removedMapTileLocation )))
+                    {
+                        openRemovedMapTileLocationList.add( tempMapTileLocation );
+                    }
+                }
+            }
+        }
+
+        for ( MapTileLocation removedMapTileLocation : closedRemovedMapTileLocationList )
+        {
+            removeMapTile( removedMapTileLocation );
+        }
     }
 }
