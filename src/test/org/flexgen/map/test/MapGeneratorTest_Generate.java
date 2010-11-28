@@ -248,42 +248,85 @@ public class MapGeneratorTest_Generate
 
         TestImprovedRandom testImprovedRandom = new TestImprovedRandom();
 
+        // three way hallway, (4,2), clockwise
         testImprovedRandom.addTransaction( 1 );
         testImprovedRandom.addTransaction( 0 );
+
+        // corner hallway, (4,1), flipped
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 1 );
+
+        // corner hallway, (3,1), clockwise
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // removal
+
+        // corner hallway, (4,1), clockwise
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // straight hallway, (5,1), clockwise
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // corner hallway, (6,1), flipped
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // straight hallway, (6,2), upright
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // straight hallway, (6,3), upright
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // corner hallway, (6,4), counter-clockwise
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // straight hallway, (5,4), clockwise
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // straight hallway, (4,4), clockwise
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // straight hallway, (3,4), clockwise
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // straight hallway, (2,4), clockwise
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // corner hallway, (1,4), upright
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // straight hallway, (1,3), upright
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // straight hallway, (1,2), upright
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // removal
+
+        // three way hallway, (4,1), flipped
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
+
+        // corner hallway, (3,1), clockwise
         testImprovedRandom.addTransaction( 1 );
         testImprovedRandom.addTransaction( 0 );
+
+        // removal
+
+        // corner hallway, (4,2), clockwise
         testImprovedRandom.addTransaction( 0 );
         testImprovedRandom.addTransaction( 0 );
 
