@@ -575,11 +575,13 @@ public class DungeonExample
         MapGenerator mapGenerator = new MapGenerator(
                 new ImprovedRandom(), MAP_TILE_TYPES, localMapTileLocationFilter );
 
-        MapRenderer mapRenderer = new MapRenderer( dirName + "/", 5, COLOR_MAP );
-        mapGenerator.addMapTileAddedListener( mapRenderer );
+        PartialMapRenderer partialMapRenderer =
+                new PartialMapRenderer( dirName + "/", 5, COLOR_MAP, 20, 20 );
+
+        mapGenerator.addMapTileAddedListener( partialMapRenderer );
         mapGenerator.addMapTileAddedListener( doorwayMapTileLocationFilter );
         mapGenerator.addMapTileAddedListener( localMapTileLocationFilter );
-        mapGenerator.addMapTileRemovedListener( mapRenderer );
+        mapGenerator.addMapTileRemovedListener( partialMapRenderer );
         mapGenerator.addMapTileRemovedListener( doorwayMapTileLocationFilter );
 
         mapGenerator.addMapTile( new MapTileLocation( 0, 0 ),

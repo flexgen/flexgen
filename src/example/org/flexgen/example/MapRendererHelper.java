@@ -35,105 +35,44 @@ package org.flexgen.example;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
 import java.util.Map;
-
-import javax.imageio.ImageIO;
 
 import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTile;
-import org.flexgen.map.MapTileAddedListener;
 import org.flexgen.map.MapTileLocation;
-import org.flexgen.map.MapTileRemovedListener;
 import org.flexgen.map.MapUnit;
 
 /**
- * Class implementing logic for rendering a map to an image.
+ * Helper class for rendering maps.
  */
-public class MapRenderer implements MapTileAddedListener, MapTileRemovedListener
+public class MapRendererHelper
 {
     /**
-     * Prefix to use for file names.
-     */
-    private final String fileNamePrefix;
-
-    /**
-     * The size (in pixels) of map units in rendered images.
-     */
-    private final int mapUnitSize;
-
-    /**
-     * Map of map units to colors.
-     */
-    private final Map< MapUnit, Color > colorMap;
-
-    /**
-     * Construct a map renderer.
-     *
-     * @param fileNamePrefix
-     *            Prefix to use for file names.
-     * @param mapUnitSize
-     *            The size (in pixels) of map units in rendered images.
-     * @param colorMap
-     *            Map of map units to colors.
-     */
-    public MapRenderer( String fileNamePrefix, int mapUnitSize, Map< MapUnit, Color > colorMap )
-    {
-        this.fileNamePrefix = fileNamePrefix;
-        this.mapUnitSize    = mapUnitSize;
-        this.colorMap       = colorMap;
-    }
-
-    /**
-     * Informs the listener that a map tile has been added at the specified location.
-     *
-     * @param mapGenerator
-     *            Map generator that added the map tile.
-     * @param mapTileLocation
-     *            Location at which the map tile was added.
-     */
-    public void mapTileAdded( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
-    {
-        render( mapGenerator );
-    }
-
-    /**
-     * Informs the listener that a map tile has been removed at the specified location.
-     *
-     * @param mapGenerator
-     *            Map generator that removed the map tile.
-     * @param mapTileLocation
-     *            Location at which the map tile was removed.
-     */
-    public void mapTileRemoved( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
-    {
-        render( mapGenerator );
-    }
-
-    /**
-     * Render a map to a file.
+     * Get a map rendered as an image.
      *
      * @param mapGenerator
      *            Map generator containing the map to render.
+     * @param minX
+     *            Smallest possible map tile X coordinate to render.
+     * @param minY
+     *            Smallest possible map tile Y coordinate to render.
+     * @param maxX
+     *            Largest possible map tile X coordinate to render.
+     * @param maxY
+     *            Largest possible map tile Y coordinate to render.
+     * @param mapUnitSize
+     *            Size (in pixels) of map units in the rendered image.
+     * @param colorMap
+     *            Map of map units to colors.
+     *
+     * @return Map contained in the map generator rendered as an image.
      */
-    private void render( MapGenerator mapGenerator )
+    public static BufferedImage getMapAsImage( MapGenerator mapGenerator, int minX, int minY,
+                                               int maxX, int maxY, int mapUnitSize,
+                                               Map< MapUnit, Color > colorMap )
     {
-        // determine the file name for the map
-        SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyyMMddHHmmssSSS" );
-        GregorianCalendar now = new GregorianCalendar();
-        String fileName = fileNamePrefix + dateFormat.format( now.getTime() ) + ".png";
-
-        // get needed information about the map
-        int minX     = mapGenerator.getMinX();
-        int minY     = mapGenerator.getMinY();
-        int maxX     = mapGenerator.getMaxX();
-        int maxY     = mapGenerator.getMaxY();
         int tileSize = mapGenerator.getTileSize();
 
-        // create a buffered image on which to render the map
         BufferedImage image = new BufferedImage(
                 (( maxX - minX ) + 1 ) * tileSize * mapUnitSize,
                 (( maxY - minY ) + 1 ) * tileSize * mapUnitSize,
@@ -176,15 +115,13 @@ public class MapRenderer implements MapTileAddedListener, MapTileRemovedListener
             }
         }
 
-        try
-        {
-            // save the map as a PNG
-            File file = new File( fileName );
-            ImageIO.write( image, "png", file );
-        }
-        catch ( IOException e )
-        {
-            e.printStackTrace();
-        }
+        return image;
+    }
+
+    /**
+     * Private constructor to keep this class from being instantiated since all methods are static.
+     */
+    private MapRendererHelper()
+    {
     }
 }

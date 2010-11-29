@@ -270,9 +270,9 @@ public class RiverExample
         MapGenerator mapGenerator = new MapGenerator(
                 new ImprovedRandom(), MAP_TILE_TYPES, growingMapTileLocationFilter );
 
-        MapRenderer mapRenderer = new MapRenderer( dirName + "/", 5, COLOR_MAP );
-        mapGenerator.addMapTileAddedListener( mapRenderer );
-        mapGenerator.addMapTileRemovedListener( mapRenderer );
+        FullMapRenderer fullMapRenderer = new FullMapRenderer( dirName + "/", 5, COLOR_MAP );
+        mapGenerator.addMapTileAddedListener( fullMapRenderer );
+        mapGenerator.addMapTileRemovedListener( fullMapRenderer );
 
         mapGenerator.addMapTile( new MapTileLocation( 0, 0 ),
                                  new MapTile( ALL_GRASS, MapTileOrientation.UPRIGHT ));
