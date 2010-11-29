@@ -45,7 +45,6 @@ import org.flexgen.map.MapTileLocation;
 import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
 import org.flexgen.map.MapUnit;
-import org.flexgen.map.RectangularMapTileLocationFilter;
 import org.flexgen.util.ImprovedRandom;
 
 /**
@@ -57,47 +56,47 @@ public class DungeonExample
     /**
      * Floor map unit.
      */
-    private static final MapUnit FLOOR_UNIT = new MapUnit( "Floor" );
+    public static final MapUnit FLOOR_UNIT = new MapUnit( "Floor" );
 
     /**
      * Wall map unit.
      */
-    private static final MapUnit WALL_UNIT = new MapUnit( "Wall" );
+    public static final MapUnit WALL_UNIT = new MapUnit( "Wall" );
 
     /**
      * Door map unit.
      */
-    private static final MapUnit DOOR_UNIT = new MapUnit( "Door" );
+    public static final MapUnit DOOR_UNIT = new MapUnit( "Door" );
 
     /**
      * Open tile edge.
      */
-    private static final MapTileEdge OPEN_EDGE = new MapTileEdge( "Open" );
+    public static final MapTileEdge OPEN_EDGE = new MapTileEdge( "Open" );
 
     /**
      * Left wall tile edge.
      */
-    private static final MapTileEdge LEFT_WALL_EDGE = new MapTileEdge( "Left Wall" );
+    public static final MapTileEdge LEFT_WALL_EDGE = new MapTileEdge( "Left Wall" );
 
     /**
      * Right wall tile edge.
      */
-    private static final MapTileEdge RIGHT_WALL_EDGE = new MapTileEdge( "Right Wall" );
+    public static final MapTileEdge RIGHT_WALL_EDGE = new MapTileEdge( "Right Wall" );
 
     /**
      * All wall tile edge.
      */
-    private static final MapTileEdge WALL_EDGE = new MapTileEdge( "All Wall" );
+    public static final MapTileEdge WALL_EDGE = new MapTileEdge( "All Wall" );
 
     /**
      * Hallway tile edge.
      */
-    private static final MapTileEdge HALLWAY_EDGE = new MapTileEdge( "Hallway" );
+    public static final MapTileEdge HALLWAY_EDGE = new MapTileEdge( "Hallway" );
 
     /**
      * Doorway tile edge.
      */
-    private static final MapTileEdge DOORWAY_EDGE = new MapTileEdge( "Doorway" );
+    public static final MapTileEdge DOORWAY_EDGE = new MapTileEdge( "Doorway" );
 
     static
     {
@@ -111,7 +110,7 @@ public class DungeonExample
     /**
      * Tile type representing open floor.
      */
-    private static final MapTileType OPEN_FLOOR_TYPE = new MapTileType(
+    public static final MapTileType OPEN_FLOOR_TYPE = new MapTileType(
             "Open Floor", 1000,
             new MapUnit[][]
             {
@@ -141,7 +140,7 @@ public class DungeonExample
     /**
      * Tile type representing open floor with one corner as a wall.
      */
-    private static final MapTileType ONE_CORNER_WALL_TYPE = new MapTileType(
+    public static final MapTileType ONE_CORNER_WALL_TYPE = new MapTileType(
             "One Corner Wall", 100,
             new MapUnit[][]
             {
@@ -174,7 +173,7 @@ public class DungeonExample
     /**
      * Tile type representing open floor with two corners as a wall.
      */
-    private static final MapTileType TWO_CORNER_WALL_TYPE = new MapTileType(
+    public static final MapTileType TWO_CORNER_WALL_TYPE = new MapTileType(
             "Two Corner Wall", 50,
             new MapUnit[][]
             {
@@ -205,7 +204,7 @@ public class DungeonExample
     /**
      * Tile type representing open floor with one edge as a wall.
      */
-    private static final MapTileType WALL_TYPE = new MapTileType(
+    public static final MapTileType WALL_TYPE = new MapTileType(
             "Wall", 1000,
             new MapUnit[][]
             {
@@ -237,7 +236,7 @@ public class DungeonExample
     /**
      * Tile type representing open floor with one edge as a door.
      */
-    private static final MapTileType DOORWAY_TYPE = new MapTileType(
+    public static final MapTileType DOORWAY_TYPE = new MapTileType(
             "Doorway", 100,
             new MapUnit[][]
             {
@@ -270,7 +269,7 @@ public class DungeonExample
     /**
      * Tile type representing a corner wall.
      */
-    private static final MapTileType CORNER_TYPE = new MapTileType(
+    public static final MapTileType CORNER_TYPE = new MapTileType(
             "Corner", 500,
             new MapUnit[][]
             {
@@ -301,7 +300,7 @@ public class DungeonExample
     /**
      * Tile type representing a corner wall with a door on the right side.
      */
-    private static final MapTileType RIGHT_DOOR_CORNER_TYPE = new MapTileType(
+    public static final MapTileType RIGHT_DOOR_CORNER_TYPE = new MapTileType(
             "Right Door Corner", 50,
             new MapUnit[][]
             {
@@ -333,7 +332,7 @@ public class DungeonExample
     /**
      * Tile type representing a corner wall with a door on the left side.
      */
-    private static final MapTileType LEFT_DOOR_CORNER_TYPE = new MapTileType(
+    public static final MapTileType LEFT_DOOR_CORNER_TYPE = new MapTileType(
             "Left Door Corner", 50,
             new MapUnit[][]
             {
@@ -365,7 +364,7 @@ public class DungeonExample
     /**
      * Tile type representing a corner wall with a door on both sides.
      */
-    private static final MapTileType TWO_DOOR_CORNER_TYPE = new MapTileType(
+    public static final MapTileType TWO_DOOR_CORNER_TYPE = new MapTileType(
             "Two Door Corner", 25,
             new MapUnit[][]
             {
@@ -398,7 +397,7 @@ public class DungeonExample
     /**
      * Tile type representing a straight hallway.
      */
-    private static final MapTileType STRAIGHT_HALLWAY_TYPE = new MapTileType(
+    public static final MapTileType STRAIGHT_HALLWAY_TYPE = new MapTileType(
             "Straight Hallway", 1500,
             new MapUnit[][]
             {
@@ -427,7 +426,7 @@ public class DungeonExample
     /**
      * Tile type representing a corner hallway.
      */
-    private static final MapTileType CORNER_HALLWAY_TYPE = new MapTileType(
+    public static final MapTileType CORNER_HALLWAY_TYPE = new MapTileType(
             "Corner Hallway", 300,
             new MapUnit[][]
             {
@@ -458,7 +457,7 @@ public class DungeonExample
     /**
      * Tile type representing a hallway with a three-way intersection.
      */
-    private static final MapTileType THREE_WAY_HALLWAY_TYPE = new MapTileType(
+    public static final MapTileType THREE_WAY_HALLWAY_TYPE = new MapTileType(
             "Three-Way Hallway", 50,
             new MapUnit[][]
             {
@@ -490,7 +489,7 @@ public class DungeonExample
     /**
      * Tile type representing a hallway with a four-way intersection.
      */
-    private static final MapTileType FOUR_WAY_HALLWAY_TYPE = new MapTileType(
+    public static final MapTileType FOUR_WAY_HALLWAY_TYPE = new MapTileType(
             "Four-Way Hallway", 25,
             new MapUnit[][]
             {
@@ -567,21 +566,30 @@ public class DungeonExample
         File dir = new File( dirName );
         dir.mkdirs();
 
-        LocalMapTileLocationFilter localMapTileLocationFilter = new LocalMapTileLocationFilter(
-                new RectangularMapTileLocationFilter( -10, -10, 10, 10 ));
+        DoorwayMapTileLocationFilter doorwayMapTileLocationFilter =
+                new DoorwayMapTileLocationFilter();
+
+        LocalMapTileLocationFilter localMapTileLocationFilter =
+                new LocalMapTileLocationFilter( doorwayMapTileLocationFilter );
 
         MapGenerator mapGenerator = new MapGenerator(
                 new ImprovedRandom(), MAP_TILE_TYPES, localMapTileLocationFilter );
 
         MapRenderer mapRenderer = new MapRenderer( dirName + "/", 5, COLOR_MAP );
         mapGenerator.addMapTileAddedListener( mapRenderer );
+        mapGenerator.addMapTileAddedListener( doorwayMapTileLocationFilter );
         mapGenerator.addMapTileAddedListener( localMapTileLocationFilter );
         mapGenerator.addMapTileRemovedListener( mapRenderer );
+        mapGenerator.addMapTileRemovedListener( doorwayMapTileLocationFilter );
 
         mapGenerator.addMapTile( new MapTileLocation( 0, 0 ),
                                  new MapTile( OPEN_FLOOR_TYPE, MapTileOrientation.UPRIGHT ));
 
-        mapGenerator.generate();
+        for ( int i = 0; i < 5; i++ )
+        {
+            doorwayMapTileLocationFilter.clear();
+            mapGenerator.generate();
+        }
     }
 
     /**
