@@ -640,7 +640,7 @@ public class MapGeneratorTest
     }
 
     /**
-     * Verify that the addMapTile() method works correctly when a map tile added listener has been
+     * Verify that the addMapTile() method works correctly when a "map tile added" listener has been
      * added to the map generator.
      */
     @Test
@@ -1504,7 +1504,7 @@ public class MapGeneratorTest
     }
 
     /**
-     * Verify that the removeMapTile() method works correctly when a map tile removed listener has
+     * Verify that the removeMapTile() method works correctly when a "map tile removed" listener has
      * been added to the map generator.
      */
     @Test
