@@ -33,6 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.flexgen.example;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -148,10 +149,16 @@ public class PartialMapRenderer implements MapTileAddedListener, MapTileRemovedL
         int minY = centerMapTileLocation.getY() - ( height / 2 );
         int maxX = centerMapTileLocation.getX() + ( width  / 2 );
         int maxY = centerMapTileLocation.getY() + ( height / 2 );
+        int pixelCount = mapUnitSize * mapGenerator.getTileSize();
 
         // render the map
         BufferedImage image = MapRendererHelper.getMapAsImage(
                 mapGenerator, minX, minY, maxX, maxY, mapUnitSize, colorMap );
+
+        Graphics2D graphics = image.createGraphics();
+        graphics.setColor( new Color( 255, 255, 255 ));
+        graphics.drawRect( (( width / 2 ) * pixelCount ) - 1, (( height / 2 ) * pixelCount ) - 1,
+                           pixelCount + 1, pixelCount + 1 );
 
         try
         {
