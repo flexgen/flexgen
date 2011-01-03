@@ -35,6 +35,8 @@ package org.flexgen.map.test.support;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.junit.Assert;
+
 import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTileAddedListener;
 import org.flexgen.map.MapTileLocation;
@@ -73,6 +75,8 @@ public class TestMapTileAddedListener implements MapTileAddedListener
      */
     public void mapTileAdded( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
     {
+        Assert.assertNotNull( "Expected map tile to not be null.",
+                              mapGenerator.getMapTile( mapTileLocation ));
         mapTileLocations.add( mapTileLocation );
         mapGenerators.add( mapGenerator );
     }
