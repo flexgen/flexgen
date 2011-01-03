@@ -17,6 +17,8 @@ Version 1.1.0
       in which they were added until the situation is resolved.
     - Added event listener for being notified of a map tile about to be
       added to a map.
+    - Added event listener for being notified of a map tile about to be
+      removed from a map.
 
 Version 1.0.0
     - Initial FlexGen release.

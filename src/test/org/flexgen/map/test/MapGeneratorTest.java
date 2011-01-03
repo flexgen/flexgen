@@ -44,6 +44,7 @@ import org.flexgen.map.MapTileOrientation;
 import org.flexgen.map.MapTileType;
 import org.flexgen.map.RectangularMapTileLocationFilter;
 import org.flexgen.map.test.support.TestBeforeMapTileAddedListener;
+import org.flexgen.map.test.support.TestBeforeMapTileRemovedListener;
 import org.flexgen.map.test.support.TestMapTileAddedListener;
 import org.flexgen.map.test.support.TestMapTileRemovedListener;
 import org.flexgen.test.helper.GeneralHelper;
@@ -1548,6 +1549,55 @@ public class MapGeneratorTest
         actualMapGenerator.generate();
 
         MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+    }
+
+    /**
+     * Verify that the removeMapTile() method works correctly when a "before map tile removed"
+     * listener has been added to the map generator.
+     */
+    @Test
+    public void removeMapTile_beforeMapTileRemovedListener()
+    {
+        MapTileType mapTileType = MapTileTypeHelper.build();
+        MapTileOrientation mapTileOrientation = MapTileOrientationHelper.getRandomOrientation();
+        MapTile mapTile = new MapTile( mapTileType, mapTileOrientation );
+
+        MapTileLocation mapTileLocation = MapTileLocationHelper.build();
+
+        MapTileType[] mapTileTypes = new MapTileType[]
+        {
+            mapTileType
+        };
+
+        MapGenerator mapGenerator = new MapGenerator(
+                new ImprovedRandom(), mapTileTypes,
+                new RectangularMapTileLocationFilter(
+                        mapTileLocation.getX(), mapTileLocation.getY(),
+                        mapTileLocation.getX(), mapTileLocation.getY() ));
+
+        TestBeforeMapTileRemovedListener beforeMapTileRemovedListener =
+                new TestBeforeMapTileRemovedListener();
+        mapGenerator.addBeforeMapTileRemovedListener( beforeMapTileRemovedListener );
+
+        mapGenerator.addMapTile( mapTileLocation, mapTile );
+        mapGenerator.removeMapTile( mapTileLocation );
+
+        List< MapTileLocation > mapTileLocations =
+                beforeMapTileRemovedListener.getMapTileLocations();
+
+        Assert.assertEquals( "Unexpected number of map tile locations.", 1,
+                             mapTileLocations.size() );
+
+        Assert.assertEquals( "Unexpected map tile location.", mapTileLocation,
+                             mapTileLocations.get( 0 ));
+
+        List< MapGenerator > mapGenerators = beforeMapTileRemovedListener.getMapGenerators();
+
+        Assert.assertEquals( "Unexpected number of map generators.", 1,
+                             mapGenerators.size() );
+
+        Assert.assertEquals( "Unexpected map generator.", mapGenerator,
+                             mapGenerators.get( 0 ));
     }
 
     /**

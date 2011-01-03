@@ -90,6 +90,11 @@ public class MapGenerator
     private final List< BeforeMapTileAddedListener > beforeMapTileAddedListeners;
 
     /**
+     * List of "before map tile removed" listeners.
+     */
+    private final List< BeforeMapTileRemovedListener > beforeMapTileRemovedListeners;
+
+    /**
      * List of "map tile added" listeners.
      */
     private final List< MapTileAddedListener > mapTileAddedListeners;
@@ -183,18 +188,20 @@ public class MapGenerator
                     "Parameter 'mapTileLocationFilter' cannot be null." );
         }
 
-        this.improvedRandom              = improvedRandom;
-        this.mapTileTypes                = mapTileTypes;
-        this.mapTileLocationFilter       = mapTileLocationFilter;
-        this.map                         = new HashMap< MapTileLocation, MapTile >();
-        this.mapAge                      = new HashMap< MapTileLocation, Integer >();
-        this.openLocations               = new HashSet< MapTileLocation >();
-        this.excludedMapTilesMap         = new HashMap< MapTileLocation, Collection< MapTile > >();
-        this.beforeMapTileAddedListeners = new LinkedList< BeforeMapTileAddedListener >();
-        this.mapTileAddedListeners       = new LinkedList< MapTileAddedListener >();
-        this.mapTileRemovedListeners     = new LinkedList< MapTileRemovedListener >();
-        this.tileSize                    = tileSize;
-        this.ageCounter                  = 0;
+        this.improvedRandom                = improvedRandom;
+        this.mapTileTypes                  = mapTileTypes;
+        this.mapTileLocationFilter         = mapTileLocationFilter;
+        this.map                           = new HashMap< MapTileLocation, MapTile >();
+        this.mapAge                        = new HashMap< MapTileLocation, Integer >();
+        this.openLocations                 = new HashSet< MapTileLocation >();
+        this.excludedMapTilesMap           = new HashMap< MapTileLocation,
+                                                          Collection< MapTile > >();
+        this.beforeMapTileAddedListeners   = new LinkedList< BeforeMapTileAddedListener >();
+        this.beforeMapTileRemovedListeners = new LinkedList< BeforeMapTileRemovedListener >();
+        this.mapTileAddedListeners         = new LinkedList< MapTileAddedListener >();
+        this.mapTileRemovedListeners       = new LinkedList< MapTileRemovedListener >();
+        this.tileSize                      = tileSize;
+        this.ageCounter                    = 0;
     }
 
     /**
@@ -327,6 +334,18 @@ public class MapGenerator
             BeforeMapTileAddedListener beforeMapTileAddedListener )
     {
         beforeMapTileAddedListeners.add( beforeMapTileAddedListener );
+    }
+
+    /**
+     * Add a new "before map tile removed" listener.
+     *
+     * @param beforeMapTileRemovedListener
+     *            The listener to add.
+     */
+    public void addBeforeMapTileRemovedListener(
+            BeforeMapTileRemovedListener beforeMapTileRemovedListener )
+    {
+        beforeMapTileRemovedListeners.add( beforeMapTileRemovedListener );
     }
 
     /**
@@ -484,6 +503,12 @@ public class MapGenerator
         {
             throw new IllegalArgumentException(
                     "Parameter 'mapTileLocation' must locate an existing map tile." );
+        }
+
+        for ( BeforeMapTileRemovedListener beforeMapTileRemovedListener :
+                beforeMapTileRemovedListeners )
+        {
+            beforeMapTileRemovedListener.beforeMapTileRemoved( this, mapTileLocation );
         }
 
         map.remove( mapTileLocation );
