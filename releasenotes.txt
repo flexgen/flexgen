@@ -15,6 +15,8 @@ Version 1.1.0
       tile type in any orientation can fit in that location. When this
       situation occurs, map tiles are removed from the map in the order
       in which they were added until the situation is resolved.
+    - Added event listener for being notified of a map tile about to be
+      added to a map.
 
 Version 1.0.0
     - Initial FlexGen release.
