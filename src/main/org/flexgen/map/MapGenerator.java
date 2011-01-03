@@ -312,7 +312,7 @@ public class MapGenerator
     }
 
     /**
-     * Add a new listener for the event of adding a map tile to the map.
+     * Add a new "map tile added" listener.
      *
      * @param mapTileAddedListener
      *            The listener to add.
@@ -323,7 +323,7 @@ public class MapGenerator
     }
 
     /**
-     * Add a new listener for the event of removing a map tile from the map.
+     * Add a new "map tile removed" listener.
      *
      * @param mapTileRemovedListener
      *            The listener to add.
