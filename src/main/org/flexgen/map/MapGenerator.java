@@ -85,12 +85,12 @@ public class MapGenerator
     private final Map< MapTileLocation, Collection< MapTile >> excludedMapTilesMap;
 
     /**
-     * List of listeners for the event of adding a map tile.
+     * List of "map tile added" listeners.
      */
     private final List< MapTileAddedListener > mapTileAddedListeners;
 
     /**
-     * List of listeners for the event of removing a map tile.
+     * List of "map tile removed" listeners.
      */
     private final List< MapTileRemovedListener > mapTileRemovedListeners;
 
