@@ -55,7 +55,7 @@ public class TestMapTileRemovedListener implements MapTileRemovedListener
     private List< MapGenerator > mapGenerators;
 
     /**
-     * Construct a test map tile removed listener.
+     * Construct a test "map tile removed" listener.
      */
     public TestMapTileRemovedListener()
     {

@@ -55,7 +55,7 @@ public class TestMapTileAddedListener implements MapTileAddedListener
     private List< MapGenerator > mapGenerators;
 
     /**
-     * Construct a test map tile added listener.
+     * Construct a test "map tile added" listener.
      */
     public TestMapTileAddedListener()
     {
