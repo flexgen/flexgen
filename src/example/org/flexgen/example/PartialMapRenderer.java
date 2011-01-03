@@ -43,6 +43,8 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import org.flexgen.map.BeforeMapTileAddedListener;
+import org.flexgen.map.BeforeMapTileRemovedListener;
 import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTileAddedListener;
 import org.flexgen.map.MapTileLocation;
@@ -52,7 +54,8 @@ import org.flexgen.map.MapUnit;
 /**
  * Class implementing logic for rendering a portion of a map to an image.
  */
-public class PartialMapRenderer implements MapTileAddedListener, MapTileRemovedListener
+public class PartialMapRenderer implements BeforeMapTileAddedListener, BeforeMapTileRemovedListener,
+                                           MapTileAddedListener, MapTileRemovedListener
 {
     /**
      * Prefix to use for file names.
@@ -80,6 +83,16 @@ public class PartialMapRenderer implements MapTileAddedListener, MapTileRemovedL
     private final int height;
 
     /**
+     * X coordinate of the current focus of the map renderer.
+     */
+    private int focusX;
+
+    /**
+     * Y coordinate of the current focus of the map renderer.
+     */
+    private int focusY;
+
+    /**
      * Construct a partial map renderer.
      *
      * @param fileNamePrefix
@@ -101,6 +114,34 @@ public class PartialMapRenderer implements MapTileAddedListener, MapTileRemovedL
         this.colorMap       = colorMap;
         this.width          = width;
         this.height         = height;
+        this.focusX         = 0;
+        this.focusY         = 0;
+    }
+
+    /**
+     * Informs the listener that a map tile will be added at the specified location.
+     *
+     * @param mapGenerator
+     *            Map generator that will add the map tile.
+     * @param mapTileLocation
+     *            Location at which the map tile will be added.
+     */
+    public void beforeMapTileAdded( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
+    {
+        adjustFocus( mapGenerator, mapTileLocation );
+    }
+
+    /**
+     * Informs the listener that a map tile will be removed at the specified location.
+     *
+     * @param mapGenerator
+     *            Map generator that will remove the map tile.
+     * @param mapTileLocation
+     *            Location at which the map tile will be removed.
+     */
+    public void beforeMapTileRemoved( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
+    {
+        adjustFocus( mapGenerator, mapTileLocation );
     }
 
     /**
@@ -127,6 +168,42 @@ public class PartialMapRenderer implements MapTileAddedListener, MapTileRemovedL
     public void mapTileRemoved( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
     {
         render( mapGenerator, mapTileLocation );
+    }
+
+    /**
+     * Adjust the focus of the map renderer to center on the specified map tile location.
+     *
+     * @param mapGenerator
+     *            Map generator containing the map to render.
+     * @param mapTileLocation
+     *            Location at which to focus the map renderer.
+     */
+    private void adjustFocus( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
+    {
+        while (( focusX != mapTileLocation.getX() ) || ( focusY != mapTileLocation.getY() ))
+        {
+            if ( mapTileLocation.getX() > focusX )
+            {
+                focusX++;
+            }
+
+            if ( mapTileLocation.getX() < focusX )
+            {
+                focusX--;
+            }
+
+            if ( mapTileLocation.getY() > focusY )
+            {
+                focusY++;
+            }
+
+            if ( mapTileLocation.getY() < focusY )
+            {
+                focusY--;
+            }
+
+            render( mapGenerator, new MapTileLocation( focusX, focusY ));
+        }
     }
 
     /**

@@ -578,6 +578,8 @@ public class DungeonExample
         PartialMapRenderer partialMapRenderer =
                 new PartialMapRenderer( dirName + "/", 5, COLOR_MAP, 20, 20 );
 
+        mapGenerator.addBeforeMapTileAddedListener( partialMapRenderer );
+        mapGenerator.addBeforeMapTileRemovedListener( partialMapRenderer );
         mapGenerator.addMapTileAddedListener( partialMapRenderer );
         mapGenerator.addMapTileAddedListener( doorwayMapTileLocationFilter );
         mapGenerator.addMapTileAddedListener( localMapTileLocationFilter );
