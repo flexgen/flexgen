@@ -180,7 +180,8 @@ public class PartialMapRenderer implements BeforeMapTileAddedListener, BeforeMap
      */
     private void adjustFocus( MapGenerator mapGenerator, MapTileLocation mapTileLocation )
     {
-        while (( focusX != mapTileLocation.getX() ) || ( focusY != mapTileLocation.getY() ))
+        while (( Math.abs( focusX - mapTileLocation.getX() ) > 1 ) ||
+               ( Math.abs( focusY - mapTileLocation.getY() ) > 1 ))
         {
             if ( mapTileLocation.getX() > focusX )
             {
@@ -216,6 +217,9 @@ public class PartialMapRenderer implements BeforeMapTileAddedListener, BeforeMap
      */
     private void render( MapGenerator mapGenerator, MapTileLocation centerMapTileLocation )
     {
+        focusX = centerMapTileLocation.getX();
+        focusY = centerMapTileLocation.getY();
+
         // determine the file name for the map
         SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyyMMddHHmmssSSS" );
         GregorianCalendar now = new GregorianCalendar();
