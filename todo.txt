@@ -1,4 +1,4 @@
-- Milestone 2:
-  - Map examples:
-    - Rivers that start in mountains, end in ocean, and don't loop.
-    - Towns that are fully connected by roads.
+- Milestone 3:
+  - Rivers that start in mountains, end in ocean, and don't loop.
+- Milestone 4:
+  - Towns that are fully connected by roads.
