@@ -78,7 +78,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <property name="file.tar.cobertura"
               value="${dir.downloads}/cobertura-1.9.4.1-bin.tar.gz"                              />
     <property name="url.cobertura"
-              value="http://downloads.sourceforge.net/sourceforge/cobertura/cobertura-1.9.4.1-bin.tar.gz" />
+              value="http://downloads.sourceforge.net/project/cobertura/cobertura/1.9.4.1/cobertura-1.9.4.1-bin.tar.gz" />
     <property name="dir.cobertura"                 value="${dir.extracts}/cobertura-1.9.4.1"     />
     <property name="file.jar.cobertura"            value="${dir.cobertura}/cobertura.jar"        />
     <property name="file.data.cobertura"           value="${dir.work}/cobertura.ser"             />
