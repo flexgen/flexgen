@@ -71,7 +71,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <property name="file.zip.checkstyle"           value="${dir.downloads}/checkstyle-5.1.zip"   />
     <property name="url.checkstyle"
-              value="http://downloads.sourceforge.net/sourceforge/checkstyle/checkstyle-5.1.zip" />
+              value="http://downloads.sourceforge.net/project/checkstyle/OldFiles/5.1/checkstyle-5.1.zip" />
     <property name="file.jar.checkstyle"
               value="${dir.extracts}/checkstyle-5.1/checkstyle-all-5.1.jar"                      />
 
