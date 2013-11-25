@@ -9,64 +9,12 @@ http://www.flexgen.org/
 Overview
 ========
 
-The FlexGen project includes files that allow you to open the project in
-Eclipse and build the project using Ant. It is assumed that you have
-these tools available and are comfortable using them. Using these tools
-is not required for developing on the FlexGen project if you wish to use
-other tools.
+The FlexGen project is switching from Ant to Maven for managing its
+build process. Since this process is still ongoing, these instructions
+are not complete. These instructions will continue to be updated as the
+process proceeds.
 
 If you need any assistance with the instructions in this file, you can
 use the FlexGen developers mailing list to get the help you need:
 
 https://lists.sourceforge.net/lists/listinfo/flexgen-devel
-
-
-Prerequisites
-=============
-
-The FlexGen project uses the JUnit library for unit testing and
-Checkstyle for ensuring the source code matches the FlexGen coding
-conventions. The Ant build script supplied with FlexGen will download
-JUnit and Checkstyle for you. Any contributions to the FlexGen project
-must be unit tested and conform with the FlexGen coding conventions.
-
-
-JUnit
-=====
-
-Eclipse will complain about missing the JUnit library until you download
-JUnit using Ant. To fix this error, run the "extract.junit" target using
-Ant. After Ant has finished, refresh the FlexGen project in Eclipse to
-fix the error.
-
-
-Checkstyle
-==========
-
-There is a plug-in for Eclipse that allows you to use Checkstyle from
-within Eclipse. One such plug-in is "eclipse-cs". Instructions for
-installing the plug-in are available here:
-
-http://eclipse-cs.sourceforge.net/
-
-Follow the instructions for installing the plug-in and configuring it to
-use the FlexGen Checkstyle configuration. FlexGen currently uses version
-5.1 of Checkstyle. Make sure the Eclipse Checkstyle plug-in you use
-matches this version.
-
-
-Building
-========
-
-To build FlexGen, you can use Ant with the supplied build script. To see
-a list of of build options, use "ant usage". You will most likely be
-interested in the following build options:
-
- - jar.main             : Create a Jar of the FlexGen classes.
- - test                 : Run the FlexGen tests.
- - run.example.river    : Run the FlexGen grass and rivers example
-                          application.
- - run.example.dungegon : Run the FlexGen dungegon example application.
- - javadoc.user         : Generate the FlexGen User Javadoc
-                          documentation.
- - checkstyle           : Run Checkstyle on the FlexGen source code.
