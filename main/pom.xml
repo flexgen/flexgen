@@ -46,6 +46,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <artifactId>FlexGen</artifactId>
     <packaging>jar</packaging>
 
+    <url>http://www.flexgen.org/</url>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
