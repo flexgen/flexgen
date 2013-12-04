@@ -47,6 +47,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <packaging>jar</packaging>
 
     <url>http://www.flexgen.org/</url>
+    <inceptionYear>2009</inceptionYear>
 
     <dependencies>
         <dependency>
