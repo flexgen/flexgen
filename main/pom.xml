@@ -49,6 +49,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <url>http://www.flexgen.org/</url>
     <inceptionYear>2009</inceptionYear>
 
+    <organization>
+        <name>Jeffrey J. Weston</name>
+        <url>http://sourceforge.net/users/jjweston/</url>
+    </organization>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
