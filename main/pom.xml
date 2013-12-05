@@ -67,6 +67,54 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <url>http://sourceforge.net/p/flexgen/code/ref/master/</url>
     </scm>
 
+    <mailingLists>
+        <mailingList>
+            <name>FlexGen Announcements</name>
+            <subscribe>flexgen-announce-request@lists.sourceforge.net?subject=subscribe</subscribe>
+            <unsubscribe>
+                flexgen-announce-request@lists.sourceforge.net?subject=unsubscribe
+            </unsubscribe>
+            <post>flexgen-announce@lists.sourceforge.net</post>
+            <archive>http://sourceforge.net/p/flexgen/mailman/flexgen-announce/</archive>
+        </mailingList>
+        <mailingList>
+            <name>FlexGen Code Checkins</name>
+            <subscribe>flexgen-checkins-request@lists.sourceforge.net?subject=subscribe</subscribe>
+            <unsubscribe>
+                flexgen-checkins-request@lists.sourceforge.net?subject=unsubscribe
+            </unsubscribe>
+            <post>flexgen-checkins@lists.sourceforge.net</post>
+            <archive>http://sourceforge.net/p/flexgen/mailman/flexgen-checkins/</archive>
+        </mailingList>
+        <mailingList>
+            <name>FlexGen Developer Discussion</name>
+            <subscribe>flexgen-devel-request@lists.sourceforge.net?subject=subscribe</subscribe>
+            <unsubscribe>
+                flexgen-devel-request@lists.sourceforge.net?subject=unsubscribe
+            </unsubscribe>
+            <post>flexgen-devel@lists.sourceforge.net</post>
+            <archive>http://sourceforge.net/p/flexgen/mailman/flexgen-devel/</archive>
+        </mailingList>
+        <mailingList>
+            <name>FlexGen Tracker Submissions</name>
+            <subscribe>flexgen-tracker-request@lists.sourceforge.net?subject=subscribe</subscribe>
+            <unsubscribe>
+                flexgen-tracker-request@lists.sourceforge.net?subject=unsubscribe
+            </unsubscribe>
+            <post>flexgen-tracker@lists.sourceforge.net</post>
+            <archive>http://sourceforge.net/p/flexgen/mailman/flexgen-tracker/</archive>
+        </mailingList>
+        <mailingList>
+            <name>FlexGen User Discussion</name>
+            <subscribe>flexgen-user-request@lists.sourceforge.net?subject=subscribe</subscribe>
+            <unsubscribe>
+                flexgen-user-request@lists.sourceforge.net?subject=unsubscribe
+            </unsubscribe>
+            <post>flexgen-user@lists.sourceforge.net</post>
+            <archive>http://sourceforge.net/p/flexgen/mailman/flexgen-user/</archive>
+        </mailingList>
+    </mailingLists>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
