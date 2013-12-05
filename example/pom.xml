@@ -38,18 +38,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <parent>
         <groupId>org.flexgen</groupId>
-        <artifactId>FlexGen-root</artifactId>
+        <artifactId>flexgen-root</artifactId>
         <version>1.1.0-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>FlexGen-example</artifactId>
+    <artifactId>flexgen-example</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.flexgen</groupId>
-            <artifactId>FlexGen</artifactId>
+            <artifactId>flexgen</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
