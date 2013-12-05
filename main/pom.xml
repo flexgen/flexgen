@@ -96,15 +96,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <archive>http://sourceforge.net/p/flexgen/mailman/flexgen-devel/</archive>
         </mailingList>
         <mailingList>
-            <name>FlexGen Tracker Submissions</name>
-            <subscribe>flexgen-tracker-request@lists.sourceforge.net?subject=subscribe</subscribe>
-            <unsubscribe>
-                flexgen-tracker-request@lists.sourceforge.net?subject=unsubscribe
-            </unsubscribe>
-            <post>flexgen-tracker@lists.sourceforge.net</post>
-            <archive>http://sourceforge.net/p/flexgen/mailman/flexgen-tracker/</archive>
-        </mailingList>
-        <mailingList>
             <name>FlexGen User Discussion</name>
             <subscribe>flexgen-user-request@lists.sourceforge.net?subject=subscribe</subscribe>
             <unsubscribe>
