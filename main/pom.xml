@@ -61,6 +61,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <url>http://sourceforge.net/users/jjweston/</url>
     </organization>
 
+    <scm>
+        <connection>scm:git:git://git.code.sf.net/p/flexgen/code</connection>
+        <tag>HEAD</tag>
+        <url>http://sourceforge.net/p/flexgen/code/ref/master/</url>
+    </scm>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
