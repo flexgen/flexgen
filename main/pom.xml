@@ -62,9 +62,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </organization>
 
     <scm>
-        <connection>scm:git:git://git.code.sf.net/p/flexgen/code</connection>
+        <connection>scm:git:https://github.com/flexgen/flexgen.git</connection>
+        <developerConnection>scm:git:https://github.com/flexgen/flexgen.git</developerConnection>
         <tag>HEAD</tag>
-        <url>http://sourceforge.net/p/flexgen/code/ref/master/</url>
+        <url>https://github.com/flexgen/flexgen</url>
     </scm>
 
     <mailingLists>
