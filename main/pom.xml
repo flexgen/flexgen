@@ -112,6 +112,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <url>https://github.com/flexgen/flexgen/issues</url>
     </issueManagement>
 
+    <licenses>
+        <license>
+            <name>BSD 3-Clause License</name>
+            <url>http://www.flexgen.org/license.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
