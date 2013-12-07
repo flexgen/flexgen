@@ -120,6 +120,19 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </license>
     </licenses>
 
+    <developers>
+        <developer>
+            <id>jjweston</id>
+            <name>Jeffrey J.Weston</name>
+            <email>jjweston@gmail.com</email>
+            <url>https://github.com/jjweston</url>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>America/Los_Angeles</timezone>
+        </developer>
+    </developers>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
