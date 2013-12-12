@@ -259,7 +259,7 @@ public class RiverExample
         System.out.println();
         System.out.println( "Example Application - Grass and Rivers" );
 
-        String dirName = "work/worlds/River";
+        String dirName = "target/worlds/River";
         File dir = new File( dirName );
         dir.mkdirs();
 

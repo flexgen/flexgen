@@ -562,7 +562,7 @@ public class DungeonExample
         System.out.println();
         System.out.println( "Example Application - Dungeon" );
 
-        String dirName = "work/worlds/Dungeon";
+        String dirName = "target/worlds/Dungeon";
         File dir = new File( dirName );
         dir.mkdirs();
 
