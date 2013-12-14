@@ -115,7 +115,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <licenses>
         <license>
             <name>BSD 3-Clause License</name>
-            <url>src/site/resources/license.txt</url>
+            <url>../license.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>

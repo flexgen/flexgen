@@ -37,7 +37,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <body>
         <menu name="Main">
             <item name="Home" href="index.html" />
-            <item name="License" href="license.txt" />
         </menu>
 
         <menu ref="reports" />
