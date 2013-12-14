@@ -73,12 +73,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <profile>
             <id>run.example.river</id>
             <build>
-                <defaultGoal>exec:java</defaultGoal>
+                <defaultGoal>package</defaultGoal>
                 <plugins>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
                         <version>1.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>run.example.river</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                         <configuration>
                             <mainClass>org.flexgen.example.RiverExample</mainClass>
                         </configuration>
@@ -90,12 +99,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <profile>
             <id>run.example.dungeon</id>
             <build>
-                <defaultGoal>exec:java</defaultGoal>
+                <defaultGoal>package</defaultGoal>
                 <plugins>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
                         <version>1.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>run.example.river</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                         <configuration>
                             <mainClass>org.flexgen.example.DungeonExample</mainClass>
                         </configuration>
