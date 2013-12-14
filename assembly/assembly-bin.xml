@@ -1,0 +1,42 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+
+    <id>bin</id>
+
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+
+    <files>
+        <file>
+            <source>../main/target/flexgen-${project.version}.jar</source>
+        </file>
+        <file>
+            <source>../readme.txt</source>
+        </file>
+        <file>
+            <source>../releasenotes.txt</source>
+        </file>
+        <file>
+            <source>../main/src/site/resources/license.txt</source>
+        </file>
+    </files>
+
+    <fileSets>
+        <fileSet>
+            <outputDirectory>site</outputDirectory>
+            <directory>../main/target/site</directory>
+        </fileSet>
+        <fileSet>
+            <outputDirectory>example</outputDirectory>
+            <directory>../example</directory>
+            <excludes>
+                <exclude>.classpath</exclude>
+                <exclude>.project</exclude>
+                <exclude>target/**</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+
+</assembly>
