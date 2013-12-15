@@ -70,6 +70,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                             <finalName>flexgen-${project.version}</finalName>
                             <descriptors>
                                 <descriptor>assembly-bin.xml</descriptor>
+                                <descriptor>assembly-src.xml</descriptor>
                             </descriptors>
                             <tarLongFileMode>gnu</tarLongFileMode>
                         </configuration>
