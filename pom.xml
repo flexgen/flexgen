@@ -55,6 +55,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <profiles>
         <profile>
+            <id>run.example.river</id>
+            <build>
+                <defaultGoal>package</defaultGoal>
+            </build>
+        </profile>
+
+        <profile>
+            <id>run.example.dungeon</id>
+            <build>
+                <defaultGoal>package</defaultGoal>
+            </build>
+        </profile>
+
+        <profile>
             <id>checkstyle</id>
             <build>
                 <plugins>
