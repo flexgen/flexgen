@@ -42,4 +42,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <menu ref="reports" />
     </body>
 
+    <poweredBy>
+        <logo name="Maven"
+              href="http://maven.apache.org/"
+              img="images/logos/build-by-maven-black.png"
+              alt="Built by Maven"
+              width="90"
+              height="30"
+              title="Built by Maven" />
+    </poweredBy>
+
 </project>
