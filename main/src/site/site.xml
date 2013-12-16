@@ -37,6 +37,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <body>
         <menu name="Main">
             <item name="Home" href="index.html" />
+            <item name="Documentation" href="doc/index.html" collapse="true">
+                <item name="Getting FlexGen" href="doc/getting.html" />
+            </item>
         </menu>
 
         <menu ref="reports" />
