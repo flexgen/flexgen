@@ -48,6 +48,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <name>FlexGen Example</name>
 
+    <repositories>
+        <repository>
+            <id>flexgen-snapshots</id>
+            <url>http://repot.flexgen.org/snapshots/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.flexgen</groupId>
