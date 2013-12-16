@@ -50,6 +50,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
               width="90"
               height="30"
               title="Built by Maven" />
+        <logo name="SourceForge"
+              href="https://sourceforge.net/projects/flexgen/"
+              img="http://sflogo.sourceforge.net/sflogo.php?group_id=266830&amp;type=11"
+              alt="Get FlexGen at SourceForge.net. Fast, secure and Free Open Source software downloads"
+              width="120"
+              height="30"
+              title="Get FlexGen at SourceForge.net. Fast, secure and Free Open Source software downloads" />
     </poweredBy>
 
 </project>
