@@ -39,6 +39,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <item name="Home" href="index.html" />
             <item name="Documentation" href="doc/index.html" collapse="true">
                 <item name="Getting FlexGen" href="doc/getting.html" />
+                <item name="Running the Examples" href="doc/examples.html" />
             </item>
         </menu>
 
