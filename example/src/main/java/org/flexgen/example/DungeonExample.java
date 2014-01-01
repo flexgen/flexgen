@@ -562,9 +562,13 @@ public class DungeonExample
         System.out.println();
         System.out.println( "Example Application - Dungeon" );
 
-        String dirName = "target/worlds/Dungeon";
-        File dir = new File( dirName );
-        dir.mkdirs();
+        String partialDirName = "target/worlds/Dungeon/Partial";
+        File partialDir = new File( partialDirName );
+        partialDir.mkdirs();
+
+        String fullDirName = "target/worlds/Dungeon/Full";
+        File fullDir = new File( fullDirName );
+        fullDir.mkdirs();
 
         DoorwayMapTileLocationFilter doorwayMapTileLocationFilter =
                 new DoorwayMapTileLocationFilter();
@@ -576,14 +580,18 @@ public class DungeonExample
                 new ImprovedRandom(), MAP_TILE_TYPES, localMapTileLocationFilter );
 
         PartialMapRenderer partialMapRenderer =
-                new PartialMapRenderer( dirName + "/", 5, COLOR_MAP, 20, 20 );
+                new PartialMapRenderer( partialDirName + "/", 5, COLOR_MAP, 20, 20 );
+
+        FullMapRenderer fullMapRenderer = new FullMapRenderer( fullDirName + "/", 5, COLOR_MAP );
 
         mapGenerator.addBeforeMapTileAddedListener( partialMapRenderer );
         mapGenerator.addBeforeMapTileRemovedListener( partialMapRenderer );
         mapGenerator.addMapTileAddedListener( partialMapRenderer );
+        mapGenerator.addMapTileAddedListener( fullMapRenderer );
         mapGenerator.addMapTileAddedListener( doorwayMapTileLocationFilter );
         mapGenerator.addMapTileAddedListener( localMapTileLocationFilter );
         mapGenerator.addMapTileRemovedListener( partialMapRenderer );
+        mapGenerator.addMapTileRemovedListener( fullMapRenderer );
         mapGenerator.addMapTileRemovedListener( doorwayMapTileLocationFilter );
 
         mapGenerator.addMapTile( new MapTileLocation( 0, 0 ),

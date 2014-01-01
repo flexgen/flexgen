@@ -77,9 +77,18 @@ mvn -P run.example.river
 mvn -P run.example.dungeon
 +--
 
-    The application will generate a series of images showing the generation of the map. You can find
-    these images in:
+    The application will generate a series of images showing the generation of the map from two
+    different perspectives: a perspective showing the entire map as each map tile is added, and a
+    perspective showing a partial view of the map centered around each map tile as it is added.
+
+    You can find the images for the full map perspective in:
 
 +--
-[example project directory]/target/worlds/Dungeon
+[example project directory]/target/worlds/Dungeon/Full
++--
+
+    You can find the images for the partial map perspective in:
+
++--
+[example project directory]/target/worlds/Dungeon/Partial
 +--
