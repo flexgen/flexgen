@@ -646,15 +646,15 @@ public class MapGeneratorTest_Generate
 
         // corner hallway, (1,4), upright
         testImprovedRandom.addTransaction( 1 );
-        testImprovedRandom.addTransaction( 1 );
+        testImprovedRandom.addTransaction( 2 );
 
         // corner hallway, (2,3), flipped
         testImprovedRandom.addTransaction( 1 );
-        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 1 );
 
         // corner hallway, (1,3), clockwise
         testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 1 );
 
         // corner hallway, (4,1), clockwise
         testImprovedRandom.addTransaction( 0 );
