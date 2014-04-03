@@ -32,8 +32,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.flexgen.map.test;
 
-import org.junit.Test;
-
 import org.flexgen.map.MapGenerator;
 import org.flexgen.map.MapTile;
 import org.flexgen.map.MapTileLocation;
@@ -45,6 +43,8 @@ import org.flexgen.test.helper.tiles.DungeonTiles;
 import org.flexgen.test.helper.tiles.RiverTiles;
 import org.flexgen.util.ImprovedRandom;
 import org.flexgen.util.test.support.TestImprovedRandom;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * Test class for the MapGenerator class. Contains tests for the generate() method.
@@ -336,6 +336,9 @@ public class MapGeneratorTest_Generate
         actualMapGenerator.generate();
 
         MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+
+        Assert.assertEquals( "Unexpected result for isEmpty().", true,
+                             testImprovedRandom.isEmpty() );
     }
 
     /**
@@ -722,6 +725,9 @@ public class MapGeneratorTest_Generate
         actualMapGenerator.generate();
 
         MapGeneratorHelper.assertAreEqual( expectedMapGenerator, actualMapGenerator );
+
+        Assert.assertEquals( "Unexpected result for isEmpty().", true,
+                             testImprovedRandom.isEmpty() );
     }
 
     /**
