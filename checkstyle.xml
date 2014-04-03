@@ -167,7 +167,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <!-- Miscellaneous other checks.                   -->
         <!-- See http://checkstyle.sf.net/config_misc.html -->
         <module name="ArrayTypeStyle" />
-        <module name="TodoComment" />
+        <module name="TodoComment">
+            <property name="severity" value="warning" />
+        </module>
         <module name="UpperEll" />
 
     </module>
