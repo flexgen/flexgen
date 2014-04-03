@@ -619,7 +619,7 @@ public class MapGeneratorTest_Generate
 
         // corner hallway, (7,4), counter-clockwise
         testImprovedRandom.addTransaction( 0 );
-        testImprovedRandom.addTransaction( 0 );
+        testImprovedRandom.addTransaction( 1 );
 
         // straight hallway, (6,4), clockwise
         testImprovedRandom.addTransaction( 0 );

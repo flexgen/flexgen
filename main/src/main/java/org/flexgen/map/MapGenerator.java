@@ -34,7 +34,7 @@ package org.flexgen.map;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -188,12 +188,15 @@ public class MapGenerator
                     "Parameter 'mapTileLocationFilter' cannot be null." );
         }
 
+        // TODO: Update openLocations to use HashSet once the tests are no longer sensitive to the
+        //       iteration order of elements in the set.
+
         this.improvedRandom                = improvedRandom;
         this.mapTileTypes                  = mapTileTypes;
         this.mapTileLocationFilter         = mapTileLocationFilter;
         this.map                           = new HashMap< MapTileLocation, MapTile >();
         this.mapAge                        = new HashMap< MapTileLocation, Integer >();
-        this.openLocations                 = new HashSet< MapTileLocation >();
+        this.openLocations                 = new LinkedHashSet< MapTileLocation >();
         this.excludedMapTilesMap           = new HashMap< MapTileLocation,
                                                           Collection< MapTile > >();
         this.beforeMapTileAddedListeners   = new LinkedList< BeforeMapTileAddedListener >();
